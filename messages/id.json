@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "TRIGIA — Mitra Pertumbuhan Digital Anda",
-    "description": "TRIGIA membantu bisnis mengubah peluang digital menjadi pertumbuhan nyata — melalui teknologi, strategi, AI, dan eksekusi digital yang tepat sasaran."
+    "description": "TRIGIA membangun fondasi digital bisnis Anda — strategi, teknologi, hingga kecerdasan buatan — dalam satu kesatuan yang terus bertumbuh bersama bisnis Anda."
   },
   "nav": {
     "services": "Layanan",
@@ -16,9 +16,9 @@
   },
   "hero": {
     "eyebrow": "Katalis Transformasi Digital",
-    "headlineWords": ["Bangun", "yang", "Mendorong", "Bisnis", "Anda", "Melaju."],
-    "headlineAccentIndex": 3,
-    "subtext": "TRIGIA membantu bisnis mengubah peluang digital menjadi pertumbuhan nyata — melalui teknologi, strategi, AI, dan eksekusi digital yang tepat sasaran.",
+    "headlineWords": ["Bangun", "Fondasi", "yang", "Mendorong", "Bisnis", "Anda", "Melaju."],
+    "headlineAccentIndex": 4,
+    "subtext": "TRIGIA membangun fondasi digital bisnis Anda — strategi, teknologi, hingga kecerdasan buatan — dalam satu kesatuan yang terus bertumbuh bersama bisnis Anda.",
     "ctaPrimary": "Mulai Proyek",
     "ctaGhost": "Lihat Karya Kami",
     "whatsappMessage": "Halo TRIGIA, saya tertarik untuk konsultasi project."
@@ -33,12 +33,12 @@
   },
   "services": {
     "eyebrow": "Yang Kami Kerjakan",
-    "heading": "Solusi Digital yang Dirancang untuk Pertumbuhan.",
+    "heading": "Semua yang Bisnis Anda Butuhkan untuk Bertumbuh, dalam Satu Tempat.",
     "items": [
       { "index": "01", "name": "Website", "desc": "Bangun kehadiran digital yang benar-benar bekerja untuk bisnis Anda — company profile, landing page, e-commerce, hingga kebutuhan khusus lainnya." },
-      { "index": "02", "name": "Aplikasi Web", "desc": "Ubah proses bisnis yang rumit menjadi sistem digital yang efisien — dashboard, tools internal, hingga platform pelanggan." },
+      { "index": "02", "name": "Aplikasi Web", "desc": "Proses bisnis yang rumit dan tidak terstruktur, kami susun ulang jadi sistem digital yang efisien — dashboard, tools internal, hingga platform pelanggan." },
       { "index": "03", "name": "Aplikasi Mobile", "desc": "Hadirkan pengalaman yang berarti di mana pun pelanggan Anda berada — Android, iOS, dan cross-platform." },
-      { "index": "04", "name": "Digital Marketing", "desc": "Ubah perhatian audiens menjadi hasil bisnis yang terukur — strategi, performance marketing, SEO, dan optimasi konversi." },
+      { "index": "04", "name": "Digital Marketing", "desc": "Audiens yang sekadar melihat-lihat, kami arahkan jadi hasil bisnis yang terukur — strategi, performance marketing, SEO, dan optimasi konversi." },
       { "index": "05", "name": "AI & Otomasi", "desc": "Buat bisnis Anda lebih cerdas, cepat, dan efisien — integrasi AI dan otomasi alur kerja." },
       { "index": "06", "name": "Branding", "desc": "Bangun identitas visual yang jelas dan konsisten — logo, warna, tipografi, sebelum semua yang lain." },
       { "index": "07", "name": "Content Production", "desc": "Konten yang konsisten sama brand kamu, bukan template generik yang sama untuk semua orang." }
@@ -58,7 +58,7 @@
         "rateCardAnchor": "website"
       },
       "web-app": {
-        "tagline": "Ubah proses manual jadi sistem yang bekerja sendiri.",
+        "tagline": "Dari proses manual, jadi sistem yang jalan sendiri.",
         "desc": "Kalau bisnis Anda masih mengandalkan spreadsheet, WhatsApp broadcast manual, atau pencatatan tangan — itu tandanya sudah waktunya punya sistem digital sendiri. Kami bangun dashboard dan tools internal yang dirancang khusus untuk cara kerja bisnis Anda.",
         "suitedFor": "Bisnis yang operasionalnya sudah cukup kompleks untuk butuh sistem sendiri — bukan lagi cukup dikelola manual.",
         "priceFrom": "Rp9.000.000",
@@ -73,7 +73,7 @@
       },
       "digital-marketing": {
         "tagline": "Bukan cuma pasang iklan — kami kelola untuk hasil.",
-        "desc": "Digital marketing yang efektif itu bukan soal budget besar, tapi strategi dan eksekusi yang tepat platform. Kami kelola iklan Anda di platform yang paling relevan untuk audiens dan tujuan bisnis Anda.",
+        "desc": "Digital marketing yang efektif itu bukan soal budget besar, tapi soal strategi yang tepat dan eksekusi yang konsisten. Kami kelola iklan Anda di platform yang paling relevan untuk audiens dan tujuan bisnis Anda.",
         "suitedFor": "Bisnis yang sudah punya produk/layanan bagus tapi belum cukup dikenal, atau yang traffic-nya stuck di angka yang sama.",
         "priceFrom": "Rp1.500.000/bulan",
         "rateCardAnchor": "digital-marketing"
@@ -363,7 +363,7 @@
         "src": "/prototypes/ai-business-operation.html",
         "badge": "AI Product — Business Intelligence",
         "title": "Trigia AI Business OS",
-        "desc": "Konsep dashboard AI business intelligence untuk UMKM — mengubah data transaksi jadi insight dan aksi, dengan revenue, profit, customer, dan inventory dalam satu executive view."
+        "desc": "Konsep dashboard AI business intelligence untuk UMKM — data transaksi jadi insight dan aksi secara otomatis, dengan revenue, profit, customer, dan inventory dalam satu executive view."
       },
       {
         "src": "/prototypes/growth-engine.html",
@@ -425,7 +425,7 @@
         "url": "https://member.rumihomespa.com",
         "image": "/work/rumi-inner-circle.jpg",
         "challenge": "Program loyalitas pelanggan dikelola manual, tanpa cara bagi member untuk memantau poin atau mengajak teman sendiri.",
-        "solution": "Portal member dengan dashboard, pelacakan poin real-time, dan sistem referral — mengubah pelanggan setia jadi bagian dari komunitas eksklusif.",
+        "solution": "Portal member dengan dashboard, pelacakan poin real-time, dan sistem referral — pelanggan setia kini jadi bagian dari komunitas eksklusif.",
         "result": "Pelanggan setia sekarang punya akses mandiri ke reward mereka, kapan saja."
       },
       {
@@ -472,7 +472,7 @@
   },
   "footer": {
     "mega": "Saatnya Membangun Bersama TRIGIA",
-    "tagline": "Mitra Pertumbuhan Digital Anda. Mitra teknologi digital yang membantu bisnis mengubah peluang menjadi pertumbuhan yang nyata.",
+    "tagline": "Mitra Pertumbuhan Digital Anda. Kami bantu bisnis Anda membangun fondasi digital yang kuat, dari strategi sampai eksekusi.",
     "sitemapTitle": "Peta Situs",
     "servicesTitle": "Layanan",
     "contactTitle": "Kontak",
