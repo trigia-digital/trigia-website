@@ -486,5 +486,14 @@
     "startProject": "Start a Project",
     "copyright": "© 2026 TRIGIA Digital. All rights reserved.",
     "tagBottom": "Catalyst for Digital Transformation."
+  },
+  "notFound": {
+    "code": "404",
+    "heading": "This Page Isn't Built Yet.",
+    "subtext": "Looks like you've wandered off course — the page you're looking for has moved, or never existed.",
+    "ctaPrimary": "Back to Homepage",
+    "ctaSecondary": "Contact Us",
+    "whatsappMessage": "Hi TRIGIA, I tried to open a page that doesn't seem to exist on your site.",
+    "quickLinksLabel": "You Might Be Looking For:"
   }
 }

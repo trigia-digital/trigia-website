@@ -1,34 +1,34 @@
 # Graph Report - trigia-nextjs  (2026-08-18)
 
 ## Corpus Check
-- 74 files · ~94,232 words
+- 77 files · ~94,833 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 383 nodes · 519 edges · 33 communities (27 shown, 6 thin omitted)
+- 391 nodes · 532 edges · 34 communities (27 shown, 7 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `020d121d`
+- Built from commit: `c6421e29`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - [locale]/page.tsx
-- articles/[slug]/page.tsx
+- app/not-found.tsx
 - devDependencies
 - layout.tsx
 - dependencies
 - compilerOptions
 - Hero.tsx
 - What You Must Do When Invoked
-- services/[slug]/page.tsx
+- articles/[slug]/page.tsx
 - main
 - capture-work-screenshots.mjs
 - next.config.js
 - tailwind.config.ts
-- rate-card/page.tsx
+- prototype/page.tsx
 - graphify reference: extra exports and benchmark
 - en/berapa-biaya-bikin-website-profesional-indonesia.mdx
 - en/website-vs-landing-page-vs-linktree.mdx
@@ -49,48 +49,44 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 16 edges
-2. `routing` - 12 edges
-3. `What You Must Do When Invoked` - 12 edges
-4. `revealVariants` - 11 edges
-5. `revealViewport` - 11 edges
-6. `buildWhatsAppHref()` - 11 edges
+2. `buildWhatsAppHref()` - 13 edges
+3. `routing` - 12 edges
+4. `What You Must Do When Invoked` - 12 edges
+5. `revealVariants` - 11 edges
+6. `revealViewport` - 11 edges
 7. `/graphify` - 10 edges
-8. `SpotlightCard()` - 9 edges
-9. `Header()` - 8 edges
-10. `getAllArticles()` - 8 edges
+8. `Header()` - 9 edges
+9. `SpotlightCard()` - 9 edges
+10. `Footer()` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `NotFound()` --calls--> `buildWhatsAppHref()`  [EXTRACTED]
+  app/[locale]/not-found.tsx → lib/whatsapp.ts
+- `RateCardPage()` --calls--> `buildWhatsAppHref()`  [EXTRACTED]
+  app/[locale]/rate-card/page.tsx → lib/whatsapp.ts
 - `generateStaticParams()` --calls--> `getAllArticles()`  [EXTRACTED]
   app/[locale]/articles/[slug]/page.tsx → lib/articles.ts
 - `generateMetadata()` --calls--> `getArticleBySlug()`  [EXTRACTED]
   app/[locale]/articles/[slug]/page.tsx → lib/articles.ts
-- `ArticleDetailPage()` --calls--> `urlFor()`  [EXTRACTED]
-  app/[locale]/articles/[slug]/page.tsx → lib/site.ts
-- `RateCardPage()` --calls--> `buildWhatsAppHref()`  [EXTRACTED]
-  app/[locale]/rate-card/page.tsx → lib/whatsapp.ts
 - `ServiceDetailPage()` --calls--> `urlFor()`  [EXTRACTED]
   app/[locale]/services/[slug]/page.tsx → lib/site.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (33 total, 6 thin omitted)
+## Communities (34 total, 7 thin omitted)
 
 ### Community 0 - "[locale]/page.tsx"
 Cohesion: 0.08
-Nodes (28): RateCardPage(), About(), Belief(), FAQ(), FaqItem, FinalCTA(), SITEMAP_LINKS, GrowthCurve() (+20 more)
-
-### Community 1 - "articles/[slug]/page.tsx"
-Cohesion: 0.14
-Nodes (18): ArticlesPage(), formatDate(), ArticleDetailPage(), formatDate(), generateMetadata(), generateStaticParams(), mdxComponents, PageParams (+10 more)
+Nodes (27): About(), Belief(), FAQ(), FaqItem, FinalCTA(), GrowthCurve(), PATHS, Props (+19 more)
 
 ### Community 2 - "devDependencies"
 Cohesion: 0.08
 Nodes (25): autoprefixer, devDependencies, autoprefixer, playwright, postcss, tailwindcss, @types/node, @types/react (+17 more)
 
 ### Community 3 - "layout.tsx"
-Cohesion: 0.09
-Nodes (11): inter, organizationSchema, spaceGrotesk, CustomCursor(), Grain(), Intro(), SmoothScroll(), Window (+3 more)
+Cohesion: 0.10
+Nodes (9): inter, organizationSchema, spaceGrotesk, CustomCursor(), Grain(), Intro(), SmoothScroll(), Window (+1 more)
 
 ### Community 4 - "dependencies"
 Cohesion: 0.10
@@ -108,9 +104,9 @@ Nodes (11): bezierPoint(), FlowCanvas(), draw(), Hero(), CUM_LENGTH, HeroSweep()
 Cohesion: 0.08
 Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
-### Community 8 - "services/[slug]/page.tsx"
-Cohesion: 0.13
-Nodes (12): PageParams, ServiceDetailItem, ServiceDetailPage(), ServiceListItem, sitemap(), { Link, redirect, usePathname, useRouter, getPathname }, routing, SERVICE_SLUGS (+4 more)
+### Community 8 - "articles/[slug]/page.tsx"
+Cohesion: 0.05
+Nodes (41): ArticlesPage(), formatDate(), ArticleDetailPage(), formatDate(), generateMetadata(), generateStaticParams(), mdxComponents, PageParams (+33 more)
 
 ### Community 9 - "main"
 Cohesion: 0.25
@@ -124,9 +120,9 @@ Nodes (3): __dirname, outDir, targets
 Cohesion: 0.50
 Nodes (3): createNextIntlPlugin, nextConfig, withNextIntl
 
-### Community 15 - "rate-card/page.tsx"
-Cohesion: 0.10
-Nodes (10): PrototypeItem, RateCardBundle, RateCardCategory, RateCardLineItem, Footer(), Header(), LanguageSwitcher(), LOCALES (+2 more)
+### Community 15 - "prototype/page.tsx"
+Cohesion: 0.25
+Nodes (3): PrototypeItem, PrototypePreview(), PrototypePreviewProps
 
 ### Community 16 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -177,24 +173,24 @@ Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
 ## Knowledge Gaps
-- **175 isolated node(s):** `mdxComponents`, `PageParams`, `organizationSchema`, `spaceGrotesk`, `inter` (+170 more)
+- **176 isolated node(s):** `mdxComponents`, `PageParams`, `organizationSchema`, `spaceGrotesk`, `inter` (+171 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `routing` connect `services/[slug]/page.tsx` to `articles/[slug]/page.tsx`, `layout.tsx`, `rate-card/page.tsx`?**
+- **Why does `routing` connect `articles/[slug]/page.tsx` to `layout.tsx`, `prototype/page.tsx`?**
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **Why does `buildWhatsAppHref()` connect `[locale]/page.tsx` to `layout.tsx`, `Hero.tsx`, `rate-card/page.tsx`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `Header()` connect `rate-card/page.tsx` to `[locale]/page.tsx`, `articles/[slug]/page.tsx`, `services/[slug]/page.tsx`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+- **Why does `buildWhatsAppHref()` connect `[locale]/page.tsx` to `articles/[slug]/page.tsx`, `Hero.tsx`?**
+  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+- **Why does `Header()` connect `articles/[slug]/page.tsx` to `[locale]/page.tsx`, `prototype/page.tsx`?**
+  _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **What connects `mdxComponents`, `PageParams`, `organizationSchema` to the rest of the system?**
-  _175 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _176 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `[locale]/page.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.0784313725490196 - nodes in this community are weakly interconnected._
-- **Should `articles/[slug]/page.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.14 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._
+- **Should `layout.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.09666666666666666 - nodes in this community are weakly interconnected._

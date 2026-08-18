@@ -486,5 +486,14 @@
     "startProject": "Mulai Proyek",
     "copyright": "© 2026 TRIGIA Digital. Seluruh hak cipta dilindungi.",
     "tagBottom": "Katalis Transformasi Digital."
+  },
+  "notFound": {
+    "code": "404",
+    "heading": "Halaman Ini Belum Kami Bangun.",
+    "subtext": "Sepertinya Anda nyasar — halaman yang dicari sudah dipindah atau memang belum ada.",
+    "ctaPrimary": "Kembali ke Beranda",
+    "ctaSecondary": "Hubungi Kami",
+    "whatsappMessage": "Halo TRIGIA, saya coba akses halaman yang sepertinya tidak ada di situs.",
+    "quickLinksLabel": "Mungkin yang Anda Cari:"
   }
 }

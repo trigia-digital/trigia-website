@@ -28,10 +28,15 @@ const config: Config = {
           "0%": { backgroundPosition: "0% 0%" },
           "100%": { backgroundPosition: "220% 220%" },
         },
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(16px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         marquee: "marquee 26s linear infinite",
         borderFlow: "borderFlow 2.4s linear infinite",
+        fadeInUp: "fadeInUp 0.7s cubic-bezier(0.16,0.84,0.44,1) forwards",
       },
     },
   },

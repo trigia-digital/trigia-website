@@ -121,58 +121,6 @@
       "norm_label": "worklabels"
     },
     {
-      "label": "PageParams",
-      "file_type": "code",
-      "source_file": "app/[locale]/articles/[slug]/page.tsx",
-      "source_location": "L73",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "app_locale_articles_slug_page_pageparams",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "pageparams"
-    },
-    {
-      "label": "ArticleCoverProps",
-      "file_type": "code",
-      "source_file": "components/ArticleCover.tsx",
-      "source_location": "L3",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "components_articlecover_articlecoverprops",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "articlecoverprops"
-    },
-    {
-      "label": "Article",
-      "file_type": "code",
-      "source_file": "lib/articles.ts",
-      "source_location": "L19",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "lib_articles_article",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "article"
-    },
-    {
-      "label": "ArticleMeta",
-      "file_type": "code",
-      "source_file": "lib/articles.ts",
-      "source_location": "L5",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "lib_articles_articlemeta",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "articlemeta"
-    },
-    {
       "label": "PrototypeItem",
       "file_type": "code",
       "source_file": "app/[locale]/prototype/page.tsx",
@@ -182,47 +130,8 @@
       "_origin": "ast",
       "id": "app_locale_prototype_page_prototypeitem",
       "community": 15,
-      "community_name": "rate-card/page.tsx",
+      "community_name": "prototype/page.tsx",
       "norm_label": "prototypeitem"
-    },
-    {
-      "label": "RateCardBundle",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L25",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_ratecardbundle",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "ratecardbundle"
-    },
-    {
-      "label": "RateCardCategory",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L17",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_ratecardcategory",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "ratecardcategory"
-    },
-    {
-      "label": "RateCardLineItem",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L9",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_ratecardlineitem",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "ratecardlineitem"
     },
     {
       "label": "PrototypePreviewProps",
@@ -234,7 +143,7 @@
       "_origin": "ast",
       "id": "components_prototypepreview_prototypepreviewprops",
       "community": 15,
-      "community_name": "rate-card/page.tsx",
+      "community_name": "prototype/page.tsx",
       "norm_label": "prototypepreviewprops"
     },
     {
@@ -266,6 +175,58 @@
     {
       "label": "PageParams",
       "file_type": "code",
+      "source_file": "app/[locale]/articles/[slug]/page.tsx",
+      "source_location": "L73",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "app_locale_articles_slug_page_pageparams",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "pageparams"
+    },
+    {
+      "label": "RateCardBundle",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L25",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_ratecardbundle",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "ratecardbundle"
+    },
+    {
+      "label": "RateCardCategory",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L17",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_ratecardcategory",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "ratecardcategory"
+    },
+    {
+      "label": "RateCardLineItem",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L9",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_ratecardlineitem",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "ratecardlineitem"
+    },
+    {
+      "label": "PageParams",
+      "file_type": "code",
       "source_file": "app/[locale]/services/[slug]/page.tsx",
       "source_location": "L34",
       "_callable": true,
@@ -273,7 +234,7 @@
       "_origin": "ast",
       "id": "app_locale_services_slug_page_pageparams",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "pageparams"
     },
     {
@@ -286,7 +247,7 @@
       "_origin": "ast",
       "id": "app_locale_services_slug_page_servicedetailitem",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "servicedetailitem"
     },
     {
@@ -299,8 +260,47 @@
       "_origin": "ast",
       "id": "app_locale_services_slug_page_servicelistitem",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "servicelistitem"
+    },
+    {
+      "label": "ArticleCoverProps",
+      "file_type": "code",
+      "source_file": "components/ArticleCover.tsx",
+      "source_location": "L3",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "components_articlecover_articlecoverprops",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "articlecoverprops"
+    },
+    {
+      "label": "Article",
+      "file_type": "code",
+      "source_file": "lib/articles.ts",
+      "source_location": "L19",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "lib_articles_article",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "article"
+    },
+    {
+      "label": "ArticleMeta",
+      "file_type": "code",
+      "source_file": "lib/articles.ts",
+      "source_location": "L5",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "lib_articles_articlemeta",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "articlemeta"
     },
     {
       "label": "ServiceSlug",
@@ -312,7 +312,7 @@
       "_origin": "ast",
       "id": "lib_serviceslugs_serviceslug",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "serviceslug"
     },
     {
@@ -326,18 +326,6 @@
       "community": 0,
       "community_name": "[locale]/page.tsx",
       "norm_label": "homepage()"
-    },
-    {
-      "label": "RateCardPage()",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L57",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_ratecardpage",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "ratecardpage()"
     },
     {
       "label": "About()",
@@ -532,6 +520,18 @@
       "norm_label": "handlemove()"
     },
     {
+      "label": "WhatsAppButton()",
+      "file_type": "code",
+      "source_file": "components/WhatsAppButton.tsx",
+      "source_location": "L7",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_whatsappbutton_whatsappbutton",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "whatsappbutton()"
+    },
+    {
       "label": "Work()",
       "file_type": "code",
       "source_file": "components/Work.tsx",
@@ -568,172 +568,16 @@
       "norm_label": "buildwhatsapphref()"
     },
     {
-      "label": "ArticlesPage()",
+      "label": "RootNotFound()",
       "file_type": "code",
-      "source_file": "app/[locale]/articles/page.tsx",
-      "source_location": "L39",
+      "source_file": "app/not-found.tsx",
+      "source_location": "L11",
       "_callable": true,
       "_origin": "ast",
-      "id": "app_locale_articles_page_articlespage",
+      "id": "app_not_found_rootnotfound",
       "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "articlespage()"
-    },
-    {
-      "label": "formatDate()",
-      "file_type": "code",
-      "source_file": "app/[locale]/articles/page.tsx",
-      "source_location": "L28",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_articles_page_formatdate",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "formatdate()"
-    },
-    {
-      "label": "generateMetadata()",
-      "file_type": "code",
-      "source_file": "app/[locale]/articles/page.tsx",
-      "source_location": "L14",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_articles_page_generatemetadata",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "generatemetadata()"
-    },
-    {
-      "label": "generateStaticParams()",
-      "file_type": "code",
-      "source_file": "app/[locale]/articles/page.tsx",
-      "source_location": "L10",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_articles_page_generatestaticparams",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "generatestaticparams()"
-    },
-    {
-      "label": "ArticleDetailPage()",
-      "file_type": "code",
-      "source_file": "app/[locale]/articles/[slug]/page.tsx",
-      "source_location": "L107",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_articles_slug_page_articledetailpage",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "articledetailpage()"
-    },
-    {
-      "label": "BackIcon()",
-      "file_type": "code",
-      "source_file": "app/[locale]/articles/[slug]/page.tsx",
-      "source_location": "L15",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_articles_slug_page_backicon",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "backicon()"
-    },
-    {
-      "label": "formatDate()",
-      "file_type": "code",
-      "source_file": "app/[locale]/articles/[slug]/page.tsx",
-      "source_location": "L96",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_articles_slug_page_formatdate",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "formatdate()"
-    },
-    {
-      "label": "generateMetadata()",
-      "file_type": "code",
-      "source_file": "app/[locale]/articles/[slug]/page.tsx",
-      "source_location": "L81",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_articles_slug_page_generatemetadata",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "generatemetadata()"
-    },
-    {
-      "label": "generateStaticParams()",
-      "file_type": "code",
-      "source_file": "app/[locale]/articles/[slug]/page.tsx",
-      "source_location": "L75",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_articles_slug_page_generatestaticparams",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "generatestaticparams()"
-    },
-    {
-      "label": "ArticleCover()",
-      "file_type": "code",
-      "source_file": "components/ArticleCover.tsx",
-      "source_location": "L14",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_articlecover_articlecover",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "articlecover()"
-    },
-    {
-      "label": "coverImageExists()",
-      "file_type": "code",
-      "source_file": "lib/articles.ts",
-      "source_location": "L88",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "lib_articles_coverimageexists",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "coverimageexists()"
-    },
-    {
-      "label": "getAllArticles()",
-      "file_type": "code",
-      "source_file": "lib/articles.ts",
-      "source_location": "L52",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "lib_articles_getallarticles",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "getallarticles()"
-    },
-    {
-      "label": "getArticleBySlug()",
-      "file_type": "code",
-      "source_file": "lib/articles.ts",
-      "source_location": "L66",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "lib_articles_getarticlebyslug",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "getarticlebyslug()"
-    },
-    {
-      "label": "readArticleFile()",
-      "file_type": "code",
-      "source_file": "lib/articles.ts",
-      "source_location": "L26",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "lib_articles_readarticlefile",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "readarticlefile()"
+      "community_name": "app/not-found.tsx",
+      "norm_label": "rootnotfound()"
     },
     {
       "label": "main()",
@@ -756,7 +600,7 @@
       "_origin": "ast",
       "id": "app_locale_prototype_page_generatemetadata",
       "community": 15,
-      "community_name": "rate-card/page.tsx",
+      "community_name": "prototype/page.tsx",
       "norm_label": "generatemetadata()"
     },
     {
@@ -768,7 +612,7 @@
       "_origin": "ast",
       "id": "app_locale_prototype_page_generatestaticparams",
       "community": 15,
-      "community_name": "rate-card/page.tsx",
+      "community_name": "prototype/page.tsx",
       "norm_label": "generatestaticparams()"
     },
     {
@@ -780,104 +624,8 @@
       "_origin": "ast",
       "id": "app_locale_prototype_page_prototypepage",
       "community": 15,
-      "community_name": "rate-card/page.tsx",
+      "community_name": "prototype/page.tsx",
       "norm_label": "prototypepage()"
-    },
-    {
-      "label": "ArrowIcon()",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L33",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_arrowicon",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "arrowicon()"
-    },
-    {
-      "label": "generateMetadata()",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L43",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_generatemetadata",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "generatemetadata()"
-    },
-    {
-      "label": "generateStaticParams()",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L39",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_generatestaticparams",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "generatestaticparams()"
-    },
-    {
-      "label": "Footer()",
-      "file_type": "code",
-      "source_file": "components/Footer.tsx",
-      "source_location": "L16",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_footer_footer",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "footer()"
-    },
-    {
-      "label": "Header()",
-      "file_type": "code",
-      "source_file": "components/Header.tsx",
-      "source_location": "L10",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_header_header",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "header()"
-    },
-    {
-      "label": "handleScroll()",
-      "file_type": "code",
-      "source_file": "components/Header.tsx",
-      "source_location": "L26",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_header_header_handlescroll",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "handlescroll()"
-    },
-    {
-      "label": "LanguageSwitcher()",
-      "file_type": "code",
-      "source_file": "components/LanguageSwitcher.tsx",
-      "source_location": "L11",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_languageswitcher_languageswitcher",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "languageswitcher()"
-    },
-    {
-      "label": "switchTo()",
-      "file_type": "code",
-      "source_file": "components/LanguageSwitcher.tsx",
-      "source_location": "L16",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_languageswitcher_languageswitcher_switchto",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "switchto()"
     },
     {
       "label": "PrototypePreview()",
@@ -888,7 +636,7 @@
       "_origin": "ast",
       "id": "components_prototypepreview_prototypepreview",
       "community": 15,
-      "community_name": "rate-card/page.tsx",
+      "community_name": "prototype/page.tsx",
       "norm_label": "prototypepreview()"
     },
     {
@@ -900,7 +648,7 @@
       "_origin": "ast",
       "id": "components_prototypepreview_prototypepreview_updatescale",
       "community": 15,
-      "community_name": "rate-card/page.tsx",
+      "community_name": "prototype/page.tsx",
       "norm_label": "updatescale()"
     },
     {
@@ -1084,16 +832,16 @@
       "norm_label": "handlemove()"
     },
     {
-      "label": "WhatsAppButton()",
+      "label": "CatchAll()",
       "file_type": "code",
-      "source_file": "components/WhatsAppButton.tsx",
+      "source_file": "app/[locale]/[...rest]/page.tsx",
       "source_location": "L7",
       "_callable": true,
       "_origin": "ast",
-      "id": "components_whatsappbutton_whatsappbutton",
-      "community": 3,
-      "community_name": "layout.tsx",
-      "norm_label": "whatsappbutton()"
+      "id": "app_locale_rest_page_catchall",
+      "community": 33,
+      "community_name": "[...rest]/page.tsx",
+      "norm_label": "catchall()"
     },
     {
       "label": "bezierPoint()",
@@ -1288,6 +1036,186 @@
       "norm_label": "handlemove()"
     },
     {
+      "label": "ArticlesPage()",
+      "file_type": "code",
+      "source_file": "app/[locale]/articles/page.tsx",
+      "source_location": "L39",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_articles_page_articlespage",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "articlespage()"
+    },
+    {
+      "label": "formatDate()",
+      "file_type": "code",
+      "source_file": "app/[locale]/articles/page.tsx",
+      "source_location": "L28",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_articles_page_formatdate",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "formatdate()"
+    },
+    {
+      "label": "generateMetadata()",
+      "file_type": "code",
+      "source_file": "app/[locale]/articles/page.tsx",
+      "source_location": "L14",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_articles_page_generatemetadata",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "generatemetadata()"
+    },
+    {
+      "label": "generateStaticParams()",
+      "file_type": "code",
+      "source_file": "app/[locale]/articles/page.tsx",
+      "source_location": "L10",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_articles_page_generatestaticparams",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "generatestaticparams()"
+    },
+    {
+      "label": "ArticleDetailPage()",
+      "file_type": "code",
+      "source_file": "app/[locale]/articles/[slug]/page.tsx",
+      "source_location": "L107",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_articles_slug_page_articledetailpage",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "articledetailpage()"
+    },
+    {
+      "label": "BackIcon()",
+      "file_type": "code",
+      "source_file": "app/[locale]/articles/[slug]/page.tsx",
+      "source_location": "L15",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_articles_slug_page_backicon",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "backicon()"
+    },
+    {
+      "label": "formatDate()",
+      "file_type": "code",
+      "source_file": "app/[locale]/articles/[slug]/page.tsx",
+      "source_location": "L96",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_articles_slug_page_formatdate",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "formatdate()"
+    },
+    {
+      "label": "generateMetadata()",
+      "file_type": "code",
+      "source_file": "app/[locale]/articles/[slug]/page.tsx",
+      "source_location": "L81",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_articles_slug_page_generatemetadata",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "generatemetadata()"
+    },
+    {
+      "label": "generateStaticParams()",
+      "file_type": "code",
+      "source_file": "app/[locale]/articles/[slug]/page.tsx",
+      "source_location": "L75",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_articles_slug_page_generatestaticparams",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "generatestaticparams()"
+    },
+    {
+      "label": "generateMetadata()",
+      "file_type": "code",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_not_found_generatemetadata",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "generatemetadata()"
+    },
+    {
+      "label": "NotFound()",
+      "file_type": "code",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_not_found_notfound",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "notfound()"
+    },
+    {
+      "label": "ArrowIcon()",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L33",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_arrowicon",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "arrowicon()"
+    },
+    {
+      "label": "generateMetadata()",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L43",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_generatemetadata",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "generatemetadata()"
+    },
+    {
+      "label": "generateStaticParams()",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L39",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_generatestaticparams",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "generatestaticparams()"
+    },
+    {
+      "label": "RateCardPage()",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L57",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_ratecardpage",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "ratecardpage()"
+    },
+    {
       "label": "ArrowIcon()",
       "file_type": "code",
       "source_file": "app/[locale]/services/[slug]/page.tsx",
@@ -1296,7 +1224,7 @@
       "_origin": "ast",
       "id": "app_locale_services_slug_page_arrowicon",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "arrowicon()"
     },
     {
@@ -1308,7 +1236,7 @@
       "_origin": "ast",
       "id": "app_locale_services_slug_page_backicon",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "backicon()"
     },
     {
@@ -1320,7 +1248,7 @@
       "_origin": "ast",
       "id": "app_locale_services_slug_page_generatemetadata",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "generatemetadata()"
     },
     {
@@ -1332,7 +1260,7 @@
       "_origin": "ast",
       "id": "app_locale_services_slug_page_generatestaticparams",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "generatestaticparams()"
     },
     {
@@ -1344,7 +1272,7 @@
       "_origin": "ast",
       "id": "app_locale_services_slug_page_servicedetailpage",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "servicedetailpage()"
     },
     {
@@ -1356,7 +1284,7 @@
       "_origin": "ast",
       "id": "app_robots_robots",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "robots()"
     },
     {
@@ -1368,8 +1296,128 @@
       "_origin": "ast",
       "id": "app_sitemap_sitemap",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "sitemap()"
+    },
+    {
+      "label": "ArticleCover()",
+      "file_type": "code",
+      "source_file": "components/ArticleCover.tsx",
+      "source_location": "L14",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_articlecover_articlecover",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "articlecover()"
+    },
+    {
+      "label": "Footer()",
+      "file_type": "code",
+      "source_file": "components/Footer.tsx",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_footer_footer",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "footer()"
+    },
+    {
+      "label": "Header()",
+      "file_type": "code",
+      "source_file": "components/Header.tsx",
+      "source_location": "L10",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_header_header",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "header()"
+    },
+    {
+      "label": "handleScroll()",
+      "file_type": "code",
+      "source_file": "components/Header.tsx",
+      "source_location": "L26",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_header_header_handlescroll",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "handlescroll()"
+    },
+    {
+      "label": "LanguageSwitcher()",
+      "file_type": "code",
+      "source_file": "components/LanguageSwitcher.tsx",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_languageswitcher_languageswitcher",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "languageswitcher()"
+    },
+    {
+      "label": "switchTo()",
+      "file_type": "code",
+      "source_file": "components/LanguageSwitcher.tsx",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_languageswitcher_languageswitcher_switchto",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "switchto()"
+    },
+    {
+      "label": "coverImageExists()",
+      "file_type": "code",
+      "source_file": "lib/articles.ts",
+      "source_location": "L88",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "lib_articles_coverimageexists",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "coverimageexists()"
+    },
+    {
+      "label": "getAllArticles()",
+      "file_type": "code",
+      "source_file": "lib/articles.ts",
+      "source_location": "L52",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "lib_articles_getallarticles",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "getallarticles()"
+    },
+    {
+      "label": "getArticleBySlug()",
+      "file_type": "code",
+      "source_file": "lib/articles.ts",
+      "source_location": "L66",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "lib_articles_getarticlebyslug",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "getarticlebyslug()"
+    },
+    {
+      "label": "readArticleFile()",
+      "file_type": "code",
+      "source_file": "lib/articles.ts",
+      "source_location": "L26",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "lib_articles_readarticlefile",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "readarticlefile()"
     },
     {
       "label": "urlFor()",
@@ -1380,7 +1428,7 @@
       "_origin": "ast",
       "id": "lib_site_urlfor",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "urlfor()"
     },
     {
@@ -1499,28 +1547,6 @@
       "norm_label": "finalcta.tsx"
     },
     {
-      "label": "Footer.tsx",
-      "file_type": "code",
-      "source_file": "components/Footer.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_footer",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "footer.tsx"
-    },
-    {
-      "label": "SITEMAP_LINKS",
-      "file_type": "code",
-      "source_file": "components/Footer.tsx",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "components_footer_sitemap_links",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "sitemap_links"
-    },
-    {
       "label": "GrowthCurve.tsx",
       "file_type": "code",
       "source_file": "components/GrowthCurve.tsx",
@@ -1609,6 +1635,17 @@
       "norm_label": "spotlightcard.tsx"
     },
     {
+      "label": "WhatsAppButton.tsx",
+      "file_type": "code",
+      "source_file": "components/WhatsAppButton.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_whatsappbutton",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "whatsappbutton.tsx"
+    },
+    {
       "label": "Work.tsx",
       "file_type": "code",
       "source_file": "components/Work.tsx",
@@ -1675,81 +1712,26 @@
       "norm_label": "whatsapp_number"
     },
     {
-      "label": "articles/page.tsx",
+      "label": "app/not-found.tsx",
       "file_type": "code",
-      "source_file": "app/[locale]/articles/page.tsx",
+      "source_file": "app/not-found.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_locale_articles_page",
+      "id": "app_not_found",
       "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "articles/page.tsx"
+      "community_name": "app/not-found.tsx",
+      "norm_label": "app/not-found.tsx"
     },
     {
-      "label": "articles/[slug]/page.tsx",
+      "label": "dynamic",
       "file_type": "code",
-      "source_file": "app/[locale]/articles/[slug]/page.tsx",
-      "source_location": "L1",
+      "source_file": "app/not-found.tsx",
+      "source_location": "L9",
       "_origin": "ast",
-      "id": "app_locale_articles_slug_page",
+      "id": "app_not_found_dynamic",
       "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "articles/[slug]/page.tsx"
-    },
-    {
-      "label": "mdxComponents",
-      "file_type": "code",
-      "source_file": "app/[locale]/articles/[slug]/page.tsx",
-      "source_location": "L23",
-      "_origin": "ast",
-      "id": "app_locale_articles_slug_page_mdxcomponents",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "mdxcomponents"
-    },
-    {
-      "label": "ArticleCover.tsx",
-      "file_type": "code",
-      "source_file": "components/ArticleCover.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_articlecover",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "articlecover.tsx"
-    },
-    {
-      "label": "articles.ts",
-      "file_type": "code",
-      "source_file": "lib/articles.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "lib_articles",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "articles.ts"
-    },
-    {
-      "label": "ARTICLES_ROOT",
-      "file_type": "code",
-      "source_file": "lib/articles.ts",
-      "source_location": "L23",
-      "_origin": "ast",
-      "id": "lib_articles_articles_root",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "articles_root"
-    },
-    {
-      "label": "PUBLIC_ROOT",
-      "file_type": "code",
-      "source_file": "lib/articles.ts",
-      "source_location": "L24",
-      "_origin": "ast",
-      "id": "lib_articles_public_root",
-      "community": 1,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "public_root"
+      "community_name": "app/not-found.tsx",
+      "norm_label": "dynamic"
     },
     {
       "label": "capture-work-screenshots.mjs",
@@ -1891,52 +1873,8 @@
       "_origin": "ast",
       "id": "app_locale_prototype_page",
       "community": 15,
-      "community_name": "rate-card/page.tsx",
+      "community_name": "prototype/page.tsx",
       "norm_label": "prototype/page.tsx"
-    },
-    {
-      "label": "rate-card/page.tsx",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "rate-card/page.tsx"
-    },
-    {
-      "label": "Header.tsx",
-      "file_type": "code",
-      "source_file": "components/Header.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_header",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "header.tsx"
-    },
-    {
-      "label": "LanguageSwitcher.tsx",
-      "file_type": "code",
-      "source_file": "components/LanguageSwitcher.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_languageswitcher",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "languageswitcher.tsx"
-    },
-    {
-      "label": "LOCALES",
-      "file_type": "code",
-      "source_file": "components/LanguageSwitcher.tsx",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "components_languageswitcher_locales",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "locales"
     },
     {
       "label": "PrototypePreview.tsx",
@@ -1946,7 +1884,7 @@
       "_origin": "ast",
       "id": "components_prototypepreview",
       "community": 15,
-      "community_name": "rate-card/page.tsx",
+      "community_name": "prototype/page.tsx",
       "norm_label": "prototypepreview.tsx"
     },
     {
@@ -3215,28 +3153,6 @@
       "norm_label": "spotlight.tsx"
     },
     {
-      "label": "WhatsAppButton.tsx",
-      "file_type": "code",
-      "source_file": "components/WhatsAppButton.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_whatsappbutton",
-      "community": 3,
-      "community_name": "layout.tsx",
-      "norm_label": "whatsappbutton.tsx"
-    },
-    {
-      "label": "INSTAGRAM_URL",
-      "file_type": "code",
-      "source_file": "lib/site.ts",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "lib_site_instagram_url",
-      "community": 3,
-      "community_name": "layout.tsx",
-      "norm_label": "instagram_url"
-    },
-    {
       "label": "CLAUDE.md",
       "file_type": "document",
       "source_file": "CLAUDE.md",
@@ -3301,6 +3217,17 @@
       "community": 32,
       "community_name": "extraction-spec.md",
       "norm_label": "graphify reference: extraction subagent prompt"
+    },
+    {
+      "label": "[...rest]/page.tsx",
+      "file_type": "code",
+      "source_file": "app/[locale]/[...rest]/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_locale_rest_page",
+      "community": 33,
+      "community_name": "[...rest]/page.tsx",
+      "norm_label": "[...rest]/page.tsx"
     },
     {
       "label": "dependencies",
@@ -4172,6 +4099,61 @@
       "norm_label": "what you must do when invoked"
     },
     {
+      "label": "articles/page.tsx",
+      "file_type": "code",
+      "source_file": "app/[locale]/articles/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_locale_articles_page",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "articles/page.tsx"
+    },
+    {
+      "label": "articles/[slug]/page.tsx",
+      "file_type": "code",
+      "source_file": "app/[locale]/articles/[slug]/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_locale_articles_slug_page",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "articles/[slug]/page.tsx"
+    },
+    {
+      "label": "mdxComponents",
+      "file_type": "code",
+      "source_file": "app/[locale]/articles/[slug]/page.tsx",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "app_locale_articles_slug_page_mdxcomponents",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "mdxcomponents"
+    },
+    {
+      "label": "[locale]/not-found.tsx",
+      "file_type": "code",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_locale_not_found",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "[locale]/not-found.tsx"
+    },
+    {
+      "label": "rate-card/page.tsx",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "rate-card/page.tsx"
+    },
+    {
       "label": "services/[slug]/page.tsx",
       "file_type": "code",
       "source_file": "app/[locale]/services/[slug]/page.tsx",
@@ -4179,7 +4161,7 @@
       "_origin": "ast",
       "id": "app_locale_services_slug_page",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "services/[slug]/page.tsx"
     },
     {
@@ -4190,7 +4172,7 @@
       "_origin": "ast",
       "id": "app_robots",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "robots.ts"
     },
     {
@@ -4201,8 +4183,74 @@
       "_origin": "ast",
       "id": "app_sitemap",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "sitemap.ts"
+    },
+    {
+      "label": "ArticleCover.tsx",
+      "file_type": "code",
+      "source_file": "components/ArticleCover.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_articlecover",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "articlecover.tsx"
+    },
+    {
+      "label": "Footer.tsx",
+      "file_type": "code",
+      "source_file": "components/Footer.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_footer",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "footer.tsx"
+    },
+    {
+      "label": "SITEMAP_LINKS",
+      "file_type": "code",
+      "source_file": "components/Footer.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "components_footer_sitemap_links",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "sitemap_links"
+    },
+    {
+      "label": "Header.tsx",
+      "file_type": "code",
+      "source_file": "components/Header.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_header",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "header.tsx"
+    },
+    {
+      "label": "LanguageSwitcher.tsx",
+      "file_type": "code",
+      "source_file": "components/LanguageSwitcher.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_languageswitcher",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "languageswitcher.tsx"
+    },
+    {
+      "label": "LOCALES",
+      "file_type": "code",
+      "source_file": "components/LanguageSwitcher.tsx",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "components_languageswitcher_locales",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "locales"
     },
     {
       "label": "navigation.ts",
@@ -4212,7 +4260,7 @@
       "_origin": "ast",
       "id": "i18n_navigation",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "navigation.ts"
     },
     {
@@ -4223,7 +4271,7 @@
       "_origin": "ast",
       "id": "i18n_navigation_link_redirect_usepathname_userouter_getpathname",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "{ link, redirect, usepathname, userouter, getpathname }"
     },
     {
@@ -4234,7 +4282,7 @@
       "_origin": "ast",
       "id": "i18n_request",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "request.ts"
     },
     {
@@ -4245,7 +4293,7 @@
       "_origin": "ast",
       "id": "i18n_routing",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "routing.ts"
     },
     {
@@ -4256,8 +4304,41 @@
       "_origin": "ast",
       "id": "i18n_routing_routing",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "routing"
+    },
+    {
+      "label": "articles.ts",
+      "file_type": "code",
+      "source_file": "lib/articles.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_articles",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "articles.ts"
+    },
+    {
+      "label": "ARTICLES_ROOT",
+      "file_type": "code",
+      "source_file": "lib/articles.ts",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "lib_articles_articles_root",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "articles_root"
+    },
+    {
+      "label": "PUBLIC_ROOT",
+      "file_type": "code",
+      "source_file": "lib/articles.ts",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "lib_articles_public_root",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "public_root"
     },
     {
       "label": "serviceSlugs.ts",
@@ -4267,7 +4348,7 @@
       "_origin": "ast",
       "id": "lib_serviceslugs",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "serviceslugs.ts"
     },
     {
@@ -4278,7 +4359,7 @@
       "_origin": "ast",
       "id": "lib_serviceslugs_service_slugs",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "service_slugs"
     },
     {
@@ -4289,8 +4370,19 @@
       "_origin": "ast",
       "id": "lib_site",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "site.ts"
+    },
+    {
+      "label": "INSTAGRAM_URL",
+      "file_type": "code",
+      "source_file": "lib/site.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "lib_site_instagram_url",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "instagram_url"
     },
     {
       "label": "SITE_URL",
@@ -4300,7 +4392,7 @@
       "_origin": "ast",
       "id": "lib_site_site_url",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "site_url"
     },
     {
@@ -4311,7 +4403,7 @@
       "_origin": "ast",
       "id": "middleware",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "middleware.ts"
     },
     {
@@ -4322,7 +4414,7 @@
       "_origin": "ast",
       "id": "middleware_config",
       "community": 8,
-      "community_name": "services/[slug]/page.tsx",
+      "community_name": "articles/[slug]/page.tsx",
       "norm_label": "config"
     },
     {
@@ -4467,6 +4559,18 @@
       "_origin": "ast",
       "source": "app_locale_articles_slug_page_generatestaticparams",
       "target": "lib_articles_getallarticles"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_not_found_notfound",
+      "target": "lib_whatsapp_buildwhatsapphref"
     },
     {
       "relation": "calls",
@@ -5114,6 +5218,42 @@
       "_origin": "ast",
       "source": "app_locale_layout",
       "target": "components_spotlight_spotlight",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_not_found",
+      "target": "components_header_header",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_not_found",
+      "target": "components_footer_footer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_not_found",
+      "target": "lib_whatsapp_buildwhatsapphref",
       "confidence_score": 1.0
     },
     {
@@ -6476,6 +6616,54 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_not_found",
+      "target": "i18n_navigation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_not_found",
+      "target": "components_header",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_not_found",
+      "target": "components_footer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_not_found",
+      "target": "lib_whatsapp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "app/[locale]/page.tsx",
       "source_location": "L10",
       "weight": 1.0,
@@ -7478,6 +7666,28 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_not_found",
+      "target": "app_locale_not_found_generatemetadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_not_found",
+      "target": "app_locale_not_found_notfound",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "app/[locale]/page.tsx",
       "source_location": "L17",
       "weight": 1.0,
@@ -7610,6 +7820,17 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/[...rest]/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_rest_page",
+      "target": "app_locale_rest_page_catchall",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "app/[locale]/services/[slug]/page.tsx",
       "source_location": "L12",
       "weight": 1.0,
@@ -7693,6 +7914,28 @@
       "_origin": "ast",
       "source": "app_locale_services_slug_page",
       "target": "app_locale_services_slug_page_servicedetailpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/not-found.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_not_found",
+      "target": "app_not_found_rootnotfound",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/not-found.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_not_found",
+      "target": "app_not_found_dynamic",
       "confidence_score": 1.0
     },
     {
@@ -10329,5 +10572,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "020d121dd9a8464f1fb1fc18b2609c2c61ff12b4"
+  "built_at_commit": "c6421e29d0b2d8e1f77b5e58065314ea0af0cd13"
 }
