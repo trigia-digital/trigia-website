@@ -1,0 +1,483 @@
+{
+  "meta": {
+    "title": "TRIGIA — Your Digital Growth Partner",
+    "description": "TRIGIA helps businesses turn digital opportunities into meaningful growth through technology, strategy, AI and digital execution."
+  },
+  "nav": {
+    "services": "Services",
+    "rateCard": "Rate Card",
+    "solutions": "Solutions",
+    "work": "Work",
+    "prototype": "Prototype",
+    "articles": "Articles",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Start a Project"
+  },
+  "hero": {
+    "eyebrow": "Catalyst for Digital Transformation",
+    "headlineWords": ["Build", "What", "Moves", "Your", "Business", "Forward."],
+    "headlineAccentIndex": 4,
+    "subtext": "TRIGIA helps businesses turn digital opportunities into meaningful growth through technology, strategy, AI and digital execution.",
+    "ctaPrimary": "Start a Project",
+    "ctaGhost": "Explore Our Work",
+    "whatsappMessage": "Hi TRIGIA, I'm interested in a project consultation."
+  },
+  "marquee": {
+    "items": ["Website Development", "Web Application", "Mobile Application", "Digital Marketing", "AI & Automation", "Branding", "Content Production"]
+  },
+  "belief": {
+    "eyebrow": "Brand Belief",
+    "heading": "Every Business Deserves to Grow.",
+    "body": "Growth shouldn't be limited by the size of your business. With the right strategy, technology and execution, every business can move forward — regardless of where it's starting from."
+  },
+  "services": {
+    "eyebrow": "What We Do",
+    "heading": "Digital Solutions Built Around Growth.",
+    "items": [
+      { "index": "01", "name": "Website", "desc": "Build a digital presence that works for your business — corporate sites, landing pages, e-commerce and custom builds." },
+      { "index": "02", "name": "Web App", "desc": "Turn complex business processes into powerful digital systems — dashboards, internal tools, customer platforms." },
+      { "index": "03", "name": "Mobile App", "desc": "Create meaningful experiences wherever your customers are — Android, iOS and cross-platform." },
+      { "index": "04", "name": "Digital Marketing", "desc": "Turn attention into measurable business results — strategy, performance marketing, SEO, conversion." },
+      { "index": "05", "name": "AI & Automation", "desc": "Make your business smarter, faster and more efficient — AI integration and workflow automation." },
+      { "index": "06", "name": "Branding", "desc": "Build a clear, consistent visual identity — logo, color, typography, before anything else." },
+      { "index": "07", "name": "Content Production", "desc": "Content that's consistent with your brand, not a generic template used for everyone." }
+    ]
+  },
+  "serviceDetails": {
+    "back": "Back to Services",
+    "suitedFor": "Best Suited For",
+    "priceLabel": "Starting From",
+    "cta": "See Full Rate Card",
+    "items": {
+      "website": {
+        "tagline": "A digital presence that works for your business — not just one that exists.",
+        "desc": "A website isn't just an online brochure. We build sites that act as a convincing first touchpoint — fast, clear, and designed so visitors know exactly what to do the moment they land.",
+        "suitedFor": "Businesses with no real digital presence yet, or whose old website no longer reflects the quality of what they do today.",
+        "priceFrom": "Rp999,000",
+        "rateCardAnchor": "website"
+      },
+      "web-app": {
+        "tagline": "Turn manual processes into a system that runs itself.",
+        "desc": "If your business still runs on spreadsheets, manual WhatsApp broadcasts, or pen-and-paper records, it's time for a system built around how you actually work. We build dashboards and internal tools tailored to your business.",
+        "suitedFor": "Businesses whose operations have grown too complex to run manually and now need a system of their own.",
+        "priceFrom": "Rp9,000,000",
+        "rateCardAnchor": "web-mobile-app"
+      },
+      "mobile-app": {
+        "tagline": "Show up where your customers spend most of their time.",
+        "desc": "A mobile app isn't just about prestige — it's about convenience. We build Android, iOS, or cross-platform apps that make it effortless for your customers to come back, no browser required.",
+        "suitedFor": "Businesses with high repeat-order customers who need a closer way to stay connected.",
+        "priceFrom": "Rp20,000,000",
+        "rateCardAnchor": "web-mobile-app"
+      },
+      "digital-marketing": {
+        "tagline": "Not just running ads — managing them for results.",
+        "desc": "Effective digital marketing isn't about a bigger budget, it's about the right strategy on the right platform. We manage your ads on whichever platforms actually match your audience and business goals.",
+        "suitedFor": "Businesses with a solid product or service that just isn't known enough yet, or whose traffic has plateaued.",
+        "priceFrom": "Rp1,500,000/month",
+        "rateCardAnchor": "digital-marketing"
+      },
+      "ai-automation": {
+        "tagline": "Let the system work overtime, not your team.",
+        "desc": "From automating repetitive work to AI agents built around your specific business process — we help make your business smarter and more efficient without adding headcount.",
+        "suitedFor": "Businesses whose teams are overwhelmed by repetitive work, or ready to explore an AI agent for sales, research, or content production.",
+        "priceFrom": "Rp7,000,000",
+        "rateCardAnchor": "ai-automation"
+      },
+      "branding": {
+        "tagline": "Before the website, before the content, before the ads — your business needs a clear identity first.",
+        "desc": "This is the root problem that often gets missed: plenty of prospects come asking for a website or content, when their logo was thrown together and there's no color or font guide to speak of. Branding Services fills that foundation, and naturally becomes the gateway into a Website or Content Production package.",
+        "suitedFor": "New businesses that need a usable logo fast, or businesses serious about building a long-term brand.",
+        "priceFrom": "Rp999,000",
+        "rateCardAnchor": "branding"
+      },
+      "content-production": {
+        "tagline": "Content that's consistent with your brand, not a generic template used for everyone.",
+        "desc": "Unlike generic feed design services where you just fill in a template, TRIGIA's content follows the brand guideline already built for you — so your Instagram feed reads as a continuation of your brand, not a separate add-on. It's also a natural complement to our Digital Marketing service.",
+        "suitedFor": "Businesses just starting to post consistently, up to those making Instagram/TikTok their main acquisition channel.",
+        "priceFrom": "Rp999,000/month",
+        "rateCardAnchor": "content-production"
+      }
+    }
+  },
+  "solutions": {
+    "eyebrow": "Solutions",
+    "heading": "We Don't Sell Services. We Solve Problems.",
+    "intro": "Every solution below combines the right services to move a specific kind of business forward — pick the one that matches where you are today.",
+    "packagesLink": "Need to bundle a few services together? See our Packages →",
+    "items": [
+      { "tag": "For businesses starting from zero", "title": "Start Strong", "desc": "You don't have a real digital presence yet, and it's holding your business back from being found and trusted.", "includes": ["Website"] },
+      { "tag": "For businesses stuck in manual work", "title": "Systemize Operations", "desc": "Your team is buried in spreadsheets and repetitive tasks that a proper system could handle in seconds.", "includes": ["Web App", "AI & Automation"] },
+      { "tag": "For businesses plateauing on growth", "title": "Reach More Customers", "desc": "You have a presence, but it isn't bringing in enough leads or sales to move the needle.", "includes": ["Digital Marketing", "Website / Web App"] },
+      { "tag": "For businesses ready to scale experience", "title": "Go Mobile", "desc": "Your customers live on their phones — it's time your business met them there.", "includes": ["Mobile App"] }
+    ]
+  },
+  "packages": {
+    "eyebrow": "Bundled Packages",
+    "heading": "One Package, Every Digital Need.",
+    "intro": "Each package combines multiple services at once, priced lower than ordering them separately.",
+    "commitmentLabel": "Commitment",
+    "ctaDirect": "Start a Project",
+    "ctaConsult": "Discuss the Details",
+    "rateCardLink": "See Full Rate Card →",
+    "flagshipLabel": "Flagship Package",
+    "items": [
+      { "name": "Launch", "price": "Rp3,799,000", "suitedFor": "Brand-new businesses with no digital presence yet.", "includes": ["Branding: Logo Essentials", "Website: Starter Presence (base)", "Content Production: Feed Starter (1 month)"] },
+      { "name": "Grow", "price": "Rp13,999,000", "suitedFor": "Established businesses whose digital presence still feels bare-bones.", "includes": ["Branding: Full Brand Identity (base)", "Website: Growth Site", "Content Production: Growth Content Engine (3 months)"] },
+      { "name": "Scale", "price": "Starting from Rp34,499,000", "commitment": "3-month commitment", "suitedFor": "Businesses ready to aggressively grow traffic and cut down manual work.", "includes": ["Website: Full Digital System", "Content Production: Full Content Engine (3 months)", "Digital Marketing (3 months)", "AI & Automation: Basic"] },
+      { "name": "Catalyst", "price": "Starting from Rp64,000,000", "commitment": "6-month commitment", "suitedFor": "Businesses that want TRIGIA as a full digital growth partner.", "includes": ["Branding: Full Brand Identity", "Website: Full Digital System", "Web App or Mobile App (choose one)", "Content Production: Full Content Engine (6 months)", "Digital Marketing (6 months)", "AI & Automation", "Retainer: Growth Care (6 months)"] }
+    ]
+  },
+  "rateCard": {
+    "eyebrow": "Rate Card · 2026",
+    "title": "TRIGIA Digital",
+    "subtitle": "Your Digital Growth Partner",
+    "cta": "Free Consultation",
+    "addonLabel": "Add-on",
+    "flagshipLabel": "Flagship Package",
+    "footnote": "Launch pricing — limited time. Free 15-minute consultation before we start your project.",
+    "categories": [
+      {
+        "id": "branding",
+        "number": "01",
+        "name": "Branding",
+        "items": [
+          {
+            "name": "Logo Essentials",
+            "price": "Rp999,000",
+            "facilities": ["1 logo concept", "1 round of revisions", "Master files (PNG / JPG / vector)"]
+          },
+          {
+            "name": "Full Brand Identity",
+            "price": "starting from Rp1,499,000+",
+            "facilities": ["2 logo concepts, 2 rounds of revisions", "Color & typography guideline", "Full brand asset kit (business cards, letterhead, product/social mockups)", "Complete files (PNG, JPG, PDF, vector)"],
+            "addons": ["In-depth brand research & strategy", "Full guideline + complete social media template set"]
+          }
+        ]
+      },
+      {
+        "id": "website",
+        "number": "02",
+        "name": "Website",
+        "items": [
+          {
+            "name": "Landing Page Simple",
+            "price": "Rp999,000",
+            "facilities": ["1 section — headline + CTA", "Ready-to-use template", "WhatsApp button integration"]
+          },
+          {
+            "name": "Starter Presence",
+            "price": "starting from Rp2,499,000+",
+            "facilities": ["2 pages, template + baseline copy", "WhatsApp button integration", "Domain & hosting setup assisted", "Mobile-responsive layout"],
+            "addons": ["Full-custom copywriting", "Baseline SEO + revisions"]
+          },
+          {
+            "name": "Growth Site",
+            "price": "starting from Rp8,000,000",
+            "facilities": ["Up to 5-7 pages (Home, About, Services, Gallery, Contact)", "Signature motion & animation (scroll reveal, hover)", "Mid-tier SEO — local keywords", "2 rounds of design revisions", "1 month of post-launch support"]
+          },
+          {
+            "name": "Full Digital System",
+            "price": "starting from Rp16,000,000",
+            "facilities": ["Everything in Growth Site", "Booking/reservation or dynamic product catalog", "Automated form notifications to WA/team email", "Bilingual ID/EN", "3 months of post-launch support", "Priority development queue"]
+          }
+        ]
+      },
+      {
+        "id": "web-mobile-app",
+        "number": "03",
+        "name": "Web & Mobile App",
+        "items": [
+          {
+            "name": "Web App",
+            "price": "starting from Rp9,000,000",
+            "facilities": ["Requirements & workflow workshop", "UI/UX design matched to your business process", "Development of 1 core module", "Testing before handover", "1–6 months of post-launch support (scope-dependent)", "Scope & investment scale with module/integration complexity"]
+          },
+          {
+            "name": "Mobile App",
+            "price": "starting from Rp20,000,000",
+            "facilities": ["Core app function research", "Mobile-first UI/UX design", "Android & iOS development", "Testing on real devices", "Play Store/App Store publishing guidance", "1 month of post-launch support"]
+          }
+        ]
+      },
+      {
+        "id": "content-production",
+        "number": "04",
+        "name": "Content Production",
+        "items": [
+          {
+            "name": "Feed Starter",
+            "price": "starting from Rp999,000/month",
+            "facilities": ["20 original feed designs / month"]
+          },
+          {
+            "name": "Growth Content Engine",
+            "price": "starting from Rp2,499,000/month",
+            "facilities": ["35 original feed designs/month (feed + carousel)", "6 short-form reels/month", "Weekly story template", "Hashtag research & sales-hook captions"]
+          },
+          {
+            "name": "Full Content Engine",
+            "price": "starting from Rp4,499,000/month",
+            "facilities": ["55 original feed designs/month", "10 reels/month", "Monthly content calendar", "Performance report (engagement, reach, follower growth)"]
+          }
+        ]
+      },
+      {
+        "id": "digital-marketing",
+        "number": "05",
+        "name": "Digital Marketing & Advertising",
+        "items": [
+          {
+            "name": "Digital Marketing & Advertising",
+            "price": "starting from Rp1,500,000/month",
+            "facilities": ["Audience research & campaign strategy", "Meta Ads (Facebook & Instagram)", "Google Ads (Search & Display)", "TikTok Ads", "CPAS Ads — Shopee x Meta, for e-commerce", "Ad creative production (with our content team)", "Weekly campaign setup & optimization", "Monthly performance report"]
+          }
+        ],
+        "note": "Ad budget billed separately, min. Rp3,000,000/month to the platform"
+      },
+      {
+        "id": "ai-automation",
+        "number": "06",
+        "name": "AI & Automation",
+        "items": [
+          {
+            "name": "AI & Automation (Basic)",
+            "price": "starting from Rp7,000,000",
+            "facilities": ["Process audit — find where the most time is lost", "WhatsApp chatbot & auto-reply setup", "Form integration to spreadsheet/email", "Short internal team training", "2 weeks of post-launch monitoring"]
+          },
+          {
+            "name": "AI Agents & Custom AI Solutions",
+            "price": "starting from Rp15,000,000",
+            "facilities": ["AI agent designed around your business's specific stage & needs", "Example: Sales Agent — lead qualification, follow-up, closing assistance", "Example: Niche/Market Research Agent", "Example: Content & Video Generation Agent", "Development & integration of generative AI/LLM APIs"],
+            "note": "AI API costs billed separately to the client"
+          }
+        ]
+      },
+      {
+        "id": "retainer",
+        "number": "07",
+        "name": "Monthly Retainer",
+        "items": [
+          {
+            "name": "Basic Care",
+            "price": "starting from Rp750,000/month",
+            "facilities": ["Uptime monitoring, backups, 2x content updates/month"]
+          },
+          {
+            "name": "Growth Care",
+            "price": "starting from Rp1,500,000/month",
+            "facilities": ["Everything in Basic Care", "Monthly traffic reports", "Priority bug fixes"]
+          }
+        ]
+      }
+    ],
+    "bundling": {
+      "heading": "Bundled Packages",
+      "intro": "Save 15–20% compared to booking separately",
+      "items": [
+        {
+          "name": "Launch",
+          "tagline": "Brand-new business",
+          "price": "starting from Rp3,799,000",
+          "includes": ["Logo Essentials", "Website Starter Presence (base)", "Content Feed Starter (1 month)"]
+        },
+        {
+          "name": "Grow",
+          "tagline": "Level up from a bare-bones digital presence",
+          "price": "starting from Rp13,999,000",
+          "includes": ["Full Brand Identity (base)", "Website Growth Site", "Content Growth Engine (3 months)"]
+        },
+        {
+          "name": "Scale",
+          "tagline": "Grow aggressively, cut down manual work",
+          "price": "starting from Rp34,499,000",
+          "includes": ["Website Full Digital System", "Content Full Engine (3 months)", "Digital Marketing (3 months)", "AI & Automation Basic"]
+        },
+        {
+          "name": "Catalyst",
+          "tagline": "Full digital growth partner — 6-month commitment",
+          "price": "starting from Rp64,000,000",
+          "flagship": true,
+          "includes": ["Full Brand Identity", "Website Full Digital System", "Web App or Mobile App (choose 1)", "Content Full Engine (6 months)", "Digital Marketing (6 months)", "AI & Automation", "Retainer Growth Care (6 months)"]
+        }
+      ]
+    }
+  },
+  "prototypePage": {
+    "eyebrow": "Prototypes",
+    "heading": "Design & Template Explorations from TRIGIA.",
+    "desc": "12 visual style and build explorations across industries — not client work, purely a demonstration of TRIGIA's design range.",
+    "badgeLabel": "Design Exploration",
+    "viewDemo": "View Live Demo",
+    "items": [
+      {
+        "src": "/prototypes/seduh-coffee.html",
+        "badge": "Website — F&B / Coffee Roastery",
+        "title": "Seduh Coffee Co.",
+        "desc": "Branding and website concept for a small-batch coffee roastery — full visual identity plus an online ordering system integrated with WhatsApp."
+      },
+      {
+        "src": "/prototypes/klaira-skincare.html",
+        "badge": "Web App — Skincare E-commerce",
+        "title": "Klaira",
+        "desc": "Skincare e-commerce concept built ingredient-first — every product identified by its key active ingredient, with interactive product detail and WhatsApp checkout."
+      },
+      {
+        "src": "/prototypes/pos-toko-bangunan.html",
+        "badge": "Web App — Building Materials POS",
+        "title": "Sumber Makmur",
+        "desc": "Digital point-of-sale concept for a building materials store — transactions, stock, suppliers, and real-time financial reporting in one screen."
+      },
+      {
+        "src": "/prototypes/lms-sekolah.html",
+        "badge": "Web App — School LMS",
+        "title": "Kelasku",
+        "desc": "Learning management system concept for schools — a student dashboard showing assignments, class schedule, grades, and attendance in one view."
+      },
+      {
+        "src": "/prototypes/balas-ai-landing.html",
+        "badge": "AI Product — Customer Service Automation",
+        "title": "BALAS",
+        "desc": "Landing page concept for an AI agent that automatically replies, follows up, and qualifies leads from WhatsApp, Instagram, and your website — without adding to your CS team."
+      },
+      {
+        "src": "/prototypes/laju-rental.html",
+        "badge": "Website — Motorcycle Rental",
+        "title": "LAJU°",
+        "desc": "Website concept for a motorcycle rental service in Jember — fleet, rental process, pricing, and testimonials laid out for easy direct booking."
+      },
+      {
+        "src": "/prototypes/assistyou.html",
+        "badge": "AI Product — AI Personal Assistant",
+        "title": "AssistYou",
+        "desc": "Landing page concept for an AI agent that actually completes tasks instead of just chatting — from finding tickets to comparing options, through plain-language instructions."
+      },
+      {
+        "src": "/prototypes/noir-parfum-mockup.html",
+        "badge": "Website — Fragrance Brand",
+        "title": "NOIR",
+        "desc": "Website concept for a limited-edition perfume brand — scent storytelling, fragrance notes, and a luxury maison-de-parfum visual feel."
+      },
+      {
+        "src": "/prototypes/ai-business-operation.html",
+        "badge": "AI Product — Business Intelligence",
+        "title": "Trigia AI Business OS",
+        "desc": "AI business intelligence dashboard concept for small businesses — turning transaction data into insight and action, with revenue, profit, customer, and inventory in one executive view."
+      },
+      {
+        "src": "/prototypes/growth-engine.html",
+        "badge": "AI Product — Growth Marketing Automation",
+        "title": "Growth Engine",
+        "desc": "AI growth operating system concept for small businesses — unifying customer data, campaigns, and content so every marketing activity has a clear acquisition, reactivation, or retention goal."
+      },
+      {
+        "src": "/prototypes/pilah.html",
+        "badge": "Mobile App — Digital Waste Bank",
+        "title": "Pilah",
+        "desc": "Digital waste bank app concept — residents sort and drop off recyclable waste and cash out their balance, with streak gamification and neighborhood rankings."
+      },
+      {
+        "src": "/prototypes/bugar.html",
+        "badge": "Mobile App — Health & Fitness",
+        "title": "Bugar",
+        "desc": "Personal health and fitness app concept — auto-generated workout programs, calorie and step tracking, plus community challenges to stay consistent."
+      }
+    ]
+  },
+  "articlesPage": {
+    "eyebrow": "Articles",
+    "heading": "Insight on Digital & Business Growth.",
+    "comingSoonDesc": "Our first article is in the works — coming soon.",
+    "comingSoonLabel": "Coming Soon",
+    "backButton": "Back to Homepage"
+  },
+  "process": {
+    "eyebrow": "How We Work",
+    "heading": "From Business Challenge to Digital Growth.",
+    "steps": [
+      { "num": "01", "title": "Discover", "desc": "Understand the business, customers and challenges." },
+      { "num": "02", "title": "Strategize", "desc": "Define the right digital opportunity and growth direction." },
+      { "num": "03", "title": "Build", "desc": "Design and develop the right digital solution." },
+      { "num": "04", "title": "Launch", "desc": "Bring the solution to market with precision." },
+      { "num": "05", "title": "Grow", "desc": "Optimize, improve and scale." }
+    ]
+  },
+  "work": {
+    "eyebrow": "Selected Work",
+    "heading": "Built to Make an Impact.",
+    "labels": { "challenge": "Challenge", "solution": "Solution", "result": "Result", "selfInitiated": "Self-Initiated", "client": "Client Project", "visitSite": "Visit Site" },
+    "cases": [
+      {
+        "type": "client",
+        "tag": "Wellness",
+        "title": "Rumi Home Spa",
+        "url": "https://rumihomespa.com",
+        "image": "/work/rumi-home-spa.jpg",
+        "challenge": "Before the website, new customers could only discover Rumi Home Spa through a WhatsApp chat — with no place to build trust before booking.",
+        "solution": "A full booking website showcasing services and therapist credibility, with a direct WhatsApp booking flow — designed to build trust before the first message is even sent.",
+        "result": "Now Rumi Home Spa's primary digital front door — the first touchpoint for every new customer before they book."
+      },
+      {
+        "type": "client",
+        "tag": "Loyalty Platform",
+        "title": "Rumi Inner Circle",
+        "url": "https://member.rumihomespa.com",
+        "image": "/work/rumi-inner-circle.jpg",
+        "challenge": "The loyalty program was run manually, with no way for members to track points or refer friends on their own.",
+        "solution": "A member portal with a dashboard, real-time points tracking, and a referral system — turning loyal customers into part of an exclusive community.",
+        "result": "Loyal customers now have self-service access to their rewards, anytime."
+      },
+      {
+        "type": "client",
+        "tag": "Nonprofit",
+        "title": "Kwartir Ranting Pramuka Sambit",
+        "url": "https://jocular-unicorn-44f877.netlify.app",
+        "image": "/work/kwarran-sambit.jpg",
+        "challenge": "An organization overseeing 18 scout troops across the district had no digital presence — activity updates and contact info spread by word of mouth only.",
+        "solution": "An organization profile website showcasing their structure, activity agenda, and documentation gallery — giving Kwarran Sambit a digital identity worth trusting.",
+        "result": "Schools, troop leaders, and parents now have one official place to learn about and reach Kwarran Sambit."
+      }
+    ],
+    "note": "* More case studies will be added as TRIGIA takes on new projects."
+  },
+  "faq": {
+    "eyebrow": "Frequently Asked",
+    "heading": "Questions You Might Have.",
+    "items": [
+      { "q": "How long does a project take?", "a": "It depends on complexity — websites usually take 2–4 weeks, while web or mobile apps can take 6–12 weeks. You'll get a clear timeline upfront, before the project starts." },
+      { "q": "How does payment work?", "a": "We use a milestone-based payment system (initial down payment, then installments tied to progress) to keep things easier on your business's cash flow." },
+      { "q": "I'm not technical — is that a problem?", "a": "Not at all. That's exactly our job — translating your business needs into the right technical solution, without you needing to understand any code." },
+      { "q": "Is there a revision guarantee after the project is done?", "a": "Yes, every project includes a revision period after handover. For ongoing support, we also offer a separate maintenance package." },
+      { "q": "Can I consult first before deciding?", "a": "Of course — we offer a free initial consultation to understand your needs before any formal proposal." }
+    ]
+  },
+  "whatsapp": {
+    "label": "Free Consultation",
+    "message": "Hi TRIGIA, I'd like a free consultation for my business's digital needs."
+  },
+  "about": {
+    "eyebrow": "About TRIGIA",
+    "heading": "We Believe Digital Should Move Business Forward.",
+    "paragraph1": "TRIGIA was born from real experience, not theory. Before founding TRIGIA, our founder built an entire digital ecosystem for their own business from scratch — an automated booking system, a member portal, a financial document system, and WhatsApp Business integration for day-to-day operations.",
+    "paragraph2": "That experience shapes how TRIGIA works today — we understand business because we've built systems that are actually used, not just concepts on paper."
+  },
+  "finalCta": {
+    "eyebrow": "Let's Build Together",
+    "heading": "Ready to Move Your Business Forward?",
+    "body": "Tell us where your business is today. Let's explore where digital can take it next.",
+    "ctaPrimary": "Start a Conversation",
+    "ctaGhost": "View Our Work",
+    "whatsappMessage": "Hi TRIGIA, I'd like to start a conversation about my business's digital needs."
+  },
+  "footer": {
+    "mega": "Let's Build TRIGIA",
+    "tagline": "Your Digital Growth Partner. A digital technology and growth partner helping businesses turn opportunities into meaningful growth.",
+    "sitemapTitle": "Sitemap",
+    "servicesTitle": "Services",
+    "contactTitle": "Contact",
+    "startProject": "Start a Project",
+    "copyright": "© 2026 TRIGIA Digital. All rights reserved.",
+    "tagBottom": "Catalyst for Digital Transformation."
+  }
+}

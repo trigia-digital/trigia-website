@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bugar — Aplikasi Kesehatan &amp; Latihan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap');
+
+  :root{
+    --bg:#F5F7F2;
+    --card:#FFFFFF;
+    --ink:#1F2A24;
+    --muted:#8B958A;
+    --line:#E7EAE1;
+    --green:#1D7A5C;
+    --green-dark:#155C45;
+    --green-bg:#E3F1E9;
+    --coral:#FF6B4A;
+    --coral-bg:#FFE9E2;
+    --blue:#4A90C2;
+    --blue-bg:#E8F1F8;
+    --purple:#8B7FD1;
+    --purple-bg:#EEEBFA;
+    --amber:#E8A93B;
+    --amber-bg:#FCF0DC;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:
+      radial-gradient(circle at 20% 15%, #F5F5EF 0%, transparent 45%),
+      #E9E9E2;
+    font-family:'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color:var(--ink);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:44px 20px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.font-display{ font-family:'Space Grotesk', sans-serif; letter-spacing:-0.01em; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  /* ================= Phone frame ================= */
+  .phone{
+    width:390px; height:844px; background:#0B0B0C; border-radius:54px; padding:14px;
+    box-shadow:0 40px 70px -25px rgba(20,20,15,.4), 0 12px 24px -10px rgba(20,20,15,.3);
+    position:relative; flex-shrink:0;
+  }
+  .screen{
+    width:100%; height:100%; background:var(--bg); border-radius:40px; overflow:hidden;
+    position:relative; display:flex; flex-direction:column;
+  }
+  .notch{
+    position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:118px; height:26px; background:#0B0B0C; border-radius:0 0 16px 16px; z-index:40;
+  }
+  .status-bar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 26px 2px; font-size:13.5px; font-weight:700; flex-shrink:0;
+  }
+  .status-icons{ display:flex; gap:5px; align-items:center; color:var(--ink); }
+
+  .screen-content{ flex:1; overflow-y:auto; padding:4px 18px 110px; scrollbar-width:none; }
+  .screen-content::-webkit-scrollbar{ display:none; }
+  .view{ display:none; }
+  .view.active{ display:block; }
+
+  .tab-bar{
+    position:absolute; bottom:0; left:0; right:0; z-index:30;
+    background:rgba(255,255,255,.92); backdrop-filter:blur(10px);
+    border-top:1px solid var(--line); display:flex; padding:9px 6px 22px;
+  }
+  .tab-item{
+    flex:1; display:flex; flex-direction:column; align-items:center; gap:3px;
+    background:none; border:none; color:#B7BEB0; font-size:8.8px; font-weight:700;
+    white-space:nowrap;
+  }
+  .tab-item svg{ width:20px; height:20px; }
+  .tab-item.active{ color:var(--green); }
+
+  /* ================= New: level/points, wearable sync, community ================= */
+  .level-card{ display:flex; align-items:center; gap:14px; padding:16px 18px; background:linear-gradient(135deg, var(--green), var(--green-dark)); border:none; color:#fff; }
+  .level-badge{ width:54px; height:54px; border-radius:16px; background:rgba(255,255,255,.16); display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; }
+  .level-badge .lv-num{ font-size:18px; font-weight:700; line-height:1; }
+  .level-badge .lv-cap{ font-size:8px; letter-spacing:.06em; text-transform:uppercase; color:rgba(255,255,255,.7); margin-top:1px; }
+  .level-xp-top{ display:flex; justify-content:space-between; font-size:11px; margin-bottom:6px; color:rgba(255,255,255,.85); }
+  .level-track{ height:7px; border-radius:20px; background:rgba(255,255,255,.22); overflow:hidden; }
+  .level-fill{ height:100%; border-radius:20px; background:var(--amber); }
+
+  .sync-card{ display:flex; align-items:center; gap:12px; padding:14px 16px; margin-top:16px; }
+  .sync-dot{ width:9px; height:9px; border-radius:50%; background:var(--green); flex-shrink:0; box-shadow:0 0 0 3px var(--green-bg); }
+  .sync-title{ font-size:12.5px; font-weight:700; }
+  .sync-sub{ font-size:10.5px; color:var(--muted); margin-top:1px; }
+  .sync-battery{ margin-left:auto; font-size:11px; font-weight:700; color:var(--muted); display:flex; align-items:center; gap:4px; }
+  .sync-battery svg{ width:15px; height:15px; }
+
+  .video-tag{ display:inline-flex; align-items:center; gap:3px; font-size:9.5px; font-weight:700; color:var(--green); background:var(--green-bg); padding:2px 7px 2px 5px; border-radius:20px; margin-left:6px; }
+  .video-tag svg{ width:9px; height:9px; }
+
+  .plan-strip{ display:flex; gap:7px; margin-top:12px; }
+  .plan-day{ flex:1; text-align:center; padding:10px 2px; border-radius:12px; }
+  .plan-day-lbl{ font-size:9px; font-weight:700; color:rgba(255,255,255,.65); margin-bottom:5px; }
+  .plan-day-icon{ width:24px; height:24px; border-radius:8px; margin:0 auto; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,.16); }
+  .plan-day-icon svg{ width:12px; height:12px; color:#fff; }
+  .plan-day.rest .plan-day-icon{ background:rgba(255,255,255,.08); }
+  .plan-day.today{ background:rgba(255,255,255,.14); }
+
+  .leader-row{ display:flex; align-items:center; gap:11px; padding:11px 0; border-bottom:1px solid var(--line); }
+  .leader-row:last-child{ border-bottom:none; }
+  .leader-rank{ width:20px; font-size:12px; font-weight:800; color:var(--muted); text-align:center; flex-shrink:0; }
+  .leader-rank.top{ color:var(--amber); }
+  .leader-avatar{ width:34px; height:34px; border-radius:50%; background:var(--blue-bg); color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; }
+  .leader-avatar.me{ background:var(--green); color:#fff; }
+  .leader-name{ font-size:12px; font-weight:700; flex:1; }
+  .leader-name .you-tag{ font-size:9.5px; color:var(--muted); font-weight:600; }
+  .leader-pts{ font-size:12px; font-weight:700; }
+
+  .friend-row{ display:flex; align-items:center; gap:11px; padding:12px 0; border-bottom:1px solid var(--line); }
+  .friend-row:last-child{ border-bottom:none; }
+  .friend-status-dot{ width:8px; height:8px; border-radius:50%; position:absolute; margin-left:24px; margin-top:24px; border:2px solid #fff; }
+  .friend-name{ font-size:12.5px; font-weight:700; }
+  .friend-meta{ font-size:10.5px; color:var(--muted); margin-top:1px; }
+  .friend-cheer{ margin-left:auto; width:32px; height:32px; border-radius:50%; background:var(--coral-bg); color:var(--coral); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .friend-cheer svg{ width:15px; height:15px; }
+
+  .challenge-card{ padding:16px 18px; }
+  .challenge-top{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+  .challenge-icon{ width:36px; height:36px; border-radius:11px; background:var(--amber-bg); color:#8A5C13; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .challenge-icon svg{ width:17px; height:17px; }
+  .challenge-title{ font-size:12.5px; font-weight:700; }
+  .challenge-sub{ font-size:10.5px; color:var(--muted); margin-top:1px; }
+
+  /* ================= Shared blocks ================= */
+  .top-row{ display:flex; align-items:center; justify-content:space-between; padding:12px 2px 16px; }
+  .greeting-label{ font-size:11px; color:var(--muted); font-weight:600; }
+  .greeting-name{ font-size:19px; font-weight:700; margin-top:1px; }
+  .icon-circle{
+    width:38px; height:38px; border-radius:50%; background:#fff; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; color:var(--ink); position:relative; flex-shrink:0;
+  }
+  .icon-circle svg{ width:17px; height:17px; }
+  .flag-dot{ position:absolute; top:6px; right:7px; width:6px; height:6px; border-radius:50%; background:var(--coral); border:1.5px solid #fff; }
+
+  .streak-chip{
+    display:inline-flex; align-items:center; gap:5px; background:var(--amber-bg); color:#8A5C13;
+    padding:5px 10px; border-radius:20px; font-size:11px; font-weight:700; margin-bottom:14px;
+  }
+
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:20px; }
+  .section-title{ font-size:14px; font-weight:700; margin:20px 2px 10px; display:flex; align-items:center; justify-content:space-between; }
+  .section-title span.link{ font-size:11px; font-weight:700; color:var(--green); }
+
+  .badge{ display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:700; padding:3px 9px; border-radius:20px; }
+  .badge-green{ background:var(--green-bg); color:var(--green); }
+  .badge-coral{ background:var(--coral-bg); color:var(--coral); }
+  .badge-blue{ background:var(--blue-bg); color:var(--blue); }
+  .badge-amber{ background:var(--amber-bg); color:#8A5C13; }
+  .badge-gray{ background:#EFEFE9; color:var(--muted); }
+
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:6px; font-size:12.5px; font-weight:700; padding:9px 16px; border-radius:12px; border:1px solid transparent; }
+  .btn-green{ background:var(--green); color:#fff; }
+  .btn-ghost{ background:#fff; border-color:var(--line); color:var(--ink); }
+  .btn-block{ width:100%; }
+
+  .progress-track{ height:6px; border-radius:20px; background:#EEEFE8; overflow:hidden; }
+  .progress-fill{ height:100%; border-radius:20px; }
+
+  /* ================= Home: activity rings ================= */
+  .rings-card{ padding:20px 18px; display:flex; align-items:center; gap:18px; }
+  .rings-num{ font-size:26px; font-weight:700; }
+  .rings-cap{ font-size:10.5px; color:var(--muted); margin-top:-2px; }
+  .ring-legend{ flex:1; display:flex; flex-direction:column; gap:9px; }
+  .ring-leg-row{ display:flex; align-items:center; gap:8px; font-size:11px; }
+  .ring-leg-dot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .ring-leg-label{ color:var(--muted); font-weight:600; flex:1; }
+  .ring-leg-val{ font-weight:700; }
+
+  .metric-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px; }
+  .metric-card{ padding:14px 15px; }
+  .metric-top{ display:flex; align-items:center; gap:7px; margin-bottom:8px; }
+  .metric-icon{ width:26px; height:26px; border-radius:8px; display:flex; align-items:center; justify-content:center; }
+  .metric-icon svg{ width:14px; height:14px; }
+  .metric-label{ font-size:10.5px; color:var(--muted); font-weight:700; }
+  .metric-val{ font-size:17px; font-weight:700; }
+  .metric-sub{ font-size:10px; color:var(--muted); margin-top:2px; }
+
+  .cup-row{ display:flex; gap:4px; margin-top:8px; }
+  .cup{ flex:1; height:20px; border-radius:5px; background:var(--blue-bg); position:relative; overflow:hidden; }
+  .cup.filled{ background:var(--blue); }
+
+  .today-workout{ padding:16px; display:flex; align-items:center; gap:12px; margin-top:14px; }
+  .today-workout-icon{ width:46px; height:46px; border-radius:14px; background:var(--green-bg); color:var(--green); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .today-workout-icon svg{ width:22px; height:22px; }
+  .today-workout-title{ font-size:13px; font-weight:700; }
+  .today-workout-sub{ font-size:11px; color:var(--muted); margin-top:2px; }
+
+  .bar-chart{ display:flex; align-items:flex-end; gap:8px; height:90px; padding:14px 16px 0; }
+  .bar-col{ flex:1; display:flex; flex-direction:column; align-items:center; gap:6px; height:100%; justify-content:flex-end; }
+  .bar{ width:100%; border-radius:6px 6px 3px 3px; background:#E3E6DB; }
+  .bar.today{ background:var(--green); }
+  .bar-day{ font-size:9.5px; color:var(--muted); font-weight:700; }
+
+  /* ================= Workout view ================= */
+  .chip-row{ display:flex; gap:7px; overflow-x:auto; padding:2px 2px 4px; margin-bottom:6px; }
+  .chip{ flex-shrink:0; padding:7px 14px; border-radius:20px; font-size:11.5px; font-weight:700; border:1px solid var(--line); background:#fff; color:var(--muted); white-space:nowrap; }
+  .chip.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+
+  .featured-card{ padding:18px; margin:10px 0 16px; position:relative; overflow:hidden; background:linear-gradient(135deg, var(--green), var(--green-dark)); color:#fff; border:none; }
+  .featured-tag{ font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:rgba(255,255,255,.7); margin-bottom:6px; }
+  .featured-title{ font-size:16px; font-weight:700; margin-bottom:4px; }
+  .featured-meta{ font-size:11px; color:rgba(255,255,255,.75); margin-bottom:14px; }
+
+  .workout-item{ display:flex; align-items:center; gap:12px; padding:13px; margin-bottom:9px; }
+  .workout-icon{ width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .workout-icon svg{ width:19px; height:19px; }
+  .workout-title{ font-size:12.5px; font-weight:700; }
+  .workout-meta{ font-size:10.5px; color:var(--muted); margin-top:2px; }
+  .workout-chev{ margin-left:auto; color:#C7CBC0; flex-shrink:0; }
+  .workout-chev svg{ width:16px; height:16px; }
+
+  .history-row{ display:flex; align-items:center; gap:10px; padding:10px 2px; border-bottom:1px solid var(--line); font-size:11.5px; }
+  .history-row:last-child{ border-bottom:none; }
+  .history-dot{ width:7px; height:7px; border-radius:50%; background:var(--green); flex-shrink:0; }
+  .history-title{ font-weight:700; flex:1; }
+  .history-meta{ color:var(--muted); font-size:10.5px; }
+
+  /* ================= Nutrition view ================= */
+  .cal-ring-card{ display:flex; align-items:center; gap:18px; padding:20px 18px; }
+  .macro-row{ margin-top:14px; }
+  .macro-item{ margin-bottom:12px; }
+  .macro-top{ display:flex; justify-content:space-between; font-size:11.5px; margin-bottom:6px; }
+  .macro-top b{ font-weight:700; }
+  .macro-top span.mono{ color:var(--muted); }
+
+  .meal-row{ display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); }
+  .meal-row:last-child{ border-bottom:none; }
+  .meal-icon{ width:38px; height:38px; border-radius:11px; background:var(--amber-bg); color:#8A5C13; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .meal-icon svg{ width:17px; height:17px; }
+  .meal-title{ font-size:12.5px; font-weight:700; }
+  .meal-desc{ font-size:10.5px; color:var(--muted); margin-top:1px; }
+  .meal-kcal{ margin-left:auto; font-size:12.5px; font-weight:700; }
+
+  /* ================= Progress view ================= */
+  .weight-card{ padding:18px; }
+  .weight-top{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px; }
+  .weight-num{ font-size:24px; font-weight:700; }
+  .weight-chart{ display:flex; align-items:flex-end; gap:7px; height:80px; }
+  .weight-bar-col{ flex:1; display:flex; flex-direction:column; align-items:center; gap:6px; height:100%; justify-content:flex-end; }
+  .weight-bar{ width:100%; border-radius:5px 5px 2px 2px; background:var(--purple-bg); }
+  .weight-bar.latest{ background:var(--purple); }
+  .weight-lbl{ font-size:9px; color:var(--muted); font-weight:700; }
+
+  .measure-table{ width:100%; border-collapse:collapse; margin-top:4px; }
+  .measure-table td{ padding:10px 2px; border-top:1px solid var(--line); font-size:12px; }
+  .measure-table tr:first-child td{ border-top:none; }
+  .measure-table td:last-child{ text-align:right; font-weight:700; }
+
+  .badge-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:6px; }
+  .achieve{ padding:14px 8px; text-align:center; }
+  .achieve-icon{ width:38px; height:38px; border-radius:50%; margin:0 auto 8px; display:flex; align-items:center; justify-content:center; }
+  .achieve-icon svg{ width:18px; height:18px; }
+  .achieve.locked{ opacity:.4; }
+  .achieve-label{ font-size:9.5px; font-weight:700; line-height:1.3; }
+
+  /* ================= Profile view ================= */
+  .profile-hero{ display:flex; flex-direction:column; align-items:center; text-align:center; padding:22px 0 16px; }
+  .profile-avatar{ width:74px; height:74px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:700; margin-bottom:12px; }
+  .profile-name{ font-size:17px; font-weight:700; }
+  .profile-sub{ font-size:11.5px; color:var(--muted); margin-top:2px; }
+  .profile-stats{ display:flex; gap:10px; margin-top:16px; width:100%; }
+  .profile-stat{ flex:1; text-align:center; padding:12px 6px; }
+  .profile-stat-val{ font-size:15px; font-weight:700; }
+  .profile-stat-lbl{ font-size:9.5px; color:var(--muted); margin-top:2px; font-weight:600; }
+
+  .goal-card{ padding:16px; margin-top:16px; }
+  .goal-top{ display:flex; justify-content:space-between; font-size:12px; font-weight:700; margin-bottom:8px; }
+
+  .settings-list{ margin-top:16px; }
+  .settings-row{ display:flex; align-items:center; gap:12px; padding:13px 4px; border-bottom:1px solid var(--line); font-size:12.5px; font-weight:600; }
+  .settings-row:last-child{ border-bottom:none; }
+  .settings-icon{ width:32px; height:32px; border-radius:9px; background:#F1F2EB; display:flex; align-items:center; justify-content:center; color:var(--ink); flex-shrink:0; }
+  .settings-icon svg{ width:15px; height:15px; }
+  .settings-chev{ margin-left:auto; color:#C7CBC0; }
+  .settings-chev svg{ width:15px; height:15px; }
+
+  @media (max-width: 460px){
+    body{ padding:0; align-items:flex-start; }
+    .phone{ width:100vw; height:100vh; border-radius:0; padding:0; box-shadow:none; }
+    .screen{ border-radius:0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="phone">
+  <div class="screen">
+    <div class="notch"></div>
+
+    <div class="status-bar">
+      <div>07:15</div>
+      <div class="status-icons">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a15 15 0 0 1 20 0"/><path d="M5.5 12a10 10 0 0 1 13 0"/><path d="M9 15.5a5 5 0 0 1 6 0"/><circle cx="12" cy="19" r="1" fill="currentColor" stroke="none"/></svg>
+        <svg width="20" height="12" viewBox="0 0 24 14" fill="none"><rect x="1" y="1" width="19" height="12" rx="3" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="3" width="12" height="8" rx="1.5" fill="currentColor"/><rect x="21.5" y="4.5" width="1.8" height="5" rx="0.9" fill="currentColor"/></svg>
+      </div>
+    </div>
+
+    <div class="screen-content">
+
+      <!-- ===================== HOME ===================== -->
+      <section class="view active" id="view-home">
+        <div class="top-row">
+          <div>
+            <div class="greeting-label">Selamat pagi</div>
+            <div class="greeting-name">Dimas Prakoso</div>
+          </div>
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="flag-dot"></span>
+          </div>
+        </div>
+
+        <div class="streak-chip">🔥 12 hari beruntun bergerak</div>
+
+        <div class="card rings-card">
+          <svg width="112" height="112" viewBox="0 0 200 200" style="flex-shrink:0;">
+            <circle cx="100" cy="100" r="82" fill="none" stroke="#EAF2EC" stroke-width="14"/>
+            <circle cx="100" cy="100" r="82" fill="none" stroke="var(--green)" stroke-width="14" stroke-linecap="round"
+              stroke-dasharray="515.2" stroke-dashoffset="90.7" transform="rotate(-90 100 100)"/>
+            <circle cx="100" cy="100" r="64" fill="none" stroke="#FFEFE9" stroke-width="14"/>
+            <circle cx="100" cy="100" r="64" fill="none" stroke="var(--coral)" stroke-width="14" stroke-linecap="round"
+              stroke-dasharray="402.1" stroke-dashoffset="109" transform="rotate(-90 100 100)"/>
+            <circle cx="100" cy="100" r="46" fill="none" stroke="#EAF2F8" stroke-width="14"/>
+            <circle cx="100" cy="100" r="46" fill="none" stroke="var(--blue)" stroke-width="14" stroke-linecap="round"
+              stroke-dasharray="289" stroke-dashoffset="86.7" transform="rotate(-90 100 100)"/>
+          </svg>
+          <div class="ring-legend">
+            <div class="ring-leg-row"><span class="ring-leg-dot" style="background:var(--green);"></span><span class="ring-leg-label">Langkah</span><span class="ring-leg-val mono">8.240</span></div>
+            <div class="ring-leg-row"><span class="ring-leg-dot" style="background:var(--coral);"></span><span class="ring-leg-label">Kalori</span><span class="ring-leg-val mono">620</span></div>
+            <div class="ring-leg-row"><span class="ring-leg-dot" style="background:var(--blue);"></span><span class="ring-leg-label">Menit Aktif</span><span class="ring-leg-val mono">42</span></div>
+          </div>
+        </div>
+
+        <div class="metric-row">
+          <div class="card metric-card">
+            <div class="metric-top">
+              <div class="metric-icon" style="background:var(--coral-bg);color:var(--coral);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+              </div>
+              <div class="metric-label">Detak Jantung</div>
+            </div>
+            <div class="metric-val mono">72 <span style="font-size:11px;font-weight:600;color:var(--muted);">bpm</span></div>
+            <div class="metric-sub">Istirahat · Normal</div>
+          </div>
+          <div class="card metric-card">
+            <div class="metric-top">
+              <div class="metric-icon" style="background:var(--blue-bg);color:var(--blue);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s6 7.5 6 12a6 6 0 1 1-12 0c0-4.5 6-12 6-12z"/></svg>
+              </div>
+              <div class="metric-label">Air Minum</div>
+            </div>
+            <div class="metric-val mono">1.2 <span style="font-size:11px;font-weight:600;color:var(--muted);">/ 2.0L</span></div>
+            <div class="cup-row">
+              <div class="cup filled"></div><div class="cup filled"></div><div class="cup filled"></div>
+              <div class="cup filled"></div><div class="cup filled"></div><div class="cup filled"></div>
+              <div class="cup"></div><div class="cup"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card today-workout">
+          <div class="today-workout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5 3 10l4 4 3.5-3.5"/><path d="m20.5 6.5-4 4"/><path d="m14 3-1.5 1.5"/><path d="M17.5 17.5 21 14l-4-4-3.5 3.5"/><path d="m3.5 17.5 4-4"/><path d="m10 21 1.5-1.5"/></svg>
+          </div>
+          <div style="flex:1;">
+            <div class="today-workout-title">Kardio Interval · 30 menit</div>
+            <div class="today-workout-sub">Estimasi 320 kkal · Level Menengah</div>
+          </div>
+          <button class="btn btn-green">Mulai</button>
+        </div>
+
+        <div class="section-title">Langkah Minggu Ini <span class="link">Detail</span></div>
+        <div class="card">
+          <div class="bar-chart">
+            <div class="bar-col"><div class="bar" style="height:58%;"></div><div class="bar-day">S</div></div>
+            <div class="bar-col"><div class="bar" style="height:74%;"></div><div class="bar-day">S</div></div>
+            <div class="bar-col"><div class="bar" style="height:40%;"></div><div class="bar-day">R</div></div>
+            <div class="bar-col"><div class="bar" style="height:85%;"></div><div class="bar-day">K</div></div>
+            <div class="bar-col"><div class="bar" style="height:66%;"></div><div class="bar-day">J</div></div>
+            <div class="bar-col"><div class="bar" style="height:30%;"></div><div class="bar-day">S</div></div>
+            <div class="bar-col"><div class="bar today" style="height:82%;"></div><div class="bar-day" style="color:var(--green);">M</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== WORKOUT ===================== -->
+      <section class="view" id="view-workout">
+        <div class="top-row" style="padding-bottom:2px;">
+          <div class="greeting-name" style="font-size:19px;">Latihan</div>
+        </div>
+        <div class="chip-row">
+          <button class="chip active" data-wfilter="semua">Semua</button>
+          <button class="chip" data-wfilter="kardio">Kardio</button>
+          <button class="chip" data-wfilter="kekuatan">Kekuatan</button>
+          <button class="chip" data-wfilter="yoga">Yoga</button>
+          <button class="chip" data-wfilter="peregangan">Peregangan</button>
+        </div>
+
+        <div class="card featured-card">
+          <div class="featured-tag">Program Latihan Personal Anda</div>
+          <div class="featured-title">Minggu 3 · Fokus Kekuatan</div>
+          <div class="featured-meta">Disusun otomatis dari tujuan &amp; progresmu</div>
+          <div class="plan-strip">
+            <div class="plan-day"><div class="plan-day-lbl">Sen</div><div class="plan-day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5 3 10l4 4 3.5-3.5"/></svg></div></div>
+            <div class="plan-day today"><div class="plan-day-lbl">Sel</div><div class="plan-day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 12a5.5 5.5 0 0 1 11 0"/></svg></div></div>
+            <div class="plan-day rest"><div class="plan-day-lbl">Rab</div><div class="plan-day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/></svg></div></div>
+            <div class="plan-day"><div class="plan-day-lbl">Kam</div><div class="plan-day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/></svg></div></div>
+            <div class="plan-day"><div class="plan-day-lbl">Jum</div><div class="plan-day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16M20 4v16M4 12h16"/></svg></div></div>
+            <div class="plan-day rest"><div class="plan-day-lbl">Sab</div><div class="plan-day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/></svg></div></div>
+            <div class="plan-day rest"><div class="plan-day-lbl">Min</div><div class="plan-day-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/></svg></div></div>
+          </div>
+          <button class="btn" style="background:#fff;color:var(--green-dark);margin-top:14px;">Mulai Latihan Hari Ini</button>
+        </div>
+
+        <div class="section-title">Semua Program</div>
+        <div class="workout-item card">
+          <div class="workout-icon" style="background:var(--coral-bg);color:var(--coral);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5 3 10l4 4 3.5-3.5"/><path d="m20.5 6.5-4 4"/></svg></div>
+          <div><div class="workout-title">HIIT Full Body<span class="video-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Video</span></div><div class="workout-meta">Kardio · 25 menit · ±280 kkal</div></div>
+          <div class="workout-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </div>
+        <div class="workout-item card">
+          <div class="workout-icon" style="background:var(--blue-bg);color:var(--blue);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 12a5.5 5.5 0 0 1 11 0"/><path d="M2 12h2M20 12h2M12 2v2M12 20v2"/></svg></div>
+          <div><div class="workout-title">Angkat Beban Tubuh Atas<span class="video-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Video</span></div><div class="workout-meta">Kekuatan · 40 menit · ±310 kkal</div></div>
+          <div class="workout-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </div>
+        <div class="workout-item card">
+          <div class="workout-icon" style="background:var(--purple-bg);color:var(--purple);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v6l-4 8M12 13l4 8M9 11l-3 2M15 11l3 2"/></svg></div>
+          <div><div class="workout-title">Yoga Pagi Menenangkan<span class="video-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Video</span></div><div class="workout-meta">Yoga · 20 menit · ±110 kkal</div></div>
+          <div class="workout-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </div>
+        <div class="workout-item card">
+          <div class="workout-icon" style="background:var(--green-bg);color:var(--green);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16M20 4v16M4 12h16"/></svg></div>
+          <div><div class="workout-title">Peregangan Pasca Latihan</div><div class="workout-meta">Peregangan · 10 menit · ±40 kkal</div></div>
+          <div class="workout-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </div>
+
+        <div class="section-title">Riwayat Latihan</div>
+        <div class="card" style="padding:4px 14px;">
+          <div class="history-row"><span class="history-dot"></span><span class="history-title">Kardio Interval</span><span class="history-meta">Kemarin · 30 mnt · 305 kkal</span></div>
+          <div class="history-row"><span class="history-dot" style="background:var(--blue);"></span><span class="history-title">Angkat Beban Atas</span><span class="history-meta">2 hari lalu · 38 mnt · 298 kkal</span></div>
+          <div class="history-row"><span class="history-dot" style="background:var(--purple);"></span><span class="history-title">Yoga Pagi</span><span class="history-meta">3 hari lalu · 20 mnt · 105 kkal</span></div>
+        </div>
+      </section>
+
+      <!-- ===================== NUTRITION ===================== -->
+      <section class="view" id="view-nutrition">
+        <div class="top-row" style="padding-bottom:2px;">
+          <div class="greeting-name" style="font-size:19px;">Nutrisi</div>
+        </div>
+
+        <div class="card cal-ring-card">
+          <svg width="90" height="90" viewBox="0 0 200 200" style="flex-shrink:0;">
+            <circle cx="100" cy="100" r="82" fill="none" stroke="#F1EFE7" stroke-width="16"/>
+            <circle cx="100" cy="100" r="82" fill="none" stroke="var(--amber)" stroke-width="16" stroke-linecap="round"
+              stroke-dasharray="515.2" stroke-dashoffset="128" transform="rotate(-90 100 100)"/>
+          </svg>
+          <div>
+            <div class="rings-num mono">1.850</div>
+            <div class="rings-cap">dari target 2.200 kkal</div>
+            <div class="badge badge-amber" style="margin-top:8px;">350 kkal tersisa</div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:16px 18px;">
+          <div class="macro-row">
+            <div class="macro-item">
+              <div class="macro-top"><b>Karbohidrat</b><span class="mono">180 / 250g</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width:72%;background:var(--green);"></div></div>
+            </div>
+            <div class="macro-item">
+              <div class="macro-top"><b>Protein</b><span class="mono">95 / 120g</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width:79%;background:var(--coral);"></div></div>
+            </div>
+            <div class="macro-item" style="margin-bottom:0;">
+              <div class="macro-top"><b>Lemak</b><span class="mono">48 / 70g</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width:68%;background:var(--blue);"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-title">Catatan Makan <span class="link">+ Tambah</span></div>
+        <div class="card" style="padding:4px 16px;">
+          <div class="meal-row">
+            <div class="meal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div>
+            <div><div class="meal-title">Sarapan</div><div class="meal-desc">Oatmeal, pisang, telur rebus</div></div>
+            <div class="meal-kcal mono">420</div>
+          </div>
+          <div class="meal-row">
+            <div class="meal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11h14a2 2 0 0 1 2 2v1H3v-1a2 2 0 0 1 2-2z"/><path d="M4 15h16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2z"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+            <div><div class="meal-title">Makan Siang</div><div class="meal-desc">Nasi merah, ayam panggang, sayur</div></div>
+            <div class="meal-kcal mono">650</div>
+          </div>
+          <div class="meal-row">
+            <div class="meal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1M5.6 5.6l.7.7M3 12h1M5.6 18.4l.7-.7M12 20v1M17.7 17.7l.7.7M20 12h1M17.7 6.3l.7-.7"/><circle cx="12" cy="12" r="4"/></svg></div>
+            <div><div class="meal-title">Makan Malam</div><div class="meal-desc">Ikan bakar, tumis kangkung</div></div>
+            <div class="meal-kcal mono">580</div>
+          </div>
+          <div class="meal-row">
+            <div class="meal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/></svg></div>
+            <div><div class="meal-title">Camilan</div><div class="meal-desc">Segenggam almond</div></div>
+            <div class="meal-kcal mono">200</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== COMMUNITY ===================== -->
+      <section class="view" id="view-community">
+        <div class="top-row" style="padding-bottom:2px;">
+          <div class="greeting-name" style="font-size:19px;">Komunitas</div>
+          <button class="btn btn-ghost" style="padding:8px 12px;font-size:11.5px;">+ Undang</button>
+        </div>
+
+        <div class="card challenge-card" style="margin-top:6px;">
+          <div class="challenge-top">
+            <div class="challenge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5 3 10l4 4 3.5-3.5"/><path d="m20.5 6.5-4 4"/><path d="m14 3-1.5 1.5"/><path d="M17.5 17.5 21 14l-4-4-3.5 3.5"/><path d="m3.5 17.5 4-4"/><path d="m10 21 1.5-1.5"/></svg></div>
+            <div>
+              <div class="challenge-title">Tantangan Agustus: Jalan Pagi 30 Hari</div>
+              <div class="challenge-sub">18 dari 30 hari · 214 peserta</div>
+            </div>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:60%;background:var(--amber);"></div></div>
+        </div>
+
+        <div class="section-title">Papan Peringkat Grup</div>
+        <div class="card" style="padding:4px 16px;">
+          <div class="leader-row">
+            <div class="leader-rank top">1</div>
+            <div class="leader-avatar" style="background:var(--amber-bg);color:#8A5C13;">RA</div>
+            <div class="leader-name">Rian Ardiansyah</div>
+            <div class="leader-pts mono">2.840</div>
+          </div>
+          <div class="leader-row">
+            <div class="leader-rank top">2</div>
+            <div class="leader-avatar">SN</div>
+            <div class="leader-name">Sinta Nuraini</div>
+            <div class="leader-pts mono">2.605</div>
+          </div>
+          <div class="leader-row">
+            <div class="leader-rank">3</div>
+            <div class="leader-avatar me">DP</div>
+            <div class="leader-name">Dimas Prakoso <span class="you-tag">(Kamu)</span></div>
+            <div class="leader-pts mono">2.410</div>
+          </div>
+          <div class="leader-row">
+            <div class="leader-rank">4</div>
+            <div class="leader-avatar" style="background:var(--purple-bg);color:var(--purple);">FA</div>
+            <div class="leader-name">Fajar Adi Nugroho</div>
+            <div class="leader-pts mono">2.150</div>
+          </div>
+        </div>
+
+        <div class="section-title">Teman Latihan</div>
+        <div class="card" style="padding:4px 16px;">
+          <div class="friend-row">
+            <div style="position:relative;">
+              <div class="leader-avatar" style="background:var(--amber-bg);color:#8A5C13;">RA</div>
+              <span class="friend-status-dot" style="background:var(--green);"></span>
+            </div>
+            <div><div class="friend-name">Rian Ardiansyah</div><div class="friend-meta">Baru selesai HIIT Full Body · 12 mnt lalu</div></div>
+            <button class="friend-cheer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+          </div>
+          <div class="friend-row">
+            <div style="position:relative;">
+              <div class="leader-avatar">SN</div>
+              <span class="friend-status-dot" style="background:#D8D5C9;"></span>
+            </div>
+            <div><div class="friend-name">Sinta Nuraini</div><div class="friend-meta">Belum latihan hari ini</div></div>
+            <button class="friend-cheer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+          </div>
+          <div class="friend-row">
+            <div style="position:relative;">
+              <div class="leader-avatar" style="background:var(--purple-bg);color:var(--purple);">FA</div>
+              <span class="friend-status-dot" style="background:var(--green);"></span>
+            </div>
+            <div><div class="friend-name">Fajar Adi Nugroho</div><div class="friend-meta">Sedang Yoga Pagi · aktif sekarang</div></div>
+            <button class="friend-cheer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PROGRESS ===================== -->
+      <section class="view" id="view-progress">
+        <div class="top-row" style="padding-bottom:2px;">
+          <div class="greeting-name" style="font-size:19px;">Progres</div>
+        </div>
+
+        <div class="card level-card">
+          <div class="level-badge"><div class="lv-num">12</div><div class="lv-cap">Level</div></div>
+          <div style="flex:1;">
+            <div class="level-xp-top"><span>2.410 poin</span><span>340 lagi ke Level 13</span></div>
+            <div class="level-track"><div class="level-fill" style="width:64%;"></div></div>
+          </div>
+        </div>
+
+        <div class="card weight-card">
+          <div class="weight-top">
+            <div>
+              <div class="weight-num mono">68.4 <span style="font-size:13px;font-weight:600;color:var(--muted);">kg</span></div>
+              <div class="badge badge-green" style="margin-top:6px;">↓ 0.6 kg minggu ini</div>
+            </div>
+            <div class="metric-label" style="text-align:right;">6 minggu<br/>terakhir</div>
+          </div>
+          <div class="weight-chart">
+            <div class="weight-bar-col"><div class="weight-bar" style="height:80%;"></div><div class="weight-lbl">70.1</div></div>
+            <div class="weight-bar-col"><div class="weight-bar" style="height:74%;"></div><div class="weight-lbl">69.6</div></div>
+            <div class="weight-bar-col"><div class="weight-bar" style="height:68%;"></div><div class="weight-lbl">69.2</div></div>
+            <div class="weight-bar-col"><div class="weight-bar" style="height:60%;"></div><div class="weight-lbl">68.9</div></div>
+            <div class="weight-bar-col"><div class="weight-bar" style="height:50%;"></div><div class="weight-lbl">69.0</div></div>
+            <div class="weight-bar-col"><div class="weight-bar latest" style="height:38%;"></div><div class="weight-lbl" style="color:var(--purple);">68.4</div></div>
+          </div>
+        </div>
+
+        <div class="section-title">Ukuran Tubuh</div>
+        <div class="card" style="padding:4px 16px;">
+          <table class="measure-table">
+            <tr><td>Lingkar Pinggang</td><td class="mono">78 cm</td></tr>
+            <tr><td>Lingkar Dada</td><td class="mono">96 cm</td></tr>
+            <tr><td>Lingkar Lengan</td><td class="mono">31 cm</td></tr>
+            <tr><td>Massa Lemak Tubuh</td><td class="mono">18.2%</td></tr>
+          </table>
+        </div>
+
+        <div class="section-title">Pencapaian</div>
+        <div class="badge-grid">
+          <div class="card achieve">
+            <div class="achieve-icon" style="background:var(--amber-bg);color:#8A5C13;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
+            <div class="achieve-label">7 Hari<br/>Beruntun</div>
+          </div>
+          <div class="card achieve">
+            <div class="achieve-icon" style="background:var(--green-bg);color:var(--green);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5 3 10l4 4 3.5-3.5"/><path d="m20.5 6.5-4 4"/></svg></div>
+            <div class="achieve-label">50 Latihan<br/>Selesai</div>
+          </div>
+          <div class="card achieve locked">
+            <div class="achieve-icon" style="background:#F1F2EB;color:var(--muted);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+            <div class="achieve-label">Target Berat<br/>Tercapai</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PROFILE ===================== -->
+      <section class="view" id="view-profile">
+        <div class="profile-hero">
+          <div class="profile-avatar">DP</div>
+          <div class="profile-name">Dimas Prakoso</div>
+          <div class="profile-sub">Bergabung sejak Maret 2026</div>
+          <div class="profile-stats">
+            <div class="card profile-stat"><div class="profile-stat-val mono">28</div><div class="profile-stat-lbl">Usia</div></div>
+            <div class="card profile-stat"><div class="profile-stat-val mono">172</div><div class="profile-stat-lbl">Tinggi (cm)</div></div>
+            <div class="card profile-stat"><div class="profile-stat-val mono">68.4</div><div class="profile-stat-lbl">Berat (kg)</div></div>
+          </div>
+        </div>
+
+        <div class="card goal-card">
+          <div class="goal-top"><span>Target Mingguan</span><span class="mono">4 / 5 sesi</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:80%;background:var(--green);"></div></div>
+        </div>
+
+        <div class="card sync-card">
+          <span class="sync-dot"></span>
+          <div>
+            <div class="sync-title">Mi Band 8 Tersambung</div>
+            <div class="sync-sub">Sinkron terakhir 3 menit lalu</div>
+          </div>
+          <div class="sync-battery">
+            <svg viewBox="0 0 24 14" fill="none"><rect x="1" y="1" width="19" height="12" rx="3" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="3" width="9" height="8" rx="1.5" fill="currentColor"/></svg>
+            58%
+          </div>
+        </div>
+
+        <div class="section-title">Pengaturan</div>
+        <div class="card settings-list" style="padding:2px 14px;">
+          <div class="settings-row">
+            <div class="settings-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+            Notifikasi
+            <span class="settings-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+          </div>
+          <div class="settings-row">
+            <div class="settings-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+            Satuan Pengukuran
+            <span class="settings-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+          </div>
+          <div class="settings-row">
+            <div class="settings-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+            Trainer &amp; Ahli Gizi
+            <span class="settings-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+          </div>
+          <div class="settings-row">
+            <div class="settings-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 2-2.3 3.3M12 17h.01"/></svg></div>
+            Bantuan
+            <span class="settings-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+          </div>
+          <div class="settings-row" style="color:var(--coral);">
+            <div class="settings-icon" style="background:var(--coral-bg);color:var(--coral);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></div>
+            Keluar
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="tab-bar">
+      <button class="tab-item active" data-view="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+        Beranda
+      </button>
+      <button class="tab-item" data-view="workout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5 3 10l4 4 3.5-3.5"/><path d="m20.5 6.5-4 4"/><path d="m14 3-1.5 1.5"/><path d="M17.5 17.5 21 14l-4-4-3.5 3.5"/><path d="m3.5 17.5 4-4"/><path d="m10 21 1.5-1.5"/></svg>
+        Latihan
+      </button>
+      <button class="tab-item" data-view="community">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Komunitas
+      </button>
+      <button class="tab-item" data-view="nutrition">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Nutrisi
+      </button>
+      <button class="tab-item" data-view="progress">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        Progres
+      </button>
+      <button class="tab-item" data-view="profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        Profil
+      </button>
+    </nav>
+  </div>
+</div>
+
+<script>
+  const tabItems = document.querySelectorAll('.tab-item');
+  const views = document.querySelectorAll('.view');
+  const content = document.querySelector('.screen-content');
+  tabItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const target = item.getAttribute('data-view');
+      tabItems.forEach(t => t.classList.remove('active'));
+      item.classList.add('active');
+      views.forEach(v => v.classList.remove('active'));
+      document.getElementById('view-' + target).classList.add('active');
+      content.scrollTop = 0;
+    });
+  });
+
+  const chips = document.querySelectorAll('.chip');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

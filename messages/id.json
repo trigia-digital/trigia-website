@@ -1,0 +1,483 @@
+{
+  "meta": {
+    "title": "TRIGIA — Mitra Pertumbuhan Digital Anda",
+    "description": "TRIGIA membantu bisnis mengubah peluang digital menjadi pertumbuhan nyata — melalui teknologi, strategi, AI, dan eksekusi digital yang tepat sasaran."
+  },
+  "nav": {
+    "services": "Layanan",
+    "rateCard": "Rate Card",
+    "solutions": "Solusi",
+    "work": "Karya",
+    "prototype": "Prototipe",
+    "articles": "Artikel",
+    "about": "Tentang",
+    "contact": "Kontak",
+    "cta": "Mulai Proyek"
+  },
+  "hero": {
+    "eyebrow": "Katalis Transformasi Digital",
+    "headlineWords": ["Bangun", "yang", "Mendorong", "Bisnis", "Anda", "Melaju."],
+    "headlineAccentIndex": 3,
+    "subtext": "TRIGIA membantu bisnis mengubah peluang digital menjadi pertumbuhan nyata — melalui teknologi, strategi, AI, dan eksekusi digital yang tepat sasaran.",
+    "ctaPrimary": "Mulai Proyek",
+    "ctaGhost": "Lihat Karya Kami",
+    "whatsappMessage": "Halo TRIGIA, saya tertarik untuk konsultasi project."
+  },
+  "marquee": {
+    "items": ["Pengembangan Website", "Aplikasi Web", "Aplikasi Mobile", "Digital Marketing", "AI & Otomasi", "Branding", "Content Production"]
+  },
+  "belief": {
+    "eyebrow": "Keyakinan Kami",
+    "heading": "Setiap Bisnis Berhak untuk Berkembang.",
+    "body": "Pertumbuhan tidak seharusnya dibatasi oleh besar-kecilnya bisnis Anda. Dengan strategi, teknologi, dan eksekusi yang tepat, setiap bisnis bisa terus melangkah maju — dari titik mana pun ia memulai."
+  },
+  "services": {
+    "eyebrow": "Yang Kami Kerjakan",
+    "heading": "Solusi Digital yang Dirancang untuk Pertumbuhan.",
+    "items": [
+      { "index": "01", "name": "Website", "desc": "Bangun kehadiran digital yang benar-benar bekerja untuk bisnis Anda — company profile, landing page, e-commerce, hingga kebutuhan khusus lainnya." },
+      { "index": "02", "name": "Aplikasi Web", "desc": "Ubah proses bisnis yang rumit menjadi sistem digital yang efisien — dashboard, tools internal, hingga platform pelanggan." },
+      { "index": "03", "name": "Aplikasi Mobile", "desc": "Hadirkan pengalaman yang berarti di mana pun pelanggan Anda berada — Android, iOS, dan cross-platform." },
+      { "index": "04", "name": "Digital Marketing", "desc": "Ubah perhatian audiens menjadi hasil bisnis yang terukur — strategi, performance marketing, SEO, dan optimasi konversi." },
+      { "index": "05", "name": "AI & Otomasi", "desc": "Buat bisnis Anda lebih cerdas, cepat, dan efisien — integrasi AI dan otomasi alur kerja." },
+      { "index": "06", "name": "Branding", "desc": "Bangun identitas visual yang jelas dan konsisten — logo, warna, tipografi, sebelum semua yang lain." },
+      { "index": "07", "name": "Content Production", "desc": "Konten yang konsisten sama brand kamu, bukan template generik yang sama untuk semua orang." }
+    ]
+  },
+  "serviceDetails": {
+    "back": "Kembali ke Layanan",
+    "suitedFor": "Cocok Untuk",
+    "priceLabel": "Mulai Dari",
+    "cta": "Lihat Rate Card Lengkap",
+    "items": {
+      "website": {
+        "tagline": "Kehadiran digital yang bekerja untuk bisnis Anda, bukan sekadar ada.",
+        "desc": "Website bukan cuma brosur online. Kami bangun website yang jadi titik kontak pertama yang meyakinkan — cepat, jelas, dan dirancang supaya pengunjung tau harus ngapain begitu mendarat di halaman Anda.",
+        "suitedFor": "Bisnis yang belum punya presence digital sama sekali, atau yang website lamanya sudah tidak mencerminkan kualitas bisnis sekarang.",
+        "priceFrom": "Rp999.000",
+        "rateCardAnchor": "website"
+      },
+      "web-app": {
+        "tagline": "Ubah proses manual jadi sistem yang bekerja sendiri.",
+        "desc": "Kalau bisnis Anda masih mengandalkan spreadsheet, WhatsApp broadcast manual, atau pencatatan tangan — itu tandanya sudah waktunya punya sistem digital sendiri. Kami bangun dashboard dan tools internal yang dirancang khusus untuk cara kerja bisnis Anda.",
+        "suitedFor": "Bisnis yang operasionalnya sudah cukup kompleks untuk butuh sistem sendiri — bukan lagi cukup dikelola manual.",
+        "priceFrom": "Rp9.000.000",
+        "rateCardAnchor": "web-mobile-app"
+      },
+      "mobile-app": {
+        "tagline": "Hadir di tempat pelanggan Anda menghabiskan waktu paling banyak.",
+        "desc": "Aplikasi mobile bukan cuma soal gengsi — itu soal kenyamanan. Kami bangun aplikasi Android, iOS, atau cross-platform yang memudahkan pelanggan Anda balik lagi, tanpa harus buka browser dulu.",
+        "suitedFor": "Bisnis dengan pelanggan repeat order tinggi, yang butuh cara lebih dekat untuk terus terhubung.",
+        "priceFrom": "Rp20.000.000",
+        "rateCardAnchor": "web-mobile-app"
+      },
+      "digital-marketing": {
+        "tagline": "Bukan cuma pasang iklan — kami kelola untuk hasil.",
+        "desc": "Digital marketing yang efektif itu bukan soal budget besar, tapi strategi dan eksekusi yang tepat platform. Kami kelola iklan Anda di platform yang paling relevan untuk audiens dan tujuan bisnis Anda.",
+        "suitedFor": "Bisnis yang sudah punya produk/layanan bagus tapi belum cukup dikenal, atau yang traffic-nya stuck di angka yang sama.",
+        "priceFrom": "Rp1.500.000/bulan",
+        "rateCardAnchor": "digital-marketing"
+      },
+      "ai-automation": {
+        "tagline": "Biar sistem yang kerja lembur, bukan tim Anda.",
+        "desc": "Dari otomasi pekerjaan berulang sampai AI agent yang dirancang khusus untuk proses bisnis Anda — kami bantu bisnis Anda lebih cerdas dan efisien tanpa harus menambah headcount.",
+        "suitedFor": "Bisnis yang tim-nya kewalahan dengan pekerjaan berulang, atau yang siap eksplorasi AI agent untuk sales, riset, atau produksi konten.",
+        "priceFrom": "Rp7.000.000",
+        "rateCardAnchor": "ai-automation"
+      },
+      "branding": {
+        "tagline": "Sebelum website, sebelum konten, sebelum iklan — bisnismu butuh identitas yang jelas dulu.",
+        "desc": "Ini akar masalah yang sering luput: banyak calon klien datang minta website atau konten, padahal logo mereka asal jadi dan tidak ada panduan warna/font sama sekali. Branding Services mengisi fondasi ini, dan secara alami menjadi pintu masuk ke paket Website atau Content Production.",
+        "suitedFor": "Usaha baru yang butuh logo layak pakai dengan cepat, atau bisnis yang serius membangun brand jangka panjang.",
+        "priceFrom": "Rp999.000",
+        "rateCardAnchor": "branding"
+      },
+      "content-production": {
+        "tagline": "Konten yang konsisten sama brand kamu, bukan template yang sama untuk semua orang.",
+        "desc": "Beda dari jasa desain feed generik yang tinggal isi template — konten TRIGIA mengacu ke brand guideline yang sudah dibangun, supaya feed Instagram terlihat sebagai kelanjutan brand, bukan tempelan terpisah. Ini juga pelengkap alami dari layanan Digital Marketing.",
+        "suitedFor": "Usaha yang baru mulai konsisten posting, sampai bisnis yang menjadikan Instagram/TikTok sebagai kanal akuisisi utama.",
+        "priceFrom": "Rp999.000/bulan",
+        "rateCardAnchor": "content-production"
+      }
+    }
+  },
+  "solutions": {
+    "eyebrow": "Solusi",
+    "heading": "Kami Tidak Sekadar Menjual Layanan. Kami Menyelesaikan Masalah.",
+    "intro": "Setiap solusi di bawah ini memadukan layanan yang tepat untuk mendorong jenis bisnis tertentu maju — pilih yang paling sesuai dengan posisi Anda saat ini.",
+    "packagesLink": "Butuh gabungan beberapa layanan sekaligus? Lihat Paket Bundling →",
+    "items": [
+      { "tag": "Untuk bisnis yang baru memulai dari nol", "title": "Mulai dengan Kuat", "desc": "Bisnis Anda belum punya kehadiran digital yang nyata, dan itu menghambat calon pelanggan untuk menemukan dan mempercayai Anda.", "includes": ["Website"] },
+      { "tag": "Untuk bisnis yang masih terjebak kerja manual", "title": "Sistemkan Operasional", "desc": "Tim Anda tenggelam dalam spreadsheet dan pekerjaan berulang yang sebenarnya bisa diselesaikan sistem dalam hitungan detik.", "includes": ["Aplikasi Web", "AI & Otomasi"] },
+      { "tag": "Untuk bisnis yang pertumbuhannya mandek", "title": "Jangkau Lebih Banyak Pelanggan", "desc": "Anda sudah punya kehadiran digital, tapi belum cukup mendatangkan leads atau penjualan yang signifikan.", "includes": ["Digital Marketing", "Website / Aplikasi Web"] },
+      { "tag": "Untuk bisnis yang siap naik level pengalaman pelanggan", "title": "Hadir di Mobile", "desc": "Pelanggan Anda menghabiskan waktu di ponsel mereka — saatnya bisnis Anda hadir di sana.", "includes": ["Aplikasi Mobile"] }
+    ]
+  },
+  "packages": {
+    "eyebrow": "Paket Bundling",
+    "heading": "Satu Paket, Semua Kebutuhan Digital.",
+    "intro": "Setiap paket menggabungkan beberapa layanan sekaligus dengan harga lebih hemat dibanding dipesan terpisah.",
+    "commitmentLabel": "Komitmen",
+    "ctaDirect": "Mulai Proyek",
+    "ctaConsult": "Konsultasi Detail",
+    "rateCardLink": "Lihat Rate Card Lengkap →",
+    "flagshipLabel": "Paket Unggulan",
+    "items": [
+      { "name": "Launch", "price": "Rp3.799.000", "suitedFor": "Bisnis benar-benar baru, belum punya apa-apa secara digital.", "includes": ["Branding: Logo Essentials", "Website: Starter Presence (dasar)", "Content Production: Feed Starter (1 bulan)"] },
+      { "name": "Grow", "price": "Rp13.999.000", "suitedFor": "Bisnis yang sudah jalan tapi kehadiran digitalnya masih seadanya.", "includes": ["Branding: Full Brand Identity (dasar)", "Website: Growth Site", "Content Production: Growth Content Engine (3 bulan)"] },
+      { "name": "Scale", "price": "Mulai dari Rp34.499.000", "commitment": "Komitmen 3 bulan", "suitedFor": "Bisnis yang siap agresif menambah traffic dan mengurangi kerjaan manual.", "includes": ["Website: Full Digital System", "Content Production: Full Content Engine (3 bulan)", "Digital Marketing (3 bulan)", "AI & Automation: Dasar"] },
+      { "name": "Catalyst", "price": "Mulai dari Rp64.000.000", "commitment": "Komitmen 6 bulan", "suitedFor": "Bisnis yang mau TRIGIA jadi digital growth partner penuh.", "includes": ["Branding: Full Brand Identity", "Website: Full Digital System", "Web App atau Mobile App (pilih salah satu)", "Content Production: Full Content Engine (6 bulan)", "Digital Marketing (6 bulan)", "AI & Automation", "Retainer: Growth Care (6 bulan)"] }
+    ]
+  },
+  "rateCard": {
+    "eyebrow": "Rate Card · 2026",
+    "title": "TRIGIA Digital",
+    "subtitle": "Your Digital Growth Partner",
+    "cta": "Konsultasi Gratis",
+    "addonLabel": "Add-on",
+    "flagshipLabel": "Paket Unggulan",
+    "footnote": "Harga peluncuran — berlaku terbatas. Konsultasi gratis 15 menit sebelum mulai project.",
+    "categories": [
+      {
+        "id": "branding",
+        "number": "01",
+        "name": "Branding",
+        "items": [
+          {
+            "name": "Logo Essentials",
+            "price": "Rp999.000",
+            "facilities": ["1 konsep logo", "1x revisi", "File utama (PNG / JPG / vector)"]
+          },
+          {
+            "name": "Full Brand Identity",
+            "price": "mulai dari Rp1.499.000+",
+            "facilities": ["2 konsep logo, 2x revisi", "Guideline warna & tipografi", "Full brand asset kit (kartu nama, kop surat, mockup produk/sosmed)", "File lengkap (PNG, JPG, PDF, vector)"],
+            "addons": ["Riset & strategi brand mendalam", "Guideline lengkap + template sosmed penuh"]
+          }
+        ]
+      },
+      {
+        "id": "website",
+        "number": "02",
+        "name": "Website",
+        "items": [
+          {
+            "name": "Landing Page Simple",
+            "price": "Rp999.000",
+            "facilities": ["1 section — headline + CTA", "Template siap pakai", "Integrasi tombol WhatsApp"]
+          },
+          {
+            "name": "Starter Presence",
+            "price": "mulai dari Rp2.499.000+",
+            "facilities": ["2 halaman, template + copy dasar", "Integrasi tombol WhatsApp", "Domain & hosting setup dibantu", "Tampilan mobile-responsive"],
+            "addons": ["Copywriting full-custom", "SEO dasar + revisi"]
+          },
+          {
+            "name": "Growth Site",
+            "price": "mulai dari Rp8.000.000",
+            "facilities": ["Hingga 5-7 halaman (Home, Tentang, Layanan, Galeri, Kontak)", "Animasi & motion signature (scroll reveal, hover)", "SEO menengah — kata kunci lokal", "2x revisi desain", "1 bulan support pasca-launch"]
+          },
+          {
+            "name": "Full Digital System",
+            "price": "mulai dari Rp16.000.000",
+            "facilities": ["Semua di Growth Site", "Booking/reservasi atau katalog produk dinamis", "Otomasi notifikasi form ke WA/email tim", "Bilingual ID/EN", "3 bulan support pasca-launch", "Prioritas antrian pengerjaan"]
+          }
+        ]
+      },
+      {
+        "id": "web-mobile-app",
+        "number": "03",
+        "name": "Web & Mobile App",
+        "items": [
+          {
+            "name": "Web App",
+            "price": "mulai dari Rp9.000.000",
+            "facilities": ["Workshop kebutuhan & alur kerja", "Desain UI/UX sesuai proses bisnis", "Development 1 modul inti", "Testing sebelum serah terima", "Support pasca-launch 1–6 bulan (menyesuaikan cakupan project)", "Cakupan & investasi menyesuaikan kompleksitas modul/integrasi"]
+          },
+          {
+            "name": "Mobile App",
+            "price": "mulai dari Rp20.000.000",
+            "facilities": ["Riset fungsi inti aplikasi", "Desain UI/UX mobile-first", "Development Android & iOS", "Testing di perangkat nyata", "Panduan publikasi ke Play Store/App Store", "1 bulan support pasca-launch"]
+          }
+        ]
+      },
+      {
+        "id": "content-production",
+        "number": "04",
+        "name": "Content Production",
+        "items": [
+          {
+            "name": "Feed Starter",
+            "price": "mulai dari Rp999.000/bulan",
+            "facilities": ["20 desain feed orisinil / bulan"]
+          },
+          {
+            "name": "Growth Content Engine",
+            "price": "mulai dari Rp2.499.000/bulan",
+            "facilities": ["35 desain feed orisinil/bulan (feed + carousel)", "6 video reels pendek/bulan", "Template story mingguan", "Riset hashtag & caption hook penjualan"]
+          },
+          {
+            "name": "Full Content Engine",
+            "price": "mulai dari Rp4.499.000/bulan",
+            "facilities": ["55 desain feed orisinil/bulan", "10 video reels/bulan", "Content calendar bulanan", "Laporan performa (engagement, reach, follower growth)"]
+          }
+        ]
+      },
+      {
+        "id": "digital-marketing",
+        "number": "05",
+        "name": "Digital Marketing & Advertising",
+        "items": [
+          {
+            "name": "Digital Marketing & Advertising",
+            "price": "mulai dari Rp1.500.000/bulan",
+            "facilities": ["Riset audiens & strategi campaign", "Meta Ads (Facebook & Instagram)", "Google Ads (Search & Display)", "TikTok Ads", "CPAS Ads — Shopee x Meta, khusus e-commerce", "Pembuatan materi iklan (kerja sama tim konten)", "Setup & optimasi campaign mingguan", "Laporan performa bulanan"]
+          }
+        ],
+        "note": "Budget iklan terpisah, min. Rp3.000.000/bulan ke platform"
+      },
+      {
+        "id": "ai-automation",
+        "number": "06",
+        "name": "AI & Automation",
+        "items": [
+          {
+            "name": "AI & Automation (Dasar)",
+            "price": "mulai dari Rp7.000.000",
+            "facilities": ["Audit proses — cari titik paling boros waktu", "Setup chatbot WA & auto-reply", "Integrasi form ke spreadsheet/email", "Training singkat tim internal", "2 minggu monitoring pasca-launch"]
+          },
+          {
+            "name": "AI Agents & Custom AI Solutions",
+            "price": "mulai dari Rp15.000.000",
+            "facilities": ["AI agent dirancang sesuai tahap & kebutuhan spesifik bisnis", "Contoh: Sales Agent — kualifikasi lead, follow-up, bantu closing", "Contoh: Niche/Market Research Agent", "Contoh: Content & Video Generation Agent", "Development & integrasi API AI generatif/LLM"],
+            "note": "Biaya API AI ditanggung terpisah oleh klien"
+          }
+        ]
+      },
+      {
+        "id": "retainer",
+        "number": "07",
+        "name": "Retainer Bulanan",
+        "items": [
+          {
+            "name": "Basic Care",
+            "price": "mulai dari Rp750.000/bulan",
+            "facilities": ["Monitoring uptime, backup, 2x update konten/bulan"]
+          },
+          {
+            "name": "Growth Care",
+            "price": "mulai dari Rp1.500.000/bulan",
+            "facilities": ["Semua di Basic Care", "Laporan traffic bulanan", "Prioritas perbaikan bug"]
+          }
+        ]
+      }
+    ],
+    "bundling": {
+      "heading": "Paket Bundling",
+      "intro": "Hemat 15–20% dibanding beli terpisah",
+      "items": [
+        {
+          "name": "Launch",
+          "tagline": "Bisnis baru dari nol",
+          "price": "mulai dari Rp3.799.000",
+          "includes": ["Logo Essentials", "Website Starter Presence (dasar)", "Content Feed Starter (1 bulan)"]
+        },
+        {
+          "name": "Grow",
+          "tagline": "Naik kelas dari digital seadanya",
+          "price": "mulai dari Rp13.999.000",
+          "includes": ["Full Brand Identity (dasar)", "Website Growth Site", "Content Growth Engine (3 bulan)"]
+        },
+        {
+          "name": "Scale",
+          "tagline": "Agresif tumbuh, kurangi kerja manual",
+          "price": "mulai dari Rp34.499.000",
+          "includes": ["Website Full Digital System", "Content Full Engine (3 bulan)", "Digital Marketing (3 bulan)", "AI & Automation Dasar"]
+        },
+        {
+          "name": "Catalyst",
+          "tagline": "Digital growth partner penuh — komitmen 6 bulan",
+          "price": "mulai dari Rp64.000.000",
+          "flagship": true,
+          "includes": ["Full Brand Identity", "Website Full Digital System", "Web App atau Mobile App (pilih 1)", "Content Full Engine (6 bulan)", "Digital Marketing (6 bulan)", "AI & Automation", "Retainer Growth Care (6 bulan)"]
+        }
+      ]
+    }
+  },
+  "prototypePage": {
+    "eyebrow": "Prototipe",
+    "heading": "Eksplorasi Desain & Template TRIGIA.",
+    "desc": "12 eksplorasi gaya visual dan build lintas industri — bukan proyek klien, murni demonstrasi kemampuan desain TRIGIA.",
+    "badgeLabel": "Eksplorasi Desain",
+    "viewDemo": "Lihat Live Demo",
+    "items": [
+      {
+        "src": "/prototypes/seduh-coffee.html",
+        "badge": "Website — F&B / Coffee Roastery",
+        "title": "Seduh Coffee Co.",
+        "desc": "Konsep branding dan website untuk roastery kopi skala kecil — identitas visual lengkap plus sistem order online terintegrasi WhatsApp."
+      },
+      {
+        "src": "/prototypes/klaira-skincare.html",
+        "badge": "Web App — Skincare E-commerce",
+        "title": "Klaira",
+        "desc": "Konsep toko online skincare dengan pendekatan ingredient-first — tiap produk dikenali dari bahan aktif utamanya, lengkap dengan detail produk interaktif dan checkout ke WhatsApp."
+      },
+      {
+        "src": "/prototypes/pos-toko-bangunan.html",
+        "badge": "Web App — Building Materials POS",
+        "title": "Sumber Makmur",
+        "desc": "Konsep sistem kasir digital untuk toko bangunan — transaksi, stok, supplier, dan laporan keuangan real-time dalam satu layar."
+      },
+      {
+        "src": "/prototypes/lms-sekolah.html",
+        "badge": "Web App — School LMS",
+        "title": "Kelasku",
+        "desc": "Konsep learning management system untuk sekolah — dashboard siswa menampilkan tugas, jadwal kelas, nilai, dan kehadiran dalam satu tampilan."
+      },
+      {
+        "src": "/prototypes/balas-ai-landing.html",
+        "badge": "AI Product — Customer Service Automation",
+        "title": "BALAS",
+        "desc": "Konsep landing page untuk AI agent yang otomatis membalas, follow up, dan mengkualifikasi calon pelanggan dari WhatsApp, Instagram, dan website — tanpa perlu tambah tim CS."
+      },
+      {
+        "src": "/prototypes/laju-rental.html",
+        "badge": "Website — Motorcycle Rental",
+        "title": "LAJU°",
+        "desc": "Konsep website jasa rental motor di Jember — armada, cara sewa, harga, dan testimoni disusun untuk memudahkan booking langsung."
+      },
+      {
+        "src": "/prototypes/assistyou.html",
+        "badge": "AI Product — AI Personal Assistant",
+        "title": "AssistYou",
+        "desc": "Konsep landing page untuk AI agent yang benar-benar mengerjakan tugas, bukan cuma menjawab chat — dari mencari tiket sampai membandingkan opsi, lewat instruksi bahasa natural."
+      },
+      {
+        "src": "/prototypes/noir-parfum-mockup.html",
+        "badge": "Website — Fragrance Brand",
+        "title": "NOIR",
+        "desc": "Konsep website brand parfum edisi terbatas — storytelling aroma, notes produk, dan nuansa visual mewah ala maison parfum."
+      },
+      {
+        "src": "/prototypes/ai-business-operation.html",
+        "badge": "AI Product — Business Intelligence",
+        "title": "Trigia AI Business OS",
+        "desc": "Konsep dashboard AI business intelligence untuk UMKM — mengubah data transaksi jadi insight dan aksi, dengan revenue, profit, customer, dan inventory dalam satu executive view."
+      },
+      {
+        "src": "/prototypes/growth-engine.html",
+        "badge": "AI Product — Growth Marketing Automation",
+        "title": "Growth Engine",
+        "desc": "Konsep AI growth operating system untuk UMKM — menyatukan data pelanggan, campaign, dan konten supaya tiap aktivitas marketing punya target akuisisi, reaktivasi, atau retensi yang jelas."
+      },
+      {
+        "src": "/prototypes/pilah.html",
+        "badge": "Mobile App — Digital Waste Bank",
+        "title": "Pilah",
+        "desc": "Konsep aplikasi bank sampah digital — warga memilah dan menyetor sampah daur ulang, saldo bisa dicairkan, plus gamifikasi streak dan peringkat antar RT."
+      },
+      {
+        "src": "/prototypes/bugar.html",
+        "badge": "Mobile App — Health & Fitness",
+        "title": "Bugar",
+        "desc": "Konsep aplikasi kesehatan dan latihan personal — program latihan otomatis, pelacakan kalori dan langkah, plus tantangan komunitas untuk menjaga konsistensi."
+      }
+    ]
+  },
+  "articlesPage": {
+    "eyebrow": "Artikel",
+    "heading": "Insight Seputar Digital & Pertumbuhan Bisnis.",
+    "comingSoonDesc": "Artikel pertama kami sedang disiapkan — segera hadir.",
+    "comingSoonLabel": "Segera Hadir",
+    "backButton": "Kembali ke Beranda"
+  },
+  "process": {
+    "eyebrow": "Cara Kami Bekerja",
+    "heading": "Dari Tantangan Bisnis Menuju Pertumbuhan Digital.",
+    "steps": [
+      { "num": "01", "title": "Pahami", "desc": "Memahami bisnis, pelanggan, dan tantangan yang dihadapi." },
+      { "num": "02", "title": "Strategi", "desc": "Menentukan peluang digital yang tepat dan arah pertumbuhan." },
+      { "num": "03", "title": "Bangun", "desc": "Merancang dan membangun solusi digital yang sesuai." },
+      { "num": "04", "title": "Luncurkan", "desc": "Meluncurkan solusi ke pasar dengan presisi." },
+      { "num": "05", "title": "Kembangkan", "desc": "Mengoptimalkan, menyempurnakan, dan mengembangkan skala." }
+    ]
+  },
+  "work": {
+    "eyebrow": "Karya Pilihan",
+    "heading": "Dibangun untuk Memberi Dampak.",
+    "labels": { "challenge": "Tantangan", "solution": "Solusi", "result": "Hasil", "selfInitiated": "Self-Initiated", "client": "Client Project", "visitSite": "Kunjungi Situs" },
+    "cases": [
+      {
+        "type": "client",
+        "tag": "Wellness",
+        "title": "Rumi Home Spa",
+        "url": "https://rumihomespa.com",
+        "image": "/work/rumi-home-spa.jpg",
+        "challenge": "Sebelum ada website, calon pelanggan cuma bisa mengenal Rumi Home Spa lewat chat WhatsApp — tanpa tempat untuk membangun kepercayaan sebelum booking.",
+        "solution": "Website booking lengkap dengan showcase layanan, kredibilitas terapis, dan alur pemesanan langsung ke WhatsApp — dirancang supaya calon pelanggan sudah yakin sebelum menghubungi.",
+        "result": "Kini jadi pintu masuk digital utama Rumi Home Spa — titik kontak pertama setiap pelanggan baru sebelum booking."
+      },
+      {
+        "type": "client",
+        "tag": "Loyalty Platform",
+        "title": "Rumi Inner Circle",
+        "url": "https://member.rumihomespa.com",
+        "image": "/work/rumi-inner-circle.jpg",
+        "challenge": "Program loyalitas pelanggan dikelola manual, tanpa cara bagi member untuk memantau poin atau mengajak teman sendiri.",
+        "solution": "Portal member dengan dashboard, pelacakan poin real-time, dan sistem referral — mengubah pelanggan setia jadi bagian dari komunitas eksklusif.",
+        "result": "Pelanggan setia sekarang punya akses mandiri ke reward mereka, kapan saja."
+      },
+      {
+        "type": "client",
+        "tag": "Nonprofit",
+        "title": "Kwartir Ranting Pramuka Sambit",
+        "url": "https://jocular-unicorn-44f877.netlify.app",
+        "image": "/work/kwarran-sambit.jpg",
+        "challenge": "Organisasi yang membina 18 Gugus Depan se-Kecamatan Sambit belum punya wajah digital — informasi kegiatan dan kontak hanya beredar dari mulut ke mulut.",
+        "solution": "Website profil organisasi yang menampilkan struktur, agenda kegiatan, dan galeri dokumentasi — memberi Kwarran Sambit identitas digital yang layak dipercaya.",
+        "result": "Sekolah, pembina, dan orang tua kini punya satu tempat resmi untuk mengenal dan menghubungi Kwarran Sambit."
+      }
+    ],
+    "note": "* Studi kasus lain akan ditambahkan seiring bertambahnya project TRIGIA."
+  },
+  "faq": {
+    "eyebrow": "Pertanyaan Umum",
+    "heading": "Yang Sering Ditanyakan.",
+    "items": [
+      { "q": "Berapa lama waktu pengerjaan sebuah project?", "a": "Tergantung kompleksitas — untuk website umumnya 2–4 minggu, aplikasi web atau mobile bisa 6–12 minggu. Anda akan dapat timeline jelas sejak awal, sebelum project dimulai." },
+      { "q": "Bagaimana sistem pembayarannya?", "a": "Kami menggunakan sistem termin (down payment di awal, pelunasan bertahap sesuai progress) supaya lebih ringan untuk cash flow bisnis Anda." },
+      { "q": "Saya tidak paham teknis, apakah itu masalah?", "a": "Sama sekali tidak. Justru itu tugas kami — menerjemahkan kebutuhan bisnis Anda jadi solusi teknis, tanpa Anda perlu paham coding sama sekali." },
+      { "q": "Apakah ada garansi revisi setelah project selesai?", "a": "Ya, setiap project termasuk periode revisi setelah serah terima. Untuk dukungan jangka panjang, kami juga sediakan paket maintenance terpisah." },
+      { "q": "Apakah bisa konsultasi dulu sebelum memutuskan?", "a": "Tentu, kami sediakan sesi konsultasi awal gratis untuk memahami kebutuhan Anda sebelum masuk ke penawaran resmi." }
+    ]
+  },
+  "whatsapp": {
+    "label": "Konsultasi Gratis",
+    "message": "Halo TRIGIA, saya tertarik konsultasi gratis untuk kebutuhan digital bisnis saya."
+  },
+  "about": {
+    "eyebrow": "Tentang TRIGIA",
+    "heading": "Kami Percaya Digital Seharusnya Menggerakkan Bisnis ke Depan.",
+    "paragraph1": "TRIGIA lahir dari pengalaman nyata, bukan teori. Sebelum mendirikan TRIGIA, pendiri kami membangun sendiri seluruh ekosistem digital untuk bisnisnya — mulai dari sistem booking otomatis, member portal, sistem dokumen keuangan, hingga integrasi WhatsApp Business untuk operasional sehari-hari.",
+    "paragraph2": "Pengalaman itulah yang membentuk cara TRIGIA bekerja — kami memahami bisnis karena kami pernah membangun sistem yang benar-benar dipakai, bukan sekadar konsep di atas kertas."
+  },
+  "finalCta": {
+    "eyebrow": "Mari Membangun Bersama",
+    "heading": "Siap Menggerakkan Bisnis Anda ke Depan?",
+    "body": "Ceritakan posisi bisnis Anda saat ini. Mari jelajahi bersama ke mana digital bisa membawanya.",
+    "ctaPrimary": "Mulai Percakapan",
+    "ctaGhost": "Lihat Karya Kami",
+    "whatsappMessage": "Halo TRIGIA, saya ingin mulai percakapan soal kebutuhan digital bisnis saya."
+  },
+  "footer": {
+    "mega": "Saatnya Membangun Bersama TRIGIA",
+    "tagline": "Mitra Pertumbuhan Digital Anda. Mitra teknologi digital yang membantu bisnis mengubah peluang menjadi pertumbuhan yang nyata.",
+    "sitemapTitle": "Peta Situs",
+    "servicesTitle": "Layanan",
+    "contactTitle": "Kontak",
+    "startProject": "Mulai Proyek",
+    "copyright": "© 2026 TRIGIA Digital. Seluruh hak cipta dilindungi.",
+    "tagBottom": "Katalis Transformasi Digital."
+  }
+}

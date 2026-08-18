@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pilah — Bank Sampah Digital</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Work+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@500;700&display=swap');
+
+  :root{
+    --bg:#EFF8EE;
+    --card:#FFFFFF;
+    --ink:#173B27;
+    --muted:#6C8874;
+    --line:#DCEEDC;
+    --olive:#1FA35C;
+    --olive-dark:#137A42;
+    --olive-bg:#DEF3E1;
+    --clay:#E0A030;
+    --clay-bg:#FBEED2;
+    --sky:#2F8FD4;
+    --sky-bg:#DDEEFA;
+    --plum:#9B5FC0;
+    --plum-bg:#F1E6F7;
+    --steel:#64798C;
+    --steel-bg:#E4E9ED;
+    --teal:#1FB08A;
+    --teal-bg:#DCF3EA;
+    --red:#D14A3A;
+    --red-bg:#F8E2DE;
+    --leaf-pattern:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130' viewBox='0 0 130 130'%3E%3Cg fill='%23ffffff' fill-opacity='0.09'%3E%3Cpath d='M18 70c0-26 21-47 47-47-3 26-21 47-47 47z'/%3E%3Cpath d='M112 22c0 26-21 47-47 47 3-26 21-47 47-47z' transform='translate(4,58)'/%3E%3Ccircle cx='108' cy='16' r='5'/%3E%3Ccircle cx='16' cy='114' r='4'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:
+      radial-gradient(circle at 80% 8%, #E7F6E6 0%, transparent 50%),
+      radial-gradient(circle at 10% 90%, #DCF0DD 0%, transparent 45%),
+      #D8EAD9;
+    font-family:'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color:var(--ink);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:44px 20px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.font-display{ font-family:'Sora', sans-serif; letter-spacing:-0.01em; }
+  .mono{ font-family:'Space Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  /* ================= Phone frame ================= */
+  .phone{
+    width:390px; height:844px; background:#0B0B0C; border-radius:54px; padding:14px;
+    box-shadow:0 40px 70px -25px rgba(20,20,15,.4), 0 12px 24px -10px rgba(20,20,15,.3);
+    position:relative; flex-shrink:0;
+  }
+  .screen{
+    width:100%; height:100%; background:var(--bg); border-radius:40px; overflow:hidden;
+    position:relative; display:flex; flex-direction:column;
+  }
+  .notch{
+    position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:118px; height:26px; background:#0B0B0C; border-radius:0 0 16px 16px; z-index:40;
+  }
+  .status-bar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 26px 2px; font-size:13.5px; font-weight:700; flex-shrink:0;
+  }
+  .status-icons{ display:flex; gap:5px; align-items:center; color:var(--ink); }
+
+  .screen-content{ flex:1; overflow-y:auto; padding:4px 18px 110px; scrollbar-width:none;
+    background:linear-gradient(180deg, #E4F5E3 0%, var(--bg) 220px); }
+  .screen-content::-webkit-scrollbar{ display:none; }
+  .view{ display:none; }
+  .view.active{ display:block; }
+
+  .tab-bar{
+    position:absolute; bottom:0; left:0; right:0; z-index:30;
+    background:rgba(255,255,255,.92); backdrop-filter:blur(10px);
+    border-top:1px solid var(--line); display:flex; padding:9px 6px 22px;
+  }
+  .tab-item{
+    flex:1; display:flex; flex-direction:column; align-items:center; gap:3px;
+    background:none; border:none; color:#C2BCAC; font-size:9.5px; font-weight:700;
+  }
+  .tab-item svg{ width:21px; height:21px; }
+  .tab-item.active{ color:var(--olive); }
+
+  /* ================= Shared blocks ================= */
+  .top-row{ display:flex; align-items:center; justify-content:space-between; padding:12px 2px 16px; }
+  .greeting-label{ font-size:11px; color:var(--muted); font-weight:600; }
+  .greeting-name{ font-size:19px; font-weight:700; margin-top:1px; }
+  .icon-circle{
+    width:38px; height:38px; border-radius:50%; background:#fff; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; color:var(--ink); position:relative; flex-shrink:0;
+  }
+  .icon-circle svg{ width:17px; height:17px; }
+  .flag-dot{ position:absolute; top:6px; right:7px; width:6px; height:6px; border-radius:50%; background:var(--clay); border:1.5px solid #fff; }
+
+  .streak-chip{
+    display:inline-flex; align-items:center; gap:5px; background:var(--olive-bg); color:var(--olive-dark);
+    padding:5px 10px; border-radius:20px; font-size:11px; font-weight:700; margin-bottom:14px;
+  }
+
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:22px; }
+  .section-title{ font-size:14px; font-weight:700; margin:20px 2px 10px; display:flex; align-items:center; justify-content:space-between; }
+  .section-title span.link{ font-size:11px; font-weight:700; color:var(--olive); }
+
+  .badge{ display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:700; padding:3px 9px; border-radius:20px; }
+  .badge-olive{ background:var(--olive-bg); color:var(--olive-dark); }
+  .badge-clay{ background:var(--clay-bg); color:var(--clay); }
+  .badge-sky{ background:var(--sky-bg); color:var(--sky); }
+  .badge-gray{ background:#F0EEE5; color:var(--muted); }
+
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:6px; font-size:12.5px; font-weight:700; padding:9px 16px; border-radius:12px; border:1px solid transparent; }
+  .btn-olive{ background:var(--olive); color:#fff; }
+  .btn-ghost{ background:#fff; border-color:var(--line); color:var(--ink); }
+  .btn-block{ width:100%; }
+
+  .progress-track{ height:6px; border-radius:20px; background:#EEECE1; overflow:hidden; }
+  .progress-fill{ height:100%; border-radius:20px; }
+
+  /* ================= Home: balance card ================= */
+  .balance-card{ padding:20px 20px 18px; background:var(--leaf-pattern), linear-gradient(150deg, #2BC26E, var(--olive-dark) 75%); background-repeat:repeat, no-repeat; color:#fff; border:none; position:relative; overflow:hidden; }
+  .balance-card::after{ content:''; position:absolute; top:-40px; right:-40px; width:150px; height:150px; border-radius:44% 56% 62% 38% / 48% 44% 56% 52%; background:rgba(255,255,255,.08); }
+  .balance-label{ font-size:11px; color:rgba(255,255,255,.7); font-weight:600; }
+  .balance-num{ font-size:27px; font-weight:700; margin-top:4px; }
+  .balance-actions{ display:flex; gap:8px; margin-top:16px; }
+  .balance-actions .btn{ flex:1; }
+  .btn-white{ background:#fff; color:var(--olive-dark); }
+  .btn-outline-white{ background:rgba(255,255,255,.14); color:#fff; }
+
+  /* ================= Impact stats ================= */
+  .impact-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-top:14px; }
+  .impact-card{ padding:13px 10px; text-align:center; }
+  .impact-icon{ width:30px; height:30px; border-radius:9px; margin:0 auto 8px; display:flex; align-items:center; justify-content:center; }
+  .impact-icon svg{ width:15px; height:15px; }
+  .impact-val{ font-size:15px; font-weight:700; }
+  .impact-lbl{ font-size:9px; color:var(--muted); margin-top:2px; font-weight:600; line-height:1.3; }
+
+  /* ================= Composition bar (signature) ================= */
+  .comp-card{ padding:16px 18px; margin-top:14px; }
+  .comp-top{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px; }
+  .comp-total{ font-size:12.5px; font-weight:700; }
+  .comp-total .mono{ font-size:15px; }
+  .comp-bar{ display:flex; height:12px; border-radius:20px; overflow:hidden; }
+  .comp-seg{ height:100%; }
+  .comp-legend{ display:grid; grid-template-columns:1fr 1fr; gap:8px 14px; margin-top:12px; }
+  .comp-leg-item{ display:flex; align-items:center; gap:6px; font-size:10.5px; }
+  .comp-leg-dot{ width:8px; height:8px; border-radius:3px; flex-shrink:0; }
+  .comp-leg-label{ color:var(--muted); font-weight:600; flex:1; }
+  .comp-leg-val{ font-weight:700; }
+
+  .pickup-card{ display:flex; align-items:center; gap:12px; padding:15px 16px; margin-top:14px; }
+  .pickup-icon{ width:42px; height:42px; border-radius:13px; background:var(--sky-bg); color:var(--sky); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .pickup-icon svg{ width:20px; height:20px; }
+  .pickup-title{ font-size:12.5px; font-weight:700; }
+  .pickup-sub{ font-size:10.5px; color:var(--muted); margin-top:2px; }
+
+  .challenge-card{ padding:16px 18px; margin-top:14px; }
+  .challenge-top{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+  .challenge-icon{ width:36px; height:36px; border-radius:11px; background:var(--clay-bg); color:var(--clay); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .challenge-icon svg{ width:17px; height:17px; }
+  .challenge-title{ font-size:12.5px; font-weight:700; }
+  .challenge-sub{ font-size:10.5px; color:var(--muted); margin-top:1px; }
+
+  /* ================= Setor (submit) view ================= */
+  .cat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:6px; }
+  .cat-tile{ padding:14px 8px; text-align:center; border:1.5px solid var(--line); }
+  .cat-tile.selected{ border-color:var(--olive); background:var(--olive-bg); }
+  .cat-icon{ width:34px; height:34px; border-radius:10px; margin:0 auto 8px; display:flex; align-items:center; justify-content:center; }
+  .cat-icon svg{ width:16px; height:16px; }
+  .cat-name{ font-size:11px; font-weight:700; }
+  .cat-price{ font-size:9.5px; color:var(--muted); margin-top:2px; }
+
+  .form-card{ padding:18px; margin-top:16px; }
+  .form-label{ font-size:11px; font-weight:700; color:var(--muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:.03em; }
+  .weight-stepper{ display:flex; align-items:center; justify-content:center; gap:20px; margin-bottom:18px; }
+  .stepper-btn{ width:38px; height:38px; border-radius:50%; background:var(--olive-bg); color:var(--olive-dark); border:none; font-size:18px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .stepper-val{ font-size:26px; font-weight:700; min-width:80px; text-align:center; }
+  .method-row{ display:flex; gap:8px; margin-bottom:16px; }
+  .method-chip{ flex:1; padding:12px 8px; text-align:center; border:1.5px solid var(--line); border-radius:14px; font-size:11.5px; font-weight:700; }
+  .method-chip.active{ border-color:var(--olive); background:var(--olive-bg); color:var(--olive-dark); }
+  .estimate-row{ display:flex; justify-content:space-between; align-items:center; padding:12px 14px; background:var(--sky-bg); border-radius:12px; margin-bottom:16px; }
+  .estimate-label{ font-size:11.5px; font-weight:600; color:var(--sky); }
+  .estimate-val{ font-size:16px; font-weight:700; color:var(--sky); }
+
+  /* ================= History ================= */
+  .chip-row{ display:flex; gap:7px; overflow-x:auto; padding:2px 2px 4px; margin-bottom:10px; }
+  .chip{ flex-shrink:0; padding:7px 14px; border-radius:20px; font-size:11.5px; font-weight:700; border:1px solid var(--line); background:#fff; color:var(--muted); white-space:nowrap; }
+  .chip.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+
+  .hist-row{ display:flex; align-items:center; gap:12px; padding:13px; margin-bottom:9px; }
+  .hist-icon{ width:40px; height:40px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .hist-icon svg{ width:18px; height:18px; }
+  .hist-title{ font-size:12.5px; font-weight:700; }
+  .hist-meta{ font-size:10.5px; color:var(--muted); margin-top:2px; }
+  .hist-val{ margin-left:auto; text-align:right; }
+  .hist-amt{ font-size:12.5px; font-weight:700; }
+  .hist-amt.plus{ color:var(--olive); }
+  .hist-amt.minus{ color:var(--red); }
+
+  /* ================= Peringkat (leaderboard) ================= */
+  .rank-hero{ padding:18px; text-align:center; background:var(--leaf-pattern), linear-gradient(150deg, var(--teal), #0E7A5E 75%); background-repeat:repeat, no-repeat; color:#fff; border:none; position:relative; overflow:hidden; }
+  .rank-hero-lbl{ font-size:11px; color:rgba(255,255,255,.7); font-weight:600; }
+  .rank-hero-val{ font-size:24px; font-weight:700; margin-top:4px; }
+  .rank-hero-sub{ font-size:10.5px; color:rgba(255,255,255,.65); margin-top:4px; }
+
+  .rt-row{ display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); }
+  .rt-row:last-child{ border-bottom:none; }
+  .rt-rank{ width:22px; font-size:13px; font-weight:800; color:var(--muted); text-align:center; flex-shrink:0; }
+  .rt-rank.top{ color:var(--clay); }
+  .rt-icon{ width:36px; height:36px; border-radius:11px; background:var(--olive-bg); color:var(--olive-dark); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0; }
+  .rt-icon.me{ background:var(--olive); color:#fff; }
+  .rt-name{ font-size:12px; font-weight:700; flex:1; }
+  .rt-name .you-tag{ font-size:9.5px; color:var(--muted); font-weight:600; }
+  .rt-kg{ font-size:12px; font-weight:700; }
+
+  .badge-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:6px; }
+  .achieve{ padding:14px 8px; text-align:center; }
+  .achieve-icon{ width:38px; height:38px; border-radius:50%; margin:0 auto 8px; display:flex; align-items:center; justify-content:center; }
+  .achieve-icon svg{ width:18px; height:18px; }
+  .achieve.locked{ opacity:.4; }
+  .achieve-label{ font-size:9.5px; font-weight:700; line-height:1.3; }
+
+  /* ================= Profile ================= */
+  .profile-hero{ display:flex; flex-direction:column; align-items:center; text-align:center; padding:22px 0 16px; }
+  .profile-avatar-wrap{ position:relative; width:88px; height:88px; margin-bottom:12px; display:flex; align-items:center; justify-content:center; }
+  .profile-avatar-blob{ position:absolute; inset:0; background:var(--olive-bg); border-radius:42% 58% 65% 35% / 45% 45% 55% 55%; transform:rotate(-6deg); }
+  .profile-avatar{ width:74px; height:74px; border-radius:50%; background:var(--olive); color:#fff; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:700; position:relative; z-index:1; }
+  .profile-name{ font-size:17px; font-weight:700; }
+  .profile-sub{ font-size:11.5px; color:var(--muted); margin-top:2px; }
+  .profile-stats{ display:flex; gap:10px; margin-top:16px; width:100%; }
+  .profile-stat{ flex:1; text-align:center; padding:12px 6px; }
+  .profile-stat-val{ font-size:14px; font-weight:700; }
+  .profile-stat-lbl{ font-size:9px; color:var(--muted); margin-top:2px; font-weight:600; }
+
+  .bank-card{ display:flex; align-items:center; gap:12px; padding:14px 16px; margin-top:16px; }
+  .bank-dot{ width:9px; height:9px; border-radius:50%; background:var(--olive); flex-shrink:0; box-shadow:0 0 0 3px var(--olive-bg); }
+  .bank-title{ font-size:12.5px; font-weight:700; }
+  .bank-sub{ font-size:10.5px; color:var(--muted); margin-top:1px; }
+
+  .settings-list{ margin-top:16px; }
+  .settings-row{ display:flex; align-items:center; gap:12px; padding:13px 4px; border-bottom:1px solid var(--line); font-size:12.5px; font-weight:600; }
+  .settings-row:last-child{ border-bottom:none; }
+  .settings-icon{ width:32px; height:32px; border-radius:9px; background:#F1EFE5; display:flex; align-items:center; justify-content:center; color:var(--ink); flex-shrink:0; }
+  .settings-icon svg{ width:15px; height:15px; }
+  .settings-chev{ margin-left:auto; color:#C7C2B4; }
+  .settings-chev svg{ width:15px; height:15px; }
+
+  @media (max-width: 460px){
+    body{ padding:0; align-items:flex-start; }
+    .phone{ width:100vw; height:100vh; border-radius:0; padding:0; box-shadow:none; }
+    .screen{ border-radius:0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="phone">
+  <div class="screen">
+    <div class="notch"></div>
+
+    <div class="status-bar">
+      <div>08:42</div>
+      <div class="status-icons">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a15 15 0 0 1 20 0"/><path d="M5.5 12a10 10 0 0 1 13 0"/><path d="M9 15.5a5 5 0 0 1 6 0"/><circle cx="12" cy="19" r="1" fill="currentColor" stroke="none"/></svg>
+        <svg width="20" height="12" viewBox="0 0 24 14" fill="none"><rect x="1" y="1" width="19" height="12" rx="3" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="3" width="12" height="8" rx="1.5" fill="currentColor"/><rect x="21.5" y="4.5" width="1.8" height="5" rx="0.9" fill="currentColor"/></svg>
+      </div>
+    </div>
+
+    <div class="screen-content">
+
+      <!-- ===================== HOME ===================== -->
+      <section class="view active" id="view-home">
+        <div class="top-row">
+          <div>
+            <div class="greeting-label">Selamat pagi</div>
+            <div class="greeting-name">Wulan Setiawati</div>
+          </div>
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="flag-dot"></span>
+          </div>
+        </div>
+
+        <div class="streak-chip">🌱 8 minggu berturut-turut setor sampah</div>
+
+        <div class="card balance-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.4" style="position:absolute;bottom:-10px;right:8px;width:76px;height:76px;transform:rotate(-12deg);">
+            <path d="M12 2c3 3 5 6 5 9a5 5 0 0 1-10 0c0-3 2-6 5-9z"/>
+          </svg>
+          <div class="balance-label">Saldo Pilah</div>
+          <div class="balance-num mono">Rp 184.500</div>
+          <div class="balance-actions">
+            <button class="btn btn-white">Tarik Saldo</button>
+            <button class="btn btn-outline-white">Riwayat</button>
+          </div>
+        </div>
+
+        <div class="impact-row">
+          <div class="card impact-card">
+            <div class="impact-icon" style="background:var(--olive-bg);color:var(--olive-dark);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c0-4 3-14 14-14M17 3v4h4"/></svg></div>
+            <div class="impact-val mono">14.2</div>
+            <div class="impact-lbl">kg bulan ini</div>
+          </div>
+          <div class="card impact-card">
+            <div class="impact-icon" style="background:var(--sky-bg);color:var(--sky);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9l7-7 7 7M5 15l7 7 7-7"/></svg></div>
+            <div class="impact-val mono">9.8</div>
+            <div class="impact-lbl">kg CO₂ dihindari</div>
+          </div>
+          <div class="card impact-card">
+            <div class="impact-icon" style="background:var(--teal-bg);color:var(--teal);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 3 5 6 5 9a5 5 0 0 1-10 0c0-3 2-6 5-9z"/><path d="M12 16v6"/></svg></div>
+            <div class="impact-val mono">0.6</div>
+            <div class="impact-lbl">setara pohon</div>
+          </div>
+        </div>
+
+        <div class="card comp-card">
+          <div class="comp-top">
+            <div style="font-size:12.5px;font-weight:700;">Komposisi Sampah Bulan Ini</div>
+            <div class="comp-total mono">14,2 kg</div>
+          </div>
+          <div class="comp-bar">
+            <div class="comp-seg" style="width:36%;background:var(--sky);"></div>
+            <div class="comp-seg" style="width:24%;background:var(--clay);"></div>
+            <div class="comp-seg" style="width:18%;background:var(--steel);"></div>
+            <div class="comp-seg" style="width:14%;background:var(--teal);"></div>
+            <div class="comp-seg" style="width:8%;background:var(--olive);"></div>
+          </div>
+          <div class="comp-legend">
+            <div class="comp-leg-item"><span class="comp-leg-dot" style="background:var(--sky);"></span><span class="comp-leg-label">Plastik</span><span class="comp-leg-val">36%</span></div>
+            <div class="comp-leg-item"><span class="comp-leg-dot" style="background:var(--clay);"></span><span class="comp-leg-label">Kertas</span><span class="comp-leg-val">24%</span></div>
+            <div class="comp-leg-item"><span class="comp-leg-dot" style="background:var(--steel);"></span><span class="comp-leg-label">Logam</span><span class="comp-leg-val">18%</span></div>
+            <div class="comp-leg-item"><span class="comp-leg-dot" style="background:var(--teal);"></span><span class="comp-leg-label">Kaca</span><span class="comp-leg-val">14%</span></div>
+            <div class="comp-leg-item"><span class="comp-leg-dot" style="background:var(--olive);"></span><span class="comp-leg-label">Organik</span><span class="comp-leg-val">8%</span></div>
+          </div>
+        </div>
+
+        <div class="card pickup-card">
+          <div class="pickup-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="12" rx="2"/><path d="M16 10h4l3 3v5h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></div>
+          <div style="flex:1;">
+            <div class="pickup-title">Jemput Terdekat</div>
+            <div class="pickup-sub">Kamis, 20 Agu · 09.00–11.00 · RW 04</div>
+          </div>
+          <button class="btn btn-ghost" style="padding:7px 12px;font-size:11px;">Atur</button>
+        </div>
+
+        <div class="card challenge-card">
+          <div class="challenge-top">
+            <div class="challenge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21.98.54 1.03 2.03 1.03 3.79"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
+            <div>
+              <div class="challenge-title">Tantangan Agustus: 20kg Terpilah</div>
+              <div class="challenge-sub">14,2 dari 20 kg · 68 warga ikut</div>
+            </div>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:71%;background:var(--clay);"></div></div>
+        </div>
+      </section>
+
+      <!-- ===================== SETOR ===================== -->
+      <section class="view" id="view-setor">
+        <div class="top-row" style="padding-bottom:2px;">
+          <div class="greeting-name" style="font-size:19px;">Setor Sampah</div>
+        </div>
+        <div class="greeting-label" style="margin-bottom:10px;">Pilih kategori sampah</div>
+
+        <div class="cat-grid">
+          <div class="cat-tile card selected">
+            <div class="cat-icon" style="background:var(--sky-bg);color:var(--sky);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2M8 12V8a4 4 0 0 1 8 0v4"/></svg></div>
+            <div class="cat-name">Plastik</div>
+            <div class="cat-price">Rp 2.500/kg</div>
+          </div>
+          <div class="cat-tile card">
+            <div class="cat-icon" style="background:var(--clay-bg);color:var(--clay);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h11l5 5v13H4z"/><path d="M15 3v5h5"/></svg></div>
+            <div class="cat-name">Kertas</div>
+            <div class="cat-price">Rp 1.800/kg</div>
+          </div>
+          <div class="cat-tile card">
+            <div class="cat-icon" style="background:var(--steel-bg);color:var(--steel);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18"/></svg></div>
+            <div class="cat-name">Logam</div>
+            <div class="cat-price">Rp 4.200/kg</div>
+          </div>
+          <div class="cat-tile card">
+            <div class="cat-icon" style="background:var(--teal-bg);color:var(--teal);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6l1 5-3 2v11a2 2 0 0 1-4 0V9L8 7z"/></svg></div>
+            <div class="cat-name">Kaca</div>
+            <div class="cat-price">Rp 1.200/kg</div>
+          </div>
+          <div class="cat-tile card">
+            <div class="cat-icon" style="background:var(--olive-bg);color:var(--olive-dark);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 3 5 6 5 9a5 5 0 0 1-10 0c0-3 2-6 5-9z"/></svg></div>
+            <div class="cat-name">Organik</div>
+            <div class="cat-price">Rp 500/kg</div>
+          </div>
+          <div class="cat-tile card">
+            <div class="cat-icon" style="background:var(--plum-bg);color:var(--plum);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 18h6"/></svg></div>
+            <div class="cat-name">Elektronik</div>
+            <div class="cat-price">Rp 6.000/kg</div>
+          </div>
+        </div>
+
+        <div class="card form-card">
+          <div class="form-label">Perkiraan Berat</div>
+          <div class="weight-stepper">
+            <button class="stepper-btn">−</button>
+            <div class="stepper-val mono">3,5 kg</div>
+            <button class="stepper-btn">+</button>
+          </div>
+
+          <div class="form-label">Metode Pengumpulan</div>
+          <div class="method-row">
+            <div class="method-chip active">Jemput ke Rumah</div>
+            <div class="method-chip">Antar Sendiri</div>
+          </div>
+
+          <div class="estimate-row">
+            <span class="estimate-label">Estimasi diterima</span>
+            <span class="estimate-val mono">Rp 8.750</span>
+          </div>
+
+          <button class="btn btn-olive btn-block">Kirim Permintaan Setor</button>
+        </div>
+      </section>
+
+      <!-- ===================== RIWAYAT ===================== -->
+      <section class="view" id="view-riwayat">
+        <div class="top-row" style="padding-bottom:2px;">
+          <div class="greeting-name" style="font-size:19px;">Riwayat</div>
+        </div>
+        <div class="chip-row">
+          <button class="chip active">Semua</button>
+          <button class="chip">Setor</button>
+          <button class="chip">Tarik Saldo</button>
+        </div>
+
+        <div class="hist-row card">
+          <div class="hist-icon" style="background:var(--sky-bg);color:var(--sky);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2M8 12V8a4 4 0 0 1 8 0v4"/></svg></div>
+          <div><div class="hist-title">Setor Plastik</div><div class="hist-meta">16 Agu · 3,5 kg · Selesai</div></div>
+          <div class="hist-val"><div class="hist-amt plus mono">+Rp 8.750</div></div>
+        </div>
+        <div class="hist-row card">
+          <div class="hist-icon" style="background:var(--red-bg);color:var(--red);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+          <div><div class="hist-title">Tarik Saldo</div><div class="hist-meta">12 Agu · Ke DANA · Selesai</div></div>
+          <div class="hist-val"><div class="hist-amt minus mono">−Rp 50.000</div></div>
+        </div>
+        <div class="hist-row card">
+          <div class="hist-icon" style="background:var(--clay-bg);color:var(--clay);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h11l5 5v13H4z"/><path d="M15 3v5h5"/></svg></div>
+          <div><div class="hist-title">Setor Kertas</div><div class="hist-meta">9 Agu · 5,1 kg · Selesai</div></div>
+          <div class="hist-val"><div class="hist-amt plus mono">+Rp 9.180</div></div>
+        </div>
+        <div class="hist-row card">
+          <div class="hist-icon" style="background:var(--steel-bg);color:var(--steel);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18"/></svg></div>
+          <div><div class="hist-title">Setor Logam</div><div class="hist-meta">3 Agu · Diproses</div></div>
+          <div class="hist-val"><div class="badge badge-gray">Diproses</div></div>
+        </div>
+        <div class="hist-row card">
+          <div class="hist-icon" style="background:var(--teal-bg);color:var(--teal);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6l1 5-3 2v11a2 2 0 0 1-4 0V9L8 7z"/></svg></div>
+          <div><div class="hist-title">Setor Kaca</div><div class="hist-meta">28 Jul · 2,3 kg · Selesai</div></div>
+          <div class="hist-val"><div class="hist-amt plus mono">+Rp 2.760</div></div>
+        </div>
+      </section>
+
+      <!-- ===================== PERINGKAT ===================== -->
+      <section class="view" id="view-peringkat">
+        <div class="top-row" style="padding-bottom:2px;">
+          <div class="greeting-name" style="font-size:19px;">Peringkat</div>
+        </div>
+
+        <div class="card rank-hero">
+          <div class="rank-hero-lbl">Dampak Kolektif Kelurahan Sukamaju</div>
+          <div class="rank-hero-val mono">842 kg</div>
+          <div class="rank-hero-sub">setara 58 pohon · 590 kg CO₂ dihindari</div>
+        </div>
+
+        <div class="section-title">Peringkat Antar RT</div>
+        <div class="card" style="padding:4px 16px;">
+          <div class="rt-row">
+            <div class="rt-rank top">1</div>
+            <div class="rt-icon">RT06</div>
+            <div class="rt-name">RT 06</div>
+            <div class="rt-kg mono">128 kg</div>
+          </div>
+          <div class="rt-row">
+            <div class="rt-rank top">2</div>
+            <div class="rt-icon">RT02</div>
+            <div class="rt-name">RT 02</div>
+            <div class="rt-kg mono">114 kg</div>
+          </div>
+          <div class="rt-row">
+            <div class="rt-rank">3</div>
+            <div class="rt-icon me">RT04</div>
+            <div class="rt-name">RT 04 <span class="you-tag">(RT Kamu)</span></div>
+            <div class="rt-kg mono">97 kg</div>
+          </div>
+          <div class="rt-row">
+            <div class="rt-rank">4</div>
+            <div class="rt-icon">RT01</div>
+            <div class="rt-name">RT 01</div>
+            <div class="rt-kg mono">85 kg</div>
+          </div>
+        </div>
+
+        <div class="section-title">Pencapaian</div>
+        <div class="badge-grid">
+          <div class="card achieve">
+            <div class="achieve-icon" style="background:var(--olive-bg);color:var(--olive-dark);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 3 5 6 5 9a5 5 0 0 1-10 0c0-3 2-6 5-9z"/></svg></div>
+            <div class="achieve-label">8 Minggu<br/>Beruntun</div>
+          </div>
+          <div class="card achieve">
+            <div class="achieve-icon" style="background:var(--sky-bg);color:var(--sky);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+            <div class="achieve-label">100 kg<br/>Terkumpul</div>
+          </div>
+          <div class="card achieve locked">
+            <div class="achieve-icon" style="background:#F1EFE5;color:var(--muted);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+            <div class="achieve-label">Juara RT<br/>Bulanan</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PROFIL ===================== -->
+      <section class="view" id="view-profil">
+        <div class="profile-hero">
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar-blob"></div>
+            <div class="profile-avatar">WS</div>
+          </div>
+          <div class="profile-name">Wulan Setiawati</div>
+          <div class="profile-sub">RT 04 / RW 04 · Kel. Sukamaju</div>
+          <div class="profile-stats">
+            <div class="card profile-stat"><div class="profile-stat-val mono">14,2</div><div class="profile-stat-lbl">Kg Bulan Ini</div></div>
+            <div class="card profile-stat"><div class="profile-stat-val mono">312</div><div class="profile-stat-lbl">Kg Total</div></div>
+            <div class="card profile-stat"><div class="profile-stat-val mono">8</div><div class="profile-stat-lbl">Minggu Runtun</div></div>
+          </div>
+        </div>
+
+        <div class="card bank-card">
+          <span class="bank-dot"></span>
+          <div>
+            <div class="bank-title">Bank Sampah Mitra: Sukamaju Bersih</div>
+            <div class="bank-sub">Terdaftar sejak Feb 2026</div>
+          </div>
+        </div>
+
+        <div class="section-title">Pengaturan</div>
+        <div class="card settings-list" style="padding:2px 14px;">
+          <div class="settings-row">
+            <div class="settings-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="12" rx="2"/><path d="M16 10h4l3 3v5h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></div>
+            Jadwal Jemput Otomatis
+            <span class="settings-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+          </div>
+          <div class="settings-row">
+            <div class="settings-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+            Notifikasi
+            <span class="settings-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+          </div>
+          <div class="settings-row">
+            <div class="settings-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+            Metode Penarikan Saldo
+            <span class="settings-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+          </div>
+          <div class="settings-row">
+            <div class="settings-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 2-2.3 3.3M12 17h.01"/></svg></div>
+            Bantuan
+            <span class="settings-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+          </div>
+          <div class="settings-row" style="color:var(--red);">
+            <div class="settings-icon" style="background:var(--red-bg);color:var(--red);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></div>
+            Keluar
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="tab-bar">
+      <button class="tab-item active" data-view="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+        Beranda
+      </button>
+      <button class="tab-item" data-view="setor">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        Setor
+      </button>
+      <button class="tab-item" data-view="riwayat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        Riwayat
+      </button>
+      <button class="tab-item" data-view="peringkat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M17 3H7v6a5 5 0 0 0 10 0V3z"/><path d="M7 5H3v2a4 4 0 0 0 4 4M17 5h4v2a4 4 0 0 1-4 4"/></svg>
+        Peringkat
+      </button>
+      <button class="tab-item" data-view="profil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        Profil
+      </button>
+    </nav>
+  </div>
+</div>
+
+<script>
+  const tabItems = document.querySelectorAll('.tab-item');
+  const views = document.querySelectorAll('.view');
+  const content = document.querySelector('.screen-content');
+  tabItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const target = item.getAttribute('data-view');
+      tabItems.forEach(t => t.classList.remove('active'));
+      item.classList.add('active');
+      views.forEach(v => v.classList.remove('active'));
+      document.getElementById('view-' + target).classList.add('active');
+      content.scrollTop = 0;
+    });
+  });
+
+  document.querySelectorAll('.cat-tile').forEach(tile => {
+    tile.addEventListener('click', () => {
+      document.querySelectorAll('.cat-tile').forEach(t => t.classList.remove('selected'));
+      tile.classList.add('selected');
+    });
+  });
+
+  document.querySelectorAll('.method-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.method-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const parent = chip.closest('.chip-row');
+      parent.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+
+  let weight = 3.5;
+  const weightVal = document.querySelector('.stepper-val');
+  const steppers = document.querySelectorAll('.stepper-btn');
+  if (steppers.length === 2) {
+    steppers[0].addEventListener('click', () => { weight = Math.max(0.5, weight - 0.5); updateWeight(); });
+    steppers[1].addEventListener('click', () => { weight = weight + 0.5; updateWeight(); });
+  }
+  function updateWeight(){
+    weightVal.textContent = weight.toFixed(1).replace('.', ',') + ' kg';
+  }
+</script>
+
+</body>
+</html>

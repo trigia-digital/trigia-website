@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sumber Makmur - Sistem Kasir</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,300..500,0,0" rel="stylesheet">
+<style>
+  :root{
+    --sidebar:#182444; --sidebar-active:#28345E; --sidebar-text:#AEB7D6;
+    --page:#F3F5FA; --surface:#FFFFFF; --border:#E8EBF3;
+    --ink:#1F2333; --ink-soft:#7C8194;
+    --blue:#3B7CF6; --blue-soft:#E9F0FE; --blue-dark:#2A5FD1;
+    --green:#20C374; --green-soft:#E7FAF0;
+    --orange:#F98A2B; --orange-soft:#FFF1E2;
+    --red:#F0473F; --red-soft:#FDEBEA;
+  }
+  * { box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:var(--page); color:var(--ink); overflow-x:hidden; }
+  .fp { font-family:'Poppins',sans-serif; }
+  .fm { font-family:'IBM Plex Mono',monospace; }
+  .material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 20; }
+  ::-webkit-scrollbar { width:6px; height:6px; }
+  ::-webkit-scrollbar-thumb { background:#D6DAE6; border-radius:3px; }
+
+  .nav-link { color:var(--sidebar-text); transition:.15s; position:relative; }
+  .nav-link:hover { background:rgba(255,255,255,.06); color:#fff; }
+  .nav-link.active { background:var(--sidebar-active); color:#fff; }
+  .nav-link.active::before { content:""; position:absolute; left:-2px; top:8px; bottom:8px; width:3px; background:var(--blue); border-radius:2px; }
+
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:16px; box-shadow:0 1px 2px rgba(20,25,45,.04); }
+  .btn { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; border-radius:11px; padding:9px 15px; transition:.15s; white-space:nowrap; }
+  .btn-primary { background:var(--blue); color:#fff; box-shadow:0 1px 2px rgba(59,124,246,.35); }
+  .btn-primary:hover { background:var(--blue-dark); }
+  .btn-secondary { background:var(--surface); border:1px solid var(--border); color:var(--ink); }
+  .btn-secondary:hover { background:#F7F8FC; }
+  .btn-ghost { color:var(--blue); font-weight:500; }
+  .btn-ghost:hover { text-decoration:underline; }
+  .btn-danger-text { color:var(--red); font-weight:500; }
+
+  .badge { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:600; padding:3px 9px; border-radius:20px; white-space:nowrap; }
+  .badge::before { content:""; width:5px; height:5px; border-radius:50%; background:currentColor; flex-shrink:0; }
+  .badge-orange { background:var(--orange-soft); color:var(--orange); }
+  .badge-red { background:var(--red-soft); color:var(--red); }
+  .badge-green { background:var(--green-soft); color:var(--green); }
+  .badge-blue { background:var(--blue-soft); color:var(--blue); }
+
+  table.dt { width:100%; font-size:13.5px; border-collapse:collapse; }
+  table.dt thead th { font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); font-weight:700; text-align:left; padding:12px 16px; border-bottom:1px solid var(--border); background:#FAFBFD; }
+  table.dt tbody td { padding:13px 16px; border-bottom:1px solid var(--border); }
+  table.dt tbody tr:hover td { background:#FAFBFD; }
+  table.dt tbody tr:last-child td { border-bottom:none; }
+
+  .field { width:100%; border:1px solid var(--border); border-radius:10px; padding:9px 12px; font-size:13.5px; background:var(--surface); }
+  .field:focus { outline:none; border-color:var(--blue); box-shadow:0 0 0 3px var(--blue-soft); }
+
+  .metric-card { border-radius:18px; padding:18px; color:#fff; position:relative; overflow:hidden; }
+  .metric-icon { width:38px; height:38px; border-radius:11px; background:rgba(255,255,255,.22); display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+
+  .login-bg { background:linear-gradient(160deg, #182444 0%, #22335E 55%, #2A4A8C 100%); }
+
+  .receipt-tear {
+    clip-path: polygon(0% 7px,4% 0,8% 7px,12% 0,16% 7px,20% 0,24% 7px,28% 0,32% 7px,36% 0,40% 7px,44% 0,48% 7px,52% 0,56% 7px,60% 0,64% 7px,68% 0,72% 7px,76% 0,80% 7px,84% 0,88% 7px,92% 0,96% 7px,100% 0,100% 100%,0 100%);
+  }
+  .prod-icon { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; }
+
+  .login-illustration {
+    background:
+      radial-gradient(circle at 30% 20%, rgba(59,124,246,.35), transparent 45%),
+      radial-gradient(circle at 80% 75%, rgba(32,195,116,.18), transparent 40%),
+      linear-gradient(160deg, #101833 0%, #182444 55%, #1F2E56 100%);
+  }
+  .login-illustration::before {
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size:32px 32px;
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 25%, #000 75%, transparent);
+    mask-image: linear-gradient(180deg, transparent, #000 25%, #000 75%, transparent);
+  }
+  .float-icon { position:absolute; color:rgba(255,255,255,.10); }
+
+  @media print {
+    body * { visibility: hidden; }
+    #print-area, #print-area *, #print-report, #print-report * { visibility: visible; }
+    #print-area { position: absolute; top: 0; left: 0; width: 280px; }
+    #print-report { position: absolute; top: 0; left: 0; width: 100%; }
+  }
+
+  /* ===== Mobile responsive ===== */
+  #sidebar {
+    position: fixed; top: 0; left: 0; height: 100vh; z-index: 50;
+    transform: translateX(-100%);
+    transition: transform .22s ease;
+  }
+  #sidebar.sidebar-open { transform: translateX(0); }
+  #sidebar-overlay {
+    position: fixed; inset: 0; background: rgba(15,20,40,.45); z-index: 40;
+    opacity: 0; pointer-events: none; transition: opacity .2s ease;
+  }
+  #sidebar-overlay.overlay-open { opacity: 1; pointer-events: auto; }
+
+  @media (min-width: 768px) {
+    #sidebar { position: static; height: auto; transform: none; z-index: auto; }
+    #sidebar-overlay { display: none; }
+  }
+
+  @media (max-width: 767px) {
+    .card:has(> table.dt) { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table.dt { min-width: 640px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen" class="fixed inset-0 z-40 flex">
+
+  <!-- LEFT: brand panel -->
+  <div class="hidden md:flex w-1/2 login-illustration relative flex-col justify-between p-12 overflow-hidden">
+    <span class="material-symbols-outlined float-icon" style="font-size:110px; top:8%; left:10%; transform:rotate(-12deg);">construction</span>
+    <span class="material-symbols-outlined float-icon" style="font-size:80px; bottom:14%; left:14%; transform:rotate(8deg);">straighten</span>
+    <span class="material-symbols-outlined float-icon" style="font-size:130px; bottom:-4%; right:-2%; transform:rotate(-6deg);">hardware</span>
+    <span class="material-symbols-outlined float-icon" style="font-size:64px; top:20%; right:16%; transform:rotate(10deg);">engineering</span>
+
+    <div class="relative z-10 flex items-center gap-2.5">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(255,255,255,.14);">
+        <span class="material-symbols-outlined text-white" style="font-size:22px;">storefront</span>
+      </div>
+      <span class="fp text-white text-lg">Sumber Makmur</span>
+    </div>
+
+    <div class="relative z-10 max-w-sm">
+      <p class="fp text-white text-[28px] leading-tight mb-3">Kelola toko bangunan Anda, dari satu layar.</p>
+      <p class="text-sm text-white/55 leading-relaxed">Transaksi kasir, stok, supplier, hingga laporan keuangan — semua tercatat rapi dan real-time.</p>
+    </div>
+
+    <p class="relative z-10 text-xs text-white/35">© 2026 Sumber Makmur — Demo Sistem Kasir</p>
+  </div>
+
+  <!-- RIGHT: login card -->
+  <div class="flex-1 flex items-center justify-center p-6" style="background:var(--page);">
+    <div class="w-full max-w-sm">
+      <div class="md:hidden text-center mb-6">
+        <div class="w-12 h-12 rounded-xl mx-auto mb-2 flex items-center justify-center" style="background:var(--sidebar);">
+          <span class="material-symbols-outlined text-white" style="font-size:22px;">storefront</span>
+        </div>
+        <p class="fp text-lg">Sumber Makmur</p>
+      </div>
+
+      <p class="fp text-2xl mb-1">Selamat datang 👋</p>
+      <p class="text-sm mb-7" style="color:var(--ink-soft);">Pilih akun untuk masuk ke sistem kasir.</p>
+
+      <p class="text-xs font-semibold mb-3" style="color:var(--ink-soft); letter-spacing:.04em;">MASUK SEBAGAI</p>
+      <div class="space-y-2.5">
+        <button onclick="login('owner')" class="w-full card p-4 flex items-center gap-3 text-left hover:border-[var(--blue)] transition">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:var(--blue-soft); color:var(--blue);">
+            <span class="material-symbols-outlined" style="font-size:21px;">workspace_premium</span>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-semibold">Fatma</p>
+            <p class="text-xs" style="color:var(--ink-soft);">Owner — akses penuh</p>
+          </div>
+          <span class="material-symbols-outlined" style="font-size:19px; color:var(--ink-soft);">chevron_right</span>
+        </button>
+        <button onclick="login('kasir')" class="w-full card p-4 flex items-center gap-3 text-left hover:border-[var(--blue)] transition">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:var(--green-soft); color:var(--green);">
+            <span class="material-symbols-outlined" style="font-size:21px;">point_of_sale</span>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-semibold">Budi</p>
+            <p class="text-xs" style="color:var(--ink-soft);">Kasir — akses transaksi</p>
+          </div>
+          <span class="material-symbols-outlined" style="font-size:19px; color:var(--ink-soft);">chevron_right</span>
+        </button>
+      </div>
+      <p class="text-[11px] mt-5" style="color:var(--ink-soft);">Owner bisa lihat laporan & laba. Kasir hanya akses transaksi harian.</p>
+    </div>
+  </div>
+</div>
+
+<div id="app-shell" class="flex h-screen overflow-hidden hidden">
+
+  <!-- SIDEBAR OVERLAY (mobile) -->
+  <div id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="w-64 flex-shrink-0 flex flex-col" style="background:var(--sidebar);">
+    <div class="px-5 py-5 flex items-center gap-2.5">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:var(--blue);">
+        <span class="material-symbols-outlined text-white" style="font-size:19px;">storefront</span>
+      </div>
+      <div class="min-w-0">
+        <p class="fp text-white text-[14px] leading-tight truncate">Sumber Makmur</p>
+        <p class="text-[10.5px] leading-tight" style="color:var(--sidebar-text);">Sistem Kasir</p>
+      </div>
+    </div>
+    <nav class="flex-1 px-3 py-3 space-y-1" id="nav-menu">
+      <button data-page="dashboard" data-label="Dashboard" class="nav-link active w-full text-left px-3 py-2.5 rounded-xl text-sm flex items-center gap-2.5"><span class="material-symbols-outlined" style="font-size:19px;">grid_view</span>Dashboard</button>
+      <button data-page="kasir" data-label="Kasir" class="nav-link w-full text-left px-3 py-2.5 rounded-xl text-sm flex items-center gap-2.5"><span class="material-symbols-outlined" style="font-size:19px;">point_of_sale</span>Kasir</button>
+      <button data-page="nota" data-label="Nota / Receipt" class="nav-link w-full text-left px-3 py-2.5 rounded-xl text-sm flex items-center gap-2.5"><span class="material-symbols-outlined" style="font-size:19px;">receipt</span>Nota / Receipt</button>
+      <button data-page="produk" data-label="Produk" class="nav-link w-full text-left px-3 py-2.5 rounded-xl text-sm flex items-center gap-2.5"><span class="material-symbols-outlined" style="font-size:19px;">inventory_2</span>Produk</button>
+      <button data-page="opname" data-label="Stok Opname" class="nav-link w-full text-left px-3 py-2.5 rounded-xl text-sm flex items-center gap-2.5"><span class="material-symbols-outlined" style="font-size:19px;">fact_check</span>Stok Opname</button>
+      <button data-page="supplier" data-label="Supplier & PO" class="nav-link w-full text-left px-3 py-2.5 rounded-xl text-sm flex items-center gap-2.5"><span class="material-symbols-outlined" style="font-size:19px;">local_shipping</span>Supplier & PO</button>
+      <button data-page="invoice" data-label="Invoice" class="nav-link w-full text-left px-3 py-2.5 rounded-xl text-sm flex items-center gap-2.5"><span class="material-symbols-outlined" style="font-size:19px;">receipt_long</span>Invoice</button>
+      <button data-page="membership" data-label="Membership" class="nav-link w-full text-left px-3 py-2.5 rounded-xl text-sm flex items-center gap-2.5"><span class="material-symbols-outlined" style="font-size:19px;">loyalty</span>Membership</button>
+      <button data-page="promo" data-label="Promo" class="nav-link w-full text-left px-3 py-2.5 rounded-xl text-sm flex items-center gap-2.5"><span class="material-symbols-outlined" style="font-size:19px;">sell</span>Promo</button>
+      <button data-page="absensi" data-label="Absensi" data-owner-only="1" class="nav-link w-full text-left px-3 py-2.5 rounded-xl text-sm flex items-center gap-2.5"><span class="material-symbols-outlined" style="font-size:19px;">badge</span>Absensi</button>
+      <button data-page="laporan" data-label="Laporan" data-owner-only="1" class="nav-link w-full text-left px-3 py-2.5 rounded-xl text-sm flex items-center gap-2.5"><span class="material-symbols-outlined" style="font-size:19px;">monitoring</span>Laporan</button>
+      <button data-page="staff" data-label="Staff" data-owner-only="1" class="nav-link w-full text-left px-3 py-2.5 rounded-xl text-sm flex items-center gap-2.5"><span class="material-symbols-outlined" style="font-size:19px;">group</span>Staff</button>
+    </nav>
+    <div class="px-4 py-4 mx-3 mb-3 rounded-xl flex items-center gap-2.5" style="background:rgba(255,255,255,.06);">
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-semibold flex-shrink-0" style="background:var(--blue);" id="sidebar-avatar"></div>
+      <div class="flex-1 min-w-0">
+        <p class="text-white text-xs font-medium truncate" id="sidebar-user-name"></p>
+        <p class="text-[10.5px]" style="color:var(--sidebar-text);" id="sidebar-user-role"></p>
+      </div>
+      <button onclick="logout()" class="flex-shrink-0" style="color:var(--sidebar-text);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--sidebar-text)'" aria-label="Keluar">
+        <span class="material-symbols-outlined" style="font-size:18px;">logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 flex flex-col overflow-hidden">
+    <header class="h-16 bg-white border-b flex items-center justify-between px-4 md:px-7 flex-shrink-0" style="border-color:var(--border);">
+      <div class="flex items-center gap-3 min-w-0">
+        <button onclick="toggleSidebar()" class="md:hidden flex-shrink-0" aria-label="Menu">
+          <span class="material-symbols-outlined" style="font-size:24px; color:var(--ink);">menu</span>
+        </button>
+        <div class="min-w-0">
+          <p class="text-[11px] truncate" style="color:var(--ink-soft);">Sumber Makmur / <span id="topbar-crumb">Dashboard</span></p>
+          <p class="fp text-base truncate" id="topbar-title">Dashboard</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2.5 md:gap-4 flex-shrink-0">
+        <div class="relative">
+          <button onclick="toggleNotif()" class="relative" aria-label="Notifikasi">
+            <span class="material-symbols-outlined" style="font-size:21px; color:var(--ink-soft);">notifications</span>
+            <span id="notif-badge" class="hidden absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full text-[10px] text-white flex items-center justify-center font-medium" style="background:var(--red);">0</span>
+          </button>
+          <div id="notif-panel" class="hidden absolute right-0 mt-3 w-[90vw] max-w-80 card p-0 overflow-hidden z-50" style="top:100%;">
+            <div class="flex items-center justify-between px-4 py-3 border-b" style="border-color:var(--border);">
+              <p class="text-sm font-semibold">Notifikasi</p>
+              <button onclick="markAllRead()" class="text-xs" style="color:var(--blue);">Tandai semua dibaca</button>
+            </div>
+            <div id="notif-list" class="max-h-80 overflow-y-auto"></div>
+          </div>
+        </div>
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-semibold" style="background:var(--blue);" id="topbar-avatar"></div>
+      </div>
+    </header>
+    <div class="flex-1 overflow-y-auto">
+      <div class="max-w-6xl mx-auto p-4 md:p-7" id="page-content"></div>
+    </div>
+  </main>
+</div>
+
+<!-- MODAL NOTA -->
+<div id="modal-nota" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+  <div class="w-full max-w-[320px]">
+    <div class="receipt-tear card overflow-hidden">
+      <div id="print-area">
+        <div id="nota-content" class="fm text-[12.5px] p-5 pt-6"></div>
+      </div>
+    </div>
+    <div class="flex gap-2 mt-3">
+      <button onclick="window.print()" class="btn btn-primary flex-1 justify-center"><span class="material-symbols-outlined" style="font-size:17px;">print</span>Cetak</button>
+      <button onclick="kirimStrukDigital()" class="btn btn-secondary flex-1 justify-center"><span class="material-symbols-outlined" style="font-size:17px;">forward_to_inbox</span>Kirim digital</button>
+    </div>
+    <button onclick="closeNota()" class="w-full mt-2 btn btn-secondary justify-center">Tutup</button>
+  </div>
+</div>
+
+<div id="print-report" style="display:none;"></div>
+
+<script>
+/* ================= DATA (in-memory, reset saat reload) ================= */
+
+let satuanMaster = ["Sak","Kg","Batang","Meter","Lembar","Dus","Pcs"];
+
+let currentUser = null;
+const userList = [
+  { id: 1, nama: "Fatma", role: "owner" },
+  { id: 2, nama: "Budi", role: "kasir", gajiHarian: 150000 },
+  { id: 3, nama: "Sari", role: "kasir", gajiHarian: 150000 },
+];
+let activityLog = [];
+
+let attendanceList = [
+  { id: 1, tanggal: "2026-08-11", userId: 2, status: "hadir" },
+  { id: 2, tanggal: "2026-08-11", userId: 3, status: "hadir" },
+  { id: 3, tanggal: "2026-08-12", userId: 2, status: "hadir" },
+  { id: 4, tanggal: "2026-08-12", userId: 3, status: "izin" },
+  { id: 5, tanggal: "2026-08-13", userId: 2, status: "hadir" },
+  { id: 6, tanggal: "2026-08-13", userId: 3, status: "hadir" },
+  { id: 7, tanggal: "2026-08-14", userId: 2, status: "hadir" },
+  { id: 8, tanggal: "2026-08-14", userId: 3, status: "hadir" },
+];
+const PAYMENT_METHODS = ["Tunai","Transfer Bank","QRIS","GoPay","OVO/DANA","Kartu Debit"];
+
+let produkList = [
+  { id: 1, nama: "Semen Tiga Roda", icon: "construction", barcode: "8991002100011", satuanDasar: "Kg", stok: 320, stokMin: 100,
+    satuanJual: [{ nama: "Sak", konversi: 40, harga: 65000 }, { nama: "Kg", konversi: 1, harga: 1800 }] },
+  { id: 2, nama: "Besi beton 10mm", icon: "linear_scale", barcode: "8991002100028", satuanDasar: "Batang", stok: 15, stokMin: 20,
+    satuanJual: [{ nama: "Batang", konversi: 1, harga: 85000 }] },
+  { id: 3, nama: "Kabel NYM 2x1.5", icon: "cable", barcode: "8991002100035", satuanDasar: "Meter", stok: 240, stokMin: 50,
+    satuanJual: [{ nama: "Meter", konversi: 1, harga: 8500 }] },
+  { id: 4, nama: "Triplek 9mm", icon: "view_agenda", barcode: "8991002100042", satuanDasar: "Lembar", stok: 6, stokMin: 15,
+    satuanJual: [{ nama: "Lembar", konversi: 1, harga: 150000 }] },
+  { id: 5, nama: "Cat Tembok Putih 5kg", icon: "format_paint", barcode: "8991002100059", satuanDasar: "Dus", stok: 40, stokMin: 10,
+    satuanJual: [{ nama: "Dus", konversi: 1, harga: 145000 }] },
+];
+
+let transaksiList = [
+  { id: 1, noNota: "RCP-20260814-001", tanggal: "2026-08-14", kasir: "Budi", diskon: 0, total: 585000, metodeBayar: [{metode:"Tunai", jumlah:585000}], items: [{ nama: "Semen Tiga Roda", qty: 9, satuan: "Sak", subtotal: 585000 }] },
+  { id: 2, noNota: "RCP-20260814-002", tanggal: "2026-08-14", kasir: "Sari", diskon: 0, total: 170000, metodeBayar: [{metode:"Transfer", jumlah:170000}], items: [{ nama: "Besi beton 10mm", qty: 2, satuan: "Batang", subtotal: 170000 }] },
+  { id: 3, noNota: "RCP-20260815-001", tanggal: "2026-08-15", kasir: "Budi", diskon: 15000, total: 297500, metodeBayar: [{metode:"Tunai", jumlah:297500}], items: [{ nama: "Kabel NYM 2x1.5", qty: 35, satuan: "Meter", subtotal: 312500 }] },
+];
+
+let opnameList = [
+  { id: 1, tanggal: "2026-08-10", produk: "Semen Tiga Roda", stokSistem: 330, stokFisik: 320, selisih: -10 },
+  { id: 2, tanggal: "2026-08-10", produk: "Triplek 9mm", stokSistem: 8, stokFisik: 6, selisih: -2 },
+];
+
+let pelangganList = [
+  { id: 1, nama: "Pak Slamet", noHp: "0812xxxxxxx", limitHutang: 2000000, totalBelanja: 6200000, poin: 620 },
+  { id: 2, nama: "CV Bangun Jaya", noHp: "0813xxxxxxx", limitHutang: 5000000, totalBelanja: 12500000, poin: 1250 },
+  { id: 3, nama: "Pak Darto", noHp: "0821xxxxxxx", limitHutang: 1000000, totalBelanja: 1800000, poin: 180 },
+  { id: 4, nama: "Bu Yanti", noHp: "0857xxxxxxx", limitHutang: 1500000, totalBelanja: 3100000, poin: 310 },
+];
+
+let notificationList = [
+  { id: 1, tipe: "stok", judul: "Stok menipis", pesan: "Besi beton 10mm tersisa 15 Batang", waktu: "2 jam lalu", dibaca: false },
+  { id: 2, tipe: "stok", judul: "Stok menipis", pesan: "Triplek 9mm tersisa 6 Lembar", waktu: "3 jam lalu", dibaca: false },
+  { id: 3, tipe: "invoice", judul: "Invoice jatuh tempo", pesan: "INV-20260810-004 — Pak Slamet sudah lewat tempo", waktu: "1 hari lalu", dibaca: false },
+];
+let nextNotifId = 4;
+
+let promoList = [
+  { id: 1, kode: "HEMAT10", jenis: "persen", nilai: 10, aktif: true },
+  { id: 2, kode: "DISKON5RB", jenis: "nominal", nilai: 5000, aktif: true },
+];
+let nextPromoId = 3;
+
+let invoiceList = [
+  { id: 1, noInvoice: "INV-20260810-004", pelangganId: 1, total: 1250000, jatuhTempo: "2026-08-12", status: "belum_lunas" },
+  { id: 2, noInvoice: "INV-20260813-007", pelangganId: 2, total: 3400000, jatuhTempo: "2026-08-17", status: "belum_lunas" },
+  { id: 3, noInvoice: "INV-20260814-009", pelangganId: 3, total: 875000, jatuhTempo: "2026-08-18", status: "belum_lunas" },
+  { id: 4, noInvoice: "INV-20260805-002", pelangganId: 4, total: 620000, jatuhTempo: "2026-08-08", status: "lunas" },
+];
+
+let supplierList = [
+  { id: 1, nama: "PT Semen Nusantara", kontak: "0811-2233-4455" },
+  { id: 2, nama: "CV Besi Jaya", kontak: "0822-3344-5566" },
+  { id: 3, nama: "UD Sumber Kabel", kontak: "0833-4455-6677" },
+];
+
+let poList = [
+  { id: 1, noPO: "PO-20260812-001", supplierId: 1, tanggal: "2026-08-12", status: "diterima",
+    items: [{ produkId: 1, nama: "Semen Tiga Roda", qty: 100, satuan: "Kg", hargaBeli: 1500 }], total: 150000 },
+  { id: 2, noPO: "PO-20260814-002", supplierId: 2, tanggal: "2026-08-14", status: "pending",
+    items: [{ produkId: 2, nama: "Besi beton 10mm", qty: 30, satuan: "Batang", hargaBeli: 70000 }], total: 2100000 },
+];
+
+let cart = [];
+let cartDiskon = 0;
+let nextTransaksiId = 4;
+let nextPOId = 3;
+let nextInvoiceId = 5;
+
+const fmt = n => "Rp " + Math.round(n).toLocaleString("id-ID");
+const today = new Date("2026-08-15");
+const tanggalPanjang = "Jumat, 15 Agustus 2026";
+
+/* ================= LOGIN ================= */
+
+function login(role) {
+  currentUser = userList.find(u => u.role === role);
+  activityLog.unshift({ waktu: "15 Agu 2026, 09:32", user: currentUser.nama, aksi: "Login ke sistem" });
+  document.getElementById("login-screen").classList.add("hidden");
+  document.getElementById("app-shell").classList.remove("hidden");
+  document.getElementById("sidebar-avatar").textContent = currentUser.nama.charAt(0);
+  document.getElementById("sidebar-user-name").textContent = currentUser.nama;
+  document.getElementById("sidebar-user-role").textContent = currentUser.role === 'owner' ? 'Owner' : 'Kasir';
+  document.getElementById("topbar-avatar").textContent = currentUser.nama.charAt(0);
+  document.querySelectorAll("[data-owner-only]").forEach(el => {
+    el.style.display = currentUser.role === "owner" ? "" : "none";
+  });
+  renderPage("dashboard");
+  renderProdukTable();
+  updateNotifBadge();
+}
+function logout() {
+  currentUser = null;
+  document.getElementById("login-screen").classList.remove("hidden");
+  document.getElementById("app-shell").classList.add("hidden");
+}
+
+/* ================= SIDEBAR (mobile) ================= */
+
+function toggleSidebar() {
+  document.getElementById("sidebar").classList.toggle("sidebar-open");
+  document.getElementById("sidebar-overlay").classList.toggle("overlay-open");
+}
+function closeSidebar() {
+  document.getElementById("sidebar").classList.remove("sidebar-open");
+  document.getElementById("sidebar-overlay").classList.remove("overlay-open");
+}
+
+/* ================= NOTIFIKASI ================= */
+
+const NOTIF_ICON = { stok: "inventory_2", invoice: "schedule", qris: "qr_code_2", po: "local_shipping" };
+const NOTIF_COLOR = { stok: "var(--orange)", invoice: "var(--red)", qris: "var(--green)", po: "var(--blue)" };
+
+function toggleNotif() {
+  const panel = document.getElementById("notif-panel");
+  const isHidden = panel.classList.contains("hidden");
+  panel.classList.toggle("hidden");
+  if (isHidden) renderNotifList();
+}
+function renderNotifList() {
+  const el = document.getElementById("notif-list");
+  if (!el) return;
+  if (notificationList.length === 0) {
+    el.innerHTML = '<p class="text-xs p-4" style="color:var(--ink-soft);">Belum ada notifikasi</p>';
+    return;
+  }
+  el.innerHTML = notificationList.map(n => `
+    <div class="flex gap-2.5 px-4 py-3 border-b" style="border-color:var(--border); ${!n.dibaca ? 'background:#FAFBFD;' : ''}">
+      <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:${NOTIF_COLOR[n.tipe]}22; color:${NOTIF_COLOR[n.tipe]};">
+        <span class="material-symbols-outlined" style="font-size:17px;">${NOTIF_ICON[n.tipe]}</span>
+      </div>
+      <div class="min-w-0">
+        <p class="text-xs font-medium">${n.judul}</p>
+        <p class="text-xs" style="color:var(--ink-soft);">${n.pesan}</p>
+        <p class="text-[10.5px] mt-0.5" style="color:var(--ink-soft);">${n.waktu}</p>
+      </div>
+    </div>`).join("");
+}
+function updateNotifBadge() {
+  const badge = document.getElementById("notif-badge");
+  if (!badge) return;
+  const unread = notificationList.filter(n => !n.dibaca).length;
+  if (unread > 0) { badge.textContent = unread; badge.classList.remove("hidden"); }
+  else { badge.classList.add("hidden"); }
+}
+function markAllRead() {
+  notificationList.forEach(n => n.dibaca = true);
+  renderNotifList();
+  updateNotifBadge();
+}
+
+/* ================= NAVIGATION ================= */
+
+document.getElementById("nav-menu").addEventListener("click", e => {
+  const btn = e.target.closest("[data-page]");
+  if (!btn) return;
+  document.querySelectorAll(".nav-link").forEach(el => el.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById("topbar-title").textContent = btn.dataset.label;
+  document.getElementById("topbar-crumb").textContent = btn.dataset.label;
+  renderPage(btn.dataset.page);
+  closeSidebar();
+});
+
+function renderPage(page) {
+  const el = document.getElementById("page-content");
+  if (page === "dashboard") el.innerHTML = pageDashboard();
+  if (page === "kasir") el.innerHTML = pageKasir();
+  if (page === "nota") el.innerHTML = pageNota();
+  if (page === "produk") el.innerHTML = pageProduk();
+  if (page === "opname") el.innerHTML = pageOpname();
+  if (page === "supplier") el.innerHTML = pageSupplier();
+  if (page === "invoice") el.innerHTML = pageInvoice();
+  if (page === "membership") el.innerHTML = pageMembership();
+  if (page === "promo") el.innerHTML = pagePromo();
+  if (page === "absensi") el.innerHTML = pageAbsensi();
+  if (page === "laporan") el.innerHTML = pageLaporan();
+  if (page === "staff") el.innerHTML = pageStaff();
+
+  if (page === "dashboard") setTimeout(renderDashboardChart, 0);
+  if (page === "laporan") setTimeout(() => renderLaporanChart("bulanan"), 0);
+  if (page === "kasir") renderCart();
+  if (page === "produk") renderProdukTable();
+}
+
+function pageHeader(subtitle) {
+  return `<div class="mb-6"><p class="text-sm" style="color:var(--ink-soft);">${subtitle}</p></div>`;
+}
+
+/* ================= DASHBOARD ================= */
+
+function daysUntil(dateStr) {
+  const d = new Date(dateStr);
+  return Math.round((d - today) / 86400000);
+}
+
+function metricCard(icon, bg, label, value) {
+  return `<div class="metric-card" style="background:${bg};">
+    <div class="metric-icon"><span class="material-symbols-outlined" style="font-size:19px;">${icon}</span></div>
+    <p class="text-xs mb-1 text-white/80">${label}</p>
+    <p class="fp text-2xl">${value}</p>
+  </div>`;
+}
+
+function pageDashboard() {
+  const omzetHariIni = transaksiList.filter(t => t.tanggal === "2026-08-15").reduce((s,t) => s+t.total, 0);
+  const stokMenipis = produkList.filter(p => p.stok <= p.stokMin);
+  const invoiceJatuhTempo = invoiceList.filter(i => i.status !== "lunas" && daysUntil(i.jatuhTempo) <= 5);
+  const poPending = poList.filter(p => p.status === "pending");
+
+  return `
+  ${pageHeader("Ringkasan performa toko hari ini, " + tanggalPanjang)}
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    ${metricCard("payments","var(--blue)","Omzet hari ini",fmt(omzetHariIni))}
+    ${metricCard("receipt_long","var(--green)","Transaksi",transaksiList.length)}
+    ${metricCard("inventory_2","var(--orange)","Stok menipis",stokMenipis.length+" produk")}
+    ${metricCard("schedule","var(--red)","Jatuh tempo",invoiceJatuhTempo.length+" invoice")}
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-6">
+    <div class="lg:col-span-2 card p-5">
+      <p class="text-sm font-semibold mb-3">Penjualan 7 hari terakhir</p>
+      <canvas id="dashChart" height="90"></canvas>
+    </div>
+    <div class="card p-5">
+      <p class="text-sm font-semibold mb-3">Stok kritis</p>
+      <div class="space-y-3">
+        ${stokMenipis.map(p => `
+          <div class="flex justify-between items-center text-sm">
+            <span>${p.nama}</span>
+            <span class="badge badge-red">${p.stok} ${p.satuanDasar}</span>
+          </div>`).join("") || '<p class="text-xs" style="color:var(--ink-soft);">Tidak ada stok kritis</p>'}
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="card p-5">
+      <p class="text-sm font-semibold mb-3">⏰ Jatuh tempo utang / piutang</p>
+      <div class="space-y-3">
+        ${invoiceJatuhTempo.map(i => {
+          const pel = pelangganList.find(p=>p.id===i.pelangganId);
+          const d = daysUntil(i.jatuhTempo);
+          const status = d < 0 ? `Lewat ${Math.abs(d)} hari` : `${d} hari lagi`;
+          return `
+          <div class="flex justify-between items-center border-l-2 pl-3 py-1" style="border-color:${d<0?'var(--red)':'var(--orange)'};">
+            <div>
+              <p class="text-sm">${i.noInvoice} — ${pel.nama}</p>
+              <p class="text-xs" style="color:var(--ink-soft);">Jatuh tempo ${i.jatuhTempo}</p>
+            </div>
+            <span class="badge ${d<0?'badge-red':'badge-orange'}">${status}</span>
+          </div>`;
+        }).join("") || '<p class="text-xs" style="color:var(--ink-soft);">Tidak ada yang jatuh tempo</p>'}
+      </div>
+    </div>
+    <div class="card p-5">
+      <p class="text-sm font-semibold mb-3">🚚 Purchase order pending</p>
+      <div class="space-y-3">
+        ${poPending.map(po => {
+          const sup = supplierList.find(s=>s.id===po.supplierId);
+          return `
+          <div class="flex justify-between items-center text-sm">
+            <div>
+              <p>${po.noPO} — ${sup.nama}</p>
+              <p class="text-xs" style="color:var(--ink-soft);">${po.tanggal}</p>
+            </div>
+            <span class="badge badge-orange">${fmt(po.total)}</span>
+          </div>`;
+        }).join("") || '<p class="text-xs" style="color:var(--ink-soft);">Tidak ada PO pending</p>'}
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderDashboardChart() {
+  const ctx = document.getElementById("dashChart");
+  if (!ctx) return;
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: ["Sen","Sel","Rab","Kam","Jum","Sab","Ming"],
+      datasets: [{ data: [1800000,2100000,1600000,2450000,2900000,3200000,762500], borderColor:"#3B7CF6", backgroundColor:"rgba(59,124,246,0.10)", fill:true, tension:0.35, pointRadius:3, pointBackgroundColor:"#3B7CF6" }]
+    },
+    options: { responsive:true, plugins:{legend:{display:false}}, scales:{ y:{ ticks:{ callback:v=>(v/1000000).toFixed(1)+"jt" }, grid:{color:'#EEF0F6'} }, x:{ grid:{display:false} } } }
+  });
+}
+
+/* ================= KASIR / POS ================= */
+
+function pageKasir() {
+  return `
+  ${pageHeader("Transaksi penjualan berjalan")}
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+    <div class="lg:col-span-2">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-3">
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2" style="font-size:18px; color:var(--ink-soft);">search</span>
+          <input id="kasir-search" oninput="renderProdukGrid()" placeholder="Cari produk..." class="field pl-9" />
+        </div>
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2" style="font-size:18px; color:var(--ink-soft);">barcode_scanner</span>
+          <input id="kasir-barcode" onkeydown="if(event.key==='Enter'){event.preventDefault(); scanBarcode();}" placeholder="Scan barcode lalu Enter..." class="field pl-9" style="border-color:var(--blue-soft);" />
+        </div>
+      </div>
+      <div id="produk-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+    </div>
+    <div class="card p-4 h-fit">
+      <p class="font-semibold text-sm mb-3 flex items-center gap-1.5"><span class="material-symbols-outlined" style="font-size:18px;">shopping_cart</span>Keranjang</p>
+      <div id="cart-items" class="space-y-2 mb-3 max-h-56 overflow-y-auto"></div>
+
+      <div class="border-t pt-3 mb-2" style="border-color:var(--border);">
+        <div class="flex items-center gap-2 mb-2">
+          <label class="text-xs w-16" style="color:var(--ink-soft);">Diskon</label>
+          <input id="kasir-diskon" type="number" value="0" oninput="updateDiskon(this.value)" class="field flex-1 py-1.5" />
+        </div>
+        <div class="flex items-center gap-2 mb-2">
+          <label class="text-xs w-16" style="color:var(--ink-soft);">Promo</label>
+          <input id="kasir-promo" placeholder="Kode promo" class="field flex-1 py-1.5" />
+          <button onclick="applyPromo()" class="text-xs border rounded-lg px-2.5 py-1.5" style="border-color:var(--border);">Pakai</button>
+        </div>
+        <p id="promo-info" class="text-xs mb-2" style="color:var(--green);"></p>
+        <div class="flex justify-between items-baseline mb-2">
+          <span class="text-sm" style="color:var(--ink-soft);">Total</span>
+          <span id="cart-total" class="fp text-xl" style="color:var(--blue);">Rp 0</span>
+        </div>
+      </div>
+
+      <div class="mb-2">
+        <p class="text-xs mb-1.5" style="color:var(--ink-soft);">Metode bayar (bisa split)</p>
+        <div id="bayar-rows" class="space-y-1.5 mb-1.5"></div>
+        <button onclick="addBayarRow()" class="text-xs border rounded-lg px-2 py-1" style="border-color:var(--border);">+ Tambah metode</button>
+      </div>
+      <p id="kembalian-text" class="text-xs mb-3" style="color:var(--ink-soft);"></p>
+      <button onclick="prosesBayar()" class="w-full btn btn-primary justify-center py-2.5"><span class="material-symbols-outlined" style="font-size:18px;">payments</span>Bayar & Cetak Nota</button>
+    </div>
+  </div>`;
+}
+
+let bayarRows = [{ metode: "Tunai", jumlah: 0 }];
+
+const prodColors = ["var(--blue)","var(--green)","var(--orange)","var(--red)"];
+const prodSoft = ["var(--blue-soft)","var(--green-soft)","var(--orange-soft)","var(--red-soft)"];
+
+function renderProdukGrid() {
+  const search = (document.getElementById("kasir-search")?.value || "").toLowerCase();
+  const grid = document.getElementById("produk-grid");
+  const filtered = produkList.filter(p => p.nama.toLowerCase().includes(search));
+  grid.innerHTML = filtered.map((p,idx) => `
+    <button onclick="addToCart(${p.id})" class="text-left card p-3 hover:border-[var(--blue)] transition">
+      <div class="prod-icon mb-2" style="background:${prodSoft[idx%4]}; color:${prodColors[idx%4]};">
+        <span class="material-symbols-outlined" style="font-size:21px;">${p.icon}</span>
+      </div>
+      <p class="text-sm font-medium">${p.nama}</p>
+      <p class="text-xs mt-1" style="color:var(--ink-soft);">Stok: ${p.stok} ${p.satuanDasar}</p>
+    </button>`).join("");
+}
+
+function addToCart(produkId) {
+  const p = produkList.find(x => x.id === produkId);
+  const defaultSatuan = p.satuanJual[0];
+  const existing = cart.find(c => c.produkId === produkId && c.satuan === defaultSatuan.nama);
+  if (existing) existing.qty += 1;
+  else cart.push({ produkId, nama: p.nama, satuan: defaultSatuan.nama, qty: 1, harga: defaultSatuan.harga });
+  renderCart();
+}
+
+function scanBarcode() {
+  const field = document.getElementById("kasir-barcode");
+  const kode = field.value.trim();
+  if (!kode) return;
+  const p = produkList.find(x => x.barcode === kode);
+  if (!p) { alert(`Barcode ${kode} tidak ditemukan di data produk`); field.value = ""; field.focus(); return; }
+  addToCart(p.id);
+  field.value = "";
+  field.focus();
+}
+
+function renderCart() {
+  renderProdukGrid();
+  const container = document.getElementById("cart-items");
+  if (!container) return;
+  if (cart.length === 0) {
+    container.innerHTML = '<p class="text-xs" style="color:var(--ink-soft);">Belum ada barang dipilih</p>';
+  } else {
+    container.innerHTML = cart.map((item, i) => {
+      const p = produkList.find(x => x.id === item.produkId);
+      const satuanOptions = p.satuanJual.map(s => `<option value="${s.nama}" ${s.nama===item.satuan?'selected':''}>${s.nama}</option>`).join("");
+      return `
+      <div class="flex items-center gap-1.5 text-xs">
+        <span class="flex-1 truncate">${item.nama}</span>
+        <input type="number" min="1" value="${item.qty}" onchange="updateCartQty(${i}, this.value)" class="w-12 border rounded-md px-1 py-1" style="border-color:var(--border);" />
+        ${p.satuanJual.length > 1
+          ? `<select onchange="updateCartSatuan(${i}, this.value)" class="border rounded-md px-1 py-1 text-xs" style="border-color:var(--border);">${satuanOptions}</select>`
+          : `<span style="color:var(--ink-soft);" class="w-14">${item.satuan}</span>`}
+        <span class="w-16 text-right font-medium">${fmt(item.qty*item.harga)}</span>
+        <button onclick="removeFromCart(${i})" class="hover:text-[var(--red)]" style="color:var(--ink-soft);">✕</button>
+      </div>`;
+    }).join("");
+  }
+  updateTotals();
+  renderBayarRows();
+}
+
+function updateCartQty(i, val) { cart[i].qty = Math.max(1, Number(val)); renderCart(); }
+function updateCartSatuan(i, satuanNama) {
+  const item = cart[i];
+  const p = produkList.find(x => x.id === item.produkId);
+  const s = p.satuanJual.find(s => s.nama === satuanNama);
+  item.satuan = s.nama; item.harga = s.harga;
+  renderCart();
+}
+function removeFromCart(i) { cart.splice(i,1); renderCart(); }
+function updateDiskon(val) { cartDiskon = Math.max(0, Number(val)); updateTotals(); }
+
+function applyPromo() {
+  const kode = document.getElementById("kasir-promo").value.trim().toUpperCase();
+  const infoEl = document.getElementById("promo-info");
+  const promo = promoList.find(p => p.kode.toUpperCase() === kode && p.aktif);
+  if (!promo) { infoEl.style.color = "var(--red)"; infoEl.textContent = "Kode promo tidak ditemukan atau tidak aktif"; return; }
+  const diskon = promo.jenis === "persen" ? Math.round(cartSubtotal() * promo.nilai / 100) : promo.nilai;
+  cartDiskon = diskon;
+  document.getElementById("kasir-diskon").value = diskon;
+  infoEl.style.color = "var(--green)";
+  infoEl.textContent = `Promo ${promo.kode} diterapkan: -${fmt(diskon)}`;
+  updateTotals();
+}
+
+function cartSubtotal() { return cart.reduce((s,i) => s + i.qty*i.harga, 0); }
+function cartTotal() { return Math.max(0, cartSubtotal() - cartDiskon); }
+
+function updateTotals() {
+  const totalEl = document.getElementById("cart-total");
+  if (totalEl) totalEl.textContent = fmt(cartTotal());
+  updateKembalian();
+}
+
+function renderBayarRows() {
+  const container = document.getElementById("bayar-rows");
+  if (!container) return;
+  container.innerHTML = bayarRows.map((row, i) => `
+    <div class="flex gap-1.5">
+      <select onchange="bayarRows[${i}].metode=this.value" class="border rounded-md px-2 py-1.5 text-xs w-24" style="border-color:var(--border);">
+        ${PAYMENT_METHODS.map(m=>`<option ${row.metode===m?'selected':''}>${m}</option>`).join("")}
+      </select>
+      <input type="number" placeholder="Jumlah" value="${row.jumlah||''}" oninput="bayarRows[${i}].jumlah=Number(this.value); updateKembalian();" class="flex-1 border rounded-md px-2 py-1.5 text-xs" style="border-color:var(--border);" />
+      ${bayarRows.length>1 ? `<button onclick="removeBayarRow(${i})" class="text-xs w-6" style="color:var(--ink-soft);">✕</button>` : '<span class="w-6"></span>'}
+    </div>`).join("");
+}
+function addBayarRow() { bayarRows.push({ metode: "Transfer Bank", jumlah: 0 }); renderBayarRows(); }
+function removeBayarRow(i) { bayarRows.splice(i,1); renderBayarRows(); updateKembalian(); }
+
+function updateKembalian() {
+  const total = cartTotal();
+  const dibayar = bayarRows.reduce((s,r) => s + (Number(r.jumlah)||0), 0);
+  const el = document.getElementById("kembalian-text");
+  if (!el) return;
+  el.textContent = dibayar > 0 ? `Total dibayar: ${fmt(dibayar)} • Kembalian: ${fmt(Math.max(0, dibayar-total))}` : "";
+}
+
+function prosesBayar() {
+  if (cart.length === 0) { alert("Keranjang masih kosong"); return; }
+  const total = cartTotal();
+  const dibayar = bayarRows.reduce((s,r) => s + (Number(r.jumlah)||0), 0);
+  if (dibayar < total) { alert("Jumlah bayar (gabungan semua metode) kurang dari total"); return; }
+
+  cart.forEach(item => {
+    const p = produkList.find(x => x.id === item.produkId);
+    const satuan = p.satuanJual.find(s => s.nama === item.satuan);
+    p.stok -= item.qty * satuan.konversi;
+  });
+
+  const tanggal = "2026-08-15";
+  const countToday = transaksiList.filter(t => t.tanggal === tanggal).length + 1;
+  const noNota = `RCP-${tanggal.replace(/-/g,"")}-${String(countToday).padStart(3,"0")}`;
+  const trx = {
+    id: nextTransaksiId++, noNota, tanggal, kasir: currentUser.nama, diskon: cartDiskon, total,
+    metodeBayar: bayarRows.filter(r=>r.jumlah>0).map(r=>({...r})),
+    items: cart.map(i => ({ nama:i.nama, qty:i.qty, satuan:i.satuan, subtotal:i.qty*i.harga }))
+  };
+  transaksiList.push(trx);
+  activityLog.unshift({ waktu: "15 Agu 2026", user: currentUser.nama, aksi: `Transaksi ${noNota} (${fmt(total)})` });
+
+  const qrisPay = trx.metodeBayar.find(m => m.metode === "QRIS");
+  if (qrisPay) {
+    notificationList.unshift({ id: nextNotifId++, tipe: "qris", judul: "Pembayaran QRIS diterima", pesan: `${trx.noNota} • ${fmt(qrisPay.jumlah)}`, waktu: "Baru saja", dibaca: false });
+    updateNotifBadge();
+  }
+
+  showNota(trx, dibayar);
+  cart = []; cartDiskon = 0; bayarRows = [{ metode: "Tunai", jumlah: 0 }];
+  document.getElementById("kasir-diskon").value = 0;
+  renderCart();
+}
+
+function showNota(trx, dibayar) {
+  const kembalian = dibayar - trx.total;
+  document.getElementById("nota-content").innerHTML = `
+    <p class="text-center font-medium mb-1 tracking-wide">SUMBER MAKMUR</p>
+    <p class="text-center mb-1" style="color:var(--ink-soft);">Jl. Contoh No. 123, Yogyakarta</p>
+    <p class="text-center mb-3" style="color:var(--ink-soft);">${trx.noNota} • Kasir: ${trx.kasir}</p>
+    <p style="color:var(--ink-soft);" class="mb-2">${trx.tanggal}</p>
+    <div class="border-t border-dashed my-2" style="border-color:var(--border);"></div>
+    ${trx.items.map(i => `<div class="flex justify-between"><span>${i.nama} x${i.qty} ${i.satuan}</span><span>${fmt(i.subtotal)}</span></div>`).join("")}
+    <div class="border-t border-dashed my-2" style="border-color:var(--border);"></div>
+    ${trx.diskon>0 ? `<div class="flex justify-between"><span>Diskon</span><span>-${fmt(trx.diskon)}</span></div>` : ""}
+    <div class="flex justify-between font-medium"><span>Total</span><span>${fmt(trx.total)}</span></div>
+    ${trx.metodeBayar.map(m=>`<div class="flex justify-between"><span>${m.metode}</span><span>${fmt(m.jumlah)}</span></div>`).join("")}
+    <div class="flex justify-between"><span>Kembalian</span><span>${fmt(Math.max(0,kembalian))}</span></div>
+    <p class="text-center mt-3" style="color:var(--ink-soft);">Terima kasih!</p>
+  `;
+  document.getElementById("modal-nota").classList.remove("hidden");
+  document.getElementById("modal-nota").classList.add("flex");
+}
+function closeNota() {
+  document.getElementById("modal-nota").classList.add("hidden");
+  document.getElementById("modal-nota").classList.remove("flex");
+}
+function kirimStrukDigital() {
+  const kontak = prompt("Kirim struk digital ke (email atau nomor WhatsApp):");
+  if (!kontak) return;
+  alert(`Struk digital berhasil dikirim ke ${kontak}.\n(Di versi produksi ini terhubung ke WhatsApp Cloud API / email service.)`);
+}
+
+/* ================= PRODUK CRUD ================= */
+
+let editingProdukId = null;
+let formSatuanRows = [];
+
+function pageProduk() {
+  return `
+  <div class="flex items-center justify-between mb-6">
+    ${pageHeader("Kelola data produk dan satuan").replace('mb-6','mb-0')}
+    <button onclick="openProdukForm()" class="btn btn-primary"><span class="material-symbols-outlined" style="font-size:18px;">add</span>Tambah produk</button>
+  </div>
+  <div id="produk-form-panel"></div>
+  <div class="card overflow-hidden">
+    <table class="dt">
+      <thead>
+        <tr><th>Nama</th><th>Stok</th><th>Satuan jual</th><th>Harga</th><th></th></tr>
+      </thead>
+      <tbody id="produk-tbody"></tbody>
+    </table>
+  </div>`;
+}
+
+function renderProdukTable() {
+  const tbody = document.getElementById("produk-tbody");
+  if (!tbody) return;
+  tbody.innerHTML = produkList.map(p => `
+    <tr>
+      <td>${p.nama}</td>
+      <td>${p.stok} ${p.satuanDasar} ${p.stok<=p.stokMin ? '<span class="badge badge-red ml-1">Menipis</span>':''}</td>
+      <td>${p.satuanJual.map(s=>s.nama).join(", ")}</td>
+      <td>${p.satuanJual.map(s=>`${fmt(s.harga)}/${s.nama}`).join("<br/>")}</td>
+      <td class="text-right whitespace-nowrap">
+        <button onclick="openProdukForm(${p.id})" class="btn-ghost text-xs mr-3">Edit</button>
+        <button onclick="hapusProduk(${p.id})" class="btn-danger-text text-xs">Hapus</button>
+      </td>
+    </tr>`).join("");
+}
+
+function openProdukForm(id) {
+  editingProdukId = id || null;
+  const p = id ? produkList.find(x => x.id === id) : null;
+  formSatuanRows = p ? p.satuanJual.map(s => ({...s})) : [{ nama:"", konversi:1, harga:0 }];
+
+  document.getElementById("produk-form-panel").innerHTML = `
+    <div class="card p-5 mb-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Nama produk</label>
+          <input id="pf-nama" value="${p?p.nama:''}" class="field" /></div>
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Satuan dasar</label>
+          <select id="pf-satuan-dasar" class="field">
+            ${satuanMaster.map(s=>`<option ${p&&p.satuanDasar===s?'selected':''}>${s}</option>`).join("")}
+          </select></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Stok saat ini</label>
+          <input id="pf-stok" type="number" value="${p?p.stok:0}" class="field" /></div>
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Stok minimum</label>
+          <input id="pf-stok-min" type="number" value="${p?p.stokMin:0}" class="field" /></div>
+      </div>
+      <div class="flex justify-between items-center mb-2">
+        <span class="text-xs font-medium" style="color:var(--ink-soft);">Satuan jual & harga</span>
+        <button onclick="addSatuanRow()" class="text-xs border rounded-lg px-2 py-1" style="border-color:var(--border);">+ Tambah satuan</button>
+      </div>
+      <div id="pf-satuan-rows" class="space-y-1.5 mb-1"></div>
+      <p class="text-xs mb-3" style="color:var(--ink-soft);">Konversi = jumlah satuan dasar per 1 satuan jual ini.</p>
+      <div id="pf-error" class="text-xs mb-2 hidden" style="color:var(--red);"></div>
+      <div class="flex gap-2">
+        <button onclick="saveProduk()" class="btn btn-primary">Simpan</button>
+        <button onclick="closeProdukForm()" class="btn btn-secondary">Batal</button>
+      </div>
+    </div>`;
+  renderSatuanRowsForm();
+}
+
+function renderSatuanRowsForm() {
+  document.getElementById("pf-satuan-rows").innerHTML = formSatuanRows.map((row, i) => `
+    <div class="flex gap-1.5 items-center">
+      <select onchange="formSatuanRows[${i}].nama=this.value" class="border rounded-md px-2 py-1.5 text-xs flex-1" style="border-color:var(--border);">
+        <option value="">Pilih satuan</option>
+        ${satuanMaster.map(s=>`<option ${row.nama===s?'selected':''}>${s}</option>`).join("")}
+      </select>
+      <input type="number" placeholder="Konversi" value="${row.konversi}" oninput="formSatuanRows[${i}].konversi=Number(this.value)" class="border rounded-md px-2 py-1.5 text-xs w-20" style="border-color:var(--border);" />
+      <input type="number" placeholder="Harga" value="${row.harga}" oninput="formSatuanRows[${i}].harga=Number(this.value)" class="border rounded-md px-2 py-1.5 text-xs w-24" style="border-color:var(--border);" />
+      ${formSatuanRows.length>1 ? `<button onclick="removeSatuanRow(${i})" class="text-xs w-6" style="color:var(--ink-soft);">✕</button>` : '<span class="w-6"></span>'}
+    </div>`).join("");
+}
+function addSatuanRow() { formSatuanRows.push({nama:"",konversi:1,harga:0}); renderSatuanRowsForm(); }
+function removeSatuanRow(i) { formSatuanRows.splice(i,1); renderSatuanRowsForm(); }
+
+function saveProduk() {
+  const nama = document.getElementById("pf-nama").value.trim();
+  const errEl = document.getElementById("pf-error");
+  if (!nama) return showErr(errEl, "Nama produk wajib diisi");
+  if (formSatuanRows.some(r=>!r.nama)) return showErr(errEl, "Semua baris satuan jual wajib dipilih");
+  if (formSatuanRows.some(r=>r.konversi<=0)) return showErr(errEl, "Faktor konversi harus lebih dari 0");
+  errEl.classList.add("hidden");
+
+  const data = {
+    nama,
+    icon: "category",
+    satuanDasar: document.getElementById("pf-satuan-dasar").value,
+    stok: Number(document.getElementById("pf-stok").value),
+    stokMin: Number(document.getElementById("pf-stok-min").value),
+    satuanJual: formSatuanRows.map(r=>({...r}))
+  };
+  if (editingProdukId) {
+    const idx = produkList.findIndex(p=>p.id===editingProdukId);
+    produkList[idx] = { id: editingProdukId, ...data };
+  } else {
+    produkList.push({ id: Date.now(), ...data });
+  }
+  closeProdukForm();
+  renderProdukTable();
+}
+function showErr(el, msg) { el.textContent = msg; el.classList.remove("hidden"); }
+function closeProdukForm() { document.getElementById("produk-form-panel").innerHTML = ""; }
+function hapusProduk(id) {
+  if (!confirm("Nonaktifkan produk ini?")) return;
+  produkList = produkList.filter(p=>p.id!==id);
+  renderProdukTable();
+}
+
+/* ================= STOK OPNAME ================= */
+
+function pageOpname() {
+  return `
+  <div class="flex items-center justify-between mb-6">
+    ${pageHeader("Audit stok fisik vs sistem").replace('mb-6','mb-0')}
+    <button onclick="openOpnameForm()" class="btn btn-primary"><span class="material-symbols-outlined" style="font-size:18px;">add</span>Opname baru</button>
+  </div>
+  <div id="opname-form-panel"></div>
+  <div class="card overflow-hidden">
+    <table class="dt">
+      <thead>
+        <tr><th>Tanggal</th><th>Produk</th><th>Stok sistem</th><th>Stok fisik</th><th>Selisih</th></tr>
+      </thead>
+      <tbody>
+        ${opnameList.map(o => `
+        <tr>
+          <td>${o.tanggal}</td>
+          <td>${o.produk}</td>
+          <td>${o.stokSistem}</td>
+          <td>${o.stokFisik}</td>
+          <td><span class="badge ${o.selisih<0?'badge-red':'badge-green'}">${o.selisih>0?'+':''}${o.selisih}</span></td>
+        </tr>`).join("")}
+      </tbody>
+    </table>
+  </div>`;
+}
+
+function openOpnameForm() {
+  document.getElementById("opname-form-panel").innerHTML = `
+    <div class="card p-5 mb-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Produk</label>
+          <select id="of-produk" class="field">
+            ${produkList.map(p=>`<option value="${p.id}">${p.nama}</option>`).join("")}
+          </select></div>
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Stok sistem</label>
+          <input id="of-sistem" disabled class="field bg-[var(--page)]" /></div>
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Stok fisik (hasil hitung)</label>
+          <input id="of-fisik" type="number" class="field" /></div>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="saveOpname()" class="btn btn-primary">Simpan</button>
+        <button onclick="document.getElementById('opname-form-panel').innerHTML=''" class="btn btn-secondary">Batal</button>
+      </div>
+    </div>`;
+  const sel = document.getElementById("of-produk");
+  const updateSistem = () => { document.getElementById("of-sistem").value = produkList.find(p=>p.id==sel.value).stok; };
+  sel.addEventListener("change", updateSistem);
+  updateSistem();
+}
+
+function saveOpname() {
+  const produkId = Number(document.getElementById("of-produk").value);
+  const p = produkList.find(x=>x.id===produkId);
+  const stokFisik = Number(document.getElementById("of-fisik").value);
+  const selisih = stokFisik - p.stok;
+  opnameList.unshift({ id: Date.now(), tanggal: "2026-08-15", produk: p.nama, stokSistem: p.stok, stokFisik, selisih });
+  p.stok = stokFisik;
+  document.getElementById("opname-form-panel").innerHTML = "";
+  renderPage("opname");
+}
+
+/* ================= SUPPLIER & PURCHASE ORDER ================= */
+
+function pageSupplier() {
+  return `
+  ${pageHeader("Data supplier dan pemesanan barang")}
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+    <div class="card p-5">
+      <div class="flex justify-between items-center mb-3">
+        <p class="text-sm font-semibold">Daftar Supplier</p>
+        <button onclick="openSupplierForm()" class="text-xs border rounded-lg px-2 py-1" style="border-color:var(--border);">+ Tambah</button>
+      </div>
+      <div id="supplier-form-panel"></div>
+      <div class="space-y-3">
+        ${supplierList.map(s => `
+          <div class="flex justify-between items-center text-sm border-b pb-3" style="border-color:var(--border);">
+            <div><p>${s.nama}</p><p class="text-xs" style="color:var(--ink-soft);">${s.kontak}</p></div>
+            <span class="text-xs" style="color:var(--ink-soft);">${poList.filter(po=>po.supplierId===s.id).length} PO</span>
+          </div>`).join("")}
+      </div>
+    </div>
+
+    <div class="card p-5">
+      <p class="text-sm font-semibold mb-3">Buat Purchase Order</p>
+      <button onclick="openPOForm()" class="w-full btn btn-primary justify-center"><span class="material-symbols-outlined" style="font-size:18px;">add</span>PO baru</button>
+      <div id="po-form-panel"></div>
+    </div>
+  </div>
+
+  <div class="card overflow-hidden">
+    <table class="dt">
+      <thead>
+        <tr><th>No. PO</th><th>Supplier</th><th>Tanggal</th><th>Total</th><th>Status</th><th></th></tr>
+      </thead>
+      <tbody>
+        ${poList.map(po => {
+          const sup = supplierList.find(s=>s.id===po.supplierId);
+          return `
+          <tr>
+            <td>${po.noPO}</td>
+            <td>${sup.nama}</td>
+            <td>${po.tanggal}</td>
+            <td>${fmt(po.total)}</td>
+            <td><span class="badge ${po.status==='diterima'?'badge-green':'badge-orange'}">${po.status==='diterima'?'Diterima':'Pending'}</span></td>
+            <td class="text-right">${po.status==='pending' ? `<button onclick="terimaPO(${po.id})" class="btn-ghost text-xs">Terima barang</button>` : ''}</td>
+          </tr>`;
+        }).join("")}
+      </tbody>
+    </table>
+  </div>`;
+}
+
+function openSupplierForm() {
+  document.getElementById("supplier-form-panel").innerHTML = `
+    <div class="border rounded-xl p-3 mb-3 space-y-2" style="border-color:var(--border);">
+      <input id="sf-nama" placeholder="Nama supplier" class="field text-sm" />
+      <input id="sf-kontak" placeholder="No. kontak" class="field text-sm" />
+      <div class="flex gap-2">
+        <button onclick="saveSupplier()" class="btn btn-primary text-xs py-1.5">Simpan</button>
+        <button onclick="document.getElementById('supplier-form-panel').innerHTML=''" class="btn btn-secondary text-xs py-1.5">Batal</button>
+      </div>
+    </div>`;
+}
+function saveSupplier() {
+  const nama = document.getElementById("sf-nama").value.trim();
+  const kontak = document.getElementById("sf-kontak").value.trim();
+  if (!nama) return alert("Nama supplier wajib diisi");
+  supplierList.push({ id: Date.now(), nama, kontak });
+  renderPage("supplier");
+}
+
+let poFormItems = [{ produkId: "", qty: 1, hargaBeli: 0 }];
+function openPOForm() {
+  poFormItems = [{ produkId: "", qty: 1, hargaBeli: 0 }];
+  document.getElementById("po-form-panel").innerHTML = `
+    <div class="border rounded-xl p-3 mt-3" style="border-color:var(--border);">
+      <select id="pof-supplier" class="field text-sm mb-2">
+        ${supplierList.map(s=>`<option value="${s.id}">${s.nama}</option>`).join("")}
+      </select>
+      <div id="pof-items" class="space-y-1.5 mb-1"></div>
+      <button onclick="addPOItemRow()" class="text-xs border rounded-lg px-2 py-1 mb-2" style="border-color:var(--border);">+ Tambah barang</button>
+      <div class="flex gap-2">
+        <button onclick="savePO()" class="btn btn-primary text-xs py-1.5">Buat PO</button>
+        <button onclick="document.getElementById('po-form-panel').innerHTML=''" class="btn btn-secondary text-xs py-1.5">Batal</button>
+      </div>
+    </div>`;
+  renderPOItemRows();
+}
+function renderPOItemRows() {
+  document.getElementById("pof-items").innerHTML = poFormItems.map((row,i) => `
+    <div class="flex gap-1.5">
+      <select onchange="poFormItems[${i}].produkId=Number(this.value)" class="border rounded-md px-2 py-1.5 text-xs flex-1" style="border-color:var(--border);">
+        <option value="">Pilih produk</option>
+        ${produkList.map(p=>`<option value="${p.id}">${p.nama}</option>`).join("")}
+      </select>
+      <input type="number" placeholder="Qty" value="${row.qty}" oninput="poFormItems[${i}].qty=Number(this.value)" class="border rounded-md px-2 py-1.5 text-xs w-16" style="border-color:var(--border);" />
+      <input type="number" placeholder="Harga beli" value="${row.hargaBeli}" oninput="poFormItems[${i}].hargaBeli=Number(this.value)" class="border rounded-md px-2 py-1.5 text-xs w-24" style="border-color:var(--border);" />
+    </div>`).join("");
+}
+function addPOItemRow() { poFormItems.push({ produkId:"", qty:1, hargaBeli:0 }); renderPOItemRows(); }
+function savePO() {
+  const supplierId = Number(document.getElementById("pof-supplier").value);
+  if (poFormItems.some(i=>!i.produkId)) return alert("Semua baris barang wajib dipilih");
+  const items = poFormItems.map(i => {
+    const p = produkList.find(x=>x.id===i.produkId);
+    return { produkId: i.produkId, nama: p.nama, qty: i.qty, satuan: p.satuanDasar, hargaBeli: i.hargaBeli };
+  });
+  const total = items.reduce((s,i)=>s+i.qty*i.hargaBeli, 0);
+  const noPO = `PO-20260815-${String(nextPOId).padStart(3,"0")}`;
+  poList.push({ id: nextPOId++, noPO, supplierId, tanggal: "2026-08-15", status: "pending", items, total });
+  renderPage("supplier");
+}
+function terimaPO(id) {
+  const po = poList.find(p=>p.id===id);
+  po.status = "diterima";
+  po.items.forEach(item => {
+    const p = produkList.find(x=>x.id===item.produkId);
+    if (p) p.stok += item.qty;
+  });
+  renderPage("supplier");
+  renderProdukTable();
+}
+
+/* ================= INVOICE ================= */
+
+function pageInvoice() {
+  return `
+  <div class="flex items-center justify-between mb-6">
+    ${pageHeader("Kelola tagihan utang dan piutang").replace('mb-6','mb-0')}
+    <button onclick="openInvoiceForm()" class="btn btn-primary"><span class="material-symbols-outlined" style="font-size:18px;">add</span>Invoice baru</button>
+  </div>
+  <div id="invoice-form-panel"></div>
+  <div class="card overflow-hidden">
+    <table class="dt">
+      <thead>
+        <tr><th>No. Invoice</th><th>Pelanggan</th><th>Total</th><th>Limit hutang</th><th>Jatuh tempo</th><th>Status</th><th></th></tr>
+      </thead>
+      <tbody>
+        ${invoiceList.map(i => {
+          const pel = pelangganList.find(p=>p.id===i.pelangganId);
+          const d = daysUntil(i.jatuhTempo);
+          const lewat = i.status !== "lunas" && d < 0;
+          const overLimit = i.status !== "lunas" && i.total > pel.limitHutang;
+          return `
+          <tr>
+            <td>${i.noInvoice}</td>
+            <td>${pel.nama}</td>
+            <td>${fmt(i.total)} ${overLimit?'<span class="badge badge-red ml-1">Lewat limit</span>':''}</td>
+            <td style="color:var(--ink-soft);">${fmt(pel.limitHutang)}</td>
+            <td>${i.jatuhTempo} ${lewat?'<span class="badge badge-red ml-1">Lewat</span>':''}</td>
+            <td><span class="badge ${i.status==='lunas'?'badge-green':'badge-orange'}">${i.status==='lunas'?'Lunas':'Belum lunas'}</span></td>
+            <td class="text-right whitespace-nowrap">
+              ${i.status!=='lunas' ? `
+                <button onclick="kirimReminder('${pel.nama}','${i.noInvoice}')" class="text-xs mr-2" style="color:var(--green); font-weight:600;">WA reminder</button>
+                <button onclick="lunaskanInvoice(${i.id})" class="btn-ghost text-xs">Tandai lunas</button>` : ''}
+            </td>
+          </tr>`;
+        }).join("")}
+      </tbody>
+    </table>
+  </div>`;
+}
+function lunaskanInvoice(id) {
+  invoiceList.find(i=>i.id===id).status = "lunas";
+  renderPage("invoice");
+}
+function kirimReminder(nama, noInvoice) {
+  alert(`Simulasi: reminder WhatsApp terkirim ke ${nama} untuk ${noInvoice}.\n(Di versi produksi ini terhubung ke WhatsApp Cloud API.)`);
+}
+
+function openInvoiceForm() {
+  document.getElementById("invoice-form-panel").innerHTML = `
+    <div class="card p-5 mb-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Pelanggan</label>
+          <select id="if-pelanggan" class="field">
+            ${pelangganList.map(p=>`<option value="${p.id}">${p.nama}</option>`).join("")}
+          </select></div>
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Total tagihan</label>
+          <input id="if-total" type="number" class="field" placeholder="0" /></div>
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Jatuh tempo</label>
+          <input id="if-tempo" type="date" value="2026-08-22" class="field" /></div>
+      </div>
+      <div id="if-error" class="text-xs mb-2 hidden" style="color:var(--red);"></div>
+      <div class="flex gap-2">
+        <button onclick="saveInvoice()" class="btn btn-primary">Simpan</button>
+        <button onclick="document.getElementById('invoice-form-panel').innerHTML=''" class="btn btn-secondary">Batal</button>
+      </div>
+    </div>`;
+}
+function saveInvoice() {
+  const pelangganId = Number(document.getElementById("if-pelanggan").value);
+  const total = Number(document.getElementById("if-total").value);
+  const jatuhTempo = document.getElementById("if-tempo").value;
+  const errEl = document.getElementById("if-error");
+  if (!total || total <= 0) { errEl.textContent = "Total tagihan wajib diisi"; errEl.classList.remove("hidden"); return; }
+  if (!jatuhTempo) { errEl.textContent = "Tanggal jatuh tempo wajib diisi"; errEl.classList.remove("hidden"); return; }
+  const noInvoice = `INV-20260815-${String(nextInvoiceId).padStart(3,"0")}`;
+  invoiceList.push({ id: nextInvoiceId++, noInvoice, pelangganId, total, jatuhTempo, status: "belum_lunas" });
+  document.getElementById("invoice-form-panel").innerHTML = "";
+  renderPage("invoice");
+}
+
+/* ================= MEMBERSHIP / CRM ================= */
+
+function getMembershipLevel(total) {
+  if (total >= 8000000) return "Gold";
+  if (total >= 3000000) return "Silver";
+  return "Bronze";
+}
+
+function pageMembership() {
+  return `
+  <div class="flex items-center justify-between mb-6">
+    ${pageHeader("Data pelanggan dan program loyalitas").replace('mb-6','mb-0')}
+    <button onclick="openMemberForm()" class="btn btn-primary"><span class="material-symbols-outlined" style="font-size:18px;">person_add</span>Member baru</button>
+  </div>
+  <div id="member-form-panel"></div>
+  <div class="card overflow-hidden">
+    <table class="dt">
+      <thead>
+        <tr><th>Nama</th><th>No. HP</th><th>Total belanja</th><th>Poin</th><th>Level</th></tr>
+      </thead>
+      <tbody>
+        ${pelangganList.map(p => {
+          const level = getMembershipLevel(p.totalBelanja || 0);
+          const badgeClass = level === 'Gold' ? 'badge-orange' : level === 'Silver' ? 'badge-blue' : 'badge-green';
+          return `
+          <tr>
+            <td>${p.nama}</td>
+            <td style="color:var(--ink-soft);">${p.noHp}</td>
+            <td>${fmt(p.totalBelanja || 0)}</td>
+            <td>${p.poin || 0} poin</td>
+            <td><span class="badge ${badgeClass}">${level}</span></td>
+          </tr>`;
+        }).join("")}
+      </tbody>
+    </table>
+  </div>`;
+}
+
+function openMemberForm() {
+  document.getElementById("member-form-panel").innerHTML = `
+    <div class="card p-5 mb-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Nama pelanggan</label>
+          <input id="mf-nama" class="field" /></div>
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">No. HP</label>
+          <input id="mf-hp" class="field" /></div>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="saveMember()" class="btn btn-primary">Simpan</button>
+        <button onclick="document.getElementById('member-form-panel').innerHTML=''" class="btn btn-secondary">Batal</button>
+      </div>
+    </div>`;
+}
+function saveMember() {
+  const nama = document.getElementById("mf-nama").value.trim();
+  const noHp = document.getElementById("mf-hp").value.trim();
+  if (!nama) return alert("Nama wajib diisi");
+  pelangganList.push({ id: Date.now(), nama, noHp, limitHutang: 1000000, totalBelanja: 0, poin: 0 });
+  document.getElementById("member-form-panel").innerHTML = "";
+  renderPage("membership");
+}
+
+/* ================= PROMO ================= */
+
+function pagePromo() {
+  return `
+  <div class="flex items-center justify-between mb-6">
+    ${pageHeader("Kelola kode diskon dan promo").replace('mb-6','mb-0')}
+    <button onclick="openPromoForm()" class="btn btn-primary"><span class="material-symbols-outlined" style="font-size:18px;">add</span>Promo baru</button>
+  </div>
+  <div id="promo-form-panel"></div>
+  <div class="card overflow-hidden">
+    <table class="dt">
+      <thead><tr><th>Kode</th><th>Jenis</th><th>Nilai</th><th>Status</th><th></th></tr></thead>
+      <tbody>
+        ${promoList.map(p => `
+        <tr>
+          <td class="fm">${p.kode}</td>
+          <td>${p.jenis === 'persen' ? 'Persentase' : 'Nominal tetap'}</td>
+          <td>${p.jenis === 'persen' ? p.nilai + '%' : fmt(p.nilai)}</td>
+          <td><span class="badge ${p.aktif ? 'badge-green' : ''}" ${!p.aktif ? 'style="background:var(--page); color:var(--ink-soft);"' : ''}>${p.aktif ? 'Aktif' : 'Nonaktif'}</span></td>
+          <td class="text-right"><button onclick="togglePromo(${p.id})" class="btn-ghost text-xs">${p.aktif ? 'Nonaktifkan' : 'Aktifkan'}</button></td>
+        </tr>`).join("")}
+      </tbody>
+    </table>
+  </div>
+  <p class="text-xs mt-3" style="color:var(--ink-soft);">Kode promo ini bisa langsung dipakai di halaman Kasir pada kolom "Promo".</p>`;
+}
+function openPromoForm() {
+  document.getElementById("promo-form-panel").innerHTML = `
+    <div class="card p-5 mb-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Kode promo</label>
+          <input id="pmf-kode" class="field" placeholder="HEMAT10" /></div>
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Jenis diskon</label>
+          <select id="pmf-jenis" class="field">
+            <option value="persen">Persentase (%)</option>
+            <option value="nominal">Nominal tetap (Rp)</option>
+          </select></div>
+        <div><label class="text-xs block mb-1" style="color:var(--ink-soft);">Nilai</label>
+          <input id="pmf-nilai" type="number" class="field" /></div>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="savePromo()" class="btn btn-primary">Simpan</button>
+        <button onclick="document.getElementById('promo-form-panel').innerHTML=''" class="btn btn-secondary">Batal</button>
+      </div>
+    </div>`;
+}
+function savePromo() {
+  const kode = document.getElementById("pmf-kode").value.trim().toUpperCase();
+  const jenis = document.getElementById("pmf-jenis").value;
+  const nilai = Number(document.getElementById("pmf-nilai").value);
+  if (!kode || !nilai) return alert("Kode dan nilai promo wajib diisi");
+  promoList.push({ id: nextPromoId++, kode, jenis, nilai, aktif: true });
+  document.getElementById("promo-form-panel").innerHTML = "";
+  renderPage("promo");
+}
+function togglePromo(id) {
+  const p = promoList.find(x => x.id === id);
+  p.aktif = !p.aktif;
+  renderPage("promo");
+}
+
+/* ================= NOTA / RECEIPT ================= */
+
+function pageNota() {
+  return `
+  ${pageHeader("Riwayat nota yang pernah diterbitkan")}
+  <div class="card overflow-hidden">
+    <table class="dt">
+      <thead>
+        <tr><th>No. Nota</th><th>Tanggal</th><th>Kasir</th><th>Item</th><th>Total</th><th></th></tr>
+      </thead>
+      <tbody>
+        ${transaksiList.slice().reverse().map(t => `
+        <tr>
+          <td>${t.noNota}</td>
+          <td>${t.tanggal}</td>
+          <td>${t.kasir}</td>
+          <td style="color:var(--ink-soft);">${t.items.length} produk</td>
+          <td>${fmt(t.total)}</td>
+          <td class="text-right"><button onclick="reprintNota(${t.id})" class="btn-ghost text-xs">Lihat / Cetak ulang</button></td>
+        </tr>`).join("")}
+      </tbody>
+    </table>
+  </div>`;
+}
+function reprintNota(id) {
+  const trx = transaksiList.find(t => t.id === id);
+  const dibayar = trx.metodeBayar.reduce((s,m) => s + m.jumlah, 0);
+  showNota(trx, dibayar);
+}
+
+/* ================= ABSENSI (owner only) ================= */
+
+function pageAbsensi() {
+  const tanggalHariIni = "2026-08-15";
+  const kasirList = userList.filter(u => u.role === "kasir");
+
+  const recap = kasirList.map(u => {
+    const logs = attendanceList.filter(a => a.userId === u.id);
+    const hadir = logs.filter(a => a.status === "hadir").length;
+    const izin = logs.filter(a => a.status === "izin").length;
+    const alpha = logs.filter(a => a.status === "alpha").length;
+    return { user: u, hadir, izin, alpha, estimasiGaji: hadir * u.gajiHarian };
+  });
+
+  return `
+  ${pageHeader("Absensi harian dan rekap untuk payroll bulanan")}
+
+  <div class="card p-5 mb-6">
+    <p class="text-sm font-semibold mb-3">Absensi hari ini — ${tanggalHariIni}</p>
+    <div class="space-y-2.5">
+      ${kasirList.map(u => {
+        const sudah = attendanceList.find(a => a.userId === u.id && a.tanggal === tanggalHariIni);
+        return `
+        <div class="flex items-center justify-between text-sm border-b pb-2.5" style="border-color:var(--border);">
+          <span>${u.nama}</span>
+          ${sudah
+            ? `<span class="badge ${sudah.status==='hadir'?'badge-green':sudah.status==='izin'?'badge-orange':'badge-red'}">${sudah.status==='hadir'?'Hadir':sudah.status==='izin'?'Izin':'Alpha'}</span>`
+            : `<div class="flex gap-1.5">
+                <button onclick="tandaiAbsensi(${u.id},'hadir')" class="text-xs border rounded-lg px-2 py-1" style="border-color:var(--border); color:var(--green);">Hadir</button>
+                <button onclick="tandaiAbsensi(${u.id},'izin')" class="text-xs border rounded-lg px-2 py-1" style="border-color:var(--border); color:var(--orange);">Izin</button>
+                <button onclick="tandaiAbsensi(${u.id},'alpha')" class="text-xs border rounded-lg px-2 py-1" style="border-color:var(--border); color:var(--red);">Alpha</button>
+              </div>`}
+        </div>`;
+      }).join("")}
+    </div>
+  </div>
+
+  <div class="card overflow-hidden">
+    <table class="dt">
+      <thead>
+        <tr><th>Nama</th><th>Hadir</th><th>Izin</th><th>Alpha</th><th>Gaji harian</th><th>Estimasi gaji bulan ini</th></tr>
+      </thead>
+      <tbody>
+        ${recap.map(r => `
+        <tr>
+          <td>${r.user.nama}</td>
+          <td>${r.hadir} hari</td>
+          <td>${r.izin} hari</td>
+          <td>${r.alpha} hari</td>
+          <td style="color:var(--ink-soft);">${fmt(r.user.gajiHarian)}</td>
+          <td class="font-semibold">${fmt(r.estimasiGaji)}</td>
+        </tr>`).join("")}
+      </tbody>
+    </table>
+  </div>`;
+}
+function tandaiAbsensi(userId, status) {
+  attendanceList.push({ id: Date.now(), tanggal: "2026-08-15", userId, status });
+  renderPage("absensi");
+}
+
+/* ================= STAFF (owner only) ================= */
+
+function pageStaff() {
+  return `
+  ${pageHeader("Kelola tim dan lihat riwayat aktivitas")}
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="card p-5">
+      <div class="flex justify-between items-center mb-3">
+        <p class="text-sm font-semibold">Daftar staff</p>
+        <button onclick="openStaffForm()" class="btn btn-primary text-xs py-1.5"><span class="material-symbols-outlined" style="font-size:16px;">add</span>Tambah kasir</button>
+      </div>
+      <div id="staff-form-panel"></div>
+      <div class="space-y-3">
+        ${userList.map(u => `
+          <div class="flex justify-between items-center text-sm border-b pb-3" style="border-color:var(--border);">
+            <div>
+              <p>${u.nama}</p>
+              ${u.gajiHarian ? `<p class="text-xs" style="color:var(--ink-soft);">${fmt(u.gajiHarian)}/hari</p>` : ''}
+            </div>
+            <span class="badge ${u.role==='owner'?'badge-blue':''}" ${u.role!=='owner'?'style="background:var(--page); color:var(--ink-soft);"':''}>${u.role==='owner'?'Owner':'Kasir'}</span>
+          </div>`).join("")}
+      </div>
+    </div>
+    <div class="card p-5">
+      <p class="text-sm font-semibold mb-3">Activity log</p>
+      <div class="space-y-3 max-h-72 overflow-y-auto">
+        ${activityLog.map(l => `
+          <div class="text-xs border-b pb-3" style="border-color:var(--border);">
+            <p>${l.user} — ${l.aksi}</p>
+            <p style="color:var(--ink-soft);">${l.waktu}</p>
+          </div>`).join("") || '<p class="text-xs" style="color:var(--ink-soft);">Belum ada aktivitas</p>'}
+      </div>
+    </div>
+  </div>`;
+}
+function openStaffForm() {
+  document.getElementById("staff-form-panel").innerHTML = `
+    <div class="border rounded-xl p-3 mb-3 space-y-2" style="border-color:var(--border);">
+      <input id="stf-nama" placeholder="Nama kasir" class="field text-sm" />
+      <input id="stf-gaji" type="number" placeholder="Gaji harian (Rp)" value="150000" class="field text-sm" />
+      <div class="flex gap-2">
+        <button onclick="saveStaff()" class="btn btn-primary text-xs py-1.5">Simpan</button>
+        <button onclick="document.getElementById('staff-form-panel').innerHTML=''" class="btn btn-secondary text-xs py-1.5">Batal</button>
+      </div>
+    </div>`;
+}
+function saveStaff() {
+  const nama = document.getElementById("stf-nama").value.trim();
+  const gajiHarian = Number(document.getElementById("stf-gaji").value) || 150000;
+  if (!nama) return alert("Nama wajib diisi");
+  userList.push({ id: Date.now(), nama, role: "kasir", gajiHarian });
+  renderPage("staff");
+}
+
+/* ================= LAPORAN (detail) ================= */
+
+function pageLaporan() {
+  const totalPenjualan = transaksiList.reduce((s,t)=>s+t.total,0);
+
+  const produkQty = {};
+  transaksiList.forEach(t => t.items.forEach(i => {
+    produkQty[i.nama] = (produkQty[i.nama]||0) + i.qty;
+  }));
+  const semuaProdukQty = produkList.map(p => ({ nama: p.nama, qty: produkQty[p.nama] || 0 }));
+  const terlaris = semuaProdukQty.slice().sort((a,b)=>b.qty-a.qty).slice(0,5);
+  const kurangLaku = semuaProdukQty.slice().sort((a,b)=>a.qty-b.qty).slice(0,5);
+
+  const perKasir = {};
+  transaksiList.forEach(t => {
+    if (!perKasir[t.kasir]) perKasir[t.kasir] = { jumlah: 0, total: 0 };
+    perKasir[t.kasir].jumlah += 1;
+    perKasir[t.kasir].total += t.total;
+  });
+
+  const perChannel = {};
+  transaksiList.forEach(t => t.metodeBayar.forEach(m => {
+    perChannel[m.metode] = (perChannel[m.metode]||0) + m.jumlah;
+  }));
+
+  return `
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+    ${pageHeader("Analitik penjualan dan performa toko").replace('mb-6','mb-0')}
+    <div class="flex flex-wrap gap-2">
+      <select id="laporan-periode" onchange="renderLaporanChart(this.value)" class="field text-sm w-auto">
+        <option value="harian">Harian</option>
+        <option value="mingguan">Mingguan</option>
+        <option value="bulanan" selected>Bulanan</option>
+      </select>
+      <button onclick="exportExcel()" class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:17px;">grid_on</span>Export Excel</button>
+      <button onclick="exportPDF()" class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:17px;">picture_as_pdf</span>Export PDF</button>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+    <div class="card p-4"><p class="text-xs mb-1" style="color:var(--ink-soft);">Total penjualan</p><p class="fp text-xl">${fmt(totalPenjualan)}</p></div>
+    <div class="card p-4"><p class="text-xs mb-1" style="color:var(--ink-soft);">Jumlah transaksi</p><p class="fp text-xl">${transaksiList.length}</p></div>
+    <div class="card p-4"><p class="text-xs mb-1" style="color:var(--ink-soft);">Rata-rata / transaksi</p><p class="fp text-xl">${fmt(totalPenjualan/transaksiList.length)}</p></div>
+  </div>
+
+  <div class="card p-5 mb-6">
+    <p class="text-sm font-semibold mb-3">Grafik penjualan</p>
+    <canvas id="laporanChart" height="80"></canvas>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+    <div class="card p-5">
+      <p class="text-sm font-semibold mb-3">🏆 Produk terlaris</p>
+      <div class="space-y-2.5">
+        ${terlaris.map((p,i) => `
+          <div class="flex justify-between text-sm">
+            <span>${i+1}. ${p.nama}</span>
+            <span style="color:var(--ink-soft);">${p.qty} unit</span>
+          </div>`).join("")}
+      </div>
+    </div>
+    <div class="card p-5">
+      <p class="text-sm font-semibold mb-3">🐢 Produk kurang laku</p>
+      <div class="space-y-2.5">
+        ${kurangLaku.map((p,i) => `
+          <div class="flex justify-between text-sm">
+            <span>${i+1}. ${p.nama}</span>
+            <span style="color:var(--ink-soft);">${p.qty} unit</span>
+          </div>`).join("")}
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+    <div class="card p-5">
+      <p class="text-sm font-semibold mb-3">Laporan per kasir</p>
+      <div class="space-y-2.5">
+        ${Object.entries(perKasir).map(([nama,d]) => `
+          <div class="flex justify-between text-sm">
+            <span>${nama}</span>
+            <span style="color:var(--ink-soft);">${d.jumlah}x • ${fmt(d.total)}</span>
+          </div>`).join("")}
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-5 mb-6">
+    <p class="text-sm font-semibold mb-3">Pembayaran per channel</p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      ${Object.entries(perChannel).map(([metode,total]) => `
+        <div class="border rounded-xl p-3" style="border-color:var(--border);">
+          <p class="text-xs mb-1" style="color:var(--ink-soft);">${metode}</p>
+          <p class="text-sm font-semibold">${fmt(total)}</p>
+        </div>`).join("") || '<p class="text-xs" style="color:var(--ink-soft);">Belum ada data</p>'}
+    </div>
+  </div>
+
+  <div class="card overflow-hidden">
+    <table class="dt">
+      <thead><tr><th>No. Nota</th><th>Tanggal</th><th>Kasir</th><th>Total</th></tr></thead>
+      <tbody>${transaksiList.slice().reverse().map(t=>`<tr><td>${t.noNota}</td><td>${t.tanggal}</td><td>${t.kasir}</td><td>${fmt(t.total)}</td></tr>`).join("")}</tbody>
+    </table>
+  </div>`;
+}
+
+function renderLaporanChart(periode) {
+  const ctx = document.getElementById("laporanChart");
+  if (!ctx) return;
+  if (ctx._chart) ctx._chart.destroy();
+
+  let labels, data;
+  if (periode === "harian") {
+    labels = ["08:00","10:00","12:00","14:00","16:00","18:00"];
+    data = [320000,540000,890000,610000,720000,380000];
+  } else if (periode === "mingguan") {
+    labels = ["Sen","Sel","Rab","Kam","Jum","Sab","Ming"];
+    data = [1800000,2100000,1600000,2450000,2900000,3200000,762500];
+  } else {
+    labels = ["Minggu 1","Minggu 2","Minggu 3","Minggu 4"];
+    data = [4200000,5100000,3800000,transaksiList.reduce((s,t)=>s+t.total,0)];
+  }
+
+  ctx._chart = new Chart(ctx, {
+    type: "bar",
+    data: { labels, datasets: [{ data, backgroundColor:"#3B7CF6", borderRadius:6 }] },
+    options: { responsive:true, plugins:{legend:{display:false}}, scales:{ y:{ ticks:{ callback:v=>(v/1000000).toFixed(1)+"jt" }, grid:{color:'#EEF0F6'} }, x:{ grid:{display:false} } } }
+  });
+}
+
+function exportExcel() {
+  const data = transaksiList.map(t => ({
+    "No Nota": t.noNota, "Tanggal": t.tanggal, "Kasir": t.kasir, "Diskon": t.diskon, "Total": t.total
+  }));
+  const ws = XLSX.utils.json_to_sheet(data);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Laporan Penjualan");
+  XLSX.writeFile(wb, "laporan-penjualan-sumber-makmur.xlsx");
+}
+
+function exportPDF() {
+  const rows = transaksiList.slice().reverse().map(t => `
+    <tr><td style="padding:6px 8px; border-bottom:1px solid #ddd;">${t.noNota}</td><td style="padding:6px 8px; border-bottom:1px solid #ddd;">${t.tanggal}</td><td style="padding:6px 8px; border-bottom:1px solid #ddd;">${t.kasir}</td><td style="padding:6px 8px; border-bottom:1px solid #ddd;">${fmt(t.total)}</td></tr>`).join("");
+  const totalPenjualan = transaksiList.reduce((s,t)=>s+t.total,0);
+  document.getElementById("print-report").innerHTML = `
+    <div style="padding:32px; font-family:Arial, sans-serif; color:#1F2333;">
+      <h2 style="margin:0 0 2px;">Laporan Penjualan</h2>
+      <p style="margin:0 0 2px; color:#666;">Sumber Makmur — Toko Bangunan</p>
+      <p style="margin:0 0 18px; color:#666; font-size:13px;">${tanggalPanjang}</p>
+      <p style="margin:0 0 18px; font-size:14px;"><b>Total penjualan:</b> ${fmt(totalPenjualan)} &nbsp;•&nbsp; <b>Jumlah transaksi:</b> ${transaksiList.length}</p>
+      <table style="width:100%; border-collapse:collapse; font-size:13px;">
+        <thead><tr style="text-align:left; border-bottom:2px solid #333;"><th style="padding:6px 8px;">No. Nota</th><th style="padding:6px 8px;">Tanggal</th><th style="padding:6px 8px;">Kasir</th><th style="padding:6px 8px;">Total</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+  document.getElementById("print-report").style.display = "block";
+  window.print();
+  setTimeout(() => { document.getElementById("print-report").style.display = "none"; }, 300);
+}
+</script>
+</body>
+</html>

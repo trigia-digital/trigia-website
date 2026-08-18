@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kelasku — LMS Sekolah</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+  :root{
+    --navy-900:#0E1830;
+    --navy-800:#131F3D;
+    --paper:#F7F6F2;
+    --card:#FFFFFF;
+    --line:#E7E4DC;
+    --ink:#1B2A4A;
+    --muted:#7A8194;
+    --amber:#F2A93B;
+    --amber-ink:#8A5A0E;
+    --amber-bg:#FDF1DC;
+    --green:#2E9A5E;
+    --green-bg:#E5F5EB;
+    --red:#E0523A;
+    --red-bg:#FBEAE7;
+    --blue:#3E63E0;
+    --blue-bg:#EAEEFC;
+    --s-mtk:#4C6EF5; --s-mtk-bg:#EBEFFE;
+    --s-ind:#E64980; --s-ind-bg:#FCE9F0;
+    --s-eng:#12A088; --s-eng-bg:#E4F6F3;
+    --s-fis:#7048E8; --s-fis-bg:#F0EBFD;
+    --s-kim:#D9822B; --s-kim-bg:#FBF0E2;
+    --s-bio:#37A24A; --s-bio-bg:#E9F6EC;
+    --s-sej:#D14B3D; --s-sej-bg:#FBEAE7;
+    --s-sen:#A339B8; --s-sen-bg:#F6E9F9;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.font-display{ font-family:'Fraunces', Georgia, serif; letter-spacing:-0.01em; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  /* ---------- App shell ---------- */
+  .app{ display:grid; grid-template-columns:252px 1fr; min-height:100vh; }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    background:linear-gradient(180deg, var(--navy-900), var(--navy-800));
+    color:#fff;
+    padding:22px 16px;
+    display:flex;
+    flex-direction:column;
+    position:sticky;
+    top:0;
+    height:100vh;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; padding:4px 8px 26px; }
+  .brand-mark{
+    width:34px; height:34px; border-radius:10px; background:var(--amber);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--navy-900); font-family:'Fraunces',serif; font-weight:700; font-size:17px; flex-shrink:0;
+  }
+  .brand-name{ font-family:'Fraunces',serif; font-weight:600; font-size:18px; line-height:1.1; }
+  .brand-sub{ font-size:10.5px; color:rgba(255,255,255,.5); margin-top:2px; }
+
+  .nav-section-label{
+    font-size:10.5px; text-transform:uppercase; letter-spacing:.08em;
+    color:rgba(255,255,255,.35); padding:14px 12px 6px;
+  }
+  .nav-list{ display:flex; flex-direction:column; gap:2px; }
+  .nav-item{
+    display:flex; align-items:center; gap:11px; padding:9px 12px; border-radius:10px;
+    color:rgba(255,255,255,.68); font-size:13.5px; font-weight:500;
+    background:transparent; border:none; width:100%; text-align:left; transition:background .15s, color .15s;
+  }
+  .nav-item svg{ width:18px; height:18px; flex-shrink:0; opacity:.9; }
+  .nav-item:hover{ background:rgba(255,255,255,.07); color:#fff; }
+  .nav-item.active{ background:var(--amber); color:var(--navy-900); font-weight:700; }
+  .nav-badge{
+    margin-left:auto; background:rgba(255,255,255,.16); color:#fff;
+    padding:1px 7px; border-radius:20px; font-size:10.5px; font-weight:700;
+  }
+  .nav-item.active .nav-badge{ background:rgba(19,31,61,.18); color:var(--navy-900); }
+
+  .sidebar-spacer{ flex:1; }
+
+  .profile-card{
+    display:flex; align-items:center; gap:10px; padding:10px; border-radius:12px;
+    background:rgba(255,255,255,.06); margin-top:10px;
+  }
+  .avatar{
+    width:36px; height:36px; border-radius:50%; background:var(--amber); color:var(--navy-900);
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; flex-shrink:0;
+  }
+  .profile-name{ font-size:13px; font-weight:700; color:#fff; }
+  .profile-role{ font-size:11px; color:rgba(255,255,255,.5); }
+  .logout-btn{ margin-left:auto; background:none; border:none; color:rgba(255,255,255,.5); padding:4px; }
+  .logout-btn:hover{ color:#fff; }
+
+  /* ---------- Main ---------- */
+  .main{ min-width:0; display:flex; flex-direction:column; }
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    background:rgba(247,246,242,.88); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    padding:16px 30px; display:flex; align-items:center; gap:16px; justify-content:space-between;
+  }
+  .search-box{
+    flex:1; max-width:360px; display:flex; align-items:center; gap:8px;
+    background:#fff; border:1px solid var(--line); border-radius:10px; padding:8px 12px; color:var(--muted);
+  }
+  .search-box svg{ width:16px; height:16px; flex-shrink:0; }
+  .search-box input{ border:none; outline:none; background:none; font-size:13px; width:100%; font-family:inherit; }
+  .topbar-actions{ display:flex; align-items:center; gap:14px; }
+  .icon-btn{
+    position:relative; width:38px; height:38px; border-radius:10px; border:1px solid var(--line);
+    background:#fff; display:flex; align-items:center; justify-content:center; color:var(--ink);
+  }
+  .icon-btn svg{ width:18px; height:18px; }
+  .dot-flag{
+    position:absolute; top:7px; right:8px; width:7px; height:7px; border-radius:50%;
+    background:var(--red); border:1.5px solid #fff;
+  }
+
+  .content{ padding:26px 30px 60px; }
+  .view{ display:none; }
+  .view.active{ display:block; }
+
+  /* ---------- Generic building blocks ---------- */
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:16px; }
+  .page-head{ display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:20px; gap:12px; flex-wrap:wrap; }
+  .page-title{ font-size:23px; font-weight:600; margin:0 0 4px; }
+  .page-desc{ font-size:13px; color:var(--muted); margin:0; }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:700;
+    padding:9px 16px; border-radius:10px; border:1px solid transparent;
+  }
+  .btn-amber{ background:var(--amber); color:var(--navy-900); }
+  .btn-amber:hover{ background:var(--amber-ink); color:#fff; }
+  .btn-ghost{ background:#fff; border-color:var(--line); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--ink); }
+  .btn-sm{ padding:6px 12px; font-size:12px; border-radius:8px; }
+
+  .badge{ display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; padding:3px 9px; border-radius:20px; }
+  .badge-green{ background:var(--green-bg); color:var(--green); }
+  .badge-amber{ background:var(--amber-bg); color:var(--amber-ink); }
+  .badge-red{ background:var(--red-bg); color:var(--red); }
+  .badge-blue{ background:var(--blue-bg); color:var(--blue); }
+  .badge-gray{ background:#EEEDE8; color:var(--muted); }
+
+  .progress-track{ height:7px; border-radius:20px; background:#EEEDE7; overflow:hidden; }
+  .progress-fill{ height:100%; border-radius:20px; background:var(--amber); }
+
+  /* ---------- Dashboard: welcome banner ---------- */
+  .banner{
+    position:relative; overflow:hidden; border-radius:20px;
+    background:radial-gradient(circle at 15% 20%, rgba(255,255,255,.06), transparent 40%),
+               repeating-linear-gradient(135deg, rgba(255,255,255,.045) 0 2px, transparent 2px 18px),
+               linear-gradient(120deg, var(--navy-900), var(--navy-800) 60%, #1E3363);
+    color:#fff; padding:28px 30px; display:flex; align-items:center; justify-content:space-between; gap:24px;
+    margin-bottom:20px;
+  }
+  .banner-date{ font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:rgba(255,255,255,.55); margin-bottom:8px; }
+  .banner h1{ font-size:26px; font-weight:600; margin:0 0 8px; }
+  .banner p{ font-size:13.5px; color:rgba(255,255,255,.7); margin:0; max-width:420px; line-height:1.5; }
+  .ring-wrap{ position:relative; width:104px; height:104px; flex-shrink:0; }
+  .ring-wrap svg{ transform:rotate(-90deg); }
+  .ring-label{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .ring-num{ font-family:'Fraunces',serif; font-size:22px; font-weight:700; }
+  .ring-cap{ font-size:9.5px; color:rgba(255,255,255,.6); text-align:center; line-height:1.3; margin-top:1px; }
+
+  /* ---------- Stats row ---------- */
+  .stats-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:20px; }
+  .stat-card{ padding:16px 18px; }
+  .stat-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .stat-icon{ width:34px; height:34px; border-radius:9px; display:flex; align-items:center; justify-content:center; }
+  .stat-icon svg{ width:17px; height:17px; }
+  .stat-num{ font-family:'Fraunces',serif; font-size:25px; font-weight:600; line-height:1; }
+  .stat-label{ font-size:12px; color:var(--muted); margin-top:4px; }
+  .stat-sub{ font-size:11px; color:var(--muted); margin-top:8px; }
+
+  /* ---------- Attendance strip (signature element) ---------- */
+  .attendance-card{ padding:18px 20px; margin-bottom:20px; }
+  .attendance-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .attendance-head h3{ font-size:14.5px; font-weight:700; margin:0; }
+  .attendance-head span{ font-size:11.5px; color:var(--muted); }
+  .attendance-strip{ display:grid; grid-template-columns:repeat(7,1fr); gap:8px; }
+  .att-day{ text-align:center; }
+  .att-day-label{ font-size:10.5px; color:var(--muted); margin-bottom:6px; font-weight:600; }
+  .att-pill{
+    height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-weight:700;
+  }
+  .att-hadir{ background:var(--green-bg); color:var(--green); }
+  .att-izin{ background:var(--amber-bg); color:var(--amber-ink); }
+  .att-alpha{ background:var(--red-bg); color:var(--red); }
+  .att-libur{ background:#F1F0EB; color:#B7B4A9; }
+  .att-nanti{ background:#fff; color:#C7C4B9; border:1.5px dashed #E2DFD6; }
+  .att-today{ outline:2px solid var(--navy-900); outline-offset:2px; }
+
+  /* ---------- Two column layout ---------- */
+  .two-col{ display:grid; grid-template-columns:1.65fr 1fr; gap:18px; align-items:flex-start; }
+  .section-title{ font-size:15px; font-weight:700; margin:0 0 12px; }
+
+  /* ---------- Course cards ---------- */
+  .course-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .course-card{ padding:16px 18px; border-left:4px solid var(--c); position:relative; }
+  .course-top{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+  .subj-dot{ width:9px; height:9px; border-radius:50%; background:var(--c); flex-shrink:0; }
+  .course-name{ font-size:14px; font-weight:700; }
+  .course-teacher{ font-size:11.5px; color:var(--muted); margin:2px 0 0; }
+  .course-next{ font-size:11.5px; color:var(--muted); margin:10px 0 10px; }
+  .course-next b{ color:var(--ink); font-weight:600; }
+  .course-bottom{ display:flex; align-items:center; gap:10px; }
+  .course-bottom .progress-track{ flex:1; }
+  .course-pct{ font-size:11px; font-weight:700; color:var(--muted); width:32px; text-align:right; }
+
+  /* ---------- Lists (tasks / announcements) ---------- */
+  .side-card{ padding:16px 18px; margin-bottom:14px; }
+  .task-row{ display:flex; align-items:flex-start; gap:10px; padding:9px 0; border-bottom:1px solid var(--line); }
+  .task-row:last-child{ border-bottom:none; padding-bottom:0; }
+  .task-row:first-child{ padding-top:0; }
+  .task-check{
+    width:18px; height:18px; border-radius:6px; border:1.6px solid #D9D6CC; flex-shrink:0; margin-top:2px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .task-check.done{ background:var(--green); border-color:var(--green); color:#fff; }
+  .task-check.done svg{ width:11px; height:11px; }
+  .task-body{ flex:1; min-width:0; }
+  .task-title{ font-size:12.5px; font-weight:700; line-height:1.3; }
+  .task-meta{ display:flex; align-items:center; gap:6px; margin-top:3px; font-size:11px; color:var(--muted); }
+  .task-meta .subj-dot{ width:6px; height:6px; }
+
+  .ann-row{ display:flex; gap:10px; padding:10px 0; border-bottom:1px solid var(--line); }
+  .ann-row:last-child{ border-bottom:none; padding-bottom:0; }
+  .ann-row:first-child{ padding-top:0; }
+  .ann-icon{ width:32px; height:32px; border-radius:9px; background:var(--blue-bg); color:var(--blue); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .ann-icon svg{ width:15px; height:15px; }
+  .ann-title{ font-size:12.5px; font-weight:700; line-height:1.3; }
+  .ann-desc{ font-size:11.5px; color:var(--muted); margin-top:2px; line-height:1.4; }
+  .ann-date{ font-size:10.5px; color:#B7B4A9; margin-top:4px; }
+
+  /* ---------- Filter tabs (Tugas) ---------- */
+  .filter-tabs{ display:flex; gap:6px; margin-bottom:18px; }
+  .filter-tab{ padding:8px 16px; border-radius:10px; font-size:12.5px; font-weight:700; border:1px solid var(--line); background:#fff; color:var(--muted); }
+  .filter-tab.active{ background:var(--navy-900); color:#fff; border-color:var(--navy-900); }
+
+  .task-table{ width:100%; border-collapse:collapse; }
+  .task-table th{ text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); padding:0 14px 10px; font-weight:700; }
+  .task-table td{ padding:13px 14px; border-top:1px solid var(--line); font-size:13px; vertical-align:middle; }
+  .task-table tr:first-child td{ border-top:none; }
+  .subj-chip{ display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; padding:4px 10px 4px 8px; border-radius:20px; }
+
+  /* ---------- Course grid full (Kelas Saya) ---------- */
+  .course-grid-full{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .course-card-full{ padding:18px; }
+  .subj-icon{ width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:700; font-size:15px; margin-bottom:12px; }
+
+  /* ---------- Jadwal (schedule) ---------- */
+  .schedule-wrap{ overflow-x:auto; }
+  .schedule-grid{ display:grid; grid-template-columns:88px repeat(5,1fr); min-width:760px; gap:6px; }
+  .sch-head{ font-size:11.5px; font-weight:700; color:var(--muted); text-align:center; padding:8px 4px; }
+  .sch-time{ font-size:11px; color:var(--muted); font-weight:600; display:flex; align-items:center; justify-content:flex-end; padding-right:8px; text-align:right; }
+  .sch-cell{ border-radius:10px; min-height:56px; }
+  .sch-block{ height:100%; border-radius:10px; padding:8px 9px; display:flex; flex-direction:column; justify-content:center; }
+  .sch-block b{ font-size:11.5px; display:block; }
+  .sch-block span{ font-size:10px; opacity:.75; }
+  .sch-empty{ height:100%; border-radius:10px; border:1.5px dashed #E2DFD6; }
+  .sch-break{ background:#F1F0EB; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:10.5px; color:#B7B4A9; font-weight:700; }
+
+  /* ---------- Nilai (grades) ---------- */
+  .gpa-banner{ display:flex; align-items:center; justify-content:space-between; padding:20px 24px; margin-bottom:20px; }
+  .gpa-num{ font-family:'Fraunces',serif; font-size:34px; font-weight:700; }
+  .grade-table{ width:100%; border-collapse:collapse; }
+  .grade-table th{ text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); padding:0 14px 10px; font-weight:700; }
+  .grade-table td{ padding:14px; border-top:1px solid var(--line); font-size:13px; }
+  .grade-table tr:first-child td{ border-top:none; }
+  .grade-bar-track{ width:90px; height:6px; border-radius:20px; background:#EEEDE7; display:inline-block; vertical-align:middle; overflow:hidden; margin-right:8px; }
+  .grade-bar-fill{ height:100%; border-radius:20px; }
+  .predikat{ width:26px; height:26px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:12px; }
+
+  /* ---------- Announcements page ---------- */
+  .ann-full{ padding:20px 22px; margin-bottom:14px; }
+  .ann-full-top{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+  .ann-full-title{ font-size:15px; font-weight:700; margin:0; }
+  .ann-full-text{ font-size:13px; color:#4A5164; line-height:1.6; margin:8px 0 12px; }
+  .ann-full-foot{ display:flex; align-items:center; gap:8px; font-size:11.5px; color:var(--muted); }
+
+  @media (max-width: 980px){
+    .app{ grid-template-columns:1fr; }
+    .sidebar{ position:relative; height:auto; flex-direction:row; align-items:center; overflow-x:auto; }
+    .sidebar-spacer{ display:none; }
+    .nav-section-label{ display:none; }
+    .nav-list{ flex-direction:row; }
+    .profile-card{ display:none; }
+    .brand{ padding:4px 16px 4px 4px; }
+    .stats-grid, .course-grid, .course-grid-full{ grid-template-columns:repeat(2,1fr); }
+    .two-col{ grid-template-columns:1fr; }
+  }
+  @media (max-width: 560px){
+    .stats-grid, .course-grid, .course-grid-full{ grid-template-columns:1fr; }
+    .content{ padding:18px 16px 50px; }
+    .topbar{ padding:14px 16px; }
+    .search-box{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">K</div>
+      <div>
+        <div class="brand-name">Kelasku</div>
+        <div class="brand-sub">Ruang belajar digital sekolah</div>
+      </div>
+    </div>
+
+    <div class="nav-section-label">Menu Utama</div>
+    <nav class="nav-list">
+      <button class="nav-item active" data-view="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+        Beranda
+      </button>
+      <button class="nav-item" data-view="kelas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Kelas Saya
+      </button>
+      <button class="nav-item" data-view="tugas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 3v4h6V3"/><path d="M8 12h8M8 16h5"/></svg>
+        Tugas
+        <span class="nav-badge">5</span>
+      </button>
+      <button class="nav-item" data-view="jadwal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Jadwal
+      </button>
+      <button class="nav-item" data-view="nilai">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12.5" y="8" width="3" height="10"/><rect x="18" y="5" width="3" height="13"/></svg>
+        Nilai
+      </button>
+      <button class="nav-item" data-view="pengumuman">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v14L3 15v-4z"/><path d="M7 15v4a2 2 0 0 0 2 2h1"/></svg>
+        Pengumuman
+        <span class="nav-badge">2</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-spacer"></div>
+
+    <div class="profile-card">
+      <div class="avatar">AL</div>
+      <div>
+        <div class="profile-name">Ayu Lestari</div>
+        <div class="profile-role">Kelas XI IPA 2</div>
+      </div>
+      <button class="logout-btn" title="Keluar">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <div class="main">
+    <div class="topbar">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" placeholder="Cari kelas, tugas, materi..." />
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" title="Notifikasi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="dot-flag"></span>
+        </button>
+        <div class="avatar" style="width:38px;height:38px;">AL</div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ===================== DASHBOARD ===================== -->
+      <section class="view active" id="view-dashboard">
+
+        <div class="banner">
+          <div>
+            <div class="banner-date">Senin, 16 Agustus 2026</div>
+            <h1>Selamat pagi, Ayu 👋</h1>
+            <p>Semangat belajar hari ini — 3 kelas menantimu dan 2 tugas jatuh tempo minggu ini. Yuk mulai dari yang paling dekat tenggatnya.</p>
+          </div>
+          <div class="ring-wrap">
+            <svg width="104" height="104" viewBox="0 0 104 104">
+              <circle cx="52" cy="52" r="45" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="9"/>
+              <circle cx="52" cy="52" r="45" fill="none" stroke="#F2A93B" stroke-width="9" stroke-linecap="round"
+                stroke-dasharray="282.7" stroke-dashoffset="79.2"/>
+            </svg>
+            <div class="ring-label">
+              <div class="ring-num">72%</div>
+              <div class="ring-cap">tugas bulan<br/>ini selesai</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="card stat-card">
+            <div class="stat-top">
+              <div class="stat-icon" style="background:var(--blue-bg);color:var(--blue);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 3v4h6V3"/><path d="M8 12h8M8 16h5"/></svg>
+              </div>
+            </div>
+            <div class="stat-num">5</div>
+            <div class="stat-label">Tugas Aktif</div>
+            <div class="stat-sub">2 tenggat minggu ini</div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-top">
+              <div class="stat-icon" style="background:var(--green-bg);color:var(--green);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              </div>
+            </div>
+            <div class="stat-num">88.4</div>
+            <div class="stat-label">Rata-rata Nilai</div>
+            <div class="stat-sub">+2.1 dari semester lalu</div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-top">
+              <div class="stat-icon" style="background:var(--amber-bg);color:var(--amber-ink);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 15 2 2 4-4"/></svg>
+              </div>
+            </div>
+            <div class="stat-num">96%</div>
+            <div class="stat-label">Kehadiran</div>
+            <div class="stat-sub">1 izin bulan ini</div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-top">
+              <div class="stat-icon" style="background:var(--s-fis-bg);color:var(--s-fis);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </div>
+            </div>
+            <div class="stat-num">3</div>
+            <div class="stat-label">Kelas Hari Ini</div>
+            <div class="stat-sub">Berikutnya jam 09.30</div>
+          </div>
+        </div>
+
+        <div class="card attendance-card">
+          <div class="attendance-head">
+            <h3>Kehadiran Minggu Ini</h3>
+            <span>10 – 16 Agustus 2026</span>
+          </div>
+          <div class="attendance-strip">
+            <div class="att-day"><div class="att-day-label">Sen</div><div class="att-pill att-hadir">Hadir</div></div>
+            <div class="att-day"><div class="att-day-label">Sel</div><div class="att-pill att-hadir">Hadir</div></div>
+            <div class="att-day"><div class="att-day-label">Rab</div><div class="att-pill att-izin">Izin</div></div>
+            <div class="att-day"><div class="att-day-label">Kam</div><div class="att-pill att-hadir">Hadir</div></div>
+            <div class="att-day"><div class="att-day-label">Jum</div><div class="att-pill att-hadir">Hadir</div></div>
+            <div class="att-day"><div class="att-day-label">Sab</div><div class="att-pill att-libur">Libur</div></div>
+            <div class="att-day"><div class="att-day-label">Min</div><div class="att-pill att-libur att-today">Libur</div></div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div>
+            <h3 class="section-title">Kelas Saya</h3>
+            <div class="course-grid">
+              <div class="card course-card" style="--c:var(--s-mtk);">
+                <div class="course-top"><span class="subj-dot"></span><div><div class="course-name">Matematika Peminatan</div><div class="course-teacher">Bpk. Handoko Wijaya</div></div></div>
+                <div class="course-next">Materi lanjut: <b>Turunan Fungsi Trigonometri</b></div>
+                <div class="course-bottom"><div class="progress-track"><div class="progress-fill" style="width:68%;background:var(--s-mtk);"></div></div><span class="course-pct">68%</span></div>
+              </div>
+              <div class="card course-card" style="--c:var(--s-fis);">
+                <div class="course-top"><span class="subj-dot"></span><div><div class="course-name">Fisika</div><div class="course-teacher">Ibu Ratna Dewi Kusuma</div></div></div>
+                <div class="course-next">Materi lanjut: <b>Hukum Newton tentang Gerak</b></div>
+                <div class="course-bottom"><div class="progress-track"><div class="progress-fill" style="width:45%;background:var(--s-fis);"></div></div><span class="course-pct">45%</span></div>
+              </div>
+              <div class="card course-card" style="--c:var(--s-eng);">
+                <div class="course-top"><span class="subj-dot"></span><div><div class="course-name">Bahasa Inggris</div><div class="course-teacher">Bpk. Ahmad Fauzi</div></div></div>
+                <div class="course-next">Materi lanjut: <b>Narrative Text</b></div>
+                <div class="course-bottom"><div class="progress-track"><div class="progress-fill" style="width:82%;background:var(--s-eng);"></div></div><span class="course-pct">82%</span></div>
+              </div>
+              <div class="card course-card" style="--c:var(--s-kim);">
+                <div class="course-top"><span class="subj-dot"></span><div><div class="course-name">Kimia</div><div class="course-teacher">Ibu Dian Permatasari</div></div></div>
+                <div class="course-next">Materi lanjut: <b>Laju Reaksi</b></div>
+                <div class="course-bottom"><div class="progress-track"><div class="progress-fill" style="width:30%;background:var(--s-kim);"></div></div><span class="course-pct">30%</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="section-title">Tugas Mendatang</h3>
+            <div class="card side-card">
+              <div class="task-row">
+                <div class="task-check"></div>
+                <div class="task-body">
+                  <div class="task-title">Laporan Praktikum Hukum Newton</div>
+                  <div class="task-meta"><span class="subj-dot" style="background:var(--s-fis);"></span>Fisika · Tenggat besok, 20.00</div>
+                </div>
+              </div>
+              <div class="task-row">
+                <div class="task-check"></div>
+                <div class="task-body">
+                  <div class="task-title">Latihan Soal Turunan No. 1–10</div>
+                  <div class="task-meta"><span class="subj-dot" style="background:var(--s-mtk);"></span>Matematika · Tenggat 19 Agu</div>
+                </div>
+              </div>
+              <div class="task-row">
+                <div class="task-check done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                <div class="task-body">
+                  <div class="task-title">Esai Narrative Text</div>
+                  <div class="task-meta"><span class="subj-dot" style="background:var(--s-eng);"></span>B. Inggris · Selesai</div>
+                </div>
+              </div>
+              <div class="task-row">
+                <div class="task-check"></div>
+                <div class="task-body">
+                  <div class="task-title">Rangkuman Bab Laju Reaksi</div>
+                  <div class="task-meta"><span class="subj-dot" style="background:var(--s-kim);"></span>Kimia · Tenggat 22 Agu</div>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="section-title">Pengumuman</h3>
+            <div class="card side-card">
+              <div class="ann-row">
+                <div class="ann-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v14L3 15v-4z"/></svg></div>
+                <div>
+                  <div class="ann-title">Jadwal UTS Semester Ganjil</div>
+                  <div class="ann-desc">UTS dimulai 8 September, kisi-kisi bisa diunduh di halaman kelas.</div>
+                  <div class="ann-date">Diumumkan 14 Agu</div>
+                </div>
+              </div>
+              <div class="ann-row">
+                <div class="ann-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+                <div>
+                  <div class="ann-title">Perpanjangan Tenggat Tugas Kimia</div>
+                  <div class="ann-desc">Rangkuman Laju Reaksi diundur ke 22 Agustus.</div>
+                  <div class="ann-date">Diumumkan 13 Agu</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== KELAS SAYA ===================== -->
+      <section class="view" id="view-kelas">
+        <div class="page-head">
+          <div>
+            <h2 class="page-title">Kelas Saya</h2>
+            <p class="page-desc">8 mata pelajaran semester ganjil — Kelas XI IPA 2</p>
+          </div>
+        </div>
+        <div class="course-grid-full">
+          <div class="card course-card-full">
+            <div class="subj-icon" style="background:var(--s-mtk-bg);color:var(--s-mtk);">M</div>
+            <div class="course-name">Matematika Peminatan</div>
+            <div class="course-teacher">Bpk. Handoko Wijaya</div>
+            <div class="course-next" style="margin-top:12px;">14 dari 20 materi selesai</div>
+            <div class="course-bottom" style="margin-bottom:12px;"><div class="progress-track"><div class="progress-fill" style="width:68%;background:var(--s-mtk);"></div></div><span class="course-pct">68%</span></div>
+            <a href="#" class="btn btn-ghost btn-sm">Buka Kelas</a>
+          </div>
+          <div class="card course-card-full">
+            <div class="subj-icon" style="background:var(--s-ind-bg);color:var(--s-ind);">I</div>
+            <div class="course-name">Bahasa Indonesia</div>
+            <div class="course-teacher">Ibu Kartika Sari</div>
+            <div class="course-next" style="margin-top:12px;">17 dari 18 materi selesai</div>
+            <div class="course-bottom" style="margin-bottom:12px;"><div class="progress-track"><div class="progress-fill" style="width:94%;background:var(--s-ind);"></div></div><span class="course-pct">94%</span></div>
+            <a href="#" class="btn btn-ghost btn-sm">Buka Kelas</a>
+          </div>
+          <div class="card course-card-full">
+            <div class="subj-icon" style="background:var(--s-eng-bg);color:var(--s-eng);">E</div>
+            <div class="course-name">Bahasa Inggris</div>
+            <div class="course-teacher">Bpk. Ahmad Fauzi</div>
+            <div class="course-next" style="margin-top:12px;">15 dari 18 materi selesai</div>
+            <div class="course-bottom" style="margin-bottom:12px;"><div class="progress-track"><div class="progress-fill" style="width:82%;background:var(--s-eng);"></div></div><span class="course-pct">82%</span></div>
+            <a href="#" class="btn btn-ghost btn-sm">Buka Kelas</a>
+          </div>
+          <div class="card course-card-full">
+            <div class="subj-icon" style="background:var(--s-fis-bg);color:var(--s-fis);">F</div>
+            <div class="course-name">Fisika</div>
+            <div class="course-teacher">Ibu Ratna Dewi Kusuma</div>
+            <div class="course-next" style="margin-top:12px;">9 dari 20 materi selesai</div>
+            <div class="course-bottom" style="margin-bottom:12px;"><div class="progress-track"><div class="progress-fill" style="width:45%;background:var(--s-fis);"></div></div><span class="course-pct">45%</span></div>
+            <a href="#" class="btn btn-ghost btn-sm">Buka Kelas</a>
+          </div>
+          <div class="card course-card-full">
+            <div class="subj-icon" style="background:var(--s-kim-bg);color:var(--s-kim);">K</div>
+            <div class="course-name">Kimia</div>
+            <div class="course-teacher">Ibu Dian Permatasari</div>
+            <div class="course-next" style="margin-top:12px;">6 dari 20 materi selesai</div>
+            <div class="course-bottom" style="margin-bottom:12px;"><div class="progress-track"><div class="progress-fill" style="width:30%;background:var(--s-kim);"></div></div><span class="course-pct">30%</span></div>
+            <a href="#" class="btn btn-ghost btn-sm">Buka Kelas</a>
+          </div>
+          <div class="card course-card-full">
+            <div class="subj-icon" style="background:var(--s-bio-bg);color:var(--s-bio);">B</div>
+            <div class="course-name">Biologi</div>
+            <div class="course-teacher">Bpk. Yusuf Setiawan</div>
+            <div class="course-next" style="margin-top:12px;">12 dari 16 materi selesai</div>
+            <div class="course-bottom" style="margin-bottom:12px;"><div class="progress-track"><div class="progress-fill" style="width:75%;background:var(--s-bio);"></div></div><span class="course-pct">75%</span></div>
+            <a href="#" class="btn btn-ghost btn-sm">Buka Kelas</a>
+          </div>
+          <div class="card course-card-full">
+            <div class="subj-icon" style="background:var(--s-sej-bg);color:var(--s-sej);">S</div>
+            <div class="course-name">Sejarah</div>
+            <div class="course-teacher">Ibu Wulan Anggraini</div>
+            <div class="course-next" style="margin-top:12px;">10 dari 14 materi selesai</div>
+            <div class="course-bottom" style="margin-bottom:12px;"><div class="progress-track"><div class="progress-fill" style="width:71%;background:var(--s-sej);"></div></div><span class="course-pct">71%</span></div>
+            <a href="#" class="btn btn-ghost btn-sm">Buka Kelas</a>
+          </div>
+          <div class="card course-card-full">
+            <div class="subj-icon" style="background:var(--s-sen-bg);color:var(--s-sen);">S</div>
+            <div class="course-name">Seni Budaya</div>
+            <div class="course-teacher">Bpk. Rian Pratama</div>
+            <div class="course-next" style="margin-top:12px;">8 dari 12 materi selesai</div>
+            <div class="course-bottom" style="margin-bottom:12px;"><div class="progress-track"><div class="progress-fill" style="width:67%;background:var(--s-sen);"></div></div><span class="course-pct">67%</span></div>
+            <a href="#" class="btn btn-ghost btn-sm">Buka Kelas</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== TUGAS ===================== -->
+      <section class="view" id="view-tugas">
+        <div class="page-head">
+          <div>
+            <h2 class="page-title">Tugas</h2>
+            <p class="page-desc">Semua tugas dari 8 mata pelajaran</p>
+          </div>
+        </div>
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="semua">Semua</button>
+          <button class="filter-tab" data-filter="belum">Belum Dikerjakan</button>
+          <button class="filter-tab" data-filter="selesai">Selesai</button>
+        </div>
+        <div class="card" style="padding:6px 0;">
+          <table class="task-table">
+            <thead>
+              <tr><th>Mata Pelajaran</th><th>Judul Tugas</th><th>Tenggat</th><th>Status</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr data-status="belum">
+                <td><span class="subj-chip" style="background:var(--s-fis-bg);color:var(--s-fis);">Fisika</span></td>
+                <td>Laporan Praktikum Hukum Newton</td>
+                <td>17 Agu, 20.00</td>
+                <td><span class="badge badge-red">Segera</span></td>
+                <td><a href="#" class="btn btn-amber btn-sm">Kerjakan</a></td>
+              </tr>
+              <tr data-status="belum">
+                <td><span class="subj-chip" style="background:var(--s-mtk-bg);color:var(--s-mtk);">Matematika</span></td>
+                <td>Latihan Soal Turunan No. 1–10</td>
+                <td>19 Agu, 23.59</td>
+                <td><span class="badge badge-amber">Belum</span></td>
+                <td><a href="#" class="btn btn-ghost btn-sm">Kerjakan</a></td>
+              </tr>
+              <tr data-status="belum">
+                <td><span class="subj-chip" style="background:var(--s-kim-bg);color:var(--s-kim);">Kimia</span></td>
+                <td>Rangkuman Bab Laju Reaksi</td>
+                <td>22 Agu, 23.59</td>
+                <td><span class="badge badge-amber">Belum</span></td>
+                <td><a href="#" class="btn btn-ghost btn-sm">Kerjakan</a></td>
+              </tr>
+              <tr data-status="belum">
+                <td><span class="subj-chip" style="background:var(--s-sej-bg);color:var(--s-sej);">Sejarah</span></td>
+                <td>Esai Sejarah Kemerdekaan Indonesia</td>
+                <td>24 Agu, 23.59</td>
+                <td><span class="badge badge-amber">Belum</span></td>
+                <td><a href="#" class="btn btn-ghost btn-sm">Kerjakan</a></td>
+              </tr>
+              <tr data-status="belum">
+                <td><span class="subj-chip" style="background:var(--s-bio-bg);color:var(--s-bio);">Biologi</span></td>
+                <td>Laporan Pengamatan Sel Tumbuhan</td>
+                <td>26 Agu, 20.00</td>
+                <td><span class="badge badge-amber">Belum</span></td>
+                <td><a href="#" class="btn btn-ghost btn-sm">Kerjakan</a></td>
+              </tr>
+              <tr data-status="selesai">
+                <td><span class="subj-chip" style="background:var(--s-eng-bg);color:var(--s-eng);">B. Inggris</span></td>
+                <td>Esai Narrative Text</td>
+                <td>12 Agu, 23.59</td>
+                <td><span class="badge badge-green">Selesai · 90</span></td>
+                <td><a href="#" class="btn btn-ghost btn-sm">Lihat</a></td>
+              </tr>
+              <tr data-status="selesai">
+                <td><span class="subj-chip" style="background:var(--s-ind-bg);color:var(--s-ind);">B. Indonesia</span></td>
+                <td>Analisis Puisi Chairil Anwar</td>
+                <td>9 Agu, 23.59</td>
+                <td><span class="badge badge-green">Selesai · 88</span></td>
+                <td><a href="#" class="btn btn-ghost btn-sm">Lihat</a></td>
+              </tr>
+              <tr data-status="selesai">
+                <td><span class="subj-chip" style="background:var(--s-sen-bg);color:var(--s-sen);">Seni Budaya</span></td>
+                <td>Membuat Sketsa Ragam Hias Nusantara</td>
+                <td>6 Agu, 23.59</td>
+                <td><span class="badge badge-green">Selesai · 92</span></td>
+                <td><a href="#" class="btn btn-ghost btn-sm">Lihat</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===================== JADWAL ===================== -->
+      <section class="view" id="view-jadwal">
+        <div class="page-head">
+          <div>
+            <h2 class="page-title">Jadwal Pelajaran</h2>
+            <p class="page-desc">Kelas XI IPA 2 — Minggu berjalan</p>
+          </div>
+        </div>
+        <div class="card schedule-wrap" style="padding:18px;">
+          <div class="schedule-grid">
+            <div></div>
+            <div class="sch-head">Senin</div><div class="sch-head">Selasa</div><div class="sch-head">Rabu</div><div class="sch-head">Kamis</div><div class="sch-head">Jumat</div>
+
+            <div class="sch-time">07.00–08.30</div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-mtk-bg);color:var(--s-mtk);"><b>Matematika</b><span>R. XI IPA 2</span></div></div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-fis-bg);color:var(--s-fis);"><b>Fisika</b><span>Lab. Fisika</span></div></div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-eng-bg);color:var(--s-eng);"><b>B. Inggris</b><span>R. XI IPA 2</span></div></div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-bio-bg);color:var(--s-bio);"><b>Biologi</b><span>Lab. Biologi</span></div></div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-ind-bg);color:var(--s-ind);"><b>B. Indonesia</b><span>R. XI IPA 2</span></div></div>
+
+            <div class="sch-time">08.30–10.00</div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-mtk-bg);color:var(--s-mtk);"><b>Matematika</b><span>R. XI IPA 2</span></div></div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-kim-bg);color:var(--s-kim);"><b>Kimia</b><span>Lab. Kimia</span></div></div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-eng-bg);color:var(--s-eng);"><b>B. Inggris</b><span>R. XI IPA 2</span></div></div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-sej-bg);color:var(--s-sej);"><b>Sejarah</b><span>R. XI IPA 2</span></div></div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-ind-bg);color:var(--s-ind);"><b>B. Indonesia</b><span>R. XI IPA 2</span></div></div>
+
+            <div class="sch-time">10.00–10.15</div>
+            <div class="sch-cell sch-break">Istirahat</div><div class="sch-cell sch-break">Istirahat</div><div class="sch-cell sch-break">Istirahat</div><div class="sch-cell sch-break">Istirahat</div><div class="sch-cell sch-break">Istirahat</div>
+
+            <div class="sch-time">10.15–11.45</div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-bio-bg);color:var(--s-bio);"><b>Biologi</b><span>Lab. Biologi</span></div></div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-kim-bg);color:var(--s-kim);"><b>Kimia</b><span>Lab. Kimia</span></div></div>
+            <div class="sch-cell"><div class="sch-empty"></div></div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-sen-bg);color:var(--s-sen);"><b>Seni Budaya</b><span>R. Seni</span></div></div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-fis-bg);color:var(--s-fis);"><b>Fisika</b><span>Lab. Fisika</span></div></div>
+
+            <div class="sch-time">13.00–14.30</div>
+            <div class="sch-cell"><div class="sch-empty"></div></div>
+            <div class="sch-cell"><div class="sch-block" style="background:var(--s-sej-bg);color:var(--s-sej);"><b>Sejarah</b><span>R. XI IPA 2</span></div></div>
+            <div class="sch-cell"><div class="sch-empty"></div></div>
+            <div class="sch-cell"><div class="sch-empty"></div></div>
+            <div class="sch-cell"><div class="sch-empty"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== NILAI ===================== -->
+      <section class="view" id="view-nilai">
+        <div class="page-head">
+          <div>
+            <h2 class="page-title">Nilai</h2>
+            <p class="page-desc">Rekap nilai semester ganjil — Kelas XI IPA 2</p>
+          </div>
+        </div>
+
+        <div class="card gpa-banner">
+          <div>
+            <div class="stat-label" style="margin-bottom:6px;">Rata-rata Semester</div>
+            <div class="gpa-num">87.6</div>
+          </div>
+          <div class="predikat" style="width:44px;height:44px;font-size:16px;background:var(--green-bg);color:var(--green);">A</div>
+        </div>
+
+        <div class="card" style="padding:6px 0;">
+          <table class="grade-table">
+            <thead>
+              <tr><th>Mata Pelajaran</th><th>Tugas</th><th>UTS</th><th>UAS</th><th>Nilai Akhir</th><th>Predikat</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="subj-chip" style="background:var(--s-mtk-bg);color:var(--s-mtk);">Matematika</span></td>
+                <td>85</td><td>82</td><td>88</td>
+                <td><span class="grade-bar-track"><span class="grade-bar-fill" style="width:85%;background:var(--s-mtk);"></span></span>85</td>
+                <td><div class="predikat" style="background:var(--s-mtk-bg);color:var(--s-mtk);">A-</div></td>
+              </tr>
+              <tr>
+                <td><span class="subj-chip" style="background:var(--s-ind-bg);color:var(--s-ind);">B. Indonesia</span></td>
+                <td>90</td><td>86</td><td>91</td>
+                <td><span class="grade-bar-track"><span class="grade-bar-fill" style="width:89%;background:var(--s-ind);"></span></span>89</td>
+                <td><div class="predikat" style="background:var(--s-ind-bg);color:var(--s-ind);">A</div></td>
+              </tr>
+              <tr>
+                <td><span class="subj-chip" style="background:var(--s-eng-bg);color:var(--s-eng);">B. Inggris</span></td>
+                <td>92</td><td>90</td><td>93</td>
+                <td><span class="grade-bar-track"><span class="grade-bar-fill" style="width:92%;background:var(--s-eng);"></span></span>92</td>
+                <td><div class="predikat" style="background:var(--s-eng-bg);color:var(--s-eng);">A</div></td>
+              </tr>
+              <tr>
+                <td><span class="subj-chip" style="background:var(--s-fis-bg);color:var(--s-fis);">Fisika</span></td>
+                <td>78</td><td>75</td><td>80</td>
+                <td><span class="grade-bar-track"><span class="grade-bar-fill" style="width:78%;background:var(--s-fis);"></span></span>78</td>
+                <td><div class="predikat" style="background:var(--s-fis-bg);color:var(--s-fis);">B+</div></td>
+              </tr>
+              <tr>
+                <td><span class="subj-chip" style="background:var(--s-kim-bg);color:var(--s-kim);">Kimia</span></td>
+                <td>80</td><td>79</td><td>83</td>
+                <td><span class="grade-bar-track"><span class="grade-bar-fill" style="width:81%;background:var(--s-kim);"></span></span>81</td>
+                <td><div class="predikat" style="background:var(--s-kim-bg);color:var(--s-kim);">B+</div></td>
+              </tr>
+              <tr>
+                <td><span class="subj-chip" style="background:var(--s-bio-bg);color:var(--s-bio);">Biologi</span></td>
+                <td>88</td><td>85</td><td>90</td>
+                <td><span class="grade-bar-track"><span class="grade-bar-fill" style="width:88%;background:var(--s-bio);"></span></span>88</td>
+                <td><div class="predikat" style="background:var(--s-bio-bg);color:var(--s-bio);">A-</div></td>
+              </tr>
+              <tr>
+                <td><span class="subj-chip" style="background:var(--s-sej-bg);color:var(--s-sej);">Sejarah</span></td>
+                <td>91</td><td>88</td><td>92</td>
+                <td><span class="grade-bar-track"><span class="grade-bar-fill" style="width:90%;background:var(--s-sej);"></span></span>90</td>
+                <td><div class="predikat" style="background:var(--s-sej-bg);color:var(--s-sej);">A</div></td>
+              </tr>
+              <tr>
+                <td><span class="subj-chip" style="background:var(--s-sen-bg);color:var(--s-sen);">Seni Budaya</span></td>
+                <td>94</td><td>89</td><td>95</td>
+                <td><span class="grade-bar-track"><span class="grade-bar-fill" style="width:93%;background:var(--s-sen);"></span></span>93</td>
+                <td><div class="predikat" style="background:var(--s-sen-bg);color:var(--s-sen);">A</div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===================== PENGUMUMAN ===================== -->
+      <section class="view" id="view-pengumuman">
+        <div class="page-head">
+          <div>
+            <h2 class="page-title">Pengumuman</h2>
+            <p class="page-desc">Informasi terbaru dari sekolah</p>
+          </div>
+        </div>
+
+        <div class="card ann-full">
+          <div class="ann-full-top">
+            <span class="badge badge-blue">Akademik</span>
+          </div>
+          <h3 class="ann-full-title">Jadwal UTS Semester Ganjil 2026/2027</h3>
+          <p class="ann-full-text">Ujian Tengah Semester akan dilaksanakan mulai 8 September 2026. Kisi-kisi materi untuk setiap mata pelajaran sudah dapat diunduh di masing-masing halaman kelas. Pastikan kalian mempelajarinya lebih awal ya!</p>
+          <div class="ann-full-foot">
+            <div class="avatar" style="width:22px;height:22px;font-size:10px;">TU</div>
+            Tata Usaha · 14 Agustus 2026
+          </div>
+        </div>
+
+        <div class="card ann-full">
+          <div class="ann-full-top">
+            <span class="badge badge-amber">Tugas</span>
+          </div>
+          <h3 class="ann-full-title">Perpanjangan Tenggat Tugas Kimia</h3>
+          <p class="ann-full-text">Menyesuaikan permintaan dari beberapa siswa, tenggat pengumpulan Rangkuman Bab Laju Reaksi diundur dari 20 Agustus menjadi 22 Agustus 2026, pukul 23.59.</p>
+          <div class="ann-full-foot">
+            <div class="avatar" style="width:22px;height:22px;font-size:10px;">DP</div>
+            Ibu Dian Permatasari · 13 Agustus 2026
+          </div>
+        </div>
+
+        <div class="card ann-full">
+          <div class="ann-full-top">
+            <span class="badge badge-green">Kegiatan</span>
+          </div>
+          <h3 class="ann-full-title">Pendaftaran Ekstrakurikuler Semester Ganjil</h3>
+          <p class="ann-full-text">Pendaftaran ekstrakurikuler dibuka mulai 18 Agustus. Tersedia pilihan Karya Ilmiah Remaja, Basket, Paduan Suara, dan Robotika. Formulir bisa diisi melalui menu Kegiatan Siswa.</p>
+          <div class="ann-full-foot">
+            <div class="avatar" style="width:22px;height:22px;font-size:10px;">TU</div>
+            Tata Usaha · 10 Agustus 2026
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---- View switching ----
+  const navItems = document.querySelectorAll('.nav-item');
+  const views = document.querySelectorAll('.view');
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const target = item.getAttribute('data-view');
+      navItems.forEach(n => n.classList.remove('active'));
+      item.classList.add('active');
+      views.forEach(v => v.classList.remove('active'));
+      document.getElementById('view-' + target).classList.add('active');
+      document.querySelector('.content').scrollTo?.(0, 0);
+      window.scrollTo(0, 0);
+    });
+  });
+
+  // ---- Tugas filter ----
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const taskRows = document.querySelectorAll('#view-tugas tbody tr');
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.getAttribute('data-filter');
+      taskRows.forEach(row => {
+        const status = row.getAttribute('data-status');
+        row.style.display = (filter === 'semua' || status === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  // ---- Dashboard task checkboxes (toggle demo) ----
+  document.querySelectorAll('#view-dashboard .task-check').forEach(chk => {
+    chk.addEventListener('click', () => {
+      chk.classList.toggle('done');
+      if (chk.classList.contains('done') && !chk.innerHTML.trim()) {
+        chk.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

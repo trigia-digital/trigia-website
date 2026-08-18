@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BALAS — AI Agent yang Balas Chat Pelanggan Anda 24/7</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          bg: '#14110F',
+          surface: '#1C1815',
+          surface2: '#231E19',
+          fg: '#F5F0E8',
+          muted: '#A79E8E',
+          primary: { DEFAULT: '#FFB447', fg: '#181008' },
+          secondary: { DEFAULT: '#6C7BFF', fg: '#0E0F1F' },
+          border: '#2C2620',
+        },
+        keyframes: {
+          'fade-up': {
+            '0%': { opacity: 0, transform: 'translateY(16px)' },
+            '100%': { opacity: 1, transform: 'translateY(0)' },
+          },
+          'pop-in': {
+            '0%': { opacity: 0, transform: 'scale(0.92) translateY(6px)' },
+            '100%': { opacity: 1, transform: 'scale(1) translateY(0)' },
+          },
+          blink: {
+            '0%, 80%, 100%': { opacity: 0.2 },
+            '40%': { opacity: 1 },
+          },
+        },
+        animation: {
+          'fade-up': 'fade-up 0.7s cubic-bezier(0.16,1,0.3,1) forwards',
+          'pop-in': 'pop-in 0.5s cubic-bezier(0.16,1,0.3,1) forwards',
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #14110F; color: #F5F0E8; }
+  .dot { animation: blink 1.4s infinite both; }
+  .dot:nth-child(2) { animation-delay: .2s; }
+  .dot:nth-child(3) { animation-delay: .4s; }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .chev { transform: rotate(45deg); }
+  .scrolled { backdrop-filter: blur(10px); background-color: rgba(20,17,15,0.85); box-shadow: 0 1px 0 0 #2C2620; }
+</style>
+</head>
+
+<body class="font-sans antialiased">
+
+<!-- NAVBAR -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-16 py-4 transition-all duration-300">
+  <div class="flex items-center gap-2">
+    <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+    <span class="font-display font-semibold text-xl tracking-tight text-fg">BALAS</span>
+  </div>
+
+  <div class="hidden md:flex items-center gap-8">
+    <a href="#fitur" class="text-sm text-muted hover:text-fg transition-colors">Fitur</a>
+    <a href="#cara-kerja" class="text-sm text-muted hover:text-fg transition-colors">Cara Kerja</a>
+    <a href="#harga" class="text-sm text-muted hover:text-fg transition-colors">Harga</a>
+    <a href="#faq" class="text-sm text-muted hover:text-fg transition-colors">FAQ</a>
+  </div>
+
+  <div class="flex items-center gap-3">
+    <button onclick="openLogin()" class="text-sm text-fg/90 hover:text-fg px-3 py-2 transition-colors">Masuk</button>
+    <button onclick="openLogin()" class="bg-primary text-primary-fg text-sm font-semibold px-5 py-2.5 rounded-full hover:brightness-105 active:scale-[0.97] transition-all">
+      Coba Gratis
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center overflow-hidden bg-bg pt-28 pb-16 px-6 lg:px-16">
+  <div class="absolute -top-40 -left-40 w-[32rem] h-[32rem] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="absolute top-40 right-0 w-[28rem] h-[28rem] bg-secondary/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <div>
+      <span class="opacity-0 animate-fade-up inline-block text-xs uppercase tracking-widest text-primary font-semibold border border-primary/30 bg-primary/10 rounded-full px-3 py-1 mb-6" style="animation-delay:.05s">
+        AI Agent untuk Bisnis
+      </span>
+
+      <h1 class="opacity-0 animate-fade-up font-display text-[clamp(2.5rem,5.5vw,4rem)] leading-[1.08] font-semibold tracking-tight mb-6" style="animation-delay:.15s">
+        Balas Chat Pelanggan,<br>
+        Meski Anda Sedang <span class="italic text-primary">Tidur.</span>
+      </h1>
+
+      <p class="opacity-0 animate-fade-up text-muted text-lg leading-relaxed mb-8 max-w-lg" style="animation-delay:.3s">
+        BALAS adalah AI Agent yang otomatis menjawab, follow up, dan mengkualifikasi calon pelanggan dari WhatsApp, Instagram, dan website Anda — tanpa perlu tambah tim CS.
+      </p>
+
+      <div class="opacity-0 animate-fade-up flex flex-wrap gap-3 mb-8" style="animation-delay:.42s">
+        <button onclick="openLogin()" class="bg-primary text-primary-fg font-semibold px-7 py-3.5 rounded-full hover:brightness-105 active:scale-[0.97] transition-all">
+          Coba Gratis 14 Hari
+        </button>
+        <a href="#cara-kerja" class="border border-border text-fg font-semibold px-7 py-3.5 rounded-full hover:bg-surface active:scale-[0.97] transition-all text-center">
+          Lihat Cara Kerja
+        </a>
+      </div>
+
+      <p class="opacity-0 animate-fade-up text-xs text-muted/70" style="animation-delay:.5s">
+        Tanpa kartu kredit · Aktif dalam 5 menit · Batalkan kapan saja
+      </p>
+    </div>
+
+    <!-- Chat mockup visual -->
+    <div class="opacity-0 animate-fade-up relative" style="animation-delay:.35s">
+      <div class="bg-surface border border-border rounded-2xl shadow-2xl overflow-hidden">
+        <div class="flex items-center gap-2 px-4 py-3 border-b border-border bg-surface2">
+          <span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+          <div>
+            <p class="text-sm font-semibold text-fg leading-tight">Toko Berkah Jaya</p>
+            <p class="text-[11px] text-muted leading-tight">WhatsApp Business · Aktif</p>
+          </div>
+          <span class="ml-auto text-[10px] text-primary font-semibold">● AI Aktif</span>
+        </div>
+
+        <div class="p-4 space-y-3 min-h-[280px]">
+          <div class="flex justify-end">
+            <div class="opacity-0 animate-pop-in bg-surface2 text-fg text-sm rounded-2xl rounded-br-sm px-4 py-2.5 max-w-[75%]" style="animation-delay: .8s">
+              Halo, produk mejanya masih ready ga kak? Warna oak ada?
+            </div>
+          </div>
+          <div class="flex justify-start">
+            <div class="opacity-0 animate-pop-in bg-surface2/60 rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1 items-center w-fit" style="animation-delay: 1.6s">
+              <span class="dot w-1.5 h-1.5 rounded-full bg-muted"></span>
+              <span class="dot w-1.5 h-1.5 rounded-full bg-muted"></span>
+              <span class="dot w-1.5 h-1.5 rounded-full bg-muted"></span>
+            </div>
+          </div>
+          <div class="flex justify-start">
+            <div class="opacity-0 animate-pop-in bg-primary text-primary-fg text-sm rounded-2xl rounded-bl-sm px-4 py-2.5 max-w-[80%]" style="animation-delay: 2.6s">
+              Halo kak! Meja oak masih ready ✅ Harga Rp 850.000, siap kirim hari ini. Mau saya bantu buatkan pesanannya?
+            </div>
+          </div>
+          <div class="flex justify-start">
+            <span class="opacity-0 animate-pop-in text-[10px] text-muted/60 pl-1" style="animation-delay: 2.9s">Dibalas otomatis dalam 4 detik</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="border-y border-border bg-surface py-10 px-6 lg:px-16">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div>
+      <p class="font-display text-3xl font-semibold text-primary">&lt;5 detik</p>
+      <p class="text-xs text-muted mt-1 uppercase tracking-wide">Rata-rata waktu balas</p>
+    </div>
+    <div>
+      <p class="font-display text-3xl font-semibold text-primary">24/7</p>
+      <p class="text-xs text-muted mt-1 uppercase tracking-wide">Aktif tanpa libur</p>
+    </div>
+    <div>
+      <p class="font-display text-3xl font-semibold text-primary">3x</p>
+      <p class="text-xs text-muted mt-1 uppercase tracking-wide">Leads terkonversi</p>
+    </div>
+    <div>
+      <p class="font-display text-3xl font-semibold text-primary">0</p>
+      <p class="text-xs text-muted mt-1 uppercase tracking-wide">Chat pelanggan terlewat</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="fitur" class="py-24 px-6 lg:px-16">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-2xl mb-16">
+      <span class="text-xs uppercase tracking-widest text-secondary font-semibold">Fitur</span>
+      <h2 class="font-display text-4xl font-semibold mt-3 leading-tight">Semua yang dibutuhkan agar tidak ada chat yang terlewat.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary/40 transition-colors">
+        <div class="w-10 h-10 rounded-lg bg-primary/15 text-primary flex items-center justify-center font-display font-semibold mb-4">01</div>
+        <h3 class="font-semibold text-lg mb-2">Balas Otomatis 24/7</h3>
+        <p class="text-sm text-muted leading-relaxed">AI langsung menjawab pertanyaan pelanggan kapan pun, tanpa jeda — termasuk tengah malam dan akhir pekan.</p>
+      </div>
+      <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary/40 transition-colors">
+        <div class="w-10 h-10 rounded-lg bg-primary/15 text-primary flex items-center justify-center font-display font-semibold mb-4">02</div>
+        <h3 class="font-semibold text-lg mb-2">Satu Dashboard, Semua Channel</h3>
+        <p class="text-sm text-muted leading-relaxed">WhatsApp Business, Instagram DM, dan live chat website — terhubung dan terpantau dalam satu tempat.</p>
+      </div>
+      <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary/40 transition-colors">
+        <div class="w-10 h-10 rounded-lg bg-primary/15 text-primary flex items-center justify-center font-display font-semibold mb-4">03</div>
+        <h3 class="font-semibold text-lg mb-2">Follow-up Otomatis</h3>
+        <p class="text-sm text-muted leading-relaxed">Ingatkan calon pelanggan yang belum checkout atau belum membalas, tanpa Anda harus mengejar manual.</p>
+      </div>
+      <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary/40 transition-colors">
+        <div class="w-10 h-10 rounded-lg bg-primary/15 text-primary flex items-center justify-center font-display font-semibold mb-4">04</div>
+        <h3 class="font-semibold text-lg mb-2">Serah Terima ke Tim Anda</h3>
+        <p class="text-sm text-muted leading-relaxed">AI tahu kapan sebuah percakapan butuh sentuhan manusia, dan mengopernya ke tim CS secara mulus.</p>
+      </div>
+      <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary/40 transition-colors">
+        <div class="w-10 h-10 rounded-lg bg-primary/15 text-primary flex items-center justify-center font-display font-semibold mb-4">05</div>
+        <h3 class="font-semibold text-lg mb-2">Belajar dari Data Bisnis Anda</h3>
+        <p class="text-sm text-muted leading-relaxed">Unggah katalog produk, daftar harga, atau FAQ — AI mempelajarinya dan menjawab sesuai gaya bisnis Anda.</p>
+      </div>
+      <div class="bg-surface border border-border rounded-2xl p-6 hover:border-primary/40 transition-colors">
+        <div class="w-10 h-10 rounded-lg bg-primary/15 text-primary flex items-center justify-center font-display font-semibold mb-4">06</div>
+        <h3 class="font-semibold text-lg mb-2">Analitik Percakapan</h3>
+        <p class="text-sm text-muted leading-relaxed">Pantau performa balasan, topik yang paling sering ditanyakan, dan tingkat konversi dari waktu ke waktu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="cara-kerja" class="py-24 px-6 lg:px-16 bg-surface border-y border-border">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-2xl mb-16">
+      <span class="text-xs uppercase tracking-widest text-secondary font-semibold">Cara Kerja</span>
+      <h2 class="font-display text-4xl font-semibold mt-3 leading-tight">Aktif dalam 4 langkah, bukan 4 minggu.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="relative">
+        <p class="font-display text-5xl font-semibold text-primary/30 mb-4">01</p>
+        <h3 class="font-semibold mb-2">Hubungkan Akun</h3>
+        <p class="text-sm text-muted leading-relaxed">Sambungkan WhatsApp Business, Instagram, atau website Anda hanya dalam beberapa klik.</p>
+      </div>
+      <div class="relative">
+        <p class="font-display text-5xl font-semibold text-primary/30 mb-4">02</p>
+        <h3 class="font-semibold mb-2">Latih AI Anda</h3>
+        <p class="text-sm text-muted leading-relaxed">Unggah info produk, harga, dan FAQ. BALAS otomatis mempelajarinya dalam hitungan menit.</p>
+      </div>
+      <div class="relative">
+        <p class="font-display text-5xl font-semibold text-primary/30 mb-4">03</p>
+        <h3 class="font-semibold mb-2">Aktifkan Agent</h3>
+        <p class="text-sm text-muted leading-relaxed">AI mulai membalas chat masuk sesuai gaya bicara dan nada bisnis Anda.</p>
+      </div>
+      <div class="relative">
+        <p class="font-display text-5xl font-semibold text-primary/30 mb-4">04</p>
+        <h3 class="font-semibold mb-2">Pantau &amp; Optimalkan</h3>
+        <p class="text-sm text-muted leading-relaxed">Lihat dashboard performa dan sesuaikan respons AI kapan saja Anda mau.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT PREVIEW -->
+<section class="py-24 px-6 lg:px-16">
+  <div class="max-w-7xl mx-auto text-center mb-14">
+    <span class="text-xs uppercase tracking-widest text-secondary font-semibold">Produk</span>
+    <h2 class="font-display text-4xl font-semibold mt-3">Satu dashboard untuk semua percakapan.</h2>
+  </div>
+
+  <div class="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-border shadow-2xl">
+    <div class="bg-surface2 px-4 py-3 flex items-center gap-2 border-b border-border">
+      <span class="w-3 h-3 rounded-full bg-red-400/60"></span>
+      <span class="w-3 h-3 rounded-full bg-yellow-400/60"></span>
+      <span class="w-3 h-3 rounded-full bg-green-400/60"></span>
+      <span class="ml-4 text-xs text-muted">app.balas.ai/inbox</span>
+    </div>
+    <div class="bg-surface grid md:grid-cols-[280px_1fr] min-h-[380px]">
+      <div class="border-r border-border p-3 space-y-1">
+        <div class="flex items-center justify-between px-2 py-2">
+          <span class="text-xs font-semibold text-muted uppercase tracking-wide">Percakapan</span>
+          <span class="text-[10px] bg-primary/15 text-primary rounded-full px-2 py-0.5">12 baru</span>
+        </div>
+        <div class="rounded-lg bg-surface2 px-3 py-2.5">
+          <p class="text-sm font-medium">Rani Wijaya</p>
+          <p class="text-xs text-muted truncate">Produk mejanya masih ready...</p>
+        </div>
+        <div class="rounded-lg px-3 py-2.5 hover:bg-surface2/60">
+          <p class="text-sm font-medium">Dimas Prasetyo</p>
+          <p class="text-xs text-muted truncate">Ongkir ke Bandung berapa ya?</p>
+        </div>
+        <div class="rounded-lg px-3 py-2.5 hover:bg-surface2/60">
+          <p class="text-sm font-medium">Instagram · @sitisofa</p>
+          <p class="text-xs text-muted truncate">Bisa COD ga kak</p>
+        </div>
+      </div>
+      <div class="p-6 flex flex-col justify-end gap-3">
+        <div class="flex justify-end">
+          <div class="bg-surface2 text-sm rounded-2xl rounded-br-sm px-4 py-2.5 max-w-[70%]">Ongkir ke Bandung berapa ya?</div>
+        </div>
+        <div class="flex justify-start">
+          <div class="bg-primary text-primary-fg text-sm rounded-2xl rounded-bl-sm px-4 py-2.5 max-w-[75%]">Ongkir ke Bandung Rp 25.000 kak, estimasi 2-3 hari. Mau langsung saya buatkan invoice-nya?</div>
+        </div>
+        <div class="mt-4 border border-border rounded-full px-4 py-2.5 text-xs text-muted/70">Ketik balasan manual, atau biarkan AI yang membalas...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="harga" class="py-24 px-6 lg:px-16 bg-surface border-y border-border">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-xs uppercase tracking-widest text-secondary font-semibold">Harga</span>
+      <h2 class="font-display text-4xl font-semibold mt-3">Harga yang masuk akal untuk bisnis yang bertumbuh.</h2>
+    </div>
+
+    <div class="flex items-center justify-center gap-3 mb-14">
+      <span id="label-monthly" class="text-sm font-semibold text-fg">Bulanan</span>
+      <button onclick="togglePricing()" id="pricing-toggle" class="w-12 h-7 rounded-full bg-surface2 border border-border relative transition-colors">
+        <span id="toggle-knob" class="absolute top-0.5 left-0.5 w-5.5 h-5.5 rounded-full bg-primary transition-all" style="width:1.35rem;height:1.35rem;"></span>
+      </button>
+      <span id="label-annual" class="text-sm text-muted">Tahunan <span class="text-primary">(hemat 20%)</span></span>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 items-start">
+      <div class="bg-bg border border-border rounded-2xl p-8">
+        <h3 class="font-semibold text-lg mb-1">Starter</h3>
+        <p class="text-sm text-muted mb-6">Untuk UMKM yang baru mulai</p>
+        <p class="font-display text-4xl font-semibold mb-1">Rp <span class="price" data-monthly="149.000" data-annual="119.000">149.000</span></p>
+        <p class="text-xs text-muted mb-6">/ bulan</p>
+        <ul class="space-y-3 text-sm text-fg/90 mb-8">
+          <li>✓ 1 channel terhubung</li>
+          <li>✓ 500 chat dibalas otomatis / bulan</li>
+          <li>✓ Follow-up dasar</li>
+          <li>✓ Dashboard percakapan</li>
+        </ul>
+        <button onclick="openLogin()" class="w-full border border-border rounded-full py-3 font-semibold hover:bg-surface2 transition-colors">Pilih Starter</button>
+      </div>
+
+      <div class="bg-surface2 border-2 border-primary rounded-2xl p-8 relative md:-translate-y-3">
+        <span class="absolute -top-3 left-8 bg-primary text-primary-fg text-xs font-semibold px-3 py-1 rounded-full">Paling Populer</span>
+        <h3 class="font-semibold text-lg mb-1">Growth</h3>
+        <p class="text-sm text-muted mb-6">Untuk bisnis yang siap scale up</p>
+        <p class="font-display text-4xl font-semibold mb-1">Rp <span class="price" data-monthly="399.000" data-annual="319.000">399.000</span></p>
+        <p class="text-xs text-muted mb-6">/ bulan</p>
+        <ul class="space-y-3 text-sm text-fg/90 mb-8">
+          <li>✓ 3 channel terhubung</li>
+          <li>✓ Chat dibalas otomatis tanpa batas</li>
+          <li>✓ Follow-up otomatis lanjutan</li>
+          <li>✓ Serah terima ke tim CS</li>
+          <li>✓ Analitik percakapan</li>
+        </ul>
+        <button onclick="openLogin()" class="w-full bg-primary text-primary-fg rounded-full py-3 font-semibold hover:brightness-105 transition-all">Pilih Growth</button>
+      </div>
+
+      <div class="bg-bg border border-border rounded-2xl p-8">
+        <h3 class="font-semibold text-lg mb-1">Scale</h3>
+        <p class="text-sm text-muted mb-6">Untuk bisnis dengan volume tinggi</p>
+        <p class="font-display text-4xl font-semibold mb-1">Rp <span class="price" data-monthly="899.000" data-annual="719.000">899.000</span></p>
+        <p class="text-xs text-muted mb-6">/ bulan</p>
+        <ul class="space-y-3 text-sm text-fg/90 mb-8">
+          <li>✓ Semua channel + multi-agent</li>
+          <li>✓ Integrasi API &amp; CRM</li>
+          <li>✓ Priority support</li>
+          <li>✓ Onboarding khusus tim</li>
+        </ul>
+        <button onclick="openLogin()" class="w-full border border-border rounded-full py-3 font-semibold hover:bg-surface2 transition-colors">Hubungi Sales</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-24 px-6 lg:px-16">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-xs uppercase tracking-widest text-secondary font-semibold">Testimoni</span>
+      <h2 class="font-display text-4xl font-semibold mt-3">Dipakai bisnis yang tidak mau lagi kehilangan chat.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-surface border border-border rounded-2xl p-6">
+        <p class="text-sm text-fg/90 leading-relaxed mb-6">"Dulu chat numpuk pas weekend, sekarang semua langsung dibalas. Closing rate naik jauh."</p>
+        <p class="text-sm font-semibold">Rani Wijaya</p>
+        <p class="text-xs text-muted">Pemilik, Toko Furnitur Berkah Jaya</p>
+      </div>
+      <div class="bg-surface border border-border rounded-2xl p-6">
+        <p class="text-sm text-fg/90 leading-relaxed mb-6">"Setup-nya cepat banget, sehari langsung jalan. Tim CS sekarang cuma pegang yang butuh keputusan manusia."</p>
+        <p class="text-sm font-semibold">Dimas Prasetyo</p>
+        <p class="text-xs text-muted">Founder, Kopi Kulo</p>
+      </div>
+      <div class="bg-surface border border-border rounded-2xl p-6">
+        <p class="text-sm text-fg/90 leading-relaxed mb-6">"AI-nya kerasa natural, pelanggan bahkan sering ga sadar itu bot. Follow-up otomatisnya juga bantu banget."</p>
+        <p class="text-sm font-semibold">Siti Sofa</p>
+        <p class="text-xs text-muted">Owner, @sitisofa.id</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-24 px-6 lg:px-16 bg-surface border-y border-border">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="text-xs uppercase tracking-widest text-secondary font-semibold">FAQ</span>
+      <h2 class="font-display text-4xl font-semibold mt-3">Pertanyaan yang sering ditanyakan.</h2>
+    </div>
+
+    <div class="space-y-3">
+      <details class="bg-bg border border-border rounded-xl px-5 py-4">
+        <summary class="flex items-center justify-between font-medium">
+          Apakah AI-nya bisa dilatih pakai data produk saya sendiri?
+          <span class="chev text-primary transition-transform">+</span>
+        </summary>
+        <p class="text-sm text-muted mt-3 leading-relaxed">Bisa. Anda tinggal unggah katalog produk, daftar harga, atau dokumen FAQ, dan BALAS akan mempelajarinya secara otomatis dalam hitungan menit.</p>
+      </details>
+      <details class="bg-bg border border-border rounded-xl px-5 py-4">
+        <summary class="flex items-center justify-between font-medium">
+          Bagaimana jika pelanggan butuh dibantu manusia?
+          <span class="chev text-primary transition-transform">+</span>
+        </summary>
+        <p class="text-sm text-muted mt-3 leading-relaxed">AI akan mendeteksi kapan percakapan butuh sentuhan manusia dan otomatis mengoper ke tim CS Anda beserta ringkasan percakapannya.</p>
+      </details>
+      <details class="bg-bg border border-border rounded-xl px-5 py-4">
+        <summary class="flex items-center justify-between font-medium">
+          Channel apa saja yang bisa dihubungkan?
+          <span class="chev text-primary transition-transform">+</span>
+        </summary>
+        <p class="text-sm text-muted mt-3 leading-relaxed">WhatsApp Business, Instagram DM, dan live chat website. Channel lain akan segera menyusul.</p>
+      </details>
+      <details class="bg-bg border border-border rounded-xl px-5 py-4">
+        <summary class="flex items-center justify-between font-medium">
+          Bisa berhenti berlangganan kapan saja?
+          <span class="chev text-primary transition-transform">+</span>
+        </summary>
+        <p class="text-sm text-muted mt-3 leading-relaxed">Bisa, tanpa kontrak jangka panjang dan tanpa biaya pembatalan.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="py-24 px-6 lg:px-16 text-center">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="font-display text-4xl font-semibold mb-5">Siap berhenti kehilangan pelanggan karena telat membalas?</h2>
+    <p class="text-muted mb-8">Coba gratis 14 hari, tanpa kartu kredit.</p>
+    <button onclick="openLogin()" class="bg-primary text-primary-fg font-semibold px-8 py-4 rounded-full hover:brightness-105 active:scale-[0.97] transition-all">
+      Mulai Gratis Sekarang
+    </button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-border px-6 lg:px-16 py-14">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+        <span class="font-display font-semibold text-lg">BALAS</span>
+      </div>
+      <p class="text-sm text-muted max-w-xs">AI Agent yang membalas chat pelanggan Anda, 24/7.</p>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-widest text-muted mb-3">Produk</p>
+      <ul class="space-y-2 text-sm text-fg/80">
+        <li><a href="#fitur" class="hover:text-primary">Fitur</a></li>
+        <li><a href="#harga" class="hover:text-primary">Harga</a></li>
+        <li><a href="#faq" class="hover:text-primary">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-widest text-muted mb-3">Perusahaan</p>
+      <ul class="space-y-2 text-sm text-fg/80">
+        <li><a href="#" class="hover:text-primary">Tentang Kami</a></li>
+        <li><a href="#" class="hover:text-primary">Kontak</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-widest text-muted mb-3">Legal</p>
+      <ul class="space-y-2 text-sm text-fg/80">
+        <li><a href="#" class="hover:text-primary">Kebijakan Privasi</a></li>
+        <li><a href="#" class="hover:text-primary">Syarat Layanan</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto border-t border-border mt-10 pt-6 text-xs text-muted">
+    © 2026 BALAS. Semua hak dilindungi.
+  </div>
+</footer>
+
+<!-- LOGIN MODAL -->
+<div id="login-modal" class="hidden fixed inset-0 z-[100] items-center justify-center bg-black/60 backdrop-blur-sm px-4">
+  <div class="bg-surface border border-border rounded-2xl w-full max-w-sm p-8 relative">
+    <button onclick="closeLogin()" class="absolute top-4 right-4 text-muted hover:text-fg">✕</button>
+    <div class="flex items-center gap-2 mb-6">
+      <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+      <span class="font-display font-semibold text-lg">BALAS</span>
+    </div>
+    <h3 class="font-semibold text-xl mb-1">Masuk ke akun Anda</h3>
+    <p class="text-sm text-muted mb-6">Akses dashboard dan semua fitur BALAS.</p>
+    <form onsubmit="return false;" class="space-y-4">
+      <div>
+        <label class="text-xs text-muted">Email</label>
+        <input type="email" placeholder="nama@bisnis.com" class="w-full mt-1 bg-bg border border-border rounded-lg px-3 py-2.5 text-sm outline-none focus:border-primary transition-colors">
+      </div>
+      <div>
+        <label class="text-xs text-muted">Kata Sandi</label>
+        <input type="password" placeholder="••••••••" class="w-full mt-1 bg-bg border border-border rounded-lg px-3 py-2.5 text-sm outline-none focus:border-primary transition-colors">
+      </div>
+      <button type="submit" class="w-full bg-primary text-primary-fg font-semibold rounded-lg py-3 hover:brightness-105 transition-all">Masuk</button>
+    </form>
+    <p class="text-xs text-muted text-center mt-5">
+      Belum punya akun? <a href="#" class="text-primary font-semibold">Coba Gratis</a>
+    </p>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  function openLogin() {
+    const m = document.getElementById('login-modal');
+    m.classList.remove('hidden');
+    m.classList.add('flex');
+  }
+  function closeLogin() {
+    const m = document.getElementById('login-modal');
+    m.classList.add('hidden');
+    m.classList.remove('flex');
+  }
+  document.getElementById('login-modal').addEventListener('click', (e) => {
+    if (e.target.id === 'login-modal') closeLogin();
+  });
+
+  let annual = false;
+  function togglePricing() {
+    annual = !annual;
+    document.querySelectorAll('.price').forEach(el => {
+      el.textContent = annual ? el.dataset.annual : el.dataset.monthly;
+    });
+    document.getElementById('toggle-knob').style.left = annual ? 'calc(100% - 1.5rem)' : '0.125rem';
+    document.getElementById('label-monthly').classList.toggle('text-fg', !annual);
+    document.getElementById('label-monthly').classList.toggle('text-muted', annual);
+    document.getElementById('label-annual').classList.toggle('text-fg', annual);
+    document.getElementById('label-annual').classList.toggle('text-muted', !annual);
+  }
+</script>
+
+</body>
+</html>

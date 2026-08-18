@@ -1,0 +1,63 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0B0B0D"/>
+      <stop offset="100%" stop-color="#17171A"/>
+    </linearGradient>
+    <linearGradient id="siteGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#FF5A1F"/>
+      <stop offset="100%" stop-color="#FF8A50"/>
+    </linearGradient>
+    <radialGradient id="ember2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF5A1F" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#FF5A1F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bgGrad2)"/>
+  <circle cx="600" cy="150" r="220" fill="url(#ember2)"/>
+
+  <!-- baseline -->
+  <line x1="100" y1="400" x2="700" y2="400" stroke="#33333A" stroke-width="1.5"/>
+
+  <!-- Linktree: stack of thin link pills -->
+  <g transform="translate(150,290)">
+    <rect x="0" y="0" width="110" height="22" rx="11" fill="#2A2A30" stroke="#3D3D45"/>
+    <rect x="0" y="30" width="110" height="22" rx="11" fill="#2A2A30" stroke="#3D3D45"/>
+    <rect x="0" y="60" width="110" height="22" rx="11" fill="#2A2A30" stroke="#3D3D45"/>
+    <rect x="0" y="90" width="110" height="22" rx="11" fill="#2A2A30" stroke="#3D3D45"/>
+  </g>
+  <text x="205" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#8A8A93">Linktree</text>
+
+  <!-- Landing Page: single rect with one CTA bar -->
+  <g transform="translate(330,240)">
+    <rect x="0" y="0" width="110" height="160" rx="8" fill="#2A2A30" stroke="#3D3D45"/>
+    <rect x="16" y="20" width="78" height="10" rx="3" fill="#4A4A52"/>
+    <rect x="16" y="40" width="60" height="8" rx="3" fill="#3D3D45"/>
+    <rect x="16" y="120" width="78" height="22" rx="11" fill="#FF5A1F"/>
+  </g>
+  <text x="385" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#C4C4CC">Landing Page</text>
+
+  <!-- Website: fuller structured panel, nav + sections, tallest + glowing -->
+  <g transform="translate(510,150)">
+    <rect x="0" y="0" width="130" height="250" rx="8" fill="url(#siteGrad)"/>
+    <rect x="14" y="16" width="102" height="14" rx="3" fill="#0B0B0D" opacity="0.35"/>
+    <rect x="14" y="46" width="102" height="50" rx="4" fill="#0B0B0D" opacity="0.2"/>
+    <rect x="14" y="108" width="46" height="46" rx="4" fill="#0B0B0D" opacity="0.2"/>
+    <rect x="70" y="108" width="46" height="46" rx="4" fill="#0B0B0D" opacity="0.2"/>
+    <rect x="14" y="166" width="102" height="10" rx="3" fill="#0B0B0D" opacity="0.25"/>
+    <rect x="14" y="184" width="70" height="10" rx="3" fill="#0B0B0D" opacity="0.25"/>
+  </g>
+  <text x="575" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#F4F4F5" font-weight="bold">Website</text>
+
+  <!-- house icon top-left, echoing the badge composition from sibling covers -->
+  <g transform="translate(140,110)">
+    <circle r="42" fill="#1F1F23" stroke="#FF5A1F" stroke-width="2.5"/>
+    <path d="M-16 4 V16 H16 V4 L0 -14 Z" fill="none" stroke="#FF8A50" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+
+  <!-- floating small dots -->
+  <circle cx="80" cy="220" r="14" fill="#1F1F23" stroke="#FF5A1F" stroke-width="1.5"/>
+  <circle cx="250" cy="90" r="10" fill="#1F1F23" stroke="#FF5A1F" stroke-width="1.5"/>
+  <circle cx="680" cy="380" r="9" fill="#1F1F23" stroke="#FF5A1F" stroke-width="1.5"/>
+</svg>

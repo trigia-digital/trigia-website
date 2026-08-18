@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seduh Coffee Co. — Slow Brew, Honest Roast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --roast:#3E2723;
+  --roast-deep:#2A1B18;
+  --cream:#F0E4D3;
+  --cream-soft:#E8D9C2;
+  --terracotta:#C4682E;
+  --ink:#2A2018;
+  --ink-soft:#6B5D4F;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;}
+.wrap{max-width:1140px;margin:0 auto;padding:0 32px;}
+@media (max-width:640px){.wrap{padding:0 20px;}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,.84,.44,1),transform .9s cubic-bezier(.16,.84,.44,1);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.eyebrow{font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--terracotta);font-weight:600;margin-bottom:18px;}
+.bean{display:inline-block;}
+
+/* ===== Nav ===== */
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 0;transition:all .4s ease;}
+header.scrolled{background:rgba(240,228,211,0.94);backdrop-filter:blur(10px);padding:15px 0;box-shadow:0 1px 0 rgba(42,32,24,0.08);}
+nav{display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:var(--cream);transition:color .4s ease;}
+header.scrolled .logo{color:var(--roast);}
+.logo svg{width:24px;height:24px;flex-shrink:0;}
+.nav-links{display:flex;align-items:center;gap:36px;}
+.nav-links a{font-size:14px;color:var(--cream);transition:opacity .3s ease, color .4s ease;}
+header.scrolled .nav-links a{color:var(--roast);}
+.nav-links a:hover{opacity:0.6;}
+.nav-cta{font-size:13px;background:var(--roast);color:var(--cream);padding:12px 24px;transition:all .3s ease;}
+.nav-cta:hover{background:var(--terracotta);}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;}
+.burger span{width:22px;height:1.5px;background:var(--cream);transition:background .4s ease;}
+header.scrolled .burger span{background:var(--ink);}
+
+/* ===== Hero ===== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--roast);color:var(--cream);}
+.hero-grain{position:absolute;inset:0;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;position:relative;z-index:2;padding:120px 0 80px;}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr;}}
+.hero h1{font-size:clamp(46px,6.5vw,80px);line-height:1.02;margin-bottom:24px;}
+.hero h1 .accent{color:var(--terracotta);}
+.hero p{font-size:17px;color:rgba(240,228,211,0.8);max-width:420px;margin-bottom:34px;}
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:14px;padding:16px 30px;border:1px solid currentColor;transition:all .35s ease;}
+.btn-cream{color:var(--cream);}
+.btn-cream:hover{background:var(--cream);color:var(--roast);}
+.btn-solid{background:var(--terracotta);color:var(--cream);border-color:var(--terracotta);}
+.btn-solid:hover{background:#a8531f;}
+
+/* Hero bean visual: large bean with rising steam */
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;height:420px;}
+.hero-bean{width:220px;height:220px;}
+.steam{position:absolute;bottom:52%;left:50%;width:2px;height:90px;background:linear-gradient(rgba(240,228,211,0.5),transparent);border-radius:2px;transform-origin:bottom center;}
+.steam.s1{margin-left:-22px;animation:steamRise 3.2s ease-in-out infinite;}
+.steam.s2{margin-left:0px;animation:steamRise 3.6s ease-in-out infinite .5s;}
+.steam.s3{margin-left:22px;animation:steamRise 3.4s ease-in-out infinite 1s;}
+@keyframes steamRise{0%{opacity:0;transform:translateY(0) scaleY(1) rotate(0deg);}30%{opacity:.7;}100%{opacity:0;transform:translateY(-70px) scaleY(1.4) rotate(4deg);}}
+
+/* ===== Philosophy ===== */
+.philosophy{padding:110px 0 90px;}
+.phil-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;}
+@media (max-width:760px){.phil-grid{grid-template-columns:1fr;gap:24px;}}
+.phil-grid h2{font-size:clamp(28px,3.4vw,38px);line-height:1.25;}
+.phil-grid p{color:var(--ink-soft);font-size:16.5px;line-height:1.75;margin-bottom:16px;}
+
+/* ===== Origins (roast-level swatches instead of photos) ===== */
+.origins{padding:20px 0 110px;}
+.section-head{margin-bottom:54px;}
+.section-head h2{font-size:clamp(32px,4vw,46px);}
+.origins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+@media (max-width:900px){.origins-grid{grid-template-columns:1fr;}}
+.roast-swatch{aspect-ratio:5/4;border-radius:3px;position:relative;overflow:hidden;}
+.roast-light{background:linear-gradient(160deg,#E8C99A,#C99B5E);}
+.roast-medium{background:linear-gradient(160deg,#A66F3E,#6B4226);}
+.roast-dark{background:linear-gradient(160deg,#5C3A22,#2A1B18);}
+.roast-label{position:absolute;bottom:16px;left:16px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.85);font-weight:600;}
+.origin-body{padding-top:20px;}
+.origin-body h3{font-size:23px;margin-bottom:6px;}
+.origin-notes{font-size:13px;color:var(--terracotta);margin-bottom:10px;font-style:italic;}
+.origin-body p{color:var(--ink-soft);font-size:14px;margin-bottom:16px;}
+.origin-price{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(42,32,24,0.14);padding-top:14px;}
+.origin-price .amount{font-family:'Fraunces',serif;color:var(--terracotta);font-size:19px;}
+.origin-price .unit{font-size:12px;color:var(--ink-soft);}
+.add-cart-btn{
+  background:none;border:1px solid var(--roast);color:var(--roast);
+  font-size:12px;padding:9px 16px;cursor:pointer;transition:all .25s ease;
+  font-family:'Inter',sans-serif;
+}
+.add-cart-btn:hover{background:var(--roast);color:var(--cream);}
+.add-cart-btn.added{background:var(--terracotta);border-color:var(--terracotta);color:#fff;}
+
+/* Cart icon in nav */
+.cart-btn{
+  position:relative;background:none;border:none;cursor:pointer;padding:8px;
+  display:flex;align-items:center;color:inherit;
+}
+.cart-count{
+  position:absolute;top:0;right:0;background:var(--terracotta);color:#fff;
+  font-size:10px;font-weight:600;width:16px;height:16px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transform:scale(0);transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.cart-count.show{transform:scale(1);}
+
+/* Cart panel */
+.cart-overlay{
+  position:fixed;inset:0;background:rgba(42,32,24,0.5);z-index:200;
+  opacity:0;pointer-events:none;transition:opacity .4s ease;
+}
+.cart-overlay.open{opacity:1;pointer-events:auto;}
+.cart-panel{
+  position:fixed;top:0;right:0;bottom:0;width:380px;max-width:92vw;
+  background:var(--cream);z-index:201;
+  transform:translateX(100%);transition:transform .45s cubic-bezier(.16,.84,.44,1);
+  display:flex;flex-direction:column;
+}
+.cart-panel.open{transform:translateX(0);}
+.cart-header{padding:26px 28px;border-bottom:1px solid rgba(42,32,24,0.12);display:flex;justify-content:space-between;align-items:center;}
+.cart-header h3{font-size:20px;}
+.cart-close{background:none;border:none;cursor:pointer;font-size:22px;color:var(--ink-soft);line-height:1;}
+.cart-items{flex:1;overflow-y:auto;padding:20px 28px;}
+.cart-empty{color:var(--ink-soft);font-size:14px;text-align:center;padding:60px 0;}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(42,32,24,0.1);}
+.cart-item-name{font-family:'Fraunces',serif;font-size:16px;margin-bottom:4px;}
+.cart-item-meta{font-size:12px;color:var(--ink-soft);}
+.qty-control{display:flex;align-items:center;gap:10px;}
+.qty-control button{
+  width:24px;height:24px;border:1px solid rgba(42,32,24,0.25);background:none;
+  cursor:pointer;font-size:14px;color:var(--ink);
+}
+.cart-footer{padding:24px 28px;border-top:1px solid rgba(42,32,24,0.12);}
+.cart-subtotal{display:flex;justify-content:space-between;margin-bottom:18px;font-size:15px;}
+.cart-subtotal .amount{font-family:'Fraunces',serif;color:var(--terracotta);font-size:20px;}
+.checkout-btn{
+  width:100%;background:#25D366;color:#fff;border:none;padding:16px;
+  font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;gap:8px;transition:background .3s ease;
+}
+.checkout-btn:hover{background:#1fb855;}
+.checkout-btn:disabled{background:rgba(42,32,24,0.15);color:var(--ink-soft);cursor:not-allowed;}
+
+/* ===== Process ===== */
+.process{background:var(--cream-soft);padding:100px 0;}
+.process-list{margin-top:54px;}
+.process-item{display:grid;grid-template-columns:70px 1fr;gap:28px;padding:30px 0;border-top:1px solid rgba(42,32,24,0.15);}
+.process-item:last-child{border-bottom:1px solid rgba(42,32,24,0.15);}
+.process-num{font-family:'Fraunces',serif;color:var(--terracotta);font-size:15px;}
+.process-item h3{font-size:22px;margin-bottom:6px;}
+.process-item p{color:var(--ink-soft);font-size:14.5px;max-width:520px;}
+
+/* ===== Visit ===== */
+.visit{padding:110px 0;}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+@media (max-width:760px){.visit-grid{grid-template-columns:1fr;gap:30px;}}
+.visit-grid h2{font-size:clamp(30px,3.6vw,42px);margin-bottom:20px;}
+.hours-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(42,32,24,0.12);font-size:14.5px;}
+.hours-row span:last-child{color:var(--ink-soft);}
+.visit-card{background:var(--roast);color:var(--cream);padding:44px;display:flex;flex-direction:column;justify-content:center;}
+.visit-card .eyebrow{color:var(--terracotta);}
+.visit-card p{font-size:15px;color:rgba(240,228,211,0.8);margin-bottom:6px;}
+.visit-card p.addr{font-family:'Fraunces',serif;font-size:20px;color:var(--cream);margin-bottom:20px;}
+
+footer{background:var(--roast-deep);color:rgba(240,228,211,0.55);padding:44px 0;font-size:13px;}
+.footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-row .logo{color:var(--cream);}
+
+@media (max-width:760px){.nav-links{display:none;}.burger{display:flex;}}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <div class="logo">
+        <svg viewBox="0 0 48 48" fill="none"><ellipse cx="24" cy="24" rx="12" ry="17.5" transform="rotate(-18 24 24)" stroke="currentColor" stroke-width="2.4"/><path d="M17.5 11 Q26 24 17.5 37" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" transform="rotate(-18 24 24)"/></svg>
+        Seduh
+      </div>
+      <div class="nav-links">
+        <a href="#origins">Origins</a>
+        <a href="#process">Process</a>
+        <a href="#visit">Visit</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:18px;">
+        <button class="cart-btn" id="cartBtn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <a href="#visit" class="nav-cta">Order Online</a>
+        <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grain"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow" style="color:var(--terracotta);">Small-Batch Roastery</div>
+      <h1>Slow Brew,<br><span class="accent">Honest</span> Roast.</h1>
+      <p>Setiap biji disangrai dalam batch kecil, diseduh untuk dinikmati pelan-pelan — bukan diminum sambil buru-buru.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="#origins" class="btn btn-solid">Lihat Origins
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#visit" class="btn btn-cream">Kunjungi Kami</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="steam s1"></div><div class="steam s2"></div><div class="steam s3"></div>
+      <svg class="hero-bean" viewBox="0 0 48 48" fill="none">
+        <ellipse cx="24" cy="24" rx="15" ry="21" transform="rotate(-18 24 24)" stroke="#F0E4D3" stroke-width="1.6"/>
+        <path d="M14 6 Q26 24 14 42" stroke="#C4682E" stroke-width="1.6" stroke-linecap="round" transform="rotate(-18 24 24)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="philosophy">
+  <div class="wrap phil-grid">
+    <div class="reveal">
+      <div class="eyebrow">Filosofi Kami</div>
+      <h2>Kopi terbaik butuh waktu, bukan kecepatan.</h2>
+    </div>
+    <div class="reveal">
+      <p>Seduh lahir dari keyakinan sederhana: kopi enak tidak bisa diburu-buru. Kami sangrai biji dalam jumlah kecil setiap minggu, secukupnya untuk tetap segar, tidak untuk stok gudang.</p>
+      <p>Setiap origin yang kami pilih punya cerita sendiri — dari petani, ketinggian kebun, sampai cara prosesnya. Kami hanya menjaga cerita itu sampai ke cangkir Anda, tanpa banyak campur tangan.</p>
+    </div>
+  </div>
+</section>
+
+<section class="origins" id="origins">
+  <div class="wrap">
+    <div class="eyebrow reveal">Origins</div>
+    <div class="section-head reveal"><h2>Tiga profil sangrai</h2></div>
+    <div class="origins-grid">
+      <div class="reveal">
+        <div class="roast-swatch roast-light"><div class="roast-label">Light Roast</div></div>
+        <div class="origin-body">
+          <h3>Gayo, Aceh</h3>
+          <div class="origin-notes">Jeruk sitrus, bunga, madu</div>
+          <p>Diproses secara natural, cocok untuk yang suka rasa cerah dan asam ringan.</p>
+          <div class="origin-price">
+            <div><span class="amount">Rp 95.000</span><span class="unit"> / 200g</span></div>
+            <button class="add-cart-btn" data-name="Gayo, Aceh (Light Roast)" data-price="95000">+ Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:.1s">
+        <div class="roast-swatch roast-medium"><div class="roast-label">Medium Roast</div></div>
+        <div class="origin-body">
+          <h3>Toraja, Sulawesi</h3>
+          <div class="origin-notes">Karamel, kacang panggang, rempah</div>
+          <p>Seimbang antara manis dan body tebal — pilihan paling serbaguna kami.</p>
+          <div class="origin-price">
+            <div><span class="amount">Rp 105.000</span><span class="unit"> / 200g</span></div>
+            <button class="add-cart-btn" data-name="Toraja, Sulawesi (Medium Roast)" data-price="105000">+ Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:.2s">
+        <div class="roast-swatch roast-dark"><div class="roast-label">Dark Roast</div></div>
+        <div class="origin-body">
+          <h3>Mandheling, Sumatra</h3>
+          <div class="origin-notes">Coklat pahit, tembakau, earthy</div>
+          <p>Body berat dan pahit yang bulat, favorit untuk yang minum kopi hitam.</p>
+          <div class="origin-price">
+            <div><span class="amount">Rp 98.000</span><span class="unit"> / 200g</span></div>
+            <button class="add-cart-btn" data-name="Mandheling, Sumatra (Dark Roast)" data-price="98000">+ Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="eyebrow reveal">Proses</div>
+    <div class="section-head reveal"><h2>Dari kebun ke cangkir</h2></div>
+    <div class="process-list">
+      <div class="process-item reveal"><div class="process-num">01</div><div><h3>Sourcing</h3><p>Kami beli langsung dari petani mitra di Aceh, Toraja, dan Sumatra — harga adil, hubungan jangka panjang.</p></div></div>
+      <div class="process-item reveal" style="transition-delay:.05s"><div class="process-num">02</div><div><h3>Roasting</h3><p>Disangrai dalam batch kecil (maksimal 5kg), profil disesuaikan tiap origin untuk mengangkat karakter aslinya.</p></div></div>
+      <div class="process-item reveal" style="transition-delay:.1s"><div class="process-num">03</div><div><h3>Resting</h3><p>Biji diistirahatkan minimal 5 hari sebelum dijual, supaya gas CO2 keluar dan rasa lebih stabil.</p></div></div>
+      <div class="process-item reveal" style="transition-delay:.15s"><div class="process-num">04</div><div><h3>Brewing</h3><p>Diseduh sesuai pesanan di counter kami, atau digiling fresh untuk dibawa pulang.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div class="reveal">
+      <div class="eyebrow">Jam Buka</div>
+      <h2>Kunjungi Kami</h2>
+      <div class="hours-row"><span>Senin – Jumat</span><span>07.00 – 21.00</span></div>
+      <div class="hours-row"><span>Sabtu – Minggu</span><span>08.00 – 22.00</span></div>
+      <div class="hours-row"><span>Hari Libur Nasional</span><span>09.00 – 18.00</span></div>
+    </div>
+    <div class="visit-card reveal">
+      <div class="eyebrow">Alamat</div>
+      <p class="addr">Jl. Kemang Raya No. 12<br>Jakarta Selatan</p>
+      <p>hello@seduhcoffee.co</p>
+      <p>+62 812 3456 7890</p>
+    </div>
+  </div>
+</section>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h3>Keranjang Anda</h3>
+    <button class="cart-close" id="cartClose">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">Keranjang masih kosong.<br>Pilih origin favorit Anda.</div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <span class="amount" id="cartSubtotal">Rp 0</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn" disabled>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+      Pesan via WhatsApp
+    </button>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="logo" style="display:flex;align-items:center;gap:8px;font-family:'Fraunces',serif;font-size:16px;">
+      <svg width="18" height="18" viewBox="0 0 48 48" fill="none"><ellipse cx="24" cy="24" rx="12" ry="17.5" transform="rotate(-18 24 24)" stroke="currentColor" stroke-width="2.5"/></svg>
+      Seduh Coffee Co.
+    </div>
+    <div>Jakarta Selatan — © 2026</div>
+  </div>
+</footer>
+
+<script>
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// ===== Cart =====
+let cart = [];
+
+function formatRp(n){
+  return 'Rp ' + n.toLocaleString('id-ID');
+}
+
+function renderCart(){
+  const itemsEl = document.getElementById('cartItems');
+  const countEl = document.getElementById('cartCount');
+  const subtotalEl = document.getElementById('cartSubtotal');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+
+  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+  countEl.textContent = totalQty;
+  countEl.classList.toggle('show', totalQty > 0);
+
+  if(cart.length === 0){
+    itemsEl.innerHTML = '<div class="cart-empty">Keranjang masih kosong.<br>Pilih origin favorit Anda.</div>';
+    checkoutBtn.disabled = true;
+  } else {
+    itemsEl.innerHTML = cart.map((item, i) => `
+      <div class="cart-item">
+        <div>
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-meta">${formatRp(item.price)} / 200g</div>
+        </div>
+        <div class="qty-control">
+          <button onclick="changeQty(${i}, -1)">−</button>
+          <span>${item.qty}</span>
+          <button onclick="changeQty(${i}, 1)">+</button>
+        </div>
+      </div>
+    `).join('');
+    checkoutBtn.disabled = false;
+  }
+
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  subtotalEl.textContent = formatRp(subtotal);
+}
+
+function changeQty(index, delta){
+  cart[index].qty += delta;
+  if(cart[index].qty <= 0) cart.splice(index, 1);
+  renderCart();
+}
+
+document.querySelectorAll('.add-cart-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const name = btn.dataset.name;
+    const price = parseInt(btn.dataset.price, 10);
+    const existing = cart.find(item => item.name === name);
+    if(existing){ existing.qty += 1; } else { cart.push({name, price, qty:1}); }
+    renderCart();
+
+    btn.textContent = 'Ditambahkan ✓';
+    btn.classList.add('added');
+    setTimeout(() => { btn.textContent = '+ Cart'; btn.classList.remove('added'); }, 1200);
+  });
+});
+
+const cartBtn = document.getElementById('cartBtn');
+const cartPanel = document.getElementById('cartPanel');
+const cartOverlay = document.getElementById('cartOverlay');
+const cartClose = document.getElementById('cartClose');
+
+function openCart(){ cartPanel.classList.add('open'); cartOverlay.classList.add('open'); }
+function closeCart(){ cartPanel.classList.remove('open'); cartOverlay.classList.remove('open'); }
+
+cartBtn.addEventListener('click', openCart);
+cartClose.addEventListener('click', closeCart);
+cartOverlay.addEventListener('click', closeCart);
+
+document.getElementById('checkoutBtn').addEventListener('click', () => {
+  if(cart.length === 0) return;
+  let msg = 'Halo Seduh Coffee Co., saya mau pesan:%0A%0A';
+  cart.forEach(item => {
+    msg += `${item.qty}x ${item.name} — ${formatRp(item.price * item.qty)}%0A`;
+  });
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  msg += `%0ASubtotal: ${formatRp(subtotal)}`;
+  window.open(`https://wa.me/6281234567890?text=${msg}`, '_blank');
+});
+</script>
+</body>
+</html>
