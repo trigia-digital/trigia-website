@@ -7,6 +7,7 @@ import { SERVICE_SLUGS, type ServiceSlug } from "@/lib/serviceSlugs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SpotlightCard from "@/components/SpotlightCard";
+import { urlFor } from "@/lib/site";
 
 type ServiceDetailItem = {
   tagline: string;
@@ -62,13 +63,33 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
 
   const t = await getTranslations("serviceDetails");
   const tServices = await getTranslations("services");
+  const tNav = await getTranslations("nav");
 
   const services = tServices.raw("items") as ServiceListItem[];
   const service = services[SERVICE_SLUGS.indexOf(validSlug)];
   const detail = t.raw(`items.${validSlug}`) as ServiceDetailItem;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: locale === "id" ? "Beranda" : "Home", item: urlFor(locale, "/") },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: tNav("services"),
+        item: `${urlFor(locale, "/")}#services`,
+      },
+      { "@type": "ListItem", position: 3, name: service.name, item: urlFor(locale, `/services/${validSlug}`) },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Header />
       <main>
         <section className="pt-[150px] pb-[70px]">

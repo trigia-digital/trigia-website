@@ -133,6 +133,7 @@
     "eyebrow": "Rate Card · 2026",
     "title": "TRIGIA Digital",
     "subtitle": "Your Digital Growth Partner",
+    "metaDescription": "Daftar lengkap harga jasa TRIGIA — website, aplikasi web & mobile, digital marketing, AI automation, branding, hingga content production. Transparan, tanpa biaya tersembunyi.",
     "cta": "Konsultasi Gratis",
     "addonLabel": "Add-on",
     "flagshipLabel": "Paket Unggulan",
@@ -390,7 +391,8 @@
     "heading": "Insight Seputar Digital & Pertumbuhan Bisnis.",
     "comingSoonDesc": "Artikel pertama kami sedang disiapkan — segera hadir.",
     "comingSoonLabel": "Segera Hadir",
-    "backButton": "Kembali ke Beranda"
+    "backButton": "Kembali ke Beranda",
+    "metaDescription": "Kumpulan artikel dan panduan praktis dari TRIGIA seputar strategi digital, harga jasa, dan tips pertumbuhan bisnis di era digital."
   },
   "process": {
     "eyebrow": "Cara Kami Bekerja",

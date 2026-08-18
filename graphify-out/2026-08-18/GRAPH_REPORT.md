@@ -1,13 +1,18 @@
 # Graph Report - trigia-nextjs  (2026-08-18)
 
 ## Corpus Check
-- 71 files · ~93,172 words
+- 71 files · ~93,157 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 373 nodes · 487 edges · 33 communities (27 shown, 6 thin omitted)
+- 372 nodes · 486 edges · 32 communities (26 shown, 6 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `74ca9d0d`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - [locale]/page.tsx
@@ -23,7 +28,6 @@
 - capture-work-screenshots.mjs
 - next.config.js
 - tailwind.config.ts
-- rate-card/page.tsx
 - graphify reference: extra exports and benchmark
 - en/berapa-biaya-bikin-website-profesional-indonesia.mdx
 - en/website-vs-landing-page-vs-linktree.mdx
@@ -61,19 +65,19 @@
   app/[locale]/articles/[slug]/page.tsx → lib/articles.ts
 - `RateCardPage()` --calls--> `buildWhatsAppHref()`  [EXTRACTED]
   app/[locale]/rate-card/page.tsx → lib/whatsapp.ts
-- `FinalCTA()` --calls--> `buildWhatsAppHref()`  [EXTRACTED]
-  components/FinalCTA.tsx → lib/whatsapp.ts
 - `Hero()` --calls--> `buildWhatsAppHref()`  [EXTRACTED]
   components/Hero.tsx → lib/whatsapp.ts
+- `ArticleDetailPage()` --calls--> `coverImageExists()`  [EXTRACTED]
+  app/[locale]/articles/[slug]/page.tsx → lib/articles.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (33 total, 6 thin omitted)
+## Communities (32 total, 6 thin omitted)
 
 ### Community 0 - "[locale]/page.tsx"
-Cohesion: 0.09
-Nodes (24): About(), Belief(), FAQ(), FaqItem, FinalCTA(), SITEMAP_LINKS, GrowthCurve(), PATHS (+16 more)
+Cohesion: 0.07
+Nodes (32): RateCardBundle, RateCardCategory, RateCardLineItem, RateCardPage(), About(), Belief(), FAQ(), FaqItem (+24 more)
 
 ### Community 1 - "articles/[slug]/page.tsx"
 Cohesion: 0.07
@@ -118,10 +122,6 @@ Nodes (3): __dirname, outDir, targets
 ### Community 11 - "next.config.js"
 Cohesion: 0.50
 Nodes (3): createNextIntlPlugin, nextConfig, withNextIntl
-
-### Community 15 - "rate-card/page.tsx"
-Cohesion: 0.17
-Nodes (9): RateCardBundle, RateCardCategory, RateCardLineItem, RateCardPage(), Packages(), WhatsAppButton(), buildWhatsAppHref(), TODO: replace with the real number (E.164 digits, no "+" or spaces) once… (+1 more)
 
 ### Community 16 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -179,16 +179,16 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `routing` connect `articles/[slug]/page.tsx` to `services/[slug]/page.tsx`, `layout.tsx`, `rate-card/page.tsx`?**
+- **Why does `routing` connect `articles/[slug]/page.tsx` to `[locale]/page.tsx`, `services/[slug]/page.tsx`, `layout.tsx`?**
   _High betweenness centrality (0.024) - this node is a cross-community bridge._
-- **Why does `buildWhatsAppHref()` connect `rate-card/page.tsx` to `[locale]/page.tsx`, `Hero.tsx`?**
+- **Why does `buildWhatsAppHref()` connect `[locale]/page.tsx` to `Hero.tsx`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **Why does `Header()` connect `articles/[slug]/page.tsx` to `[locale]/page.tsx`, `services/[slug]/page.tsx`, `rate-card/page.tsx`?**
+- **Why does `Header()` connect `articles/[slug]/page.tsx` to `[locale]/page.tsx`, `services/[slug]/page.tsx`?**
   _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **What connects `mdxComponents`, `PageParams`, `spaceGrotesk` to the rest of the system?**
   _173 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `[locale]/page.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.08599033816425121 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0655367231638418 - nodes in this community are weakly interconnected._
 - **Should `articles/[slug]/page.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.07312925170068027 - nodes in this community are weakly interconnected._
 - **Should `devDependencies` be split into smaller, more focused modules?**

@@ -50,7 +50,7 @@ export async function generateMetadata({
 
   return {
     title: `${t("title")} Rate Card`,
-    description: t("subtitle"),
+    description: t("metaDescription"),
   };
 }
 

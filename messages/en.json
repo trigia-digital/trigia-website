@@ -133,6 +133,7 @@
     "eyebrow": "Rate Card · 2026",
     "title": "TRIGIA Digital",
     "subtitle": "Your Digital Growth Partner",
+    "metaDescription": "Full pricing list for TRIGIA's services — website, web & mobile apps, digital marketing, AI automation, branding, and content production. Transparent, no hidden fees.",
     "cta": "Free Consultation",
     "addonLabel": "Add-on",
     "flagshipLabel": "Flagship Package",
@@ -390,7 +391,8 @@
     "heading": "Insight on Digital & Business Growth.",
     "comingSoonDesc": "Our first article is in the works — coming soon.",
     "comingSoonLabel": "Coming Soon",
-    "backButton": "Back to Homepage"
+    "backButton": "Back to Homepage",
+    "metaDescription": "Practical articles and guides from TRIGIA on digital strategy, service pricing, and business growth tips in the digital era."
   },
   "process": {
     "eyebrow": "How We Work",

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { revealVariants, revealViewport } from "@/lib/motion";
+import { INSTAGRAM_URL } from "@/lib/site";
 
 const SITEMAP_LINKS = [
   { href: "#services", key: "services" },
@@ -75,11 +76,13 @@ export default function Footer() {
             <a href="#contact" className="block text-sm mb-3 hover:text-orange transition-colors">
               {t("startProject")}
             </a>
-            <a href="#" className="block text-sm mb-3 hover:text-orange transition-colors">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-sm mb-3 hover:text-orange transition-colors"
+            >
               Instagram
-            </a>
-            <a href="#" className="block text-sm mb-3 hover:text-orange transition-colors">
-              LinkedIn
             </a>
           </div>
         </div>

@@ -4,6 +4,45 @@
   "graph": {},
   "nodes": [
     {
+      "label": "RateCardBundle",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L25",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_ratecardbundle",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "ratecardbundle"
+    },
+    {
+      "label": "RateCardCategory",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L17",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_ratecardcategory",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "ratecardcategory"
+    },
+    {
+      "label": "RateCardLineItem",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L9",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_ratecardlineitem",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "ratecardlineitem"
+    },
+    {
       "label": "FaqItem",
       "file_type": "code",
       "source_file": "components/FAQ.tsx",
@@ -199,45 +238,6 @@
       "norm_label": "articlemeta"
     },
     {
-      "label": "RateCardBundle",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L25",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_ratecardbundle",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "ratecardbundle"
-    },
-    {
-      "label": "RateCardCategory",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L17",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_ratecardcategory",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "ratecardcategory"
-    },
-    {
-      "label": "RateCardLineItem",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L9",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_ratecardlineitem",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "ratecardlineitem"
-    },
-    {
       "label": "Window",
       "file_type": "code",
       "source_file": "components/SmoothScroll.tsx",
@@ -326,6 +326,54 @@
       "community": 0,
       "community_name": "[locale]/page.tsx",
       "norm_label": "homepage()"
+    },
+    {
+      "label": "ArrowIcon()",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L33",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_arrowicon",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "arrowicon()"
+    },
+    {
+      "label": "generateMetadata()",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L43",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_generatemetadata",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "generatemetadata()"
+    },
+    {
+      "label": "generateStaticParams()",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L39",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_generatestaticparams",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "generatestaticparams()"
+    },
+    {
+      "label": "RateCardPage()",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L57",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_ratecardpage",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "ratecardpage()"
     },
     {
       "label": "About()",
@@ -424,6 +472,18 @@
       "norm_label": "arrowicon()"
     },
     {
+      "label": "Packages()",
+      "file_type": "code",
+      "source_file": "components/Packages.tsx",
+      "source_location": "L25",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_packages_packages",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "packages()"
+    },
+    {
       "label": "Process()",
       "file_type": "code",
       "source_file": "components/Process.tsx",
@@ -508,6 +568,18 @@
       "norm_label": "handlemove()"
     },
     {
+      "label": "WhatsAppButton()",
+      "file_type": "code",
+      "source_file": "components/WhatsAppButton.tsx",
+      "source_location": "L7",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_whatsappbutton_whatsappbutton",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "whatsappbutton()"
+    },
+    {
       "label": "Work()",
       "file_type": "code",
       "source_file": "components/Work.tsx",
@@ -530,6 +602,18 @@
       "community": 0,
       "community_name": "[locale]/page.tsx",
       "norm_label": "workcard()"
+    },
+    {
+      "label": "buildWhatsAppHref()",
+      "file_type": "code",
+      "source_file": "lib/whatsapp.ts",
+      "source_location": "L4",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "lib_whatsapp_buildwhatsapphref",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "buildwhatsapphref()"
     },
     {
       "label": "ArticlesPage()",
@@ -830,90 +914,6 @@
       "community": 10,
       "community_name": "capture-work-screenshots.mjs",
       "norm_label": "main()"
-    },
-    {
-      "label": "ArrowIcon()",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L33",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_arrowicon",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "arrowicon()"
-    },
-    {
-      "label": "generateMetadata()",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L43",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_generatemetadata",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "generatemetadata()"
-    },
-    {
-      "label": "generateStaticParams()",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L39",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_generatestaticparams",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "generatestaticparams()"
-    },
-    {
-      "label": "RateCardPage()",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L57",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_ratecardpage",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "ratecardpage()"
-    },
-    {
-      "label": "Packages()",
-      "file_type": "code",
-      "source_file": "components/Packages.tsx",
-      "source_location": "L25",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_packages_packages",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "packages()"
-    },
-    {
-      "label": "WhatsAppButton()",
-      "file_type": "code",
-      "source_file": "components/WhatsAppButton.tsx",
-      "source_location": "L7",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_whatsappbutton_whatsappbutton",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "whatsappbutton()"
-    },
-    {
-      "label": "buildWhatsAppHref()",
-      "file_type": "code",
-      "source_file": "lib/whatsapp.ts",
-      "source_location": "L5",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "lib_whatsapp_buildwhatsapphref",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "buildwhatsapphref()"
     },
     {
       "label": "generateMetadata()",
@@ -1419,6 +1419,17 @@
       "norm_label": "[locale]/page.tsx"
     },
     {
+      "label": "rate-card/page.tsx",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "rate-card/page.tsx"
+    },
+    {
       "label": "About.tsx",
       "file_type": "code",
       "source_file": "components/About.tsx",
@@ -1573,6 +1584,17 @@
       "norm_label": "spotlightcard.tsx"
     },
     {
+      "label": "WhatsAppButton.tsx",
+      "file_type": "code",
+      "source_file": "components/WhatsAppButton.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_whatsappbutton",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "whatsappbutton.tsx"
+    },
+    {
       "label": "Work.tsx",
       "file_type": "code",
       "source_file": "components/Work.tsx",
@@ -1615,6 +1637,28 @@
       "community": 0,
       "community_name": "[locale]/page.tsx",
       "norm_label": "revealviewport"
+    },
+    {
+      "label": "whatsapp.ts",
+      "file_type": "code",
+      "source_file": "lib/whatsapp.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_whatsapp",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "whatsapp.ts"
+    },
+    {
+      "label": "WHATSAPP_NUMBER",
+      "file_type": "code",
+      "source_file": "lib/whatsapp.ts",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "lib_whatsapp_whatsapp_number",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "whatsapp_number"
     },
     {
       "label": "articles/page.tsx",
@@ -1956,61 +2000,6 @@
       "community": 14,
       "community_name": "postcss.config.js",
       "norm_label": "postcss.config.js"
-    },
-    {
-      "label": "rate-card/page.tsx",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "rate-card/page.tsx"
-    },
-    {
-      "label": "WhatsAppButton.tsx",
-      "file_type": "code",
-      "source_file": "components/WhatsAppButton.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_whatsappbutton",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "whatsappbutton.tsx"
-    },
-    {
-      "label": "whatsapp.ts",
-      "file_type": "code",
-      "source_file": "lib/whatsapp.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "lib_whatsapp",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "whatsapp.ts"
-    },
-    {
-      "label": "WHATSAPP_NUMBER",
-      "file_type": "code",
-      "source_file": "lib/whatsapp.ts",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "lib_whatsapp_whatsapp_number",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "whatsapp_number"
-    },
-    {
-      "label": "TODO: replace with the real number (E.164 digits, no \"+\" or spaces) once\u2026",
-      "file_type": "rationale",
-      "source_file": "lib/whatsapp.ts",
-      "source_location": "L2",
-      "_origin": "ast",
-      "id": "lib_whatsapp_rationale_2",
-      "community": 15,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "todo: replace with the real number (e.164 digits, no \"+\" or spaces) once..."
     },
     {
       "label": "exports.md",
@@ -8946,7 +8935,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/whatsapp.ts",
-      "source_location": "L3",
+      "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_whatsapp",
@@ -8957,7 +8946,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/whatsapp.ts",
-      "source_location": "L5",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_whatsapp",
@@ -9658,17 +9647,6 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/whatsapp.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "lib_whatsapp_rationale_2",
-      "target": "lib_whatsapp",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "components/CustomCursor.tsx",
@@ -9837,5 +9815,6 @@
       "confidence_score": 0.5
     }
   ],
-  "hyperedges": []
+  "hyperedges": [],
+  "built_at_commit": "74ca9d0ddc2db2346799b72919ed1b6edc5839b7"
 }

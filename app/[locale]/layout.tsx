@@ -11,6 +11,18 @@ import CustomCursor from "@/components/CustomCursor";
 import Intro from "@/components/Intro";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SmoothScroll from "@/components/SmoothScroll";
+import { SITE_URL, INSTAGRAM_URL } from "@/lib/site";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "TRIGIA Digital",
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo-mark.png`,
+  description:
+    "TRIGIA Digital — Your Digital Growth Partner. Membangun website, web app, mobile app, digital marketing, dan AI automation untuk bisnis di Indonesia.",
+  sameAs: [INSTAGRAM_URL],
+};
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -61,6 +73,10 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body className="font-body">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <NextIntlClientProvider>
           <SmoothScroll />
           <Grain />

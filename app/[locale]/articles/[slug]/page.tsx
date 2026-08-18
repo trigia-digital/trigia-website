@@ -10,6 +10,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ArticleCover from "@/components/ArticleCover";
 import { getAllArticles, getArticleBySlug, coverImageExists } from "@/lib/articles";
+import { urlFor } from "@/lib/site";
 
 const BackIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -110,10 +111,25 @@ export default async function ArticleDetailPage({ params }: { params: Promise<Pa
   setRequestLocale(locale);
 
   const t = await getTranslations("articlesPage");
+  const tNav = await getTranslations("nav");
   const hasImage = coverImageExists(article.coverImage);
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: locale === "id" ? "Beranda" : "Home", item: urlFor(locale, "/") },
+      { "@type": "ListItem", position: 2, name: tNav("articles"), item: urlFor(locale, "/articles") },
+      { "@type": "ListItem", position: 3, name: article.title, item: urlFor(locale, `/articles/${slug}`) },
+    ],
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Header />
       <main>
         <article className="pt-[150px] pb-[130px]">
