@@ -11,6 +11,7 @@ import CustomCursor from "@/components/CustomCursor";
 import Intro from "@/components/Intro";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SmoothScroll from "@/components/SmoothScroll";
+import { Analytics } from "@vercel/analytics/next";
 import { SITE_URL, INSTAGRAM_URL } from "@/lib/site";
 
 const organizationSchema = {
@@ -85,6 +86,7 @@ export default async function RootLayout({
           <Intro />
           <WhatsAppButton />
           {children}
+          <Analytics />
         </NextIntlClientProvider>
       </body>
     </html>
