@@ -445,11 +445,16 @@
     "eyebrow": "Frequently Asked",
     "heading": "Questions You Might Have.",
     "items": [
-      { "q": "How long does a project take?", "a": "It depends on complexity — websites usually take 2–4 weeks, while web or mobile apps can take 6–12 weeks. You'll get a clear timeline upfront, before the project starts." },
+      { "q": "How long does a project take?", "a": "It depends on complexity — websites usually take 1–3 weeks, while web or mobile apps can take 4–16 weeks. You'll get a clear timeline upfront, before the project starts." },
       { "q": "How does payment work?", "a": "We use a milestone-based payment system (initial down payment, then installments tied to progress) to keep things easier on your business's cash flow." },
       { "q": "I'm not technical — is that a problem?", "a": "Not at all. That's exactly our job — translating your business needs into the right technical solution, without you needing to understand any code." },
       { "q": "Is there a revision guarantee after the project is done?", "a": "Yes, every project includes a revision period after handover. For ongoing support, we also offer a separate maintenance package." },
-      { "q": "Can I consult first before deciding?", "a": "Of course — we offer a free initial consultation to understand your needs before any formal proposal." }
+      { "q": "Can I consult first before deciding?", "a": "Of course — we offer a free initial consultation to understand your needs before any formal proposal." },
+      { "q": "Can I see the design before the full project starts?", "a": "Yes. Before development begins, we create a design concept/mockup first (for the website, web app, mobile app, or AI agent) for you to review and approve. Only after that do we move into full development — so you know exactly what the end result will look like before committing further." },
+      { "q": "Before ads go live, do I get the strategy/plan first?", "a": "Yes. We start with audience research and campaign strategy — who you're targeting, which platforms make the most sense, and a monthly game plan — before your ad budget actually starts running. Not just switching on ads without direction." },
+      { "q": "What if the result isn't quite what I wanted?", "a": "Every package already includes a set number of revisions (1-3x depending on the package, details on the Rate Card) to make sure the result is right before the project wraps up. If you need revisions beyond that, we'll discuss it with you first before any work starts — no surprise costs." },
+      { "q": "Once the project's done, do I fully own the source code/assets?", "a": "Yes. All source code, designs, and assets we build are fully yours once payment is settled — not rented out or locked to TRIGIA." },
+      { "q": "Once the website/app is live, what if I need content updates or run into a bug?", "a": "We offer a monthly Retainer package (starting from Rp750,000) for monitoring, content updates, and bug fixes — so you don't have to worry about the technical side yourself. Details on the Rate Card page." }
     ]
   },
   "whatsapp": {

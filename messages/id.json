@@ -445,11 +445,16 @@
     "eyebrow": "Pertanyaan Umum",
     "heading": "Yang Sering Ditanyakan.",
     "items": [
-      { "q": "Berapa lama waktu pengerjaan sebuah project?", "a": "Tergantung kompleksitas — untuk website umumnya 2–4 minggu, aplikasi web atau mobile bisa 6–12 minggu. Anda akan dapat timeline jelas sejak awal, sebelum project dimulai." },
+      { "q": "Berapa lama waktu pengerjaan sebuah project?", "a": "Tergantung kompleksitas — untuk website umumnya selesai dalam 1–3 minggu, aplikasi web atau mobile bisa 4–16 minggu. Anda akan dapat timeline jelas sejak awal, sebelum project dimulai." },
       { "q": "Bagaimana sistem pembayarannya?", "a": "Kami menggunakan sistem termin (down payment di awal, pelunasan bertahap sesuai progress) supaya lebih ringan untuk cash flow bisnis Anda." },
       { "q": "Saya tidak paham teknis, apakah itu masalah?", "a": "Sama sekali tidak. Justru itu tugas kami — menerjemahkan kebutuhan bisnis Anda jadi solusi teknis, tanpa Anda perlu paham coding sama sekali." },
       { "q": "Apakah ada garansi revisi setelah project selesai?", "a": "Ya, setiap project termasuk periode revisi setelah serah terima. Untuk dukungan jangka panjang, kami juga sediakan paket maintenance terpisah." },
-      { "q": "Apakah bisa konsultasi dulu sebelum memutuskan?", "a": "Tentu, kami sediakan sesi konsultasi awal gratis untuk memahami kebutuhan Anda sebelum masuk ke penawaran resmi." }
+      { "q": "Apakah bisa konsultasi dulu sebelum memutuskan?", "a": "Tentu, kami sediakan sesi konsultasi awal gratis untuk memahami kebutuhan Anda sebelum masuk ke penawaran resmi." },
+      { "q": "Apakah saya bisa lihat desainnya dulu sebelum project dikerjakan penuh?", "a": "Bisa. Sebelum masuk ke development, kami buat konsep desain/mockup dulu (tampilan website, web app, mobile app, AI Agent) untuk Anda review dan setujui. Baru setelah itu kami lanjut ke pengerjaan penuh — jadi Anda tahu persis hasil akhirnya akan seperti apa sebelum berkomitmen lebih jauh." },
+      { "q": "Sebelum iklan mulai jalan, saya dapat strategi/rencana kerjanya dulu nggak?", "a": "Dapat. Kami mulai dengan riset audiens dan strategi campaign — target siapa, platform mana yang paling relevan, dan rencana kerja bulanannya — baru budget iklan Anda benar-benar mulai dijalankan. Bukan asal pasang iklan tanpa arah." },
+      { "q": "Bagaimana kalau hasilnya belum sesuai yang saya mau?", "a": "Setiap paket sudah termasuk jatah revisi (1-3x tergantung paket, detail di Rate Card) untuk memastikan hasilnya sesuai sebelum project selesai. Kalau ada kebutuhan revisi di luar itu, kami diskusikan dulu sebelum dikerjakan — tidak ada biaya kejutan." },
+      { "q": "Setelah project selesai, source code/aset-nya jadi milik saya sepenuhnya?", "a": "Ya. Semua source code, desain, dan aset yang kami buat sepenuhnya jadi milik Anda setelah pelunasan — bukan disewakan atau dikunci ke TRIGIA." },
+      { "q": "Setelah website/aplikasi live, kalau saya butuh update konten atau ada bug, gimana?", "a": "Tersedia paket Retainer bulanan (mulai Rp750.000) untuk monitoring, update konten, dan perbaikan bug — jadi Anda tidak perlu pusing mikirin sisi teknisnya sendiri. Detail di halaman Rate Card." }
     ]
   },
   "whatsapp": {
