@@ -147,23 +147,25 @@ a {
     -webkit-backdrop-filter: blur(16px);
   }
   .nav-links a {
-    @apply text-sm font-medium text-text-dim relative py-1 transition-colors duration-200;
+    @apply text-sm font-medium text-text-dim relative py-1 transition-colors duration-300;
   }
   .nav-links a::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 0;
-    height: 1px;
+    width: 100%;
+    height: 1.5px;
     background: var(--orange);
-    transition: width 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
   }
   .nav-links a:hover {
-    @apply text-white;
+    @apply text-orange;
   }
   .nav-links a:hover::after {
-    width: 100%;
+    transform: scaleX(1);
   }
 
   /* ===== Marquee ===== */
