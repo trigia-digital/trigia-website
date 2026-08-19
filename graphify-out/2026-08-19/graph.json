@@ -4,45 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "label": "RateCardBundle",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L25",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_ratecardbundle",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "ratecardbundle"
-    },
-    {
-      "label": "RateCardCategory",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L17",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_ratecardcategory",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "ratecardcategory"
-    },
-    {
-      "label": "RateCardLineItem",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L9",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_ratecardlineitem",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "ratecardlineitem"
-    },
-    {
       "label": "FaqItem",
       "file_type": "code",
       "source_file": "components/FAQ.tsx",
@@ -93,6 +54,19 @@
       "community": 0,
       "community_name": "[locale]/page.tsx",
       "norm_label": "processstep"
+    },
+    {
+      "label": "ServiceItem",
+      "file_type": "code",
+      "source_file": "components/Services.tsx",
+      "source_location": "L9",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "components_services_serviceitem",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "serviceitem"
     },
     {
       "label": "SolutionItem",
@@ -212,6 +186,45 @@
       "norm_label": "pageparams"
     },
     {
+      "label": "RateCardBundle",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L25",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_ratecardbundle",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "ratecardbundle"
+    },
+    {
+      "label": "RateCardCategory",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L17",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_ratecardcategory",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "ratecardcategory"
+    },
+    {
+      "label": "RateCardLineItem",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L9",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_ratecardlineitem",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "ratecardlineitem"
+    },
+    {
       "label": "PageParams",
       "file_type": "code",
       "source_file": "app/[locale]/services/[slug]/page.tsx",
@@ -264,19 +277,6 @@
       "norm_label": "articlecoverprops"
     },
     {
-      "label": "ServiceItem",
-      "file_type": "code",
-      "source_file": "components/Services.tsx",
-      "source_location": "L9",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "components_services_serviceitem",
-      "community": 8,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "serviceitem"
-    },
-    {
       "label": "Article",
       "file_type": "code",
       "source_file": "lib/articles.ts",
@@ -316,30 +316,6 @@
       "norm_label": "serviceslug"
     },
     {
-      "label": "generateMetadata()",
-      "file_type": "code",
-      "source_file": "app/[locale]/not-found.tsx",
-      "source_location": "L11",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_not_found_generatemetadata",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "generatemetadata()"
-    },
-    {
-      "label": "NotFound()",
-      "file_type": "code",
-      "source_file": "app/[locale]/not-found.tsx",
-      "source_location": "L16",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_not_found_notfound",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "notfound()"
-    },
-    {
       "label": "HomePage()",
       "file_type": "code",
       "source_file": "app/[locale]/page.tsx",
@@ -350,54 +326,6 @@
       "community": 0,
       "community_name": "[locale]/page.tsx",
       "norm_label": "homepage()"
-    },
-    {
-      "label": "ArrowIcon()",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L33",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_arrowicon",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "arrowicon()"
-    },
-    {
-      "label": "generateMetadata()",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L43",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_generatemetadata",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "generatemetadata()"
-    },
-    {
-      "label": "generateStaticParams()",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L39",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_generatestaticparams",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "generatestaticparams()"
-    },
-    {
-      "label": "RateCardPage()",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L57",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page_ratecardpage",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "ratecardpage()"
     },
     {
       "label": "About()",
@@ -460,18 +388,6 @@
       "norm_label": "handlescroll()"
     },
     {
-      "label": "Footer()",
-      "file_type": "code",
-      "source_file": "components/Footer.tsx",
-      "source_location": "L16",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_footer_footer",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "footer()"
-    },
-    {
       "label": "GrowthCurve()",
       "file_type": "code",
       "source_file": "components/GrowthCurve.tsx",
@@ -530,6 +446,30 @@
       "community": 0,
       "community_name": "[locale]/page.tsx",
       "norm_label": "process()"
+    },
+    {
+      "label": "ArrowIcon()",
+      "file_type": "code",
+      "source_file": "components/Services.tsx",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_services_arrowicon",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "arrowicon()"
+    },
+    {
+      "label": "Services()",
+      "file_type": "code",
+      "source_file": "components/Services.tsx",
+      "source_location": "L17",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_services_services",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "services()"
     },
     {
       "label": "Solutions()",
@@ -746,18 +686,6 @@
       "community": 3,
       "community_name": "layout.tsx",
       "norm_label": "rootlayout()"
-    },
-    {
-      "label": "robots()",
-      "file_type": "code",
-      "source_file": "app/robots.ts",
-      "source_location": "L4",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "app_robots_robots",
-      "community": 3,
-      "community_name": "layout.tsx",
-      "norm_label": "robots()"
     },
     {
       "label": "CustomCursor()",
@@ -1216,6 +1144,78 @@
       "norm_label": "generatestaticparams()"
     },
     {
+      "label": "generateMetadata()",
+      "file_type": "code",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_not_found_generatemetadata",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "generatemetadata()"
+    },
+    {
+      "label": "NotFound()",
+      "file_type": "code",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_not_found_notfound",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "notfound()"
+    },
+    {
+      "label": "ArrowIcon()",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L33",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_arrowicon",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "arrowicon()"
+    },
+    {
+      "label": "generateMetadata()",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L43",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_generatemetadata",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "generatemetadata()"
+    },
+    {
+      "label": "generateStaticParams()",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L39",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_generatestaticparams",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "generatestaticparams()"
+    },
+    {
+      "label": "RateCardPage()",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L57",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page_ratecardpage",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "ratecardpage()"
+    },
+    {
       "label": "ArrowIcon()",
       "file_type": "code",
       "source_file": "app/[locale]/services/[slug]/page.tsx",
@@ -1276,6 +1276,18 @@
       "norm_label": "servicedetailpage()"
     },
     {
+      "label": "robots()",
+      "file_type": "code",
+      "source_file": "app/robots.ts",
+      "source_location": "L4",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_robots_robots",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "robots()"
+    },
+    {
       "label": "sitemap()",
       "file_type": "code",
       "source_file": "app/sitemap.ts",
@@ -1298,6 +1310,18 @@
       "community": 8,
       "community_name": "articles/[slug]/page.tsx",
       "norm_label": "articlecover()"
+    },
+    {
+      "label": "Footer()",
+      "file_type": "code",
+      "source_file": "components/Footer.tsx",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_footer_footer",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "footer()"
     },
     {
       "label": "Header()",
@@ -1346,30 +1370,6 @@
       "community": 8,
       "community_name": "articles/[slug]/page.tsx",
       "norm_label": "switchto()"
-    },
-    {
-      "label": "ArrowIcon()",
-      "file_type": "code",
-      "source_file": "components/Services.tsx",
-      "source_location": "L11",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_services_arrowicon",
-      "community": 8,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "arrowicon()"
-    },
-    {
-      "label": "Services()",
-      "file_type": "code",
-      "source_file": "components/Services.tsx",
-      "source_location": "L17",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_services_services",
-      "community": 8,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "services()"
     },
     {
       "label": "coverImageExists()",
@@ -1492,17 +1492,6 @@
       "norm_label": "tobox()"
     },
     {
-      "label": "[locale]/not-found.tsx",
-      "file_type": "code",
-      "source_file": "app/[locale]/not-found.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_locale_not_found",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "[locale]/not-found.tsx"
-    },
-    {
       "label": "[locale]/page.tsx",
       "file_type": "code",
       "source_file": "app/[locale]/page.tsx",
@@ -1512,17 +1501,6 @@
       "community": 0,
       "community_name": "[locale]/page.tsx",
       "norm_label": "[locale]/page.tsx"
-    },
-    {
-      "label": "rate-card/page.tsx",
-      "file_type": "code",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_locale_rate_card_page",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "rate-card/page.tsx"
     },
     {
       "label": "About.tsx",
@@ -1567,28 +1545,6 @@
       "community": 0,
       "community_name": "[locale]/page.tsx",
       "norm_label": "finalcta.tsx"
-    },
-    {
-      "label": "Footer.tsx",
-      "file_type": "code",
-      "source_file": "components/Footer.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_footer",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "footer.tsx"
-    },
-    {
-      "label": "SITEMAP_LINKS",
-      "file_type": "code",
-      "source_file": "components/Footer.tsx",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "components_footer_sitemap_links",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "sitemap_links"
     },
     {
       "label": "GrowthCurve.tsx",
@@ -1644,6 +1600,17 @@
       "community": 0,
       "community_name": "[locale]/page.tsx",
       "norm_label": "process.tsx"
+    },
+    {
+      "label": "Services.tsx",
+      "file_type": "code",
+      "source_file": "components/Services.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_services",
+      "community": 0,
+      "community_name": "[locale]/page.tsx",
+      "norm_label": "services.tsx"
     },
     {
       "label": "Solutions.tsx",
@@ -2262,17 +2229,6 @@
       "norm_label": "package.json"
     },
     {
-      "label": "browserslist",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "package_browserslist",
-      "community": 2,
-      "community_name": "devDependencies",
-      "norm_label": "browserslist"
-    },
-    {
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "package.json",
@@ -2491,72 +2447,6 @@
       "community": 2,
       "community_name": "devDependencies",
       "norm_label": "postcss"
-    },
-    {
-      "label": "chrome >= 90",
-      "file_type": "concept",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_chrome_90",
-      "community": 2,
-      "community_name": "devDependencies",
-      "norm_label": "chrome >= 90"
-    },
-    {
-      "label": "edge >= 90",
-      "file_type": "concept",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_edge_90",
-      "community": 2,
-      "community_name": "devDependencies",
-      "norm_label": "edge >= 90"
-    },
-    {
-      "label": "firefox >= 88",
-      "file_type": "concept",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_firefox_88",
-      "community": 2,
-      "community_name": "devDependencies",
-      "norm_label": "firefox >= 88"
-    },
-    {
-      "label": "not ie 11",
-      "file_type": "concept",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_not_ie_11",
-      "community": 2,
-      "community_name": "devDependencies",
-      "norm_label": "not ie 11"
-    },
-    {
-      "label": "not op_mini all",
-      "file_type": "concept",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_not_op_mini_all",
-      "community": 2,
-      "community_name": "devDependencies",
-      "norm_label": "not op_mini all"
-    },
-    {
-      "label": "safari >= 14",
-      "file_type": "concept",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_safari_14",
-      "community": 2,
-      "community_name": "devDependencies",
-      "norm_label": "safari >= 14"
     },
     {
       "label": "tailwindcss",
@@ -3208,17 +3098,6 @@
       "norm_label": "spacegrotesk"
     },
     {
-      "label": "robots.ts",
-      "file_type": "code",
-      "source_file": "app/robots.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_robots",
-      "community": 3,
-      "community_name": "layout.tsx",
-      "norm_label": "robots.ts"
-    },
-    {
       "label": "CustomCursor.tsx",
       "file_type": "code",
       "source_file": "components/CustomCursor.tsx",
@@ -3272,39 +3151,6 @@
       "community": 3,
       "community_name": "layout.tsx",
       "norm_label": "spotlight.tsx"
-    },
-    {
-      "label": "site.ts",
-      "file_type": "code",
-      "source_file": "lib/site.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "lib_site",
-      "community": 3,
-      "community_name": "layout.tsx",
-      "norm_label": "site.ts"
-    },
-    {
-      "label": "INSTAGRAM_URL",
-      "file_type": "code",
-      "source_file": "lib/site.ts",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "lib_site_instagram_url",
-      "community": 3,
-      "community_name": "layout.tsx",
-      "norm_label": "instagram_url"
-    },
-    {
-      "label": "SITE_URL",
-      "file_type": "code",
-      "source_file": "lib/site.ts",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "lib_site_site_url",
-      "community": 3,
-      "community_name": "layout.tsx",
-      "norm_label": "site_url"
     },
     {
       "label": "CLAUDE.md",
@@ -4286,6 +4132,28 @@
       "norm_label": "mdxcomponents"
     },
     {
+      "label": "[locale]/not-found.tsx",
+      "file_type": "code",
+      "source_file": "app/[locale]/not-found.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_locale_not_found",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "[locale]/not-found.tsx"
+    },
+    {
+      "label": "rate-card/page.tsx",
+      "file_type": "code",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_locale_rate_card_page",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "rate-card/page.tsx"
+    },
+    {
       "label": "services/[slug]/page.tsx",
       "file_type": "code",
       "source_file": "app/[locale]/services/[slug]/page.tsx",
@@ -4295,6 +4163,17 @@
       "community": 8,
       "community_name": "articles/[slug]/page.tsx",
       "norm_label": "services/[slug]/page.tsx"
+    },
+    {
+      "label": "robots.ts",
+      "file_type": "code",
+      "source_file": "app/robots.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_robots",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "robots.ts"
     },
     {
       "label": "sitemap.ts",
@@ -4317,6 +4196,28 @@
       "community": 8,
       "community_name": "articles/[slug]/page.tsx",
       "norm_label": "articlecover.tsx"
+    },
+    {
+      "label": "Footer.tsx",
+      "file_type": "code",
+      "source_file": "components/Footer.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_footer",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "footer.tsx"
+    },
+    {
+      "label": "SITEMAP_LINKS",
+      "file_type": "code",
+      "source_file": "components/Footer.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "components_footer_sitemap_links",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "sitemap_links"
     },
     {
       "label": "Header.tsx",
@@ -4350,17 +4251,6 @@
       "community": 8,
       "community_name": "articles/[slug]/page.tsx",
       "norm_label": "locales"
-    },
-    {
-      "label": "Services.tsx",
-      "file_type": "code",
-      "source_file": "components/Services.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_services",
-      "community": 8,
-      "community_name": "articles/[slug]/page.tsx",
-      "norm_label": "services.tsx"
     },
     {
       "label": "navigation.ts",
@@ -4471,6 +4361,39 @@
       "community": 8,
       "community_name": "articles/[slug]/page.tsx",
       "norm_label": "service_slugs"
+    },
+    {
+      "label": "site.ts",
+      "file_type": "code",
+      "source_file": "lib/site.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_site",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "site.ts"
+    },
+    {
+      "label": "INSTAGRAM_URL",
+      "file_type": "code",
+      "source_file": "lib/site.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "lib_site_instagram_url",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "instagram_url"
+    },
+    {
+      "label": "SITE_URL",
+      "file_type": "code",
+      "source_file": "lib/site.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "lib_site_site_url",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "site_url"
     },
     {
       "label": "middleware.ts",
@@ -4923,78 +4846,6 @@
       "_origin": "ast",
       "source": "scripts_trace_curve_main",
       "target": "scripts_trace_curve_main_tobox",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "package_browserslist",
-      "target": "ref_chrome_90",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "package_browserslist",
-      "target": "ref_edge_90",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "package_browserslist",
-      "target": "ref_firefox_88",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "package_browserslist",
-      "target": "ref_not_ie_11",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "package_browserslist",
-      "target": "ref_not_op_mini_all",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "package_browserslist",
-      "target": "ref_safari_14",
       "confidence_score": 1.0
     },
     {
@@ -9939,17 +9790,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "package",
-      "target": "package_browserslist",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
@@ -10732,5 +10572,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "80ad767e56e2143d300a94b056f1b0d19196d652"
+  "built_at_commit": "c6421e29d0b2d8e1f77b5e58065314ea0af0cd13"
 }

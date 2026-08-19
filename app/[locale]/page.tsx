@@ -25,19 +25,21 @@ export default async function HomePage({
   return (
     <>
       <Header />
-      <Hero />
-      <Marquee />
-      <GrowthCurve variant={1} />
-      <Belief />
-      <Services />
-      <Solutions />
-      <Packages />
-      <Process />
-      <Work />
-      <FAQ />
-      <GrowthCurve variant={2} />
-      <About />
-      <FinalCTA />
+      <main>
+        <Hero />
+        <Marquee />
+        <GrowthCurve variant={1} />
+        <Belief />
+        <Services />
+        <Solutions />
+        <Packages />
+        <Process />
+        <Work />
+        <FAQ />
+        <GrowthCurve variant={2} />
+        <About />
+        <FinalCTA />
+      </main>
       <Footer />
     </>
   );
