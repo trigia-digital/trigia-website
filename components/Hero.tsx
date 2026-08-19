@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
 import MagneticButton from "./MagneticButton";
 import FlowCanvas from "./FlowCanvas";
@@ -118,7 +118,7 @@ export default function Hero() {
       <HeroSweep />
 
       <div className="wrap">
-        <motion.div style={{ opacity: heroOpacity, y: heroY }}>
+        <m.div style={{ opacity: heroOpacity, y: heroY }}>
           <div ref={contentRef} className="max-w-[680px]">
             <div className="eyebrow">{t("eyebrow")}</div>
 
@@ -148,17 +148,17 @@ export default function Hero() {
               </MagneticButton>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}
         className="absolute bottom-10 left-6 md:left-10 z-[2] hidden md:flex items-center gap-3 text-xs text-text-dim tracking-wider uppercase"
       >
         <div className="scroll-line" />
-      </motion.div>
+      </m.div>
     </section>
   );
 }

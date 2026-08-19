@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useTranslations } from "next-intl";
 import MagneticButton from "./MagneticButton";
 import { revealVariants, revealViewport } from "@/lib/motion";
@@ -44,7 +44,7 @@ export default function FinalCTA() {
         }}
       />
 
-      <motion.div
+      <m.div
         initial="hidden"
         whileInView="visible"
         viewport={revealViewport}
@@ -67,7 +67,7 @@ export default function FinalCTA() {
             {t("ctaGhost")}
           </MagneticButton>
         </div>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

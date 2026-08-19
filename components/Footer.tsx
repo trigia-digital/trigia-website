@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { revealVariants, revealViewport } from "@/lib/motion";
 import { INSTAGRAM_URL } from "@/lib/site";
@@ -22,7 +22,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-line pb-9">
       <div className="wrap">
-        <motion.a
+        <m.a
           href="#contact"
           className="footer-mega"
           initial="hidden"
@@ -36,7 +36,7 @@ export default function Footer() {
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
           </span>
-        </motion.a>
+        </m.a>
 
         <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-8 md:gap-10 border-b border-line py-12">
           <div>

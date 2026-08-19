@@ -131,16 +131,34 @@ export default function FlowCanvas() {
 
     if (prefersReduced) {
       draw();
-    } else {
-      const loop = () => {
-        draw();
-        raf = requestAnimationFrame(loop);
-      };
-      loop();
+      return () => window.removeEventListener("resize", resize);
     }
+
+    let running = false;
+    const loop = () => {
+      draw();
+      raf = requestAnimationFrame(loop);
+    };
+
+    // Pause the per-frame redraw once the canvas scrolls out of view (e.g.
+    // user scrolled well past Hero) — resumes automatically when it's back.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !running) {
+          running = true;
+          loop();
+        } else if (!entry.isIntersecting && running) {
+          running = false;
+          cancelAnimationFrame(raf);
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
 
     return () => {
       window.removeEventListener("resize", resize);
+      observer.disconnect();
       cancelAnimationFrame(raf);
     };
   }, []);

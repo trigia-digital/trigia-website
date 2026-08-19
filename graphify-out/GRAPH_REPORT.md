@@ -1,16 +1,16 @@
 # Graph Report - trigia-nextjs  (2026-08-19)
 
 ## Corpus Check
-- 77 files · ~94,944 words
+- 79 files · ~95,641 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 398 nodes · 539 edges · 34 communities (27 shown, 7 thin omitted)
+- 413 nodes · 557 edges · 37 communities (30 shown, 7 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `80ad767e`
+- Built from commit: `3852e32f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -18,7 +18,7 @@
 - [locale]/page.tsx
 - app/not-found.tsx
 - devDependencies
-- layout.tsx
+- services/[slug]/page.tsx
 - dependencies
 - compilerOptions
 - Hero.tsx
@@ -46,6 +46,9 @@
 - CLAUDE.md
 - .claude/CLAUDE.md
 - extraction-spec.md
+- rate-card/page.tsx
+- opengraph-image.tsx
+- DeferredEffects.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 16 edges
@@ -57,36 +60,36 @@
 7. `/graphify` - 10 edges
 8. `Header()` - 9 edges
 9. `SpotlightCard()` - 9 edges
-10. `Footer()` - 8 edges
+10. `urlFor()` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `generateStaticParams()` --calls--> `getAllArticles()`  [EXTRACTED]
   app/[locale]/articles/[slug]/page.tsx → lib/articles.ts
 - `generateMetadata()` --calls--> `getArticleBySlug()`  [EXTRACTED]
   app/[locale]/articles/[slug]/page.tsx → lib/articles.ts
+- `ArticleDetailPage()` --calls--> `urlFor()`  [EXTRACTED]
+  app/[locale]/articles/[slug]/page.tsx → lib/site.ts
+- `generateMetadata()` --calls--> `urlFor()`  [EXTRACTED]
+  app/[locale]/layout.tsx → lib/site.ts
 - `NotFound()` --calls--> `buildWhatsAppHref()`  [EXTRACTED]
   app/[locale]/not-found.tsx → lib/whatsapp.ts
-- `RateCardPage()` --calls--> `buildWhatsAppHref()`  [EXTRACTED]
-  app/[locale]/rate-card/page.tsx → lib/whatsapp.ts
-- `ServiceDetailPage()` --calls--> `urlFor()`  [EXTRACTED]
-  app/[locale]/services/[slug]/page.tsx → lib/site.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (34 total, 7 thin omitted)
+## Communities (37 total, 7 thin omitted)
 
 ### Community 0 - "[locale]/page.tsx"
-Cohesion: 0.07
-Nodes (32): NotFound(), RateCardBundle, RateCardCategory, RateCardLineItem, RateCardPage(), About(), Belief(), FAQ() (+24 more)
+Cohesion: 0.08
+Nodes (25): About, FAQ, Belief(), FaqItem, FinalCTA(), SITEMAP_LINKS, GrowthCurve(), PATHS (+17 more)
 
 ### Community 2 - "devDependencies"
 Cohesion: 0.06
-Nodes (32): autoprefixer, browserslist, devDependencies, autoprefixer, playwright, postcss, tailwindcss, @types/node (+24 more)
+Nodes (33): autoprefixer, @next/bundle-analyzer, browserslist, devDependencies, autoprefixer, @next/bundle-analyzer, playwright, postcss (+25 more)
 
-### Community 3 - "layout.tsx"
+### Community 3 - "services/[slug]/page.tsx"
 Cohesion: 0.09
-Nodes (11): inter, organizationSchema, spaceGrotesk, CustomCursor(), Grain(), Intro(), SmoothScroll(), Window (+3 more)
+Nodes (17): generateMetadata(), inter, organizationSchema, spaceGrotesk, PageParams, ServiceDetailItem, ServiceDetailPage(), ServiceListItem (+9 more)
 
 ### Community 4 - "dependencies"
 Cohesion: 0.10
@@ -105,8 +108,8 @@ Cohesion: 0.08
 Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
 ### Community 8 - "articles/[slug]/page.tsx"
-Cohesion: 0.07
-Nodes (34): ArticlesPage(), formatDate(), ArticleDetailPage(), formatDate(), generateMetadata(), generateStaticParams(), mdxComponents, PageParams (+26 more)
+Cohesion: 0.10
+Nodes (23): ArticlesPage(), formatDate(), ArticleDetailPage(), formatDate(), generateMetadata(), generateStaticParams(), mdxComponents, PageParams (+15 more)
 
 ### Community 9 - "main"
 Cohesion: 0.25
@@ -117,8 +120,8 @@ Cohesion: 0.40
 Nodes (3): __dirname, outDir, targets
 
 ### Community 11 - "next.config.js"
-Cohesion: 0.50
-Nodes (3): createNextIntlPlugin, nextConfig, withNextIntl
+Cohesion: 0.40
+Nodes (4): createNextIntlPlugin, nextConfig, withBundleAnalyzer, withNextIntl
 
 ### Community 15 - "prototype/page.tsx"
 Cohesion: 0.25
@@ -172,25 +175,37 @@ Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify refer
 Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
+### Community 34 - "rate-card/page.tsx"
+Cohesion: 0.17
+Nodes (9): NotFound(), RateCardBundle, RateCardCategory, RateCardLineItem, RateCardPage(), Footer(), WhatsAppButton(), buildWhatsAppHref() (+1 more)
+
+### Community 35 - "opengraph-image.tsx"
+Cohesion: 0.40
+Nodes (5): alt, contentType, loadGoogleFont(), OpengraphImage(), size
+
+### Community 36 - "DeferredEffects.tsx"
+Cohesion: 0.13
+Nodes (8): CustomCursor(), CustomCursor, DeferredEffects(), SmoothScroll, Spotlight, SmoothScroll(), Window, Spotlight()
+
 ## Knowledge Gaps
-- **182 isolated node(s):** `mdxComponents`, `PageParams`, `organizationSchema`, `spaceGrotesk`, `inter` (+177 more)
+- **186 isolated node(s):** `mdxComponents`, `PageParams`, `organizationSchema`, `spaceGrotesk`, `inter` (+181 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `routing` connect `articles/[slug]/page.tsx` to `[locale]/page.tsx`, `layout.tsx`, `prototype/page.tsx`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **Why does `buildWhatsAppHref()` connect `[locale]/page.tsx` to `Hero.tsx`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **Why does `Header()` connect `articles/[slug]/page.tsx` to `[locale]/page.tsx`, `prototype/page.tsx`?**
+- **Why does `routing` connect `services/[slug]/page.tsx` to `articles/[slug]/page.tsx`, `rate-card/page.tsx`, `prototype/page.tsx`?**
+  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+- **Why does `buildWhatsAppHref()` connect `rate-card/page.tsx` to `[locale]/page.tsx`, `Hero.tsx`?**
+  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+- **Why does `Header()` connect `articles/[slug]/page.tsx` to `[locale]/page.tsx`, `rate-card/page.tsx`, `services/[slug]/page.tsx`, `prototype/page.tsx`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **What connects `mdxComponents`, `PageParams`, `organizationSchema` to the rest of the system?**
-  _182 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _186 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `[locale]/page.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06666666666666667 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07908163265306123 - nodes in this community are weakly interconnected._
 - **Should `devDependencies` be split into smaller, more focused modules?**
-  _Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected._
-- **Should `layout.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.08505747126436781 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.058823529411764705 - nodes in this community are weakly interconnected._
+- **Should `services/[slug]/page.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.09206349206349207 - nodes in this community are weakly interconnected._

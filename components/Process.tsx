@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { revealVariants, revealViewport } from "@/lib/motion";
 
@@ -28,14 +28,14 @@ export default function Process() {
 
         <div ref={trackRef} className="mt-[70px] relative pl-10 md:pl-12">
           <div className="absolute left-[2px] md:left-[6px] top-0 bottom-0 w-0.5 bg-line" aria-hidden="true" />
-          <motion.div
+          <m.div
             className="absolute left-[2px] md:left-[6px] top-0 w-0.5 bg-orange origin-top"
             style={{ height: lineHeight }}
             aria-hidden="true"
           />
 
           {steps.map((s, i) => (
-            <motion.div
+            <m.div
               key={s.num}
               className="relative py-[34px] border-t border-line last:border-b"
               initial="hidden"
@@ -44,7 +44,7 @@ export default function Process() {
               variants={revealVariants}
               transition={{ delay: i * 0.05 }}
             >
-              <motion.span
+              <m.span
                 className="absolute -left-10 md:-left-12 top-[38px] h-3 w-3 rounded-full bg-line"
                 initial={{ scale: 1, backgroundColor: "#2A2A2E" }}
                 whileInView={{ scale: 1.15, backgroundColor: "#FF5A1F" }}
@@ -56,7 +56,7 @@ export default function Process() {
               </div>
               <h3 className="font-display text-2xl font-semibold mb-2 mt-1">{s.title}</h3>
               <p className="text-text-dim text-[15px] max-w-[560px]">{s.desc}</p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

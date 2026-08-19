@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { revealVariants, revealViewport } from "@/lib/motion";
 import SpotlightCard from "./SpotlightCard";
@@ -26,7 +26,7 @@ export default function Solutions() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-line border border-line">
           {items.map((s, i) => (
-            <motion.div
+            <m.div
               key={s.title}
               initial="hidden"
               whileInView="visible"
@@ -51,7 +51,7 @@ export default function Solutions() {
                   ))}
                 </div>
               </SpotlightCard>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 

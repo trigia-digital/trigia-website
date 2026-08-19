@@ -2,7 +2,7 @@
   "0": "[locale]/page.tsx",
   "1": "app/not-found.tsx",
   "2": "devDependencies",
-  "3": "layout.tsx",
+  "3": "services/[slug]/page.tsx",
   "4": "dependencies",
   "5": "compilerOptions",
   "6": "Hero.tsx",
@@ -32,5 +32,8 @@
   "30": "CLAUDE.md",
   "31": ".claude/CLAUDE.md",
   "32": "extraction-spec.md",
-  "33": "[...rest]/page.tsx"
+  "33": "[...rest]/page.tsx",
+  "34": "rate-card/page.tsx",
+  "35": "opengraph-image.tsx",
+  "36": "DeferredEffects.tsx"
 }

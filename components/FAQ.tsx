@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { revealVariants, revealViewport } from "@/lib/motion";
 
@@ -26,7 +26,7 @@ export default function FAQ() {
           {items.map((item, i) => {
             const isOpen = openIndex === i;
             return (
-              <motion.div
+              <m.div
                 key={item.q}
                 className="border-b border-line"
                 initial="hidden"
@@ -54,7 +54,7 @@ export default function FAQ() {
                 </button>
                 <AnimatePresence initial={false}>
                   {isOpen && (
-                    <motion.div
+                    <m.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -62,10 +62,10 @@ export default function FAQ() {
                       className="overflow-hidden"
                     >
                       <p className="text-text-dim text-[15px] leading-relaxed pb-7 max-w-[720px]">{item.a}</p>
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

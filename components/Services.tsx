@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { revealVariants, revealViewport } from "@/lib/motion";
 import { Link } from "@/i18n/navigation";
@@ -29,7 +29,7 @@ export default function Services() {
         </div>
 
         {items.map((s, i) => (
-          <motion.div
+          <m.div
             key={s.index}
             initial="hidden"
             whileInView="visible"
@@ -45,7 +45,7 @@ export default function Services() {
                 <ArrowIcon />
               </div>
             </Link>
-          </motion.div>
+          </m.div>
         ))}
       </div>
     </section>

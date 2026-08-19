@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { revealVariants, revealViewport } from "@/lib/motion";
 import SpotlightCard from "./SpotlightCard";
@@ -39,7 +39,7 @@ function WorkCard({
   const isClient = type === "client";
 
   return (
-    <motion.div
+    <m.div
       initial="hidden"
       whileInView="visible"
       viewport={revealViewport}
@@ -97,7 +97,7 @@ function WorkCard({
           </div>
         </div>
       </SpotlightCard>
-    </motion.div>
+    </m.div>
   );
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { revealVariants, revealViewport } from "@/lib/motion";
 import { Link } from "@/i18n/navigation";
@@ -47,7 +47,7 @@ export default function Packages() {
             const isFlagship = i === 3;
 
             return (
-              <motion.div
+              <m.div
                 key={pkg.name}
                 initial="hidden"
                 whileInView="visible"
@@ -115,7 +115,7 @@ export default function Packages() {
                     <ArrowIcon />
                   </a>
                 </SpotlightCard>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

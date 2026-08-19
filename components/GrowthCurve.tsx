@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 type Props = {
   variant?: 1 | 2;
@@ -15,7 +15,7 @@ export default function GrowthCurve({ variant = 1 }: Props) {
   return (
     <div className="growth-curve">
       <svg viewBox="0 0 1280 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <motion.path
+        <m.path
           d={PATHS[variant]}
           stroke="#FF5A1F"
           strokeWidth="1.5"

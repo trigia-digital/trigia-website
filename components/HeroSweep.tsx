@@ -162,20 +162,38 @@ export default function HeroSweep() {
 
     if (prefersReduced) {
       render(0.5);
-    } else {
-      let glowT = 0;
-      const glowSpeed = 0.00015;
-      const loop = () => {
-        render(glowT);
-        glowT += glowSpeed * 16;
-        if (glowT > 1) glowT -= 1;
-        raf = requestAnimationFrame(loop);
-      };
-      loop();
+      return () => window.removeEventListener("resize", resize);
     }
+
+    let running = false;
+    let glowT = 0;
+    const glowSpeed = 0.00015;
+    const loop = () => {
+      render(glowT);
+      glowT += glowSpeed * 16;
+      if (glowT > 1) glowT -= 1;
+      raf = requestAnimationFrame(loop);
+    };
+
+    // Pause the per-frame redraw once the canvas scrolls out of view —
+    // glowT keeps its position and resumes smoothly when back in view.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !running) {
+          running = true;
+          loop();
+        } else if (!entry.isIntersecting && running) {
+          running = false;
+          cancelAnimationFrame(raf);
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
 
     return () => {
       window.removeEventListener("resize", resize);
+      observer.disconnect();
       cancelAnimationFrame(raf);
     };
   }, []);

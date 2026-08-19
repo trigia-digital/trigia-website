@@ -14,7 +14,6 @@
   "12": "tailwind.config.ts",
   "13": "next",
   "14": "postcss.config.js",
-  "15": "prototype/page.tsx",
   "16": "graphify reference: extra exports and benchmark",
   "17": "en/berapa-biaya-bikin-website-profesional-indonesia.mdx",
   "18": "en/website-vs-landing-page-vs-linktree.mdx",
@@ -32,5 +31,8 @@
   "30": "CLAUDE.md",
   "31": ".claude/CLAUDE.md",
   "32": "extraction-spec.md",
-  "33": "[...rest]/page.tsx"
+  "33": "[...rest]/page.tsx",
+  "34": "rate-card/page.tsx",
+  "35": "package.json",
+  "36": "DeferredEffects.tsx"
 }

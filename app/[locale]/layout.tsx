@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
+import Script from "next/script";
+import { LazyMotion, domAnimation } from "framer-motion";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import "./globals.css";
 import { routing } from "@/i18n/routing";
 import Grain from "@/components/Grain";
-import Spotlight from "@/components/Spotlight";
-import CustomCursor from "@/components/CustomCursor";
 import Intro from "@/components/Intro";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import SmoothScroll from "@/components/SmoothScroll";
+import DeferredEffects from "@/components/DeferredEffects";
 import { Analytics } from "@vercel/analytics/next";
-import { SITE_URL, INSTAGRAM_URL } from "@/lib/site";
+import { SITE_URL, INSTAGRAM_URL, urlFor } from "@/lib/site";
+
+const GA_MEASUREMENT_ID = "G-XQCC36KYW7";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -52,9 +54,24 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "meta" });
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: t("title"),
     description: t("description"),
     icons: { icon: "/favicon.png" },
+    verification: { google: "mQN39Nkfxc8lmmqtE22mdF6gXC7is-yFjwGAw7X7atg" },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: urlFor(locale, "/"),
+      siteName: "TRIGIA Digital",
+      locale: locale === "id" ? "id_ID" : "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+    },
   };
 }
 
@@ -78,15 +95,35 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script
+              id="ga4-init"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_MEASUREMENT_ID}');
+                `,
+              }}
+            />
+          </>
+        )}
         <NextIntlClientProvider>
-          <SmoothScroll />
-          <Grain />
-          <Spotlight />
-          <CustomCursor />
-          <Intro />
-          <WhatsAppButton />
-          {children}
-          <Analytics />
+          <LazyMotion features={domAnimation} strict>
+            <Grain />
+            <DeferredEffects />
+            <Intro />
+            <WhatsAppButton />
+            {children}
+            <Analytics />
+          </LazyMotion>
         </NextIntlClientProvider>
       </body>
     </html>
