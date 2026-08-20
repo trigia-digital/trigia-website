@@ -2,23 +2,10 @@ import { ImageResponse } from "next/og";
 import fs from "fs";
 import path from "path";
 
+export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = "TRIGIA Digital";
-
-async function loadGoogleFont(family: string, weight: number, text: string) {
-  const css = await (
-    await fetch(
-      `https://fonts.googleapis.com/css2?family=${encodeURIComponent(family)}:wght@${weight}&text=${encodeURIComponent(text)}`
-    )
-  ).text();
-  const match = css.match(/src: url\(([^)]+)\) format\('(?:opentype|truetype)'\)/);
-  if (match) {
-    const response = await fetch(match[1]);
-    if (response.ok) return response.arrayBuffer();
-  }
-  throw new Error(`Failed to load font: ${family}`);
-}
 
 export default async function OpengraphImage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -28,11 +15,8 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
   const logoBase64 = fs.readFileSync(logoPath).toString("base64");
   const logoDataUri = `data:image/png;base64,${logoBase64}`;
 
-  const fullText = `TRIGIA ${tagline}`;
-  const [spaceGroteskBold, spaceGroteskMedium] = await Promise.all([
-    loadGoogleFont("Space Grotesk", 700, "TRIGIA"),
-    loadGoogleFont("Space Grotesk", 500, fullText),
-  ]);
+  const spaceGroteskBold = fs.readFileSync(path.join(process.cwd(), "public", "fonts", "space-grotesk-700.woff"));
+  const spaceGroteskMedium = fs.readFileSync(path.join(process.cwd(), "public", "fonts", "space-grotesk-500.woff"));
 
   return new ImageResponse(
     (
