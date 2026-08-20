@@ -1,8 +1,6 @@
 import { ImageResponse } from "next/og";
-import fs from "fs";
-import path from "path";
 
-export const runtime = "nodejs";
+export const runtime = "edge";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = "TRIGIA Digital";
@@ -11,12 +9,15 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
   const { locale } = await params;
   const tagline = locale === "id" ? "Mitra Pertumbuhan Digital Anda" : "Your Digital Growth Partner";
 
-  const logoPath = path.join(process.cwd(), "public", "logo-mark-alpha.png");
-  const logoBase64 = fs.readFileSync(logoPath).toString("base64");
-  const logoDataUri = `data:image/png;base64,${logoBase64}`;
+  const logoBuffer = await fetch(new URL("./assets/logo-mark-alpha.png", import.meta.url)).then((r) =>
+    r.arrayBuffer()
+  );
+  const logoDataUri = `data:image/png;base64,${Buffer.from(logoBuffer).toString("base64")}`;
 
-  const spaceGroteskBold = fs.readFileSync(path.join(process.cwd(), "public", "fonts", "space-grotesk-700.woff"));
-  const spaceGroteskMedium = fs.readFileSync(path.join(process.cwd(), "public", "fonts", "space-grotesk-500.woff"));
+  const [spaceGroteskBold, spaceGroteskMedium] = await Promise.all([
+    fetch(new URL("./assets/space-grotesk-700.woff", import.meta.url)).then((r) => r.arrayBuffer()),
+    fetch(new URL("./assets/space-grotesk-500.woff", import.meta.url)).then((r) => r.arrayBuffer()),
+  ]);
 
   return new ImageResponse(
     (
