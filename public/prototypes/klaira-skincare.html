@@ -424,7 +424,7 @@ document.getElementById('checkoutBtn').addEventListener('click', () => {
   let msg = 'Halo Klaira, saya mau pesan:%0A%0A';
   cart.forEach(item => { msg += `${item.qty}x ${item.name} — ${formatRp(item.price*item.qty)}%0A`; });
   msg += `%0ASubtotal: ${formatRp(cart.reduce((s,i)=>s+i.price*i.qty,0))}`;
-  window.open(`https://wa.me/6288809774940?text=${msg}`, '_blank');
+  window.open(`https://wa.me/6285117320679?text=${msg}`, '_blank');
 });
 </script>
 </body>
