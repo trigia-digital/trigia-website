@@ -123,10 +123,69 @@
     "rateCardLink": "Lihat Rate Card Lengkap →",
     "flagshipLabel": "Paket Unggulan",
     "items": [
-      { "name": "Launch", "price": "Rp3.799.000", "suitedFor": "Bisnis benar-benar baru, belum punya apa-apa secara digital.", "includes": ["Branding: Logo Essentials", "Website: Starter Presence (dasar)", "Content Production: Feed Starter (1 bulan)"] },
-      { "name": "Grow", "price": "Rp13.999.000", "suitedFor": "Bisnis yang sudah jalan tapi kehadiran digitalnya masih seadanya.", "includes": ["Branding: Full Brand Identity (dasar)", "Website: Growth Site", "Content Production: Growth Content Engine (3 bulan)"] },
-      { "name": "Scale", "price": "Mulai dari Rp34.499.000", "commitment": "Komitmen 3 bulan", "suitedFor": "Bisnis yang siap agresif menambah traffic dan mengurangi kerjaan manual.", "includes": ["Website: Full Digital System", "Content Production: Full Content Engine (3 bulan)", "Digital Marketing (3 bulan)", "AI & Automation: Dasar"] },
-      { "name": "Catalyst", "price": "Mulai dari Rp64.000.000", "commitment": "Komitmen 6 bulan", "suitedFor": "Bisnis yang mau TRIGIA jadi digital growth partner penuh.", "includes": ["Branding: Full Brand Identity", "Website: Full Digital System", "Web App atau Mobile App (pilih salah satu)", "Content Production: Full Content Engine (6 bulan)", "Digital Marketing (6 bulan)", "AI & Automation", "Retainer: Growth Care (6 bulan)"] }
+      {
+        "name": "Launch",
+        "price": "Rp3.799.000",
+        "suitedFor": "Bisnis benar-benar baru, belum punya apa-apa secara digital.",
+        "includes": [
+          "Branding: Logo Essentials",
+          "Website: Starter Presence (dasar)",
+          "Content Production: Feed Starter (1 bulan)"
+        ],
+        "normalPrice": "Rp4.497.000",
+        "bonusIncludes": [
+          "Sesi konsultasi strategi gratis"
+        ]
+      },
+      {
+        "name": "Grow",
+        "price": "Rp13.999.000",
+        "suitedFor": "Bisnis yang sudah jalan tapi kehadiran digitalnya masih seadanya.",
+        "includes": [
+          "Branding: Full Brand Identity (dasar)",
+          "Website: Growth Site",
+          "Content Production: Growth Content Engine (3 bulan)"
+        ],
+        "normalPrice": "Rp16.996.000",
+        "bonusIncludes": [
+          "1x sesi review strategi digital bulanan"
+        ]
+      },
+      {
+        "name": "Scale",
+        "price": "Mulai dari Rp34.499.000",
+        "commitment": "Komitmen 3 bulan",
+        "suitedFor": "Bisnis yang siap agresif menambah traffic dan mengurangi kerjaan manual.",
+        "includes": [
+          "Website: Full Digital System",
+          "Content Production: Full Content Engine (3 bulan)",
+          "Digital Marketing (3 bulan)",
+          "AI & Automation: Dasar"
+        ],
+        "normalPrice": "Rp40.997.000",
+        "bonusIncludes": [
+          "Prioritas antrian pengerjaan"
+        ]
+      },
+      {
+        "name": "Catalyst",
+        "price": "Mulai dari Rp64.000.000",
+        "commitment": "Komitmen 6 bulan",
+        "suitedFor": "Bisnis yang mau TRIGIA jadi digital growth partner penuh.",
+        "includes": [
+          "Branding: Full Brand Identity",
+          "Website: Full Digital System",
+          "Web App atau Mobile App (pilih salah satu)",
+          "Content Production: Full Content Engine (6 bulan)",
+          "Digital Marketing (6 bulan)",
+          "AI & Automation",
+          "Retainer: Growth Care (6 bulan)"
+        ],
+        "normalPrice": "Rp79.993.000",
+        "bonusIncludes": [
+          "Dedicated priority support line"
+        ]
+      }
     ]
   },
   "rateCard": {
@@ -135,9 +194,8 @@
     "subtitle": "Your Digital Growth Partner",
     "metaDescription": "Daftar lengkap harga jasa TRIGIA — website, aplikasi web & mobile, digital marketing, AI automation, branding, hingga content production. Transparan, tanpa biaya tersembunyi.",
     "cta": "Konsultasi Gratis",
-    "addonLabel": "Add-on",
     "flagshipLabel": "Paket Unggulan",
-    "footnote": "Harga peluncuran — berlaku terbatas. Konsultasi gratis 15 menit sebelum mulai project.",
+    "footnote": "Harga peluncuran — berlaku terbatas. Konsultasi gratis sebelum mulai project.",
     "categories": [
       {
         "id": "branding",
@@ -147,13 +205,28 @@
           {
             "name": "Logo Essentials",
             "price": "Rp999.000",
-            "facilities": ["1 konsep logo", "1x revisi", "File utama (PNG / JPG / vector)"]
+            "facilities": [
+              "1 konsep logo",
+              "1x revisi",
+              "File utama (PNG / JPG / vector)",
+              "Estimasi pengerjaan: 3–5 hari kerja"
+            ]
           },
           {
             "name": "Full Brand Identity",
             "price": "mulai dari Rp1.499.000+",
-            "facilities": ["2 konsep logo, 2x revisi", "Guideline warna & tipografi", "Full brand asset kit (kartu nama, kop surat, mockup produk/sosmed)", "File lengkap (PNG, JPG, PDF, vector)"],
-            "addons": ["Riset & strategi brand mendalam", "Guideline lengkap + template sosmed penuh"]
+            "facilities": [
+              "Dasar: 2 konsep logo, 2x revisi",
+              "Guideline warna & tipografi",
+              "Full brand asset kit (kartu nama, kop surat, mockup produk/sosmed)",
+              "File lengkap (PNG, JPG, PDF, vector)",
+              "Estimasi pengerjaan: 5–7 hari kerja",
+              "Add-on mulai Rp200.000: riset & strategi brand mendalam",
+              "Add-on mulai Rp200.000: guideline lengkap + template sosmed penuh"
+            ],
+            "bonuses": [
+              "Bonus: Template kartu ucapan digital gratis"
+            ]
           }
         ]
       },
@@ -165,23 +238,59 @@
           {
             "name": "Landing Page Simple",
             "price": "Rp999.000",
-            "facilities": ["1 section — headline + CTA", "Template siap pakai", "Integrasi tombol WhatsApp"]
+            "facilities": [
+              "1 section — headline + CTA",
+              "Template siap pakai",
+              "Integrasi tombol WhatsApp",
+              "Estimasi pengerjaan: 2–3 hari kerja"
+            ]
           },
           {
             "name": "Starter Presence",
             "price": "mulai dari Rp2.499.000+",
-            "facilities": ["2 halaman, template + copy dasar", "Integrasi tombol WhatsApp", "Domain & hosting setup dibantu", "Tampilan mobile-responsive"],
-            "addons": ["Copywriting full-custom", "SEO dasar + revisi"]
+            "facilities": [
+              "Dasar: 2 halaman, template + copy dasar",
+              "Integrasi tombol WhatsApp",
+              "Domain & hosting setup dibantu",
+              "Tampilan mobile-responsive",
+              "Estimasi pengerjaan: 5–7 hari kerja",
+              "Add-on mulai Rp200.000: copywriting full-custom",
+              "Add-on mulai Rp200.000: SEO dasar + revisi"
+            ],
+            "bonuses": [
+              "Bonus: Favicon & halaman 404 custom"
+            ]
           },
           {
             "name": "Growth Site",
             "price": "mulai dari Rp8.000.000",
-            "facilities": ["Hingga 5-7 halaman (Home, Tentang, Layanan, Galeri, Kontak)", "Animasi & motion signature (scroll reveal, hover)", "SEO menengah — kata kunci lokal", "2x revisi desain", "1 bulan support pasca-launch"]
+            "facilities": [
+              "Hingga 5-7 halaman (Home, Tentang, Layanan, Galeri, Kontak)",
+              "Animasi & motion signature (scroll reveal, hover)",
+              "SEO menengah — kata kunci lokal",
+              "2x revisi desain",
+              "1 bulan support pasca-launch",
+              "Estimasi pengerjaan: 2–3 minggu"
+            ],
+            "bonuses": [
+              "Bonus: Laporan skor Lighthouse & PageSpeed"
+            ]
           },
           {
             "name": "Full Digital System",
             "price": "mulai dari Rp16.000.000",
-            "facilities": ["Semua di Growth Site", "Booking/reservasi atau katalog produk dinamis", "Otomasi notifikasi form ke WA/email tim", "Bilingual ID/EN", "3 bulan support pasca-launch", "Prioritas antrian pengerjaan"]
+            "facilities": [
+              "Semua di Growth Site",
+              "Booking/reservasi atau katalog produk dinamis",
+              "Otomasi notifikasi form ke WA/email tim",
+              "Bilingual ID/EN",
+              "3 bulan support pasca-launch",
+              "Prioritas antrian pengerjaan",
+              "Estimasi pengerjaan: 4–6 minggu"
+            ],
+            "bonuses": [
+              "Bonus: Setup Google Analytics & Search Console"
+            ]
           }
         ]
       },
@@ -193,12 +302,33 @@
           {
             "name": "Web App",
             "price": "mulai dari Rp9.000.000",
-            "facilities": ["Workshop kebutuhan & alur kerja", "Desain UI/UX sesuai proses bisnis", "Development 1 modul inti", "Testing sebelum serah terima", "Support pasca-launch 1–6 bulan (menyesuaikan cakupan project)", "Cakupan & investasi menyesuaikan kompleksitas modul/integrasi"]
+            "facilities": [
+              "Workshop kebutuhan & alur kerja",
+              "Desain UI/UX sesuai proses bisnis",
+              "Development 1 modul inti",
+              "Testing sebelum serah terima",
+              "Estimasi pengerjaan: mulai 3–4 minggu (1 modul dasar)",
+              "Cakupan modul tambahan mulai Rp200.000 per fitur, integrasi sistem lain dihitung terpisah"
+            ],
+            "bonuses": [
+              "Bonus: 2–3x sesi training tim + pendampingan pemakaian gratis 1 bulan pasca-launch"
+            ]
           },
           {
             "name": "Mobile App",
             "price": "mulai dari Rp20.000.000",
-            "facilities": ["Riset fungsi inti aplikasi", "Desain UI/UX mobile-first", "Development Android & iOS", "Testing di perangkat nyata", "Panduan publikasi ke Play Store/App Store", "1 bulan support pasca-launch"]
+            "facilities": [
+              "Riset fungsi inti aplikasi",
+              "Desain UI/UX mobile-first",
+              "Development Android & iOS",
+              "Testing di perangkat nyata",
+              "Panduan publikasi ke Play Store/App Store",
+              "Estimasi pengerjaan: 6–8 minggu"
+            ],
+            "bonuses": [
+              "Bonus: Desain ikon & splash screen custom",
+              "Bonus: Pendampingan pemakaian gratis 1 bulan pasca-launch"
+            ]
           }
         ]
       },
@@ -210,17 +340,32 @@
           {
             "name": "Feed Starter",
             "price": "mulai dari Rp999.000/bulan",
-            "facilities": ["20 desain feed orisinil / bulan"]
+            "facilities": [
+              "20 desain feed orisinil / bulan"
+            ]
           },
           {
             "name": "Growth Content Engine",
             "price": "mulai dari Rp2.499.000/bulan",
-            "facilities": ["35 desain feed orisinil/bulan (feed + carousel)", "6 video reels pendek/bulan", "Template story mingguan", "Riset hashtag & caption hook penjualan"]
+            "facilities": [
+              "35 desain feed orisinil/bulan (feed + carousel)",
+              "6 video reels pendek/bulan",
+              "Template story mingguan",
+              "Riset hashtag & caption hook penjualan"
+            ]
           },
           {
             "name": "Full Content Engine",
             "price": "mulai dari Rp4.499.000/bulan",
-            "facilities": ["55 desain feed orisinil/bulan", "10 video reels/bulan", "Content calendar bulanan", "Laporan performa (engagement, reach, follower growth)"]
+            "facilities": [
+              "55 desain feed orisinil/bulan",
+              "10 video reels/bulan",
+              "Content calendar bulanan",
+              "Laporan performa (engagement, reach, follower growth)"
+            ],
+            "bonuses": [
+              "Bonus: 1x sesi strategi konten/bulan"
+            ]
           }
         ]
       },
@@ -232,10 +377,23 @@
           {
             "name": "Digital Marketing & Advertising",
             "price": "mulai dari Rp1.500.000/bulan",
-            "facilities": ["Riset audiens & strategi campaign", "Meta Ads (Facebook & Instagram)", "Google Ads (Search & Display)", "TikTok Ads", "CPAS Ads — Shopee x Meta, khusus e-commerce", "Pembuatan materi iklan (kerja sama tim konten)", "Setup & optimasi campaign mingguan", "Laporan performa bulanan"]
+            "facilities": [
+              "Riset audiens & strategi campaign",
+              "Meta Ads (Facebook & Instagram)",
+              "Google Ads (Search & Display)",
+              "TikTok Ads",
+              "CPAS Ads — Shopee x Meta, khusus e-commerce",
+              "Pembuatan materi iklan (kerja sama tim konten)",
+              "Setup & optimasi campaign mingguan",
+              "Laporan performa bulanan",
+              "Setup awal: 3–5 hari kerja, campaign berjalan bulanan setelahnya",
+              "Budget iklan terpisah, min. Rp3.000.000/bulan ke platform"
+            ],
+            "bonuses": [
+              "Bonus: Instalasi Meta Pixel di website"
+            ]
           }
-        ],
-        "note": "Budget iklan terpisah, min. Rp3.000.000/bulan ke platform"
+        ]
       },
       {
         "id": "ai-automation",
@@ -245,13 +403,33 @@
           {
             "name": "AI & Automation (Dasar)",
             "price": "mulai dari Rp7.000.000",
-            "facilities": ["Audit proses — cari titik paling boros waktu", "Setup chatbot WA & auto-reply", "Integrasi form ke spreadsheet/email", "Training singkat tim internal", "2 minggu monitoring pasca-launch"]
+            "facilities": [
+              "Audit proses — cari titik paling boros waktu",
+              "Setup chatbot WA & auto-reply",
+              "Integrasi form ke spreadsheet/email",
+              "Training singkat tim internal",
+              "2 minggu monitoring pasca-launch",
+              "Estimasi pengerjaan: 1–2 minggu"
+            ],
+            "bonuses": [
+              "Bonus: Pendampingan pemakaian gratis 1 bulan pasca-launch"
+            ]
           },
           {
             "name": "AI Agents & Custom AI Solutions",
             "price": "mulai dari Rp15.000.000",
-            "facilities": ["AI agent dirancang sesuai tahap & kebutuhan spesifik bisnis", "Contoh: Sales Agent — kualifikasi lead, follow-up, bantu closing", "Contoh: Niche/Market Research Agent", "Contoh: Content & Video Generation Agent", "Development & integrasi API AI generatif/LLM"],
-            "note": "Biaya API AI ditanggung terpisah oleh klien"
+            "facilities": [
+              "AI agent dirancang sesuai tahap & kebutuhan spesifik bisnis",
+              "Contoh: Sales Agent — kualifikasi lead, follow-up, bantu closing",
+              "Contoh: Niche/Market Research Agent",
+              "Contoh: Content & Video Generation Agent",
+              "Development & integrasi API AI generatif/LLM",
+              "Estimasi pengerjaan: 2–4 minggu, tergantung kompleksitas",
+              "Biaya API AI ditanggung terpisah oleh klien"
+            ],
+            "bonuses": [
+              "Bonus: 1x sesi training AI agent untuk tim + pendampingan pemakaian gratis 1 bulan pasca-launch"
+            ]
           }
         ]
       },
@@ -263,44 +441,87 @@
           {
             "name": "Basic Care",
             "price": "mulai dari Rp750.000/bulan",
-            "facilities": ["Monitoring uptime, backup, 2x update konten/bulan"]
+            "facilities": [
+              "Monitoring uptime, backup, 2x update konten/bulan"
+            ]
           },
           {
             "name": "Growth Care",
             "price": "mulai dari Rp1.500.000/bulan",
-            "facilities": ["Semua di Basic Care", "Laporan traffic bulanan", "Prioritas perbaikan bug"]
+            "facilities": [
+              "Semua di Basic Care",
+              "Laporan traffic bulanan",
+              "Prioritas perbaikan bug"
+            ]
           }
         ]
       }
     ],
     "bundling": {
       "heading": "Paket Bundling",
-      "intro": "Hemat 15–20% dibanding beli terpisah",
+      "intro": "Hemat 15–20% dibanding beli terpisah — dari bisnis baru sampai partner pertumbuhan penuh",
       "items": [
         {
           "name": "Launch",
           "tagline": "Bisnis baru dari nol",
           "price": "mulai dari Rp3.799.000",
-          "includes": ["Logo Essentials", "Website Starter Presence (dasar)", "Content Feed Starter (1 bulan)"]
+          "normalPrice": "Rp4.497.000",
+          "includes": [
+            "Logo Essentials",
+            "Website Starter Presence (dasar)",
+            "Content Feed Starter (1 bulan)"
+          ],
+          "bonusIncludes": [
+            "Sesi konsultasi strategi gratis"
+          ]
         },
         {
           "name": "Grow",
           "tagline": "Naik kelas dari digital seadanya",
           "price": "mulai dari Rp13.999.000",
-          "includes": ["Full Brand Identity (dasar)", "Website Growth Site", "Content Growth Engine (3 bulan)"]
+          "normalPrice": "Rp16.996.000",
+          "includes": [
+            "Full Brand Identity (dasar)",
+            "Website Growth Site",
+            "Content Growth Engine (3 bulan)"
+          ],
+          "bonusIncludes": [
+            "1x sesi review strategi digital bulanan"
+          ]
         },
         {
           "name": "Scale",
           "tagline": "Agresif tumbuh, kurangi kerja manual",
           "price": "mulai dari Rp34.499.000",
-          "includes": ["Website Full Digital System", "Content Full Engine (3 bulan)", "Digital Marketing (3 bulan)", "AI & Automation Dasar"]
+          "normalPrice": "Rp40.997.000",
+          "includes": [
+            "Website Full Digital System",
+            "Content Full Engine (3 bulan)",
+            "Digital Marketing (3 bulan)",
+            "AI & Automation Dasar"
+          ],
+          "bonusIncludes": [
+            "Prioritas antrian pengerjaan"
+          ]
         },
         {
           "name": "Catalyst",
           "tagline": "Digital growth partner penuh — komitmen 6 bulan",
           "price": "mulai dari Rp64.000.000",
           "flagship": true,
-          "includes": ["Full Brand Identity", "Website Full Digital System", "Web App atau Mobile App (pilih 1)", "Content Full Engine (6 bulan)", "Digital Marketing (6 bulan)", "AI & Automation", "Retainer Growth Care (6 bulan)"]
+          "normalPrice": "Rp79.993.000",
+          "includes": [
+            "Full Brand Identity",
+            "Website Full Digital System",
+            "Web App atau Mobile App (pilih 1)",
+            "Content Full Engine (6 bulan)",
+            "Digital Marketing (6 bulan)",
+            "AI & Automation",
+            "Retainer Growth Care (6 bulan)"
+          ],
+          "bonusIncludes": [
+            "Dedicated priority support line"
+          ]
         }
       ]
     }

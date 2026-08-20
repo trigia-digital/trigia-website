@@ -4,13 +4,15 @@ import { routing } from "@/i18n/routing";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SpotlightCard from "@/components/SpotlightCard";
+import StrikethroughPrice from "@/components/StrikethroughPrice";
+import BonusPill from "@/components/BonusPill";
 import { buildWhatsAppHref } from "@/lib/whatsapp";
 
 type RateCardLineItem = {
   name: string;
   price: string;
   facilities: string[];
-  addons?: string[];
+  bonuses?: string[];
   note?: string;
 };
 
@@ -26,8 +28,10 @@ type RateCardBundle = {
   name: string;
   tagline: string;
   price: string;
+  normalPrice?: string;
   flagship?: boolean;
   includes: string[];
+  bonusIncludes?: string[];
 };
 
 const ArrowIcon = () => (
@@ -106,12 +110,16 @@ export default async function RateCardPage({ params }: { params: Promise<{ local
                               {f}
                             </li>
                           ))}
+                          {item.bonuses?.map((b) => (
+                            <li
+                              key={b}
+                              className="text-[13px] text-orange font-semibold leading-relaxed pl-3.5 relative"
+                            >
+                              <span className="absolute left-0 text-orange">★</span>
+                              {b}
+                            </li>
+                          ))}
                         </ul>
-                        {item.addons && item.addons.length > 0 && (
-                          <p className="text-[12px] text-text-dim/70 mt-2 pl-3.5">
-                            + {t("addonLabel")}: {item.addons.join(", ")}
-                          </p>
-                        )}
                         {item.note && <p className="text-[12px] text-orange/80 mt-2 pl-3.5">{item.note}</p>}
                       </div>
                     ))}
@@ -152,7 +160,10 @@ export default async function RateCardPage({ params }: { params: Promise<{ local
                   )}
                   <h3 className="font-display text-[26px] font-semibold leading-tight">{bundle.name}</h3>
                   <p className="text-text-dim text-[14px]">{bundle.tagline}</p>
-                  <div className="font-display text-xl font-semibold text-orange">{bundle.price}</div>
+                  <div>
+                    {bundle.normalPrice && <StrikethroughPrice value={bundle.normalPrice} />}
+                    <div className="font-display text-xl font-semibold text-orange">{bundle.price}</div>
+                  </div>
                   <div className="flex flex-wrap gap-2 border-t border-line pt-5 mt-auto">
                     {bundle.includes.map((item) => (
                       <span
@@ -162,6 +173,7 @@ export default async function RateCardPage({ params }: { params: Promise<{ local
                         {item}
                       </span>
                     ))}
+                    {bundle.bonusIncludes?.map((item) => <BonusPill key={item} label={item} />)}
                   </div>
                 </SpotlightCard>
               ))}

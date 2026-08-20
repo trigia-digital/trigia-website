@@ -5,15 +5,19 @@ import { useTranslations } from "next-intl";
 import { revealVariants, revealViewport } from "@/lib/motion";
 import { Link } from "@/i18n/navigation";
 import SpotlightCard from "./SpotlightCard";
+import StrikethroughPrice from "./StrikethroughPrice";
+import BonusPill from "./BonusPill";
 import { buildWhatsAppHref } from "@/lib/whatsapp";
 
 type PackageItem = {
   name: string;
   price: string;
+  normalPrice?: string;
   note?: string;
   commitment?: string;
   suitedFor: string;
   includes: string[];
+  bonusIncludes?: string[];
 };
 
 const ArrowIcon = () => (
@@ -82,6 +86,7 @@ export default function Packages() {
                   </div>
 
                   <div>
+                    {pkg.normalPrice && <StrikethroughPrice value={pkg.normalPrice} />}
                     <div
                       className={`font-display font-semibold ${
                         isPremiumTier ? "text-xl text-text-dim" : "text-[28px] text-white"
@@ -103,6 +108,7 @@ export default function Packages() {
                         {item}
                       </span>
                     ))}
+                    {pkg.bonusIncludes?.map((item) => <BonusPill key={item} label={item} />)}
                   </div>
 
                   <a

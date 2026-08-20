@@ -1,16 +1,16 @@
 # Graph Report - trigia-nextjs  (2026-08-20)
 
 ## Corpus Check
-- 79 files · ~95,589 words
+- 81 files · ~97,815 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 413 nodes · 556 edges · 36 communities (29 shown, 7 thin omitted)
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.5)
+- 417 nodes · 566 edges · 36 communities (29 shown, 7 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bf4f77c8`
+- Built from commit: `a9c6333e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -79,8 +79,8 @@
 ## Communities (36 total, 7 thin omitted)
 
 ### Community 0 - "[locale]/page.tsx"
-Cohesion: 0.08
-Nodes (25): About, FAQ, Belief(), FaqItem, FinalCTA(), SITEMAP_LINKS, GrowthCurve(), PATHS (+17 more)
+Cohesion: 0.10
+Nodes (21): About, FAQ, Belief(), FaqItem, FinalCTA(), SITEMAP_LINKS, GrowthCurve(), PATHS (+13 more)
 
 ### Community 2 - "devDependencies"
 Cohesion: 0.06
@@ -88,7 +88,7 @@ Nodes (33): autoprefixer, @next/bundle-analyzer, browserslist, devDependencies, 
 
 ### Community 3 - "services/[slug]/page.tsx"
 Cohesion: 0.09
-Nodes (17): generateMetadata(), inter, organizationSchema, spaceGrotesk, PageParams, ServiceDetailItem, ServiceDetailPage(), ServiceListItem (+9 more)
+Nodes (18): generateMetadata(), inter, organizationSchema, spaceGrotesk, PageParams, ServiceDetailItem, ServiceDetailPage(), ServiceListItem (+10 more)
 
 ### Community 4 - "dependencies"
 Cohesion: 0.10
@@ -171,8 +171,8 @@ Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
 ### Community 34 - "rate-card/page.tsx"
-Cohesion: 0.08
-Nodes (16): NotFound(), PrototypeItem, RateCardBundle, RateCardCategory, RateCardLineItem, RateCardPage(), Footer(), Header() (+8 more)
+Cohesion: 0.07
+Nodes (21): NotFound(), PrototypeItem, RateCardBundle, RateCardCategory, RateCardLineItem, RateCardPage(), BonusPill(), Footer() (+13 more)
 
 ### Community 35 - "opengraph-image.tsx"
 Cohesion: 0.33
@@ -191,7 +191,7 @@ Nodes (8): CustomCursor(), CustomCursor, DeferredEffects(), SmoothScroll, Spotli
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `routing` connect `services/[slug]/page.tsx` to `articles/[slug]/page.tsx`, `rate-card/page.tsx`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `buildWhatsAppHref()` connect `rate-card/page.tsx` to `[locale]/page.tsx`, `Hero.tsx`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
 - **Why does `Header()` connect `rate-card/page.tsx` to `articles/[slug]/page.tsx`, `[locale]/page.tsx`, `services/[slug]/page.tsx`?**
@@ -199,8 +199,8 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `mdxComponents`, `PageParams`, `organizationSchema` to the rest of the system?**
   _187 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `[locale]/page.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.07908163265306123 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09615384615384616 - nodes in this community are weakly interconnected._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.058823529411764705 - nodes in this community are weakly interconnected._
 - **Should `services/[slug]/page.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.09206349206349207 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08819345661450925 - nodes in this community are weakly interconnected._

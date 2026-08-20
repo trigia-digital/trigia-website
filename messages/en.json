@@ -123,10 +123,69 @@
     "rateCardLink": "See Full Rate Card →",
     "flagshipLabel": "Flagship Package",
     "items": [
-      { "name": "Launch", "price": "Rp3,799,000", "suitedFor": "Brand-new businesses with no digital presence yet.", "includes": ["Branding: Logo Essentials", "Website: Starter Presence (base)", "Content Production: Feed Starter (1 month)"] },
-      { "name": "Grow", "price": "Rp13,999,000", "suitedFor": "Established businesses whose digital presence still feels bare-bones.", "includes": ["Branding: Full Brand Identity (base)", "Website: Growth Site", "Content Production: Growth Content Engine (3 months)"] },
-      { "name": "Scale", "price": "Starting from Rp34,499,000", "commitment": "3-month commitment", "suitedFor": "Businesses ready to aggressively grow traffic and cut down manual work.", "includes": ["Website: Full Digital System", "Content Production: Full Content Engine (3 months)", "Digital Marketing (3 months)", "AI & Automation: Basic"] },
-      { "name": "Catalyst", "price": "Starting from Rp64,000,000", "commitment": "6-month commitment", "suitedFor": "Businesses that want TRIGIA as a full digital growth partner.", "includes": ["Branding: Full Brand Identity", "Website: Full Digital System", "Web App or Mobile App (choose one)", "Content Production: Full Content Engine (6 months)", "Digital Marketing (6 months)", "AI & Automation", "Retainer: Growth Care (6 months)"] }
+      {
+        "name": "Launch",
+        "price": "Rp3,799,000",
+        "suitedFor": "Brand-new businesses with no digital presence yet.",
+        "includes": [
+          "Branding: Logo Essentials",
+          "Website: Starter Presence (base)",
+          "Content Production: Feed Starter (1 month)"
+        ],
+        "normalPrice": "Rp4,497,000",
+        "bonusIncludes": [
+          "Free strategy consultation session"
+        ]
+      },
+      {
+        "name": "Grow",
+        "price": "Rp13,999,000",
+        "suitedFor": "Established businesses whose digital presence still feels bare-bones.",
+        "includes": [
+          "Branding: Full Brand Identity (base)",
+          "Website: Growth Site",
+          "Content Production: Growth Content Engine (3 months)"
+        ],
+        "normalPrice": "Rp16,996,000",
+        "bonusIncludes": [
+          "1x monthly digital strategy review session"
+        ]
+      },
+      {
+        "name": "Scale",
+        "price": "Starting from Rp34,499,000",
+        "commitment": "3-month commitment",
+        "suitedFor": "Businesses ready to aggressively grow traffic and cut down manual work.",
+        "includes": [
+          "Website: Full Digital System",
+          "Content Production: Full Content Engine (3 months)",
+          "Digital Marketing (3 months)",
+          "AI & Automation: Basic"
+        ],
+        "normalPrice": "Rp40,997,000",
+        "bonusIncludes": [
+          "Priority development queue"
+        ]
+      },
+      {
+        "name": "Catalyst",
+        "price": "Starting from Rp64,000,000",
+        "commitment": "6-month commitment",
+        "suitedFor": "Businesses that want TRIGIA as a full digital growth partner.",
+        "includes": [
+          "Branding: Full Brand Identity",
+          "Website: Full Digital System",
+          "Web App or Mobile App (choose one)",
+          "Content Production: Full Content Engine (6 months)",
+          "Digital Marketing (6 months)",
+          "AI & Automation",
+          "Retainer: Growth Care (6 months)"
+        ],
+        "normalPrice": "Rp79,993,000",
+        "bonusIncludes": [
+          "Dedicated priority support line"
+        ]
+      }
     ]
   },
   "rateCard": {
@@ -135,9 +194,8 @@
     "subtitle": "Your Digital Growth Partner",
     "metaDescription": "Full pricing list for TRIGIA's services — website, web & mobile apps, digital marketing, AI automation, branding, and content production. Transparent, no hidden fees.",
     "cta": "Free Consultation",
-    "addonLabel": "Add-on",
     "flagshipLabel": "Flagship Package",
-    "footnote": "Launch pricing — limited time. Free 15-minute consultation before we start your project.",
+    "footnote": "Launch pricing — limited time. Free consultation before we start your project.",
     "categories": [
       {
         "id": "branding",
@@ -147,13 +205,28 @@
           {
             "name": "Logo Essentials",
             "price": "Rp999,000",
-            "facilities": ["1 logo concept", "1 round of revisions", "Master files (PNG / JPG / vector)"]
+            "facilities": [
+              "1 logo concept",
+              "1 round of revisions",
+              "Master files (PNG / JPG / vector)",
+              "Estimated timeline: 3–5 business days"
+            ]
           },
           {
             "name": "Full Brand Identity",
             "price": "starting from Rp1,499,000+",
-            "facilities": ["2 logo concepts, 2 rounds of revisions", "Color & typography guideline", "Full brand asset kit (business cards, letterhead, product/social mockups)", "Complete files (PNG, JPG, PDF, vector)"],
-            "addons": ["In-depth brand research & strategy", "Full guideline + complete social media template set"]
+            "facilities": [
+              "Base: 2 logo concepts, 2 rounds of revisions",
+              "Color & typography guideline",
+              "Full brand asset kit (business cards, letterhead, product/social mockups)",
+              "Complete files (PNG, JPG, PDF, vector)",
+              "Estimated timeline: 5–7 business days",
+              "Add-on starting Rp200,000: in-depth brand research & strategy",
+              "Add-on starting Rp200,000: full guideline + complete social media template set"
+            ],
+            "bonuses": [
+              "Bonus: Free digital greeting card template"
+            ]
           }
         ]
       },
@@ -165,23 +238,59 @@
           {
             "name": "Landing Page Simple",
             "price": "Rp999,000",
-            "facilities": ["1 section — headline + CTA", "Ready-to-use template", "WhatsApp button integration"]
+            "facilities": [
+              "1 section — headline + CTA",
+              "Ready-to-use template",
+              "WhatsApp button integration",
+              "Estimated timeline: 2–3 business days"
+            ]
           },
           {
             "name": "Starter Presence",
             "price": "starting from Rp2,499,000+",
-            "facilities": ["2 pages, template + baseline copy", "WhatsApp button integration", "Domain & hosting setup assisted", "Mobile-responsive layout"],
-            "addons": ["Full-custom copywriting", "Baseline SEO + revisions"]
+            "facilities": [
+              "Base: 2 pages, template + baseline copy",
+              "WhatsApp button integration",
+              "Domain & hosting setup assisted",
+              "Mobile-responsive layout",
+              "Estimated timeline: 5–7 business days",
+              "Add-on starting Rp200,000: full-custom copywriting",
+              "Add-on starting Rp200,000: baseline SEO + revisions"
+            ],
+            "bonuses": [
+              "Bonus: Custom favicon & 404 page"
+            ]
           },
           {
             "name": "Growth Site",
             "price": "starting from Rp8,000,000",
-            "facilities": ["Up to 5-7 pages (Home, About, Services, Gallery, Contact)", "Signature motion & animation (scroll reveal, hover)", "Mid-tier SEO — local keywords", "2 rounds of design revisions", "1 month of post-launch support"]
+            "facilities": [
+              "Up to 5-7 pages (Home, About, Services, Gallery, Contact)",
+              "Signature motion & animation (scroll reveal, hover)",
+              "Mid-tier SEO — local keywords",
+              "2 rounds of design revisions",
+              "1 month of post-launch support",
+              "Estimated timeline: 2–3 weeks"
+            ],
+            "bonuses": [
+              "Bonus: Lighthouse & PageSpeed score report"
+            ]
           },
           {
             "name": "Full Digital System",
             "price": "starting from Rp16,000,000",
-            "facilities": ["Everything in Growth Site", "Booking/reservation or dynamic product catalog", "Automated form notifications to WA/team email", "Bilingual ID/EN", "3 months of post-launch support", "Priority development queue"]
+            "facilities": [
+              "Everything in Growth Site",
+              "Booking/reservation or dynamic product catalog",
+              "Automated form notifications to WA/team email",
+              "Bilingual ID/EN",
+              "3 months of post-launch support",
+              "Priority development queue",
+              "Estimated timeline: 4–6 weeks"
+            ],
+            "bonuses": [
+              "Bonus: Google Analytics & Search Console setup"
+            ]
           }
         ]
       },
@@ -193,12 +302,33 @@
           {
             "name": "Web App",
             "price": "starting from Rp9,000,000",
-            "facilities": ["Requirements & workflow workshop", "UI/UX design matched to your business process", "Development of 1 core module", "Testing before handover", "1–6 months of post-launch support (scope-dependent)", "Scope & investment scale with module/integration complexity"]
+            "facilities": [
+              "Requirements & workflow workshop",
+              "UI/UX design matched to your business process",
+              "Development of 1 core module",
+              "Testing before handover",
+              "Estimated timeline: starting from 3–4 weeks (1 base module)",
+              "Additional modules starting Rp200,000 per feature, third-party integrations quoted separately"
+            ],
+            "bonuses": [
+              "Bonus: 2–3x team training sessions + 1 month of free usage support post-launch"
+            ]
           },
           {
             "name": "Mobile App",
             "price": "starting from Rp20,000,000",
-            "facilities": ["Core app function research", "Mobile-first UI/UX design", "Android & iOS development", "Testing on real devices", "Play Store/App Store publishing guidance", "1 month of post-launch support"]
+            "facilities": [
+              "Core app function research",
+              "Mobile-first UI/UX design",
+              "Android & iOS development",
+              "Testing on real devices",
+              "Play Store/App Store publishing guidance",
+              "Estimated timeline: 6–8 weeks"
+            ],
+            "bonuses": [
+              "Bonus: Custom icon & splash screen design",
+              "Bonus: 1 month of free usage support post-launch"
+            ]
           }
         ]
       },
@@ -210,17 +340,32 @@
           {
             "name": "Feed Starter",
             "price": "starting from Rp999,000/month",
-            "facilities": ["20 original feed designs / month"]
+            "facilities": [
+              "20 original feed designs / month"
+            ]
           },
           {
             "name": "Growth Content Engine",
             "price": "starting from Rp2,499,000/month",
-            "facilities": ["35 original feed designs/month (feed + carousel)", "6 short-form reels/month", "Weekly story template", "Hashtag research & sales-hook captions"]
+            "facilities": [
+              "35 original feed designs/month (feed + carousel)",
+              "6 short-form reels/month",
+              "Weekly story template",
+              "Hashtag research & sales-hook captions"
+            ]
           },
           {
             "name": "Full Content Engine",
             "price": "starting from Rp4,499,000/month",
-            "facilities": ["55 original feed designs/month", "10 reels/month", "Monthly content calendar", "Performance report (engagement, reach, follower growth)"]
+            "facilities": [
+              "55 original feed designs/month",
+              "10 reels/month",
+              "Monthly content calendar",
+              "Performance report (engagement, reach, follower growth)"
+            ],
+            "bonuses": [
+              "Bonus: 1x content strategy session/month"
+            ]
           }
         ]
       },
@@ -232,10 +377,23 @@
           {
             "name": "Digital Marketing & Advertising",
             "price": "starting from Rp1,500,000/month",
-            "facilities": ["Audience research & campaign strategy", "Meta Ads (Facebook & Instagram)", "Google Ads (Search & Display)", "TikTok Ads", "CPAS Ads — Shopee x Meta, for e-commerce", "Ad creative production (with our content team)", "Weekly campaign setup & optimization", "Monthly performance report"]
+            "facilities": [
+              "Audience research & campaign strategy",
+              "Meta Ads (Facebook & Instagram)",
+              "Google Ads (Search & Display)",
+              "TikTok Ads",
+              "CPAS Ads — Shopee x Meta, for e-commerce",
+              "Ad creative production (with our content team)",
+              "Weekly campaign setup & optimization",
+              "Monthly performance report",
+              "Initial setup: 3–5 business days, campaign runs monthly after that",
+              "Ad budget billed separately, min. Rp3,000,000/month to the platform"
+            ],
+            "bonuses": [
+              "Bonus: Meta Pixel installation on your website"
+            ]
           }
-        ],
-        "note": "Ad budget billed separately, min. Rp3,000,000/month to the platform"
+        ]
       },
       {
         "id": "ai-automation",
@@ -245,13 +403,33 @@
           {
             "name": "AI & Automation (Basic)",
             "price": "starting from Rp7,000,000",
-            "facilities": ["Process audit — find where the most time is lost", "WhatsApp chatbot & auto-reply setup", "Form integration to spreadsheet/email", "Short internal team training", "2 weeks of post-launch monitoring"]
+            "facilities": [
+              "Process audit — find where the most time is lost",
+              "WhatsApp chatbot & auto-reply setup",
+              "Form integration to spreadsheet/email",
+              "Short internal team training",
+              "2 weeks of post-launch monitoring",
+              "Estimated timeline: 1–2 weeks"
+            ],
+            "bonuses": [
+              "Bonus: 1 month of free usage support post-launch"
+            ]
           },
           {
             "name": "AI Agents & Custom AI Solutions",
             "price": "starting from Rp15,000,000",
-            "facilities": ["AI agent designed around your business's specific stage & needs", "Example: Sales Agent — lead qualification, follow-up, closing assistance", "Example: Niche/Market Research Agent", "Example: Content & Video Generation Agent", "Development & integration of generative AI/LLM APIs"],
-            "note": "AI API costs billed separately to the client"
+            "facilities": [
+              "AI agent designed around your business's specific stage & needs",
+              "Example: Sales Agent — lead qualification, follow-up, closing assistance",
+              "Example: Niche/Market Research Agent",
+              "Example: Content & Video Generation Agent",
+              "Development & integration of generative AI/LLM APIs",
+              "Estimated timeline: 2–4 weeks, depending on complexity",
+              "AI API costs billed separately to the client"
+            ],
+            "bonuses": [
+              "Bonus: 1x AI agent training session for your team + 1 month of free usage support post-launch"
+            ]
           }
         ]
       },
@@ -263,44 +441,87 @@
           {
             "name": "Basic Care",
             "price": "starting from Rp750,000/month",
-            "facilities": ["Uptime monitoring, backups, 2x content updates/month"]
+            "facilities": [
+              "Uptime monitoring, backups, 2x content updates/month"
+            ]
           },
           {
             "name": "Growth Care",
             "price": "starting from Rp1,500,000/month",
-            "facilities": ["Everything in Basic Care", "Monthly traffic reports", "Priority bug fixes"]
+            "facilities": [
+              "Everything in Basic Care",
+              "Monthly traffic reports",
+              "Priority bug fixes"
+            ]
           }
         ]
       }
     ],
     "bundling": {
       "heading": "Bundled Packages",
-      "intro": "Save 15–20% compared to booking separately",
+      "intro": "Save 15–20% compared to booking separately — from brand-new businesses to a full growth partnership",
       "items": [
         {
           "name": "Launch",
           "tagline": "Brand-new business",
           "price": "starting from Rp3,799,000",
-          "includes": ["Logo Essentials", "Website Starter Presence (base)", "Content Feed Starter (1 month)"]
+          "normalPrice": "Rp4,497,000",
+          "includes": [
+            "Logo Essentials",
+            "Website Starter Presence (base)",
+            "Content Feed Starter (1 month)"
+          ],
+          "bonusIncludes": [
+            "Free strategy consultation session"
+          ]
         },
         {
           "name": "Grow",
           "tagline": "Level up from a bare-bones digital presence",
           "price": "starting from Rp13,999,000",
-          "includes": ["Full Brand Identity (base)", "Website Growth Site", "Content Growth Engine (3 months)"]
+          "normalPrice": "Rp16,996,000",
+          "includes": [
+            "Full Brand Identity (base)",
+            "Website Growth Site",
+            "Content Growth Engine (3 months)"
+          ],
+          "bonusIncludes": [
+            "1x monthly digital strategy review session"
+          ]
         },
         {
           "name": "Scale",
           "tagline": "Grow aggressively, cut down manual work",
           "price": "starting from Rp34,499,000",
-          "includes": ["Website Full Digital System", "Content Full Engine (3 months)", "Digital Marketing (3 months)", "AI & Automation Basic"]
+          "normalPrice": "Rp40,997,000",
+          "includes": [
+            "Website Full Digital System",
+            "Content Full Engine (3 months)",
+            "Digital Marketing (3 months)",
+            "AI & Automation Basic"
+          ],
+          "bonusIncludes": [
+            "Priority development queue"
+          ]
         },
         {
           "name": "Catalyst",
           "tagline": "Full digital growth partner — 6-month commitment",
           "price": "starting from Rp64,000,000",
           "flagship": true,
-          "includes": ["Full Brand Identity", "Website Full Digital System", "Web App or Mobile App (choose 1)", "Content Full Engine (6 months)", "Digital Marketing (6 months)", "AI & Automation", "Retainer Growth Care (6 months)"]
+          "normalPrice": "Rp79,993,000",
+          "includes": [
+            "Full Brand Identity",
+            "Website Full Digital System",
+            "Web App or Mobile App (choose 1)",
+            "Content Full Engine (6 months)",
+            "Digital Marketing (6 months)",
+            "AI & Automation",
+            "Retainer Growth Care (6 months)"
+          ],
+          "bonusIncludes": [
+            "Dedicated priority support line"
+          ]
         }
       ]
     }

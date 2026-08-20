@@ -30,19 +30,6 @@
       "norm_label": "props"
     },
     {
-      "label": "PackageItem",
-      "file_type": "code",
-      "source_file": "components/Packages.tsx",
-      "source_location": "L10",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "components_packages_packageitem",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "packageitem"
-    },
-    {
       "label": "ProcessStep",
       "file_type": "code",
       "source_file": "components/Process.tsx",
@@ -80,19 +67,6 @@
       "community": 0,
       "community_name": "[locale]/page.tsx",
       "norm_label": "solutionitem"
-    },
-    {
-      "label": "SpotlightCardProps",
-      "file_type": "code",
-      "source_file": "components/SpotlightCard.tsx",
-      "source_location": "L6",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "components_spotlightcard_spotlightcardprops",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "spotlightcardprops"
     },
     {
       "label": "WorkCase",
@@ -189,7 +163,7 @@
       "label": "RateCardBundle",
       "file_type": "code",
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L25",
+      "source_location": "L27",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -202,7 +176,7 @@
       "label": "RateCardCategory",
       "file_type": "code",
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L17",
+      "source_location": "L19",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -215,7 +189,7 @@
       "label": "RateCardLineItem",
       "file_type": "code",
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L9",
+      "source_location": "L11",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -223,6 +197,19 @@
       "community": 34,
       "community_name": "rate-card/page.tsx",
       "norm_label": "ratecardlineitem"
+    },
+    {
+      "label": "PackageItem",
+      "file_type": "code",
+      "source_file": "components/Packages.tsx",
+      "source_location": "L12",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "components_packages_packageitem",
+      "community": 34,
+      "community_name": "rate-card/page.tsx",
+      "norm_label": "packageitem"
     },
     {
       "label": "PrototypePreviewProps",
@@ -236,6 +223,19 @@
       "community": 34,
       "community_name": "rate-card/page.tsx",
       "norm_label": "prototypepreviewprops"
+    },
+    {
+      "label": "SpotlightCardProps",
+      "file_type": "code",
+      "source_file": "components/SpotlightCard.tsx",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "components_spotlightcard_spotlightcardprops",
+      "community": 34,
+      "community_name": "rate-card/page.tsx",
+      "norm_label": "spotlightcardprops"
     },
     {
       "label": "Window",
@@ -412,30 +412,6 @@
       "norm_label": "marquee()"
     },
     {
-      "label": "ArrowIcon()",
-      "file_type": "code",
-      "source_file": "components/Packages.tsx",
-      "source_location": "L19",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_packages_arrowicon",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "arrowicon()"
-    },
-    {
-      "label": "Packages()",
-      "file_type": "code",
-      "source_file": "components/Packages.tsx",
-      "source_location": "L25",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_packages_packages",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "packages()"
-    },
-    {
       "label": "Process()",
       "file_type": "code",
       "source_file": "components/Process.tsx",
@@ -482,42 +458,6 @@
       "community": 0,
       "community_name": "[locale]/page.tsx",
       "norm_label": "solutions()"
-    },
-    {
-      "label": "SpotlightCard()",
-      "file_type": "code",
-      "source_file": "components/SpotlightCard.tsx",
-      "source_location": "L11",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_spotlightcard_spotlightcard",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "spotlightcard()"
-    },
-    {
-      "label": "handleLeave()",
-      "file_type": "code",
-      "source_file": "components/SpotlightCard.tsx",
-      "source_location": "L27",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_spotlightcard_spotlightcard_handleleave",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "handleleave()"
-    },
-    {
-      "label": "handleMove()",
-      "file_type": "code",
-      "source_file": "components/SpotlightCard.tsx",
-      "source_location": "L14",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_spotlightcard_spotlightcard_handlemove",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "handlemove()"
     },
     {
       "label": "Work()",
@@ -799,7 +739,7 @@
       "label": "ArrowIcon()",
       "file_type": "code",
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L33",
+      "source_location": "L37",
       "_callable": true,
       "_origin": "ast",
       "id": "app_locale_rate_card_page_arrowicon",
@@ -811,7 +751,7 @@
       "label": "generateMetadata()",
       "file_type": "code",
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L43",
+      "source_location": "L47",
       "_callable": true,
       "_origin": "ast",
       "id": "app_locale_rate_card_page_generatemetadata",
@@ -823,7 +763,7 @@
       "label": "generateStaticParams()",
       "file_type": "code",
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L39",
+      "source_location": "L43",
       "_callable": true,
       "_origin": "ast",
       "id": "app_locale_rate_card_page_generatestaticparams",
@@ -835,13 +775,25 @@
       "label": "RateCardPage()",
       "file_type": "code",
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L57",
+      "source_location": "L61",
       "_callable": true,
       "_origin": "ast",
       "id": "app_locale_rate_card_page_ratecardpage",
       "community": 34,
       "community_name": "rate-card/page.tsx",
       "norm_label": "ratecardpage()"
+    },
+    {
+      "label": "BonusPill()",
+      "file_type": "code",
+      "source_file": "components/BonusPill.tsx",
+      "source_location": "L1",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_bonuspill_bonuspill",
+      "community": 34,
+      "community_name": "rate-card/page.tsx",
+      "norm_label": "bonuspill()"
     },
     {
       "label": "Footer()",
@@ -904,6 +856,30 @@
       "norm_label": "switchto()"
     },
     {
+      "label": "ArrowIcon()",
+      "file_type": "code",
+      "source_file": "components/Packages.tsx",
+      "source_location": "L23",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_packages_arrowicon",
+      "community": 34,
+      "community_name": "rate-card/page.tsx",
+      "norm_label": "arrowicon()"
+    },
+    {
+      "label": "Packages()",
+      "file_type": "code",
+      "source_file": "components/Packages.tsx",
+      "source_location": "L29",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_packages_packages",
+      "community": 34,
+      "community_name": "rate-card/page.tsx",
+      "norm_label": "packages()"
+    },
+    {
       "label": "PrototypePreview()",
       "file_type": "code",
       "source_file": "components/PrototypePreview.tsx",
@@ -926,6 +902,54 @@
       "community": 34,
       "community_name": "rate-card/page.tsx",
       "norm_label": "updatescale()"
+    },
+    {
+      "label": "SpotlightCard()",
+      "file_type": "code",
+      "source_file": "components/SpotlightCard.tsx",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_spotlightcard_spotlightcard",
+      "community": 34,
+      "community_name": "rate-card/page.tsx",
+      "norm_label": "spotlightcard()"
+    },
+    {
+      "label": "handleLeave()",
+      "file_type": "code",
+      "source_file": "components/SpotlightCard.tsx",
+      "source_location": "L27",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_spotlightcard_spotlightcard_handleleave",
+      "community": 34,
+      "community_name": "rate-card/page.tsx",
+      "norm_label": "handleleave()"
+    },
+    {
+      "label": "handleMove()",
+      "file_type": "code",
+      "source_file": "components/SpotlightCard.tsx",
+      "source_location": "L14",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_spotlightcard_spotlightcard_handlemove",
+      "community": 34,
+      "community_name": "rate-card/page.tsx",
+      "norm_label": "handlemove()"
+    },
+    {
+      "label": "StrikethroughPrice()",
+      "file_type": "code",
+      "source_file": "components/StrikethroughPrice.tsx",
+      "source_location": "L1",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_strikethroughprice_strikethroughprice",
+      "community": 34,
+      "community_name": "rate-card/page.tsx",
+      "norm_label": "strikethroughprice()"
     },
     {
       "label": "WhatsAppButton()",
@@ -1648,17 +1672,6 @@
       "norm_label": "marquee.tsx"
     },
     {
-      "label": "Packages.tsx",
-      "file_type": "code",
-      "source_file": "components/Packages.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_packages",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "packages.tsx"
-    },
-    {
       "label": "Process.tsx",
       "file_type": "code",
       "source_file": "components/Process.tsx",
@@ -1690,17 +1703,6 @@
       "community": 0,
       "community_name": "[locale]/page.tsx",
       "norm_label": "solutions.tsx"
-    },
-    {
-      "label": "SpotlightCard.tsx",
-      "file_type": "code",
-      "source_file": "components/SpotlightCard.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_spotlightcard",
-      "community": 0,
-      "community_name": "[locale]/page.tsx",
-      "norm_label": "spotlightcard.tsx"
     },
     {
       "label": "Work.tsx",
@@ -3265,6 +3267,28 @@
       "norm_label": "intro.tsx"
     },
     {
+      "label": "navigation.ts",
+      "file_type": "code",
+      "source_file": "i18n/navigation.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "i18n_navigation",
+      "community": 3,
+      "community_name": "services/[slug]/page.tsx",
+      "norm_label": "navigation.ts"
+    },
+    {
+      "label": "{ Link, redirect, usePathname, useRouter, getPathname }",
+      "file_type": "code",
+      "source_file": "i18n/navigation.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "i18n_navigation_link_redirect_usepathname_userouter_getpathname",
+      "community": 3,
+      "community_name": "services/[slug]/page.tsx",
+      "norm_label": "{ link, redirect, usepathname, userouter, getpathname }"
+    },
+    {
       "label": "request.ts",
       "file_type": "code",
       "source_file": "i18n/request.ts",
@@ -3485,6 +3509,17 @@
       "norm_label": "rate-card/page.tsx"
     },
     {
+      "label": "BonusPill.tsx",
+      "file_type": "code",
+      "source_file": "components/BonusPill.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_bonuspill",
+      "community": 34,
+      "community_name": "rate-card/page.tsx",
+      "norm_label": "bonuspill.tsx"
+    },
+    {
       "label": "Header.tsx",
       "file_type": "code",
       "source_file": "components/Header.tsx",
@@ -3518,6 +3553,17 @@
       "norm_label": "locales"
     },
     {
+      "label": "Packages.tsx",
+      "file_type": "code",
+      "source_file": "components/Packages.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_packages",
+      "community": 34,
+      "community_name": "rate-card/page.tsx",
+      "norm_label": "packages.tsx"
+    },
+    {
       "label": "PrototypePreview.tsx",
       "file_type": "code",
       "source_file": "components/PrototypePreview.tsx",
@@ -3529,6 +3575,28 @@
       "norm_label": "prototypepreview.tsx"
     },
     {
+      "label": "SpotlightCard.tsx",
+      "file_type": "code",
+      "source_file": "components/SpotlightCard.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_spotlightcard",
+      "community": 34,
+      "community_name": "rate-card/page.tsx",
+      "norm_label": "spotlightcard.tsx"
+    },
+    {
+      "label": "StrikethroughPrice.tsx",
+      "file_type": "code",
+      "source_file": "components/StrikethroughPrice.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_strikethroughprice",
+      "community": 34,
+      "community_name": "rate-card/page.tsx",
+      "norm_label": "strikethroughprice.tsx"
+    },
+    {
       "label": "WhatsAppButton.tsx",
       "file_type": "code",
       "source_file": "components/WhatsAppButton.tsx",
@@ -3538,28 +3606,6 @@
       "community": 34,
       "community_name": "rate-card/page.tsx",
       "norm_label": "whatsappbutton.tsx"
-    },
-    {
-      "label": "navigation.ts",
-      "file_type": "code",
-      "source_file": "i18n/navigation.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "i18n_navigation",
-      "community": 34,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "navigation.ts"
-    },
-    {
-      "label": "{ Link, redirect, usePathname, useRouter, getPathname }",
-      "file_type": "code",
-      "source_file": "i18n/navigation.ts",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "i18n_navigation_link_redirect_usepathname_userouter_getpathname",
-      "community": 34,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "{ link, redirect, usepathname, userouter, getpathname }"
     },
     {
       "label": "whatsapp.ts",
@@ -4834,7 +4880,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L66",
+      "source_location": "L70",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_locale_rate_card_page_ratecardpage",
@@ -4930,7 +4976,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/Packages.tsx",
-      "source_location": "L29",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_packages_packages",
@@ -5886,6 +5932,30 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_locale_rate_card_page",
+      "target": "components_strikethroughprice_strikethroughprice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_rate_card_page",
+      "target": "components_bonuspill_bonuspill",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_rate_card_page",
       "target": "lib_whatsapp_buildwhatsapphref",
       "confidence_score": 1.0
     },
@@ -6254,6 +6324,18 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "components/Packages.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_packages",
+      "target": "lib_whatsapp_buildwhatsapphref",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/Packages.tsx",
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
@@ -6294,7 +6376,19 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_packages",
-      "target": "lib_whatsapp_buildwhatsapphref",
+      "target": "components_strikethroughprice_strikethroughprice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/Packages.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_packages",
+      "target": "components_bonuspill_bonuspill",
       "confidence_score": 1.0
     },
     {
@@ -7254,6 +7348,30 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_locale_rate_card_page",
+      "target": "components_strikethroughprice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_rate_card_page",
+      "target": "components_bonuspill",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_rate_card_page",
       "target": "lib_whatsapp",
       "confidence_score": 1.0
     },
@@ -7586,6 +7704,18 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "components/Packages.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_packages",
+      "target": "lib_whatsapp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/Packages.tsx",
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
@@ -7626,7 +7756,19 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_packages",
-      "target": "lib_whatsapp",
+      "target": "components_strikethroughprice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/Packages.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_packages",
+      "target": "components_bonuspill",
       "confidence_score": 1.0
     },
     {
@@ -8130,7 +8272,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L17",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_locale_rate_card_page",
+      "target": "app_locale_rate_card_page_ratecardlineitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/[locale]/rate-card/page.tsx",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_locale_rate_card_page",
@@ -8141,7 +8294,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L25",
+      "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_locale_rate_card_page",
@@ -8152,7 +8305,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L33",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_locale_rate_card_page",
@@ -8163,7 +8316,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L39",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_locale_rate_card_page",
@@ -8174,7 +8327,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L43",
+      "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_locale_rate_card_page",
@@ -8185,22 +8338,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L57",
+      "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_locale_rate_card_page",
       "target": "app_locale_rate_card_page_ratecardpage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/[locale]/rate-card/page.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "app_locale_rate_card_page",
-      "target": "app_locale_rate_card_page_ratecardlineitem",
       "confidence_score": 1.0
     },
     {
@@ -8976,6 +9118,17 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "components/BonusPill.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_bonuspill",
+      "target": "components_bonuspill_bonuspill",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "components/CustomCursor.tsx",
       "source_location": "L7",
       "weight": 1.0,
@@ -9285,7 +9438,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/Packages.tsx",
-      "source_location": "L10",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_packages",
@@ -9296,7 +9449,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/Packages.tsx",
-      "source_location": "L19",
+      "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_packages",
@@ -9307,7 +9460,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/Packages.tsx",
-      "source_location": "L25",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
       "source": "components_packages",
@@ -9488,6 +9641,17 @@
       "_origin": "ast",
       "source": "components_spotlightcard_spotlightcard",
       "target": "components_spotlightcard_spotlightcard_handleleave",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/StrikethroughPrice.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_strikethroughprice",
+      "target": "components_strikethroughprice_strikethroughprice",
       "confidence_score": 1.0
     },
     {
@@ -11080,5 +11244,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "bf4f77c8b9cd204e991fb20ab1eec857ddeccdb0"
+  "built_at_commit": "a9c6333e1d24eca1fd714c03dbfe144764e08800"
 }
