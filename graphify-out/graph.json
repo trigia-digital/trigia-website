@@ -508,6 +508,18 @@
       "norm_label": "main()"
     },
     {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/harubookcafe/route.ts",
+      "source_location": "L7",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_harubookcafe_route_get",
+      "community": 15,
+      "community_name": "route.ts",
+      "norm_label": "get()"
+    },
+    {
       "label": "generateMetadata()",
       "file_type": "code",
       "source_file": "app/[locale]/layout.tsx",
@@ -650,6 +662,30 @@
       "community": 3,
       "community_name": "services/[slug]/page.tsx",
       "norm_label": "finishintro()"
+    },
+    {
+      "label": "LanguageSwitcher()",
+      "file_type": "code",
+      "source_file": "components/LanguageSwitcher.tsx",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_languageswitcher_languageswitcher",
+      "community": 3,
+      "community_name": "services/[slug]/page.tsx",
+      "norm_label": "languageswitcher()"
+    },
+    {
+      "label": "switchTo()",
+      "file_type": "code",
+      "source_file": "components/LanguageSwitcher.tsx",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_languageswitcher_languageswitcher_switchto",
+      "community": 3,
+      "community_name": "services/[slug]/page.tsx",
+      "norm_label": "switchto()"
     },
     {
       "label": "urlFor()",
@@ -806,54 +842,6 @@
       "community": 34,
       "community_name": "rate-card/page.tsx",
       "norm_label": "footer()"
-    },
-    {
-      "label": "Header()",
-      "file_type": "code",
-      "source_file": "components/Header.tsx",
-      "source_location": "L10",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_header_header",
-      "community": 34,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "header()"
-    },
-    {
-      "label": "handleScroll()",
-      "file_type": "code",
-      "source_file": "components/Header.tsx",
-      "source_location": "L26",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_header_header_handlescroll",
-      "community": 34,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "handlescroll()"
-    },
-    {
-      "label": "LanguageSwitcher()",
-      "file_type": "code",
-      "source_file": "components/LanguageSwitcher.tsx",
-      "source_location": "L11",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_languageswitcher_languageswitcher",
-      "community": 34,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "languageswitcher()"
-    },
-    {
-      "label": "switchTo()",
-      "file_type": "code",
-      "source_file": "components/LanguageSwitcher.tsx",
-      "source_location": "L16",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "components_languageswitcher_languageswitcher_switchto",
-      "community": 34,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "switchto()"
     },
     {
       "label": "ArrowIcon()",
@@ -1432,6 +1420,30 @@
       "norm_label": "articlecover()"
     },
     {
+      "label": "Header()",
+      "file_type": "code",
+      "source_file": "components/Header.tsx",
+      "source_location": "L10",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_header_header",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "header()"
+    },
+    {
+      "label": "handleScroll()",
+      "file_type": "code",
+      "source_file": "components/Header.tsx",
+      "source_location": "L26",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "components_header_header_handlescroll",
+      "community": 8,
+      "community_name": "articles/[slug]/page.tsx",
+      "norm_label": "handlescroll()"
+    },
+    {
       "label": "coverImageExists()",
       "file_type": "code",
       "source_file": "lib/articles.ts",
@@ -1912,6 +1924,39 @@
       "community": 14,
       "community_name": "postcss.config.js",
       "norm_label": "postcss.config.js"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/harubookcafe/route.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_harubookcafe_route",
+      "community": 15,
+      "community_name": "route.ts",
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "dynamic",
+      "file_type": "code",
+      "source_file": "app/harubookcafe/route.ts",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "app_harubookcafe_route_dynamic",
+      "community": 15,
+      "community_name": "route.ts",
+      "norm_label": "dynamic"
+    },
+    {
+      "label": "runtime",
+      "file_type": "code",
+      "source_file": "app/harubookcafe/route.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "app_harubookcafe_route_runtime",
+      "community": 15,
+      "community_name": "route.ts",
+      "norm_label": "runtime"
     },
     {
       "label": "exports.md",
@@ -3256,6 +3301,17 @@
       "norm_label": "grain.tsx"
     },
     {
+      "label": "Header.tsx",
+      "file_type": "code",
+      "source_file": "components/Header.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_header",
+      "community": 3,
+      "community_name": "services/[slug]/page.tsx",
+      "norm_label": "header.tsx"
+    },
+    {
       "label": "Intro.tsx",
       "file_type": "code",
       "source_file": "components/Intro.tsx",
@@ -3265,6 +3321,28 @@
       "community": 3,
       "community_name": "services/[slug]/page.tsx",
       "norm_label": "intro.tsx"
+    },
+    {
+      "label": "LanguageSwitcher.tsx",
+      "file_type": "code",
+      "source_file": "components/LanguageSwitcher.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_languageswitcher",
+      "community": 3,
+      "community_name": "services/[slug]/page.tsx",
+      "norm_label": "languageswitcher.tsx"
+    },
+    {
+      "label": "LOCALES",
+      "file_type": "code",
+      "source_file": "components/LanguageSwitcher.tsx",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "components_languageswitcher_locales",
+      "community": 3,
+      "community_name": "services/[slug]/page.tsx",
+      "norm_label": "locales"
     },
     {
       "label": "navigation.ts",
@@ -3518,39 +3596,6 @@
       "community": 34,
       "community_name": "rate-card/page.tsx",
       "norm_label": "bonuspill.tsx"
-    },
-    {
-      "label": "Header.tsx",
-      "file_type": "code",
-      "source_file": "components/Header.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_header",
-      "community": 34,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "header.tsx"
-    },
-    {
-      "label": "LanguageSwitcher.tsx",
-      "file_type": "code",
-      "source_file": "components/LanguageSwitcher.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_languageswitcher",
-      "community": 34,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "languageswitcher.tsx"
-    },
-    {
-      "label": "LOCALES",
-      "file_type": "code",
-      "source_file": "components/LanguageSwitcher.tsx",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "components_languageswitcher_locales",
-      "community": 34,
-      "community_name": "rate-card/page.tsx",
-      "norm_label": "locales"
     },
     {
       "label": "Packages.tsx",
@@ -7930,6 +7975,39 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "app/harubookcafe/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_harubookcafe_route",
+      "target": "app_harubookcafe_route_runtime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/harubookcafe/route.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_harubookcafe_route",
+      "target": "app_harubookcafe_route_dynamic",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/harubookcafe/route.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_harubookcafe_route",
+      "target": "app_harubookcafe_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "app/[locale]/articles/page.tsx",
       "source_location": "L10",
       "weight": 1.0,
@@ -11244,5 +11322,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a9c6333e1d24eca1fd714c03dbfe144764e08800"
+  "built_at_commit": "70c7adcad0e64c7d2bcb1ed4f00e50e741e34f01"
 }
