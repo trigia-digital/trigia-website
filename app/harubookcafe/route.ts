@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 export const runtime = "nodejs";
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const filePath = path.join(process.cwd(), "content", "mockups", "harubookcafe.html");
