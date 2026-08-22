@@ -529,7 +529,7 @@
   "prototypePage": {
     "eyebrow": "Prototypes",
     "heading": "Design & Template Explorations from TRIGIA.",
-    "desc": "12 visual style and build explorations across industries — not client work, purely a demonstration of TRIGIA's design range.",
+    "desc": "13 visual style and build explorations across industries — not client work, purely a demonstration of TRIGIA's design range.",
     "badgeLabel": "Design Exploration",
     "viewDemo": "View Live Demo",
     "items": [
@@ -604,6 +604,12 @@
         "badge": "Mobile App — Health & Fitness",
         "title": "Bugar",
         "desc": "Personal health and fitness app concept — auto-generated workout programs, calorie and step tracking, plus community challenges to stay consistent."
+      },
+      {
+        "src": "/prototypes/domm-bistro.html",
+        "badge": "Website — F&B / Bistro",
+        "title": "DOMM Bistro",
+        "desc": "Website concept for a warm, personal bistro experience — menu showcase, ambiance gallery, and private dining for special moments, with direct WhatsApp reservations."
       }
     ]
   },

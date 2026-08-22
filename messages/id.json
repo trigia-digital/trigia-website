@@ -529,7 +529,7 @@
   "prototypePage": {
     "eyebrow": "Prototipe",
     "heading": "Eksplorasi Desain & Template TRIGIA.",
-    "desc": "12 eksplorasi gaya visual dan build lintas industri — bukan proyek klien, murni demonstrasi kemampuan desain TRIGIA.",
+    "desc": "13 eksplorasi gaya visual dan build lintas industri — bukan proyek klien, murni demonstrasi kemampuan desain TRIGIA.",
     "badgeLabel": "Eksplorasi Desain",
     "viewDemo": "Lihat Live Demo",
     "items": [
@@ -604,6 +604,12 @@
         "badge": "Mobile App — Health & Fitness",
         "title": "Bugar",
         "desc": "Konsep aplikasi kesehatan dan latihan personal — program latihan otomatis, pelacakan kalori dan langkah, plus tantangan komunitas untuk menjaga konsistensi."
+      },
+      {
+        "src": "/prototypes/domm-bistro.html",
+        "badge": "Website — F&B / Bistro",
+        "title": "DOMM Bistro",
+        "desc": "Konsep website bistro dengan nuansa hangat dan personal — showcase menu, galeri suasana, dan private dining untuk momen spesial, lengkap dengan reservasi langsung ke WhatsApp."
       }
     ]
   },
